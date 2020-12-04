@@ -22,6 +22,7 @@ yarn-error.log*
 
 # Next.js build output
 .next
+out/
 
 # Package files
 *.jar

@@ -32,13 +32,13 @@ npm run validate
 
 ### Build
 
-To build an optimized production build use:
+To build and export an optimized production build to /out folder use:
 
 ```bash
 npm run build
 ```
 
-The output displays information about each route.
+The output displays information about each route and generates an /out directory, which can be served by any static hosting service or CDN.
 
 ### Production
 

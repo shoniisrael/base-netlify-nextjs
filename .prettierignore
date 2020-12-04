@@ -5,6 +5,7 @@ build/
 
 #Next files
 .next/
+out/
 
 # misc
 .DS_Store

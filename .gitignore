@@ -6,15 +6,23 @@
 # Node artifact files
 node_modules/
 dist/
+build/
+package-lock.json
 
-# Compiled Java class files
-*.class
+# misc
+.DS_Store
+.env
 
-# Compiled Python bytecode
-*.py[cod]
-
-# Log files
+# Logs
+logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js build output
+.next
+out/
 
 # Package files
 *.jar
@@ -25,6 +33,9 @@ dist/
 
 # JetBrains IDE
 .idea/
+
+# VSCode
+.vscode/
 
 # Unit test reports
 TEST*.xml

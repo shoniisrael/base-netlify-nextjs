@@ -20,7 +20,7 @@ npm run watch
 
 ### Build
 
-To build and export an optimized production build to /out folder use:
+To build tailwind and bind with index.html use:
 
 ```bash
 npm run tw:build

@@ -8,13 +8,16 @@ module.exports = {
       },
       colors: {
         primary: {
-          light: "#E7F0F3",
+          light: "#F8FBFC",
           DEFAULT: "#0C3248",
           dark: "#617A88",
         },
         secondary: {
           DEFAULT: "#A4C22C",
         },
+      },
+      boxShadow: {
+        card: "0 0 34px 0 rgba(0,0,0,.08)",
       },
     },
   },

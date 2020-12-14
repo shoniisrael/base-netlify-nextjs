@@ -1,57 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /*custom classes*/
-.main-title {
-  @apply text-primary text-xl font-bold;
-}
-
-.title {
-  @apply text-primary text-2xl font-bold;
-}
-.title-variant {
-  @apply text-secondary text-2xl font-bold;
-}
-.normal-text {
-  @apply text-primary text-base font-light;
-}
-
-.normal-text-variant {
-  @apply text-white text-base font-light;
-}
-
 .btn {
-  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary;
+  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-6 transition duration-500 lg:hover:opacity-80;
 }
 
 .card {
-  @apply bg-white shadow-lg rounded-xl;
+  @apply bg-white shadow-card rounded-xl lg:transform hover:-translate-y-2;
 }
 
-.custom-line-item {
-  @apply text-secondary font-bold pr-2;
-}
-
-@screen md {
-  .main-title {
-    @apply text-3xl;
-  }
-  .title-variant {
-    @apply text-3xl;
-  }
-}
-
-@screen lg {
-  .main-title {
-    @apply text-4xl;
-  }
-  .title {
-    @apply text-2xl;
-  }
-  .title-variant {
-    @apply text-4xl;
-  }
+.custom-line-bullets li::before {
+  content: "— ";
+  @apply text-secondary font-bold;
 }

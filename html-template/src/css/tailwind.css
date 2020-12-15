@@ -13,6 +13,10 @@
   @apply bg-white shadow-card rounded-xl lg:transform hover:-translate-y-2;
 }
 
+.card-borderless{
+  @apply bg-white shadow-card rounded-none lg:transform hover:-translate-y-2;
+}
+
 .custom-line-bullets li::before {
   content: "— ";
   @apply text-secondary font-bold;

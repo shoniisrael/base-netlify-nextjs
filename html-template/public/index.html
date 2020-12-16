@@ -15,12 +15,152 @@
     <link rel="stylesheet" href="css/tailwind.css" />
   </head>
   <body>
-    <header class="lg:sticky lg:top-0 bg-white z-20">
-      <nav
-        class="h-24 w-full shadow-xl z-10 flex justify-center items-center relative"
-      >
-        <div>
-          <img src="./img/logo-devsu.png" alt="logo devsu" />
+    <header class="sticky top-0 bg-white z-20 ">
+      <nav class="shadow-md relative">
+        <div class="hidden lg:flex top-0 bg-white container m-auto items-center justify-between">
+          <div class="flex">
+            <img class="mr-5 object-contain	" src="./img/logo-devsu.png" alt="logo devsu" />
+            <ul class="flex items-center text-sm font-medium text-primary uppercase h-24">
+              <li id="desktop-submenu1-toggle" class="mx-6 flex py-5">
+                <div href="#" class="flex cursor-default">SERVICESasd<img class="ml-2" src="img/chevron-down.svg" /></div>
+                <div id="desktop-submenu1" class="hidden absolute top-full -mt-5 ">
+                  <ul class="bg-white block px-6 py-2 relative -ml-5 rounded-lg shadow-card text-xs normal-case">
+                    <li>
+                      <a href="#">Integrated Teams</a>
+                    </li>
+                    <li>
+                      <a href="#">Managed Teams</a>
+                    </li>
+                    <li>
+                      <a href="#">Software Outsourcing</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li id="desktop-submenu2-toggle" class="mx-6 flex py-5">
+                <div href="#" class="flex cursor-default">EXPERTISE <img class="ml-2" src="img/chevron-down.svg" /></div>
+                <div id="desktop-submenu2" class="absolute hidden top-full -mt-5 ">
+                  <ul class="bg-white block px-6 py-2 relative -ml-5 rounded-lg shadow-card text-xs normal-case">
+                    <li>
+                      <a href="#">Custom Software Development</a>
+                    </li>
+                    <li>
+                      <a href="#">Testing & Quality Assurance</a>
+                    </li>
+                    <li>
+                      <a href="#">Custom Software Development</a>
+                    </li>
+                    <li>
+                      <a href="#">Testing & Quality Assurance</a>
+                    </li>
+                    <li>
+                      <a href="#">Custom Software Development</a>
+                    </li>
+                    <li>
+                      <a href="#">Testing & Quality Assurance</a>
+                    </li>
+                  </ul>
+                </div>
+    
+              </li>
+              <li class="mx-6">
+                <a href="#">THE SPRINT</a>
+              </li>
+              <li class="mx-6">
+                <a href="#">CARRERS</a>
+              </li>
+              <li class="mx-6">
+                <a href="#">ABOUT US</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="lg:hidden">
+          <div
+            class="h-24 top-0 bg-white z-20 px-4 md:px-20 bg-white grid content-center justify-items-stretch grid-cols-3 py-3 lg:hidden">
+            <!-- hamburguer icon -->
+            <label for="menu-toggle" class="pointer-cursor block justify-self-start">
+              <svg class="fill-current text-secondary-gray" xmlns="http://www.w3.org/2000/svg" width="25" height="30"
+                viewBox="0 0 20 20">
+                <path d="m0 3h20v3h-20v-3zm0 6h20v3h-20v-3zm0 6h20v3h-20v-2z"></path>
+              </svg>
+            </label>
+            <div class="h-9 w-24 justify-self-center">
+              <img src="./img/logo-devsu.png" alt="logo devsu" />
+            </div>
+          </div>
+          <input class="hidden" type="checkbox" id="menu-toggle" />
+          <!-- menu -->
+          <div class="hidden w-full px-4 md:px-20" id="menu">
+            <ul class="items-center justify-between text-base text-primary">
+              <!-- First item -->
+              <li>
+                <input class="hidden" type="checkbox" id="submenu1-toggle" />
+                <label for="submenu1-toggle" class="nav-item">
+                  <div class="flex items-center pointer-cursor">
+                    <span class="mr-auto">SERVICES</span>
+                    <img id="closed" src="img/chevron-right.svg" />
+                    <img id="open" src="img/chevron-down.svg" />
+                  </div>
+                </label>
+                <div id="submenu1" class="hidden submenu-block">
+                  <ul>
+                    <li>
+                      <a href="#">INTEGRATED TEAMS</a>
+                    </li>
+                    <li>
+                      <a href="#">MANAGED TEAMS</a>
+                    </li>
+                    <li>
+                      <a href="#">SOFTWARE OUTSOURCING</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <input class="hidden" type="checkbox" id="submenu2-toggle" />
+                <label for="submenu2-toggle" class="nav-item">
+                  <div class="flex items-center pointer-cursor">
+                    <span class="mr-auto">EXPERTISE</span>
+                    <img id="closed" src="img/chevron-right.svg" />
+                    <img id="open" src="img/chevron-down.svg" />
+                  </div>
+                </label>
+                <div id="submenu2" class="hidden transition duration-500 ease-in-out submenu-block">
+                  <ul>
+                    <li>
+                      <a href="#">CUSTOM SOFTWARE DEVELOPMENT</a>
+                    </li>
+                    <li>
+                      <a href="#">TESTING & QUALITY ASSURANCE</a>
+                    </li>
+                    <li>
+                      <a href="#">CLOUD COMPUTING & DEVOPS</a>
+                    </li>
+                    <li>
+                      <a href="#">AI & DATA SCIENCE</a>
+                    </li>
+                    <li>
+                      <a href="#">SOFTWARE DELIVERY STRATEGY</a>
+                    </li>
+                    <li>
+                      <a href="#">PRODUCT DESIGN</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="nav-item"><a href="#">THE
+                    SPRINT</a></div>
+              </li>
+              <li>
+                <div class="nav-item"><a href="#">CARRERS</a></div>
+              </li>
+              <li>
+                <div class="nav-item"><a href="#">ABOUT US</a></div>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>

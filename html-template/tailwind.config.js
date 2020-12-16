@@ -14,6 +14,8 @@ module.exports = {
         },
         secondary: {
           DEFAULT: "#A4C22C",
+          gray: "#555555",
+          lightGray: "#EAEAEA",
         },
       },
       boxShadow: {
@@ -22,7 +24,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      borderWidth: ["last"],
+    },
   },
   plugins: [],
 };

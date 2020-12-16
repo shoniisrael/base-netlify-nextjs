@@ -13,11 +13,65 @@
   @apply bg-white shadow-card rounded-xl lg:transform hover:-translate-y-2;
 }
 
-.card-borderless{
+.card-borderless {
   @apply bg-white shadow-card rounded-none lg:transform hover:-translate-y-2;
 }
 
 .custom-line-bullets li::before {
   content: "— ";
   @apply text-secondary font-bold;
+}
+
+.nav-item,
+.submenu-block > ul >li {
+  @apply h-6 px-0 pb-0 flex flex-col justify-center text-xs text-primary;
+}
+
+.nav-item,
+.submenu-block > ul >li {
+  min-height: 46px;
+}
+
+.submenu-block > ul >li {
+  @apply ml-5 border-b border-secondary-lightGray last:border-b-0;
+}
+
+.nav-link {
+  @apply underline;
+}
+
+.submenu-block {
+  @apply border-t border-secondary-lightGray;
+}
+
+#menu-toggle:checked + #menu,
+#submenu1-toggle:checked ~ #submenu1,
+#submenu2-toggle:checked ~ #submenu2 {
+  display: block;
+}
+
+#submenu1-toggle:checked ~ #submenu1,
+#submenu2-toggle:checked ~ #submenu2 {
+  display: block;
+}
+
+#submenu1-toggle:checked + label div > #open,
+#submenu2-toggle:checked + label div > #open,
+#submenu1-toggle:not(:checked) + label div > #closed,
+#submenu2-toggle:not(:checked) + label div > #closed{
+  display: none
+}
+
+#menu > ul > li {
+  @apply border-b border-secondary-lightGray text-primary last:border-0;
+}
+
+#desktop-submenu1-toggle:hover #desktop-submenu1,
+#desktop-submenu2-toggle:hover #desktop-submenu2{
+display: block;
+}
+
+#desktop-submenu1 ul li,
+#desktop-submenu2 ul li {
+  @apply my-5;
 }

@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-ul {
-  @apply text-sm;
-}
-
 .bg-primary-dark {
   @apply text-white;
 }

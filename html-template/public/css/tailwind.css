@@ -32656,11 +32656,6 @@ video {
           animation: bounce 1s infinite;
 }
 
-ul {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
 .bg-primary-dark {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));

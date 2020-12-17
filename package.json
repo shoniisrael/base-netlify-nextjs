@@ -18,7 +18,8 @@
   "lint-staged": {
     "**/*.{js,css}": [
       "npm run format",
-      "npm run lint:fix"
+      "npm run lint:fix",
+      "git add"
     ]
   },
   "dependencies": {

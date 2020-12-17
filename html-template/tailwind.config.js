@@ -15,8 +15,10 @@ module.exports = {
         },
         secondary: {
           DEFAULT: "#A4C22C",
-          gray: "#555555",
-          lightGray: "#EAEAEA",
+        },
+        gray: {
+          DEFAULT: "#555555",
+          light: "#EAEAEA",
         },
       },
       boxShadow: {

@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [],
+  purge: ["./public/*.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -26,6 +26,7 @@ module.exports = {
   variants: {
     extend: {
       borderWidth: ["last"],
+      scale: ["group-hover"],
     },
   },
   plugins: [],

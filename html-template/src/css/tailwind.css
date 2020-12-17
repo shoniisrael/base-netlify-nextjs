@@ -1,11 +1,31 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+ul {
+  @apply text-sm;
+}
+
+.bg-primary-dark {
+  @apply text-white;
+}
+
+.bg-primary-dark a {
+  @apply text-secondary;
+}
+
+footer.bg-primary-dark a {
+  @apply text-white;
+}
+
+a {
+  @apply hover:opacity-80;
+}
+
 /*custom classes*/
-.btn {
+.btn, a.btn {
   @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-6 transition duration-500 lg:hover:opacity-80;
 }
 

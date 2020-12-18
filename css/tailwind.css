@@ -23,7 +23,11 @@ a {
 /*custom classes*/
 .btn,
 a.btn {
-  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-6 transition duration-500 lg:hover:opacity-80;
+  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-5 mt-3 transition duration-500 lg:hover:opacity-80;
+}
+
+.filled {
+  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary;
 }
 
 .card {

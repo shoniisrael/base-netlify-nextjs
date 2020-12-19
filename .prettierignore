@@ -30,3 +30,5 @@ TEST*.xml
 html-template/public/css/
 html-template/public/js/
 
+css/styles.css
+

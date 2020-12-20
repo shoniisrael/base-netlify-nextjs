@@ -40,6 +40,14 @@ npm run build
 
 The output displays information about each route and generates an /out directory, which can be served by any static hosting service or CDN.
 
+### Emulate the Netlify deployment
+
+```bash
+npm run netlify
+```
+
+This will emulate Netlify on your computer and let you preview your app on http://localhost:8888. It uses the configuration file netlify.toml
+
 ### Production
 
 To start the application in production mode use:

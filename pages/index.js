@@ -6,9 +6,13 @@ import Body from "../components/body";
 
 class Home extends Component {
   render() {
-    const { home, menu } = this.props;
+    const { home, navigation } = this.props;
     return (
-      <Layout title={home.data.meta_title} description={home.data.meta_description} menu={menu}>
+      <Layout
+        title={home.data.meta_title}
+        description={home.data.meta_description}
+        navigation={navigation}
+      >
         <Body slices={home.data.body} />
       </Layout>
     );
@@ -19,11 +23,10 @@ export default Home;
 
 export async function getStaticProps() {
   const home = await Client().getByUID("page", "home");
-  // const menu = await Client().getByUID("menu", "menu");
+
   return {
     props: {
       home,
-      // menu,
     },
   };
 }

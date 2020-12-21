@@ -2,8 +2,17 @@
   "name": "devsu-website-2021",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && next export",
+    "dev": "run-p env:dev watch:css next:dev",
+    "build": "run-s env:prod build:css next:build",
+    "next:dev": "next dev",
+    "prenext:build": "rimraf out/",
+    "next:build": "next build",
+    "postnext:build": "next export",
+    "build:css": "postcss css/tailwind.css -o css/styles.css",
+    "watch:css": "postcss css/tailwind.css -o css/styles.css --watch",
+    "env:dev": "cross-env NODE_ENV=development",
+    "env:prod": "cross-env NODE_ENV=production",
+    "netlify:dev": "netlify dev",
     "start": "next start",
     "format": "prettier --config .prettierrc \"./**/*.{js,css}\" --write",
     "lint": "eslint \"./\"",
@@ -18,7 +27,8 @@
   "lint-staged": {
     "**/*.{js,css}": [
       "npm run format",
-      "npm run lint:fix"
+      "npm run lint:fix",
+      "git add"
     ]
   },
   "dependencies": {
@@ -34,6 +44,8 @@
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "netlify-cli": "^2.69.10",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
@@ -42,7 +54,10 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.2",
-    "prettier": "2.2.1"
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^8.3.1",
+    "prettier": "2.2.1",
+    "rimraf": "^3.0.2"
   },
   "engines": {
     "node": "12.14.x"

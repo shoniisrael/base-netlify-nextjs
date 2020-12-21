@@ -27,6 +27,8 @@ yarn-error.log*
 # Unit test reports
 TEST*.xml
 
-html-template/*.css
-html-template/**/*.css
+html-template/public/css/
+html-template/public/js/
+
+css/styles.css
 

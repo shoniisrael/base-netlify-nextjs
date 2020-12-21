@@ -1,11 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.bg-primary-dark {
+  @apply text-white;
+}
+
+.bg-primary-dark a {
+  @apply text-secondary;
+}
+
+footer.bg-primary-dark a {
+  @apply text-white;
+}
+
+a {
+  @apply hover:opacity-80;
+}
+
 /*custom classes*/
-.btn {
+.btn,
+a.btn {
   @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-6 transition duration-500 lg:hover:opacity-80;
 }
 
@@ -23,17 +40,17 @@
 }
 
 .nav-item,
-.submenu-block > ul >li {
+.submenu-block > ul > li {
   @apply h-6 px-0 pb-0 flex flex-col justify-center text-xs text-primary;
 }
 
 .nav-item,
-.submenu-block > ul >li {
+.submenu-block > ul > li {
   min-height: 46px;
 }
 
-.submenu-block > ul >li {
-  @apply ml-5 border-b border-secondary-lightGray last:border-b-0;
+.submenu-block > ul > li {
+  @apply ml-5 border-b border-gray-light last:border-b-0;
 }
 
 .nav-link {
@@ -41,7 +58,7 @@
 }
 
 .submenu-block {
-  @apply border-t border-secondary-lightGray;
+  @apply border-t border-gray-light;
 }
 
 #menu-toggle:checked + #menu,
@@ -58,17 +75,17 @@
 #submenu1-toggle:checked + label div > #open,
 #submenu2-toggle:checked + label div > #open,
 #submenu1-toggle:not(:checked) + label div > #closed,
-#submenu2-toggle:not(:checked) + label div > #closed{
-  display: none
+#submenu2-toggle:not(:checked) + label div > #closed {
+  display: none;
 }
 
 #menu > ul > li {
-  @apply border-b border-secondary-lightGray text-primary last:border-0;
+  @apply border-b border-gray-light text-primary last:border-0;
 }
 
 #desktop-submenu1-toggle:hover #desktop-submenu1,
-#desktop-submenu2-toggle:hover #desktop-submenu2{
-display: block;
+#desktop-submenu2-toggle:hover #desktop-submenu2 {
+  display: block;
 }
 
 #desktop-submenu1 ul li,

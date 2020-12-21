@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [],
+  purge: ["./components/**/*.js", "./components/*.js", "./pages/**/*.js", "./pages/*.js"],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -8,14 +8,17 @@ module.exports = {
       },
       colors: {
         primary: {
-          light: "#F8FBFC",
-          DEFAULT: "#0C3248",
-          dark: "#617A88",
+          lighter: "#F8FBFC",
+          light: "#E7F0F3",
+          DEFAULT: "#617A88",
+          dark: "#0C3248",
         },
         secondary: {
           DEFAULT: "#A4C22C",
-          gray: "#555555",
-          lightGray: "#EAEAEA",
+        },
+        gray: {
+          DEFAULT: "#555555",
+          light: "#EAEAEA",
         },
       },
       boxShadow: {
@@ -26,6 +29,7 @@ module.exports = {
   variants: {
     extend: {
       borderWidth: ["last"],
+      scale: ["group-hover"],
     },
   },
   plugins: [],

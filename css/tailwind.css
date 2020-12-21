@@ -66,20 +66,12 @@ a.btn {
 }
 
 #menu-toggle:checked + #menu,
-#submenu1-toggle:checked ~ #submenu1,
-#submenu2-toggle:checked ~ #submenu2 {
+.submenu-toggle:checked ~ .submenu-block {
   display: block;
 }
 
-#submenu1-toggle:checked ~ #submenu1,
-#submenu2-toggle:checked ~ #submenu2 {
-  display: block;
-}
-
-#submenu1-toggle:checked + label div > #open,
-#submenu2-toggle:checked + label div > #open,
-#submenu1-toggle:not(:checked) + label div > #closed,
-#submenu2-toggle:not(:checked) + label div > #closed {
+.submenu-toggle:checked + label div > #open,
+.submenu-toggle:not(:checked) + label div > #closed {
   display: none;
 }
 
@@ -87,12 +79,10 @@ a.btn {
   @apply border-b border-gray-light text-primary last:border-0;
 }
 
-#desktop-submenu1-toggle:hover #desktop-submenu1,
-#desktop-submenu2-toggle:hover #desktop-submenu2 {
+.desktop-submenu-toggle:hover > .desktop-submenu {
   display: block;
 }
 
-#desktop-submenu1 ul li,
-#desktop-submenu2 ul li {
+.desktop-submenu ul li {
   @apply my-5;
 }

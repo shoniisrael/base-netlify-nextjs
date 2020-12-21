@@ -8,7 +8,7 @@ class Header extends Component {
         <nav className="shadow-md relative">
           <div className="hidden lg:flex top-0 bg-white container m-auto px-5 items-center justify-between text-sm lg:text-md">
             <div className="flex">
-              <img className="mr-5 object-contain" src="./img/logo-devsu.png" alt="logo devsu" />
+              <img className="mr-5 object-contain" src="./img/logo-devsu.svg" alt="logo devsu" />
               <ul className="flex items-center font-medium uppercase h-24">{this.renderMenu()}</ul>
             </div>
           </div>
@@ -26,7 +26,7 @@ class Header extends Component {
                 </svg>
               </label>
               <div className="h-9 w-24 justify-self-center">
-                <img src="./img/logo-devsu.png" alt="logo devsu" />
+                <img src="./img/logo-devsu.svg" alt="logo devsu" />
               </div>
             </div>
             <input className="hidden" type="checkbox" id="menu-toggle" />

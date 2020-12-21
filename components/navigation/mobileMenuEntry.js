@@ -56,13 +56,12 @@ class MobileMenuEntry extends Component {
           </label>
         </Fragment>
       );
-    } else {
-      return (
-        <div className="nav-item">
-          <CustomLink link={menu.link}>{menu.label}</CustomLink>
-        </div>
-      );
     }
+    return (
+      <div className="nav-item">
+        <CustomLink link={menu.link}>{menu.label}</CustomLink>
+      </div>
+    );
   }
 }
 

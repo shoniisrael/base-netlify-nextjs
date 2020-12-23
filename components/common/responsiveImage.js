@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 class ResponsiveImage extends Component {
   render() {
-    const { image, sizes = 'sizes="(min-width:768) 30vw, 90vw"' } = this.props;
+    const { image, sizes = "(min-width:768) 30vw, 90vw" } = this.props;
     const { tablet, mobile } = image;
 
     const mobileSrc = mobile ? `${this.getImageSrc(mobile)} ${mobile.dimensions.width}w` : null;
@@ -9,9 +9,9 @@ class ResponsiveImage extends Component {
     const baseImageSrc = this.getImageSrc(image);
     const imageSrc = `${baseImageSrc} ${image.dimensions.width}w`;
 
-    const image1_5xSrc = `${this.getUrlWithParameter(baseImageSrc, "dpr", "1.5")} ${
-      image.dimensions.width * 1.5
-    }w`;
+    const image1_5xSrc = `${this.getUrlWithParameter(baseImageSrc, "dpr", "1.5")} ${Math.round(
+      image.dimensions.width * 1.5,
+    )}w`;
     const image2xSrc = `${this.getUrlWithParameter(baseImageSrc, "dpr", "2")} ${
       image.dimensions.width * 2
     }w`;

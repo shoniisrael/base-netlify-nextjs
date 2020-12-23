@@ -6,14 +6,16 @@ import ResponsiveImage from "../common/responsiveImage";
 class Hero1 extends Component {
   render() {
     const { primary } = this.props.slice;
+    const { separator } = primary;
     return (
-      <div className="flex items-center bg-primary-lighter md:pb-6 lg:pb-20 mx-auto">
-        <div className="w-1/5 h-auto">
+      <div className="dots1 flex items-center bg-primary-lighter md:pb-6 lg:pb-20 mx-auto relative xl:h-3/4">
+        <div className="absolute bottom-0 left-0 w-1/4 md:w-1/5 2xl:w-1/12 h-auto">
           <ResponsiveImage image={primary.left_background_image} />
         </div>
-        <div className="w-3/5">
+        <div className="w-4/5 md:w-4/5 mx-auto z-10">
           <div className="flex flex-col justify-center items-center lg:px-24 py-16 lg:py-24 text-center">
-            <div className="font-bold text-primary text-2xl text-center pb-3 sm:w-3/5 md:w-3/5 md:text-2xl lg:text-4xl xl:text-6xl lg:w-5/6 lg:pb-5 text-primary-dark">
+            <div className="font-bold text-2xl text-center pb-3 md:text-2xl lg:text-4xl xl:text-6xl lg:w-5/6 lg:pb-5 text-primary-dark">
+              {separator && <div className="separator" />}
               {RichText.render(primary.big_title)}
             </div>
             <div className="md:w-3/5 lg:w-3/4 pb-8 lg:text-lg md:px-10 px-8">
@@ -26,7 +28,7 @@ class Hero1 extends Component {
             />
           </div>
         </div>
-        <div className="w-1/5 h-auto">
+        <div className="absolute top-0 right-0 w-1/3 md:w-1/5 lg:w-1/4 2xl:w-1/6 h-auto">
           <ResponsiveImage image={primary.right_background_image} />
         </div>
       </div>

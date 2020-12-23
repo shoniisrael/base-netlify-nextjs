@@ -1,6 +1,6 @@
 import Head from "next/head";
-
 import React, { Component } from "react";
+import Footer from "./footer";
 import Header from "./header";
 class Layout extends Component {
   render() {
@@ -12,12 +12,11 @@ class Layout extends Component {
           <meta name="description" content={description} />
           <meta name="robots" content="noindex"></meta>
         </Head>
-        <Header nav={navigation.data.nav}></Header>
+        <Header nav={navigation.data.nav} />
         {children}
-        {/* TODO: implement Footer */}
+        <Footer nav={navigation.data.footer} />
       </div>
     );
   }
 }
-
 export default Layout;

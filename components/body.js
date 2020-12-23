@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { SLICE_TYPES } from "../utils/constants";
-import { Hero1, CardLinks } from "./slices/";
-
+import { Hero1, CardLinks, CardsGrid, Cards, ImageAndText } from "./slices/";
 class Body extends Component {
   render() {
     return (
@@ -16,19 +15,36 @@ class Body extends Component {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:
           return (
-            <div key={index} className="slice-wrapper">
+            <div key={index}>
               <Hero1 slice={slice} />
             </div>
           );
         case SLICE_TYPES.CARD_LINKS:
           return (
-            <div key={index} className="slice-wrapper">
+            <div key={index}>
               <CardLinks slice={slice} />
+            </div>
+          );
+        case SLICE_TYPES.IMAGE_AND_TEXT:
+          return (
+            <div key={index}>
+              <ImageAndText slice={slice} />
+            </div>
+          );
+        case SLICE_TYPES.CARDS_GRID:
+          return (
+            <div key={index}>
+              <CardsGrid slice={slice} />
+            </div>
+          );
+        case SLICE_TYPES.CARDS:
+          return (
+            <div key={index}>
+              <Cards slice={slice} />
             </div>
           );
       }
     });
   }
 }
-
 export default Body;

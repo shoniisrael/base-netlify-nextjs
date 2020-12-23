@@ -23,7 +23,6 @@ export default Home;
 
 export async function getStaticProps() {
   const home = await Client().getByUID("page", "home");
-
   return {
     props: {
       home,

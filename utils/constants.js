@@ -1,6 +1,9 @@
 export const SLICE_TYPES = {
   HERO_1: "hero_1",
   CARD_LINKS: "card_links",
+  CARDS_GRID: "cards_grid",
+  CARDS: "cards",
+  IMAGE_AND_TEXT: "image_and_text",
 };
 
 export const SCREEN_SIZES = {

@@ -23,7 +23,7 @@ a {
 /*custom classes*/
 .btn,
 a.btn {
-  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-5 mt-3 transition duration-500 lg:hover:opacity-80;
+  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-5 transition duration-500 lg:hover:opacity-80;
 }
 
 .filled {
@@ -85,4 +85,56 @@ a.btn {
 
 .desktop-submenu ul li {
   @apply my-5;
+}
+
+.dots1 {
+  background-image: url(../public/img/bg-left-up.svg), url(../public/img/bg-right-down.svg);
+  background-position: top left, bottom 0px right 0px;
+  background-repeat: no-repeat;
+  background-size: 40vw auto, 40vw auto;
+}
+
+@media only screen and (min-width: 1280px) {
+  .dots1 {
+    background-size: 20vw auto, 20vw auto;
+  }
+}
+
+.separator {
+  width: 95px;
+  height: 2px;
+  margin: 15px auto auto;
+  border: solid 2px #a3c412;
+  display: block;
+}
+
+.cards-grid {
+  background-image: url(../public/img/oval-left.svg), url(../public/img/oval-right.svg);
+  background-position: top 50% left, top 20% right;
+  background-repeat: no-repeat;
+  background-size: 20vw auto, 20vw auto;
+}
+@media only screen and (max-width: 640px) {
+  .cards-grid {
+    background-image: none;
+  }
+}
+
+.card-no-hover {
+  @apply bg-white shadow-card rounded-xl;
+}
+
+.two-column-bullets ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  @apply custom-line-bullets space-y-1 leading-loose;
+}
+
+.image-and-text > p {
+  @apply leading-loose mb-14;
+}
+
+.custom-input {
+  @apply border-primary border-solid border placeholder-white placeholder-opacity-50 focus:outline-none opacity-70 md:text-sm lg:text-base;
 }

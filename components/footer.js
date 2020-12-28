@@ -78,8 +78,6 @@ class Footer extends Component {
           <div className="flex flex-col items-center lg:flex-row lg:items-start lg:space-x-10">
             {this.renderNav()}
           </div>
-          <div />
-          <div />
           {this.renderNewsletterSection()}
         </div>
       </footer>

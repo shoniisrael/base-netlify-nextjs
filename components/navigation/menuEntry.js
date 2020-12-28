@@ -19,7 +19,7 @@ class MenuEntry extends Component {
       );
 
       menuClasses += " desktop-submenu-toggle flex py-5";
-      customLinkClasses = "flex cursor-default";
+      customLinkClasses = "flex cursor-pointer";
     }
     return (
       <li className={menuClasses}>
@@ -37,11 +37,9 @@ class MenuEntry extends Component {
 
     return submenuItems.map((submenuEntry, index) => {
       return (
-        <li key={index}>
-          <CustomLink link={submenuEntry.sub_nav_link}>
-            {submenuEntry.sub_nav_link_label}
-          </CustomLink>
-        </li>
+        <CustomLink key={index} link={submenuEntry.sub_nav_link}>
+          <li>{submenuEntry.sub_nav_link_label}</li>
+        </CustomLink>
       );
     });
   }

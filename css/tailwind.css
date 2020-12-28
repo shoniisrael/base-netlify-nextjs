@@ -84,7 +84,7 @@ a.btn {
 }
 
 .desktop-submenu ul li {
-  @apply my-5;
+  @apply py-3;
 }
 
 .dots1 {

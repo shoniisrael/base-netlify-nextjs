@@ -9,8 +9,11 @@ class Hero1 extends Component {
     const { separator } = primary;
     return (
       <div className="dots1 flex items-center bg-primary-lighter md:pb-6 lg:pb-20 mx-auto relative xl:h-3/4">
-        <div className="absolute bottom-0 left-0 w-1/4 md:w-1/5 2xl:w-1/12 h-auto">
-          <ResponsiveImage image={primary.left_background_image} />
+        <div className="absolute bottom-0 left-0 w-1/4 md:w-1/5 2xl:w-1/12 h-auto flex justify-start">
+          <ResponsiveImage
+            image={primary.left_background_image}
+            sizes="(min-width:1536) 8vw, (min-width:768) 20vw, 25vw"
+          />
         </div>
         <div className="w-4/5 md:w-4/5 mx-auto z-10">
           <div className="flex flex-col justify-center items-center lg:px-24 py-16 lg:py-24 text-center">
@@ -28,8 +31,11 @@ class Hero1 extends Component {
             />
           </div>
         </div>
-        <div className="absolute top-0 right-0 w-1/3 md:w-1/5 lg:w-1/4 2xl:w-1/6 h-auto">
-          <ResponsiveImage image={primary.right_background_image} />
+        <div className="absolute top-0 right-0 w-1/3 md:w-1/5 lg:w-1/4 2xl:w-1/6 h-auto flex justify-end">
+          <ResponsiveImage
+            image={primary.right_background_image}
+            sizes="(min-width:1536) 8vw, (min-width:768) 20vw, 25vw"
+          />
         </div>
       </div>
     );

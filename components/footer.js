@@ -4,9 +4,9 @@ class Footer extends Component {
   renderLogoSection() {
     return (
       <div className="flex flex-col items-center md:items-start">
-        <div>
+        <a href="/">
           <img src="img/devsu-logo-alt.svg" alt="devsu logo" />
-        </div>
+        </a>
         <p className="text-center text-xs py-7 md:text-left font-light leading-6">
           618 East South Street Suite 500
           <br />

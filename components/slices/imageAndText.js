@@ -14,7 +14,10 @@ class ImageAndText extends Component {
             data-sal-easing="ease-in-sine"
             className="py-10 md:py-0 md:w-1/2 px-4 h-auto lg:px-12"
           >
-            <ResponsiveImage image={primary.image} />
+            <ResponsiveImage
+              image={primary.image}
+              sizes="(min-width:1536) 648px, (min-width:768) 40vw, 90vw"
+            />
           </div>
           <div
             data-sal="slide-left"

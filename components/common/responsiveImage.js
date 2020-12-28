@@ -1,47 +1,67 @@
 import React, { Component } from "react";
 class ResponsiveImage extends Component {
   render() {
-    const { image, sizes = "(min-width:768) 30vw, 90vw" } = this.props;
-    const { tablet, mobile } = image;
+    const { image, sizes } = this.props;
+    const width2X = image.dimensions.width;
 
-    const mobileSrc = mobile ? `${this.getImageSrc(mobile)} ${mobile.dimensions.width}w` : null;
-    const tabletSrc = tablet ? `${this.getImageSrc(tablet)} ${tablet.dimensions.width}w` : null;
-    const baseImageSrc = this.getImageSrc(image);
-    const imageSrc = `${baseImageSrc} ${image.dimensions.width}w`;
+    if (!sizes) {
+      throw new Error("ResponsiveImage requires the sizes property");
+    }
 
-    const image1_5xSrc = `${this.getUrlWithParameter(baseImageSrc, "dpr", "1.5")} ${Math.round(
-      image.dimensions.width * 1.5,
-    )}w`;
-    const image2xSrc = `${this.getUrlWithParameter(baseImageSrc, "dpr", "2")} ${
-      image.dimensions.width * 2
-    }w`;
-    const webpSrcSet = [mobileSrc, tabletSrc, imageSrc, image1_5xSrc, image2xSrc]
-      .filter((src) => src)
-      .map((src) => {
-        const [url, width] = src.split(" ");
-        const webpUrl = this.getUrlWithParameter(url, "fm", "webp");
-        return [webpUrl, width].join(" ");
-      });
+    //Image factors. The image comes in 2x size
+    const img2x = 1;
+    const img1_5x = 0.75;
+    const imgDesktop = 0.5;
+    const imgTablet = 0.35;
+    const imgMobile = 0.2;
 
-    const srcSet = [mobileSrc, tabletSrc, imageSrc, image1_5xSrc, image2xSrc]
-      .filter((src) => src)
-      .map((src) => `${src}`)
+    const factors = [img2x, img1_5x, imgDesktop, imgTablet, imgMobile];
+
+    const srcSet = factors
+      .map((factor) => {
+        let imageUrl = this.getResizedImageUrl(image, factor);
+        imageUrl = this.addWidthDescriptor(imageUrl, Math.round(image.dimensions.width * factor));
+        return imageUrl;
+      })
       .join(", ");
+
+    const webpSrcSet = factors
+      .map((factor) => {
+        let imageUrl = this.getResizedImageUrl(image, factor);
+        imageUrl = this.getUrlWithParameter(imageUrl, "fm", "webp");
+        imageUrl = this.addWidthDescriptor(imageUrl, Math.round(image.dimensions.width * factor));
+        return imageUrl;
+      })
+      .join(", ");
+
     return (
       <picture>
-        <source type="image/webp" srcSet={webpSrcSet} />
-        <img src={imageSrc} alt={image.alt} srcSet={srcSet} sizes={sizes} />
+        <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />
+        <img
+          src={this.getUrlWithParameter(image.url, "w", width2X)}
+          alt={image.alt}
+          srcSet={srcSet}
+          sizes={sizes}
+        />
       </picture>
     );
   }
+
+  getResizedImageUrl(image, factor) {
+    const width = Math.round(image.dimensions.width * factor);
+    const height = Math.round(image.dimensions.height * factor);
+    let imageUrl = this.getUrlWithParameter(image.url, "w", width);
+    return this.getUrlWithParameter(imageUrl, "h", height);
+  }
+
   getUrlWithParameter(imageUrl, key, value) {
     const url = new URL(imageUrl);
     url.searchParams.set(key, value);
-    return url.toString();
+    return url.href;
   }
 
-  getImageSrc(imageVariant) {
-    return this.getUrlWithParameter(imageVariant.url, "width", imageVariant.dimensions.width);
+  addWidthDescriptor(src, width) {
+    return `${src} ${width}w`;
   }
 }
 

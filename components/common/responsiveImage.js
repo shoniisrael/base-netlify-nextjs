@@ -2,6 +2,9 @@ import React, { Component } from "react";
 class ResponsiveImage extends Component {
   render() {
     const { image, sizes } = this.props;
+    if (!Object.values(image).length) {
+      return null;
+    }
     const width2X = image.dimensions.width;
 
     if (!sizes) {

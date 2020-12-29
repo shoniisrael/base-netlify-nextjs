@@ -88,14 +88,27 @@ a.btn {
 }
 
 .dots1 {
-  background-image: url(../public/img/bg-left-up.svg), url(../public/img/bg-right-down.svg);
-  background-position: top left, bottom 0px right 0px;
+  background-image: url(../public/img/dots1-left-up.svg), url(../public/img/dots1-right-down.svg);
+  background-position: top left, bottom right;
   background-repeat: no-repeat;
   background-size: 40vw auto, 40vw auto;
 }
 
+.dots2 {
+  background-image: url(../public/img/dots2-left-up.svg), url(../public/img/dots2-right-down.svg);
+  background-position: top left, bottom right;
+  background-repeat: no-repeat;
+  background-size: 40vw auto, 40vw auto;
+}
+
+.dots2.dark {
+  background-image: url(../public/img/dots2-dark-left-up.svg),
+    url(../public/img/dots2-dark-right-down.svg);
+}
+
 @media only screen and (min-width: 1280px) {
-  .dots1 {
+  .dots1,
+  .dots2 {
     background-size: 20vw auto, 20vw auto;
   }
 }

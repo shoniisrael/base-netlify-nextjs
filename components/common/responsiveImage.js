@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import ImageUtils from "../../utils/image";
-
-// resize factors. The image comes in 2x size
-const RESIZE_FACTORS = [1, 0.75, 0.5, 0.35, 0.2];
-const DEFAULT_RESIZE_FACTOR = 0.5;
+import ImageWrapper from "../../utils/imageWrapper";
 
 class ResponsiveImage extends Component {
   render() {
-    const { image, sizes } = this.props;
+    const { image, sizes, options } = this.props;
 
     if (!image || !image.dimensions) {
       return;
@@ -17,12 +13,14 @@ class ResponsiveImage extends Component {
       throw new Error("ResponsiveImage requires the sizes property");
     }
 
+    const imageWrapper = new ImageWrapper(image, options);
+
     return (
       <picture>
         <img
-          src={ImageUtils.getSrc(image, DEFAULT_RESIZE_FACTOR)}
+          src={imageWrapper.getSrc()}
           alt={image.alt}
-          srcSet={ImageUtils.getSrcSet(image, RESIZE_FACTORS)}
+          srcSet={imageWrapper.getSrcSet()}
           sizes={sizes}
         />
       </picture>

@@ -6,8 +6,8 @@ describe("ImageWrapper", () => {
   beforeEach(() => {
     image = {
       dimensions: {
-        width: 200,
-        height: 100,
+        width: 1000,
+        height: 500,
       },
       url: "https://myImage.png",
     };
@@ -19,8 +19,8 @@ describe("ImageWrapper", () => {
       const wrapper = new ImageWrapper(image, opts);
       const src = wrapper.getSrc();
       const srcUrl = new URL(src);
-      expect(srcUrl.searchParams.get("w")).toEqual("100");
-      expect(srcUrl.searchParams.get("h")).toEqual("50");
+      expect(srcUrl.searchParams.get("w")).toEqual("500");
+      expect(srcUrl.searchParams.get("h")).toEqual("250");
     });
 
     describe("with options.defaultResizeFactor", () => {
@@ -32,24 +32,24 @@ describe("ImageWrapper", () => {
         const wrapper = new ImageWrapper(image, opts);
         const src = wrapper.getSrc();
         const srcUrl = new URL(src);
-        expect(srcUrl.searchParams.get("w")).toEqual("20");
-        expect(srcUrl.searchParams.get("h")).toEqual("10");
+        expect(srcUrl.searchParams.get("w")).toEqual("100");
+        expect(srcUrl.searchParams.get("h")).toEqual("50");
       });
     });
 
     describe("with options.boxWidth and options.boxHeight", () => {
       describe("aspect ratio greater than actual image", () => {
         beforeEach(() => {
-          opts.boxWidth = 30;
-          opts.boxHeight = 10;
+          opts.boxWidth = 300;
+          opts.boxHeight = 100;
         });
 
         test("should resize default image to match box height", () => {
           const wrapper = new ImageWrapper(image, opts);
           const src = wrapper.getSrc();
           const srcUrl = new URL(src);
-          expect(srcUrl.searchParams.get("w")).toEqual("20");
-          expect(srcUrl.searchParams.get("h")).toEqual("10");
+          expect(srcUrl.searchParams.get("w")).toEqual("200");
+          expect(srcUrl.searchParams.get("h")).toEqual("100");
         });
       });
 
@@ -71,12 +71,29 @@ describe("ImageWrapper", () => {
   });
 
   describe("getSrcSet()", () => {
-    test("should return the image set for the default factors", () => {
-      const wrapper = new ImageWrapper(image, opts);
-      const srcSet = wrapper.getSrcSet();
-      expect(srcSet).toEqual(
-        "https://myimage.png/?w=200&h=100 200w, https://myimage.png/?w=150&h=75 150w, https://myimage.png/?w=100&h=50 100w, https://myimage.png/?w=70&h=35 70w, https://myimage.png/?w=40&h=20 40w",
-      );
+    describe("large image", () => {
+      test("should return the image set for the default factors for large image", () => {
+        const wrapper = new ImageWrapper(image, opts);
+        const srcSet = wrapper.getSrcSet();
+        expect(srcSet).toEqual(
+          "https://myimage.png/?w=1000&h=500 1000w, https://myimage.png/?w=750&h=375 750w, https://myimage.png/?w=500&h=250 500w, https://myimage.png/?w=350&h=175 350w, https://myimage.png/?w=200&h=100 200w",
+        );
+      });
+    });
+
+    describe("small image", () => {
+      beforeEach(() => {
+        image.dimensions.width = 500;
+        image.dimensions.height = 250;
+      });
+
+      test("should return the image set for the default factors for small image", () => {
+        const wrapper = new ImageWrapper(image, opts);
+        const srcSet = wrapper.getSrcSet();
+        expect(srcSet).toEqual(
+          "https://myimage.png/?w=500&h=250 500w, https://myimage.png/?w=250&h=125 250w, https://myimage.png/?w=125&h=63 125w",
+        );
+      });
     });
 
     describe("with options.factors", () => {
@@ -88,7 +105,7 @@ describe("ImageWrapper", () => {
         const wrapper = new ImageWrapper(image, opts);
         const srcSet = wrapper.getSrcSet();
         expect(srcSet).toEqual(
-          "https://myimage.png/?w=200&h=100 200w, https://myimage.png/?w=100&h=50 100w",
+          "https://myimage.png/?w=1000&h=500 1000w, https://myimage.png/?w=500&h=250 500w",
         );
       });
     });

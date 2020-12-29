@@ -1,8 +1,11 @@
 import UrlUtils from "./url";
 
+const RESIZE_FACTORS_LARGE = [2, 1.5, 1, 0.7, 0.4];
+const RESIZE_FACTORS_SMALL = [2, 1, 0.5];
+const IMAGE_SIZE_BREAKPOINT = 320; /* Any image larger than this will have 5 sizes, otherwise it will have 3 */
+
 const DEFAULT_OPTS = {
   defaultResizeFactor: 0.5,
-  resizeFactors: [2, 1.5, 1, 0.7, 0.4],
 };
 
 export default class ImageWrapper {
@@ -10,6 +13,7 @@ export default class ImageWrapper {
     this.image = img;
     this.opts = Object.assign({}, DEFAULT_OPTS, opts);
     this._setDimensions();
+    this._setResizeFactors();
     if (this.opts.boxWidth && this.opts.boxHeight) {
       this._setDimensionsFromBoxSize();
     }
@@ -20,7 +24,7 @@ export default class ImageWrapper {
   }
 
   getSrcSet() {
-    return this.opts.resizeFactors
+    return this.resizeFactors
       .map((factor) => {
         let imageUrl = this.getResizedImageUrlForFactor(factor);
         imageUrl = ImageWrapper.getUrlAndWidth(imageUrl, Math.round(this.width * factor));
@@ -33,6 +37,20 @@ export default class ImageWrapper {
     this.width = Math.round(this.image.dimensions.width * this.opts.defaultResizeFactor);
     this.height = Math.round(this.image.dimensions.height * this.opts.defaultResizeFactor);
     this.aspectRatio = this.width / this.height;
+  }
+
+  _setResizeFactors() {
+    this.resizeFactors = this._getResizeFactors();
+  }
+
+  _getResizeFactors() {
+    if (this.opts.resizeFactors) {
+      return this.opts.resizeFactors;
+    }
+    if (this.width >= IMAGE_SIZE_BREAKPOINT || this.height >= IMAGE_SIZE_BREAKPOINT) {
+      return RESIZE_FACTORS_LARGE;
+    }
+    return RESIZE_FACTORS_SMALL;
   }
 
   _setDimensionsFromBoxSize() {

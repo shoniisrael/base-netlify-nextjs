@@ -18,8 +18,8 @@
     "lint": "eslint \"./\"",
     "lint:fix": "npm run lint --fix",
     "test": "jest --watch",
-    "watch:ci": "jest --ci",
-    "validate": "npm run test && npm run format && npm run lint"
+    "test:ci": "jest --ci",
+    "validate": "npm run test:ci && npm run format && npm run lint"
   },
   "husky": {
     "hooks": {

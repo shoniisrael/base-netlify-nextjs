@@ -46,8 +46,8 @@ class ImageAndText extends Component {
     const { items } = this.props.slice;
     return items.map((section, index) => {
       return (
-        <div key={index} className="text-xl">
-          <div className="text-secondary font-bold pb-4 lg:text-5xl lg:pb-8">
+        <div key={index}>
+          <div className="text-secondary text-xl font-bold pb-4 lg:text-5xl lg:pb-8">
             {RichText.render(section.big_title)}
           </div>
           <div className="two-column-bullets image-and-text">

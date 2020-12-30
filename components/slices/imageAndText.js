@@ -38,8 +38,10 @@ class ImageAndText extends Component {
     return style === STYLE.DARK ? "text-white" : "text-primary-dark";
   }
 
-  getFlexDirection(position) {
-    return position === IMAGE_ALIGNMENT.LEFT ? "flex-row" : "flex-row-reverse";
+  getFlexStyles(imagePosition, size) {
+    const direction = imagePosition === IMAGE_ALIGNMENT.LEFT ? "flex-row" : "flex-row-reverse";
+    const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
+    return `${direction} ${position}`;
   }
 
   getImageWidth(size) {
@@ -52,7 +54,6 @@ class ImageAndText extends Component {
 
   render() {
     const { primary } = this.props.slice;
-    console.log(primary);
     const {
       style,
       image,
@@ -65,13 +66,13 @@ class ImageAndText extends Component {
     } = primary;
     const bgClasses = this.getBackgroundColorClasses(style);
     const titleColor = this.getTitleColor(style);
-    const flexDirection = this.getFlexDirection(imageAlignment);
+    const flexStyles = this.getFlexStyles(imageAlignment, imageSize);
     const imageWidth = this.getImageWidth(imageSize);
     const textWidth = this.getTextWidth(imageSize);
     return (
       <div className={`${bgClasses} w-full`}>
         <div
-          className={`overflow-hidden flex flex-col justify-center items-center container mx-auto w-full px-6 pb-12 md:${flexDirection} md:items-start md:pt-20 lg:py-28`}
+          className={`overflow-hidden flex flex-col container mx-auto w-full px-6 pb-12 md:${flexStyles} md:pt-20 lg:py-28`}
         >
           <div
             data-sal="slide-right"
@@ -94,9 +95,11 @@ class ImageAndText extends Component {
               {RichText.render(smallTitle)}
             </div>
             {this.renderRichTextSections()}
-            <div className="mt-16">
-              <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
-            </div>
+            {buttonLabel && (
+              <div className="mt-16">
+                <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -111,7 +114,7 @@ class ImageAndText extends Component {
     return items.map((section, index) => {
       return (
         <div key={index}>
-          <div className={`${titleColor} text-xl font-bold pb-4 lg:text-5xl lg:pb-8`}>
+          <div className={`${titleColor} text-xl font-bold pb-4 md:text-4xl lg:pb-8`}>
             {RichText.render(section.big_title)}
           </div>
           <div className={`${textColor} ${listClass} image-and-text`}>

@@ -150,7 +150,7 @@ a.btn {
 }
 
 .image-and-text > p {
-  @apply leading-loose mb-14;
+  @apply leading-loose mb-10;
 }
 
 .custom-input {

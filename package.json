@@ -17,7 +17,9 @@
     "format": "prettier --config .prettierrc \"./**/*.{js,css}\" --write",
     "lint": "eslint \"./\"",
     "lint:fix": "npm run lint --fix",
-    "validate": "npm run format && npm run lint"
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
+    "validate": "npm run test:ci && npm run format && npm run lint"
   },
   "husky": {
     "hooks": {
@@ -32,7 +34,10 @@
     ]
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
     "autoprefixer": "^10.0.4",
+    "identity-obj-proxy": "^3.0.0",
     "next": "^10.0.3",
     "next-plugin-preact": "^3.0.3",
     "next-routes": "^1.4.2",
@@ -44,11 +49,12 @@
     "prismic-reactjs": "^1.3.3",
     "react": "npm:@preact/compat@0.0.3",
     "react-dom": "npm:@preact/compat@0.0.3",
+    "react-test-renderer": "^17.0.1",
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
+    "babel-jest": "^26.6.3",
     "cross-env": "^7.0.3",
-    "netlify-cli": "^2.69.10",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
@@ -56,7 +62,9 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
+    "jest": "^26.6.3",
     "lint-staged": "^10.5.2",
+    "netlify-cli": "^2.69.10",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^8.3.1",
     "prettier": "2.2.1",

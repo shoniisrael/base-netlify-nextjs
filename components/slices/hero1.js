@@ -115,11 +115,8 @@ class Hero1 extends Component {
       <div
         className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} ${containerPaddingClasses}`}
       >
-        <div className="absolute bottom-0 left-0 w-1/4 md:w-1/5 2xl:w-1/12 h-auto flex justify-start">
-          <ResponsiveImage
-            image={leftBgImage}
-            sizes="(min-width:1536) 8vw, (min-width:768) 20vw, 25vw"
-          />
+        <div className="absolute bottom-0 left-0 w-1/4 xl:w-96 h-auto flex justify-start">
+          <ResponsiveImage image={leftBgImage} sizes="(min-width:1280) 400px, 25vw" />
         </div>
         <div className="w-4/5 md:w-4/5 mx-auto z-10">
           <div
@@ -132,11 +129,8 @@ class Hero1 extends Component {
             <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         </div>
-        <div className="absolute top-0 right-0 w-1/3 md:w-1/5 lg:w-1/4 2xl:w-1/6 h-auto flex justify-end">
-          <ResponsiveImage
-            image={rightBgImage}
-            sizes="(min-width:1536) 8vw, (min-width:768) 20vw, 25vw"
-          />
+        <div className="absolute top-0 right-0 w-1/4 xl:w-96 h-auto flex justify-end">
+          <ResponsiveImage image={rightBgImage} sizes="(min-width:1280) 400px, 25vw" />
         </div>
       </div>
     );

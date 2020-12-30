@@ -68,6 +68,21 @@ describe("ImageWrapper", () => {
         });
       });
     });
+
+    describe("with options.imgix", () => {
+      beforeEach(() => {
+        opts.imgix = {
+          q: 65,
+        };
+      });
+
+      test("should return the url with the given imgix args", () => {
+        const wrapper = new ImageWrapper(image, opts);
+        const src = wrapper.getSrc();
+        const srcUrl = new URL(src);
+        expect(srcUrl.searchParams.get("q")).toEqual("65");
+      });
+    });
   });
 
   describe("getSrcSet()", () => {
@@ -139,6 +154,22 @@ describe("ImageWrapper", () => {
             "https://myimage.png/?w=100&h=50 100w, https://myimage.png/?w=75&h=38 75w, https://myimage.png/?w=50&h=25 50w, https://myimage.png/?w=35&h=18 35w, https://myimage.png/?w=20&h=10 20w",
           );
         });
+      });
+    });
+
+    describe("with options.imgix", () => {
+      beforeEach(() => {
+        opts.imgix = {
+          q: 65,
+        };
+      });
+
+      test("should return the urls with the given imgix args", () => {
+        const wrapper = new ImageWrapper(image, opts);
+        const srcSet = wrapper.getSrcSet();
+        expect(srcSet).toEqual(
+          "https://myimage.png/?q=65&w=1000&h=500 1000w, https://myimage.png/?q=65&w=750&h=375 750w, https://myimage.png/?q=65&w=500&h=250 500w, https://myimage.png/?q=65&w=350&h=175 350w, https://myimage.png/?q=65&w=200&h=100 200w",
+        );
       });
     });
   });

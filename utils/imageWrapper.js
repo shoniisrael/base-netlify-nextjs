@@ -14,13 +14,14 @@ export default class ImageWrapper {
     this.opts = Object.assign({}, DEFAULT_OPTS, opts);
     this._setDimensions();
     this._setResizeFactors();
+    this._setBaseUrl();
     if (this.opts.boxWidth && this.opts.boxHeight) {
       this._setDimensionsFromBoxSize();
     }
   }
 
   getSrc() {
-    return ImageWrapper.getResizedImageUrl(this.image.url, this.width, this.height);
+    return ImageWrapper.getResizedImageUrl(this.baseUrl, this.width, this.height);
   }
 
   getSrcSet() {
@@ -64,10 +65,20 @@ export default class ImageWrapper {
     this.width = Math.round(this.height * this.aspectRatio);
   }
 
+  _setBaseUrl() {
+    this.baseUrl = this.image.url;
+    if (this.opts.imgix) {
+      const params = Object.keys(this.opts.imgix).reduce((accum, item) => {
+        return [...accum, item, this.opts.imgix[item]];
+      }, []);
+      this.baseUrl = UrlUtils.getUrlWithParameters(this.baseUrl, ...params);
+    }
+  }
+
   getResizedImageUrlForFactor(factor) {
     const width = Math.round(this.width * factor);
     const height = Math.round(this.height * factor);
-    return ImageWrapper.getResizedImageUrl(this.image.url, width, height);
+    return ImageWrapper.getResizedImageUrl(this.baseUrl, width, height);
   }
 
   static getResizedImageUrl(imageUrl, width, height) {

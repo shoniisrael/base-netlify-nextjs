@@ -40,7 +40,7 @@ a.btn {
 
 .custom-line-bullets li::before {
   content: "— ";
-  @apply text-secondary font-bold;
+  @apply text-secondary font-bold leading-loose;
 }
 
 .nav-item,
@@ -138,16 +138,28 @@ a.btn {
 }
 
 .two-column-bullets ul {
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  @apply custom-line-bullets space-y-1 leading-loose;
+  @apply custom-line-bullets space-y-1;
+}
+
+@media only screen and (min-width: 1024px) {
+  .two-column-bullets ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+  }
 }
 
 .image-and-text > p {
-  @apply leading-loose mb-14;
+  @apply leading-loose mb-10;
 }
 
 .custom-input {
   @apply border-primary border-solid border placeholder-white placeholder-opacity-50 focus:outline-none opacity-70 md:text-sm lg:text-base;
+}
+
+.top-left-shadow {
+  background-image: url(../public/img/dots1-left-up.svg); /*cambiar por la imagen que es*/
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 40vw auto;
 }

@@ -3,14 +3,14 @@ import { RichText } from "prismic-reactjs";
 import Button from "./../common/button";
 import ResponsiveImage from "../common/responsiveImage";
 
-export const BG_COLOR = {
+const BG_COLOR = {
   LIGHT: "lightblue",
   WHITE: "white",
   ALTERNATIVE: "alternative",
   DARK: "dark",
 };
 
-export const BG_STYLE = {
+const BG_STYLE = {
   DOTS_1: "dots1",
   DOTS_2: "dots2",
 };

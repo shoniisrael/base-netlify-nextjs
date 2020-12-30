@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { SLICE_TYPES } from "../utils/constants";
-import { Hero1, CardLinks, CardsGrid, Cards, ImageAndText } from "./slices/";
+import { Hero1, CardLinks, ImagesRow, ImageAndText, CardsGrid, Cards } from "./slices/";
+
 class Body extends Component {
   render() {
     return (
-      <div className="text-primary font-light text-sm lg:text-base w-100">
+      <main className="text-sm font-light text-primary lg:text-base w-100">
         {this.renderSlices()}
-      </div>
+      </main>
     );
   }
   renderSlices() {
@@ -15,9 +16,9 @@ class Body extends Component {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:
           return (
-            <div key={index}>
+            <section key={index}>
               <Hero1 slice={slice} />
-            </div>
+            </section>
           );
         case SLICE_TYPES.CARD_LINKS:
           return (
@@ -25,23 +26,29 @@ class Body extends Component {
               <CardLinks slice={slice} />
             </div>
           );
+        case SLICE_TYPES.IMAGES_ROW:
+          return (
+            <section key={index}>
+              <ImagesRow slice={slice} />
+            </section>
+          );
         case SLICE_TYPES.IMAGE_AND_TEXT:
           return (
-            <div key={index}>
+            <section key={index}>
               <ImageAndText slice={slice} />
-            </div>
+            </section>
           );
         case SLICE_TYPES.CARDS_GRID:
           return (
-            <div key={index}>
+            <section key={index}>
               <CardsGrid slice={slice} />
-            </div>
+            </section>
           );
         case SLICE_TYPES.CARDS:
           return (
-            <div key={index}>
+            <section key={index}>
               <Cards slice={slice} />
-            </div>
+            </section>
           );
       }
     });

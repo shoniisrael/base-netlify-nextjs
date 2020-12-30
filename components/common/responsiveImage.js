@@ -3,7 +3,7 @@ import ImageWrapper from "../../utils/imageWrapper";
 
 class ResponsiveImage extends Component {
   render() {
-    const { image, sizes, options } = this.props;
+    const { image, sizes, options, className } = this.props;
 
     if (!image || !image.dimensions) {
       return;
@@ -22,6 +22,7 @@ class ResponsiveImage extends Component {
           alt={image.alt}
           srcSet={imageWrapper.getSrcSet()}
           sizes={sizes}
+          className={className ?? ""}
         />
       </picture>
     );

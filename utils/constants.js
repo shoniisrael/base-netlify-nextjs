@@ -4,6 +4,7 @@ export const SLICE_TYPES = {
   CARDS_GRID: "cards_grid",
   CARDS: "cards",
   IMAGE_AND_TEXT: "image_and_text",
+  IMAGES_ROW: "images_row",
 };
 
 export const SCREEN_SIZES = {
@@ -18,3 +19,5 @@ export const CARD_STYLE = {
   NORMAL: "normal",
   HIGHLIGHTED: "highlighted",
 };
+
+export const DEFAULT_SPACE_SIZE = 16;

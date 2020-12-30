@@ -37,14 +37,14 @@ describe("ImageWrapper", () => {
       });
     });
 
-    describe("with options.boxWidth and options.boxHeight", () => {
+    describe("with options.maxWidth and options.maxHeight", () => {
       describe("aspect ratio greater than actual image", () => {
         beforeEach(() => {
-          opts.boxWidth = 300;
-          opts.boxHeight = 100;
+          opts.maxWidth = 300;
+          opts.maxHeight = 100;
         });
 
-        test("should resize default image to match box height", () => {
+        test("should resize default image to match max height", () => {
           const wrapper = new ImageWrapper(image, opts);
           const src = wrapper.getSrc();
           const srcUrl = new URL(src);
@@ -55,11 +55,11 @@ describe("ImageWrapper", () => {
 
       describe("aspect ratio lower than actual image", () => {
         beforeEach(() => {
-          opts.boxWidth = 100;
-          opts.boxHeight = 100;
+          opts.maxWidth = 100;
+          opts.maxHeight = 100;
         });
 
-        test("should resize default image to match box width", () => {
+        test("should resize default image to match max width", () => {
           const wrapper = new ImageWrapper(image, opts);
           const src = wrapper.getSrc();
           const srcUrl = new URL(src);
@@ -125,14 +125,14 @@ describe("ImageWrapper", () => {
       });
     });
 
-    describe("with options.boxWidth and options.boxHeight", () => {
-      describe("image smaller than box", () => {
+    describe("with options.maxWidth and options.maxHeight", () => {
+      describe("image smaller than max", () => {
         beforeEach(() => {
-          opts.boxWidth = 100;
-          opts.boxHeight = 100;
+          opts.maxWidth = 100;
+          opts.maxHeight = 100;
         });
 
-        test("should return the srcSet with all values matching the box", () => {
+        test("should return the srcSet with all values matching the max", () => {
           const wrapper = new ImageWrapper(image, opts);
           const srcSet = wrapper.getSrcSet();
           expect(srcSet).toEqual(
@@ -141,13 +141,13 @@ describe("ImageWrapper", () => {
         });
       });
 
-      describe("image larger than box", () => {
+      describe("image larger than max", () => {
         beforeEach(() => {
-          opts.boxWidth = 50;
-          opts.boxHeight = 50;
+          opts.maxWidth = 50;
+          opts.maxHeight = 50;
         });
 
-        test("should return the srcSet with all values matching the box", () => {
+        test("should return the srcSet with all values matching the max", () => {
           const wrapper = new ImageWrapper(image, opts);
           const srcSet = wrapper.getSrcSet();
           expect(srcSet).toEqual(

@@ -15,8 +15,8 @@ export default class ImageWrapper {
     this._setDimensions();
     this._setResizeFactors();
     this._setBaseUrl();
-    if (this.opts.boxWidth && this.opts.boxHeight) {
-      this._setDimensionsFromBoxSize();
+    if (this.opts.maxWidth && this.opts.maxHeight) {
+      this._setDimensionsFromMaxSize();
     }
   }
 
@@ -54,14 +54,14 @@ export default class ImageWrapper {
     return RESIZE_FACTORS_SMALL;
   }
 
-  _setDimensionsFromBoxSize() {
-    const boxAspectRatio = this.opts.boxWidth / this.opts.boxHeight;
-    if (boxAspectRatio < this.aspectRatio) {
-      this.width = this.opts.boxWidth;
+  _setDimensionsFromMaxSize() {
+    const maxAspectRatio = this.opts.maxWidth / this.opts.maxHeight;
+    if (maxAspectRatio < this.aspectRatio) {
+      this.width = this.opts.maxWidth;
       this.height = Math.round(this.width / this.aspectRatio);
       return;
     }
-    this.height = this.opts.boxHeight;
+    this.height = this.opts.maxHeight;
     this.width = Math.round(this.height * this.aspectRatio);
   }
 

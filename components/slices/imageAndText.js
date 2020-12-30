@@ -41,7 +41,7 @@ class ImageAndText extends Component {
   getFlexStyles(imagePosition, size) {
     const direction = imagePosition === IMAGE_ALIGNMENT.LEFT ? "flex-row" : "flex-row-reverse";
     const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
-    return `${direction} ${position}`;
+    return `md:${direction} ${position}`;
   }
 
   getImageWidth(size) {
@@ -72,7 +72,7 @@ class ImageAndText extends Component {
     return (
       <div className={`${bgClasses} w-full`}>
         <div
-          className={`overflow-hidden flex flex-col container mx-auto w-full px-6 pb-12 md:${flexStyles} md:pt-20 lg:py-28`}
+          className={`overflow-hidden flex flex-col container mx-auto w-full px-6 pb-12 ${flexStyles} md:pt-20 lg:py-28`}
         >
           <div
             data-sal="slide-right"

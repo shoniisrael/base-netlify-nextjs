@@ -120,7 +120,7 @@ class Hero1 extends Component {
         </div>
         <div className="w-4/5 md:w-4/5 mx-auto z-10">
           <div
-            className={`flex flex-col justify-center items-center text-center py-16 lg:py-24 ${textContainerClasses}`}
+            className={`hero-richText flex flex-col justify-center items-center text-center py-16 lg:py-24 ${textContainerClasses}`}
           >
             {this.renderSmallTitle(bgColor, smallTitle)}
             {this.renderBigTitle(bgColor, bigTitle)}

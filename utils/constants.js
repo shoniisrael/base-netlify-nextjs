@@ -6,6 +6,7 @@ export const SLICE_TYPES = {
   CARDS: "cards",
   IMAGE_AND_TEXT: "image_and_text",
   IMAGES_ROW: "images_row",
+  BANNER: "card",
 };
 
 export const SCREEN_SIZES = {

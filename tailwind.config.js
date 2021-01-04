@@ -2,8 +2,12 @@ module.exports = {
   purge: {
     mode: "all",
     content: ["./components/**/*.js", "./components/*.js", "./pages/**/*.js", "./pages/*.js"],
-    whitelist: ["btn", "flat"],
-    whitelistPatterns: [/grid-cols-/],
+    options: {
+      safelist: {
+        standard: [/grid-cols-/],
+        deep: [/^flat$/],
+      },
+    },
   },
   darkMode: false, // or 'media' or 'class'
   theme: {

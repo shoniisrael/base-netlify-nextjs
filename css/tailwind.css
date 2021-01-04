@@ -21,16 +21,15 @@ a {
 }
 
 /*custom classes*/
-.btn,
-a.btn {
+.btn {
   @apply py-4 px-5 transition duration-500 lg:hover:opacity-80;
 }
 
-a.btn.filled {
+.btn.filled {
   @apply bg-secondary text-center text-white font-bold border border-solid border-secondary;
 }
 
-a.btn.flat {
+.btn.flat {
   @apply text-secondary text-center font-bold border border-solid border-secondary hover:bg-secondary hover:text-white;
 }
 

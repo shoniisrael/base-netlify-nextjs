@@ -120,7 +120,7 @@ a.btn.flat {
 .separator {
   width: 95px;
   height: 2px;
-  margin: 15px auto auto;
+  margin: 15px auto;
   border: solid 2px #a3c412;
   display: block;
 }
@@ -166,4 +166,8 @@ a.btn.flat {
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 40vw auto;
+}
+
+.hero-richText p {
+  @apply py-2;
 }

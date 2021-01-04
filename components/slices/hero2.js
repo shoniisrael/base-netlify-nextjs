@@ -45,7 +45,7 @@ class Hero2 extends Component {
       <ResponsiveBgImage index={index} bgImage={bgImage} classes={classes}>
         <div className={`w-full ${containerWidth}`}>
           <Image image={headerImage} classes={`${imageAlignment} pt-10`} />
-          <div className="mb-10">
+          <div className="hero-richText mb-10">
             <div className="text-3xl lg:text-5xl font-bold my-6">{RichText.render(bigTitle)}</div>
             <div>{RichText.render(description)}</div>
           </div>

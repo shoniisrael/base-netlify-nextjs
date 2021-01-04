@@ -39,9 +39,10 @@ class ImageAndText extends Component {
   }
 
   getFlexStyles(imagePosition, size) {
-    const direction = imagePosition === IMAGE_ALIGNMENT.LEFT ? "flex-row" : "flex-row-reverse";
+    const direction =
+      imagePosition === IMAGE_ALIGNMENT.LEFT ? "md:flex-row" : "md:flex-row-reverse";
     const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
-    return `md:${direction} ${position}`;
+    return `${direction} ${position}`;
   }
 
   getImageWidth(size) {

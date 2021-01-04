@@ -17,17 +17,21 @@ footer.bg-primary-dark a {
 }
 
 a {
-  @apply hover:opacity-80;
+  @apply hover:opacity-90;
 }
 
 /*custom classes*/
 .btn,
 a.btn {
-  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary py-4 px-5 transition duration-500 lg:hover:opacity-80;
+  @apply py-4 px-5 transition duration-500 lg:hover:opacity-80;
 }
 
-.filled {
+a.btn.filled {
   @apply bg-secondary text-center text-white font-bold border border-solid border-secondary;
+}
+
+a.btn.flat {
+  @apply text-secondary text-center font-bold border border-solid border-secondary hover:bg-secondary hover:text-white;
 }
 
 .card {

@@ -1,5 +1,6 @@
 export const SLICE_TYPES = {
   HERO_1: "hero_1",
+  HERO_2: "hero_2",
   CARD_LINKS: "card_links",
   CARDS_GRID: "cards_grid",
   CARDS: "cards",
@@ -21,3 +22,23 @@ export const CARD_STYLE = {
 };
 
 export const DEFAULT_SPACE_SIZE = 16;
+
+export const MEDIA_QUERIES = {
+  SMALL_NON_RETINA_SCREEN: "@media only screen and (max-width: 767px)",
+  SMALL_RETINA_AND_MEDIUM_NON_RETINA_SCREEN: `@media
+    only screen and (-webkit-min-device-pixel-ratio: 2)      and (max-width: 767px),
+    only screen and (   min--moz-device-pixel-ratio: 2)      and (max-width: 767px),
+    only screen and (     -o-min-device-pixel-ratio: 2/1)    and (max-width: 767px),
+    only screen and (        min-device-pixel-ratio: 2)      and (max-width: 767px),
+    only screen and (                min-resolution: 192dpi) and (max-width: 767px),
+    only screen and (                min-resolution: 2dppx)  and (max-width: 767px), 
+    only screen and (min-width: 768px) and (max-width: 1535px)`,
+  MEDIUM_RETINA_AND_LARGE_SCREENS: `@media
+    only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 768px),
+    only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 768px),
+    only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 768px),
+    only screen and (        min-device-pixel-ratio: 2)      and (min-width: 768px),
+    only screen and (                min-resolution: 192dpi) and (min-width: 768px),
+    only screen and (                min-resolution: 2dppx)  and (min-width: 768px),
+    only screen and (min-width: 1536px)`,
+};

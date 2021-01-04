@@ -7,7 +7,7 @@ class Button extends Component {
     if (!label) {
       return null;
     }
-    const classes = `${style} btn`;
+    const classes = `btn ${style}`;
     return (
       <CustomLink classes={classes} link={link}>
         {label}

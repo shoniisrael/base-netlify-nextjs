@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import { SLICE_TYPES } from "../utils/constants";
-import { Hero1, Hero2, CardLinks, ImagesRow, ImageAndText, CardsGrid, Cards } from "./slices/";
+import {
+  Hero1,
+  Hero2,
+  CardLinks,
+  ImagesRow,
+  ImageAndText,
+  CardsGrid,
+  Cards,
+  Banner,
+} from "./slices/";
 
 class Body extends Component {
   render() {
@@ -54,6 +63,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <Cards slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.BANNER:
+          return (
+            <section>
+              <Banner slice={slice} />
             </section>
           );
       }

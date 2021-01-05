@@ -50,6 +50,7 @@
     "react": "npm:@preact/compat@0.0.3",
     "react-dom": "npm:@preact/compat@0.0.3",
     "react-test-renderer": "^17.0.1",
+    "sal.js": "^0.8.2",
     "styled-jsx": "^3.3.2",
     "tailwindcss": "^2.0.1"
   },

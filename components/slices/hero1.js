@@ -115,7 +115,7 @@ class Hero1 extends Component {
       <div
         className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} ${containerPaddingClasses}`}
       >
-        <div className="absolute bottom-0 left-0 w-1/4 xl:w-96 h-auto flex justify-start">
+        <div className="absolute bottom-0 left-0 w-1/4 lg:w-80 h-auto flex justify-start">
           <ResponsiveImage image={leftBgImage} sizes="(min-width:1280) 400px, 25vw" />
         </div>
         <div className="w-4/5 md:w-4/5 mx-auto z-10">
@@ -126,10 +126,12 @@ class Hero1 extends Component {
             {this.renderBigTitle(bgColor, bigTitle)}
             {separator && <div className="separator" />}
             {this.renderDescription(bgColor, description)}
-            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+            <div data-sal="slide-up" data-sal-delay="800" data-sal-easing="ease-out-back">
+              <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+            </div>
           </div>
         </div>
-        <div className="absolute top-0 right-0 w-1/4 xl:w-96 h-auto flex justify-end">
+        <div className="absolute top-0 right-0 w-1/4 lg:w-80 h-auto flex justify-end">
           <ResponsiveImage image={rightBgImage} sizes="(min-width:1280) 400px, 25vw" />
         </div>
       </div>

@@ -91,11 +91,22 @@ a.btn.flat {
   @apply py-3;
 }
 
+@-webkit-keyframes dotsFadeIn {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .dots1 {
   background-image: url(../public/img/dots1-left-up.svg), url(../public/img/dots1-right-down.svg);
   background-position: top left, bottom right;
   background-repeat: no-repeat;
   background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
 }
 
 .dots2 {
@@ -103,6 +114,8 @@ a.btn.flat {
   background-position: top left, bottom right;
   background-repeat: no-repeat;
   background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
 }
 
 .dots2.dark {
@@ -122,6 +135,7 @@ a.btn.flat {
   height: 2px;
   margin: 15px auto;
   border: solid 2px #a3c412;
+  background-color: #a3c412;
   display: block;
 }
 

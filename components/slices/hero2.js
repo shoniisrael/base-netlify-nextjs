@@ -45,8 +45,8 @@ class Hero2 extends Component {
       <ResponsiveBgImage index={index} bgImage={bgImage} classes={classes}>
         <div className={`w-full ${containerWidth}`}>
           <Image image={headerImage} classes={`${imageAlignment} pt-10`} />
-          <div className="hero-richText mb-10">
-            <div className="text-3xl lg:text-5xl font-bold my-6">{RichText.render(bigTitle)}</div>
+          <div className="mb-10 p_py-2">
+            <div className="my-6 text-3xl font-bold lg:text-5xl">{RichText.render(bigTitle)}</div>
             <div>{RichText.render(description)}</div>
           </div>
           <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />

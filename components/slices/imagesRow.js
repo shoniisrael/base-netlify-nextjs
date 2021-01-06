@@ -54,7 +54,7 @@ function getAligmentClasses(textAlignment) {
       };
     default:
       return {
-        text: "",
+        text: "text-left",
         item: "self-start",
       };
   }
@@ -104,18 +104,18 @@ export default class ImagesRow extends Component {
           </div>
           {primary.description && (
             <div
-              className={`${backgroundClasses.descriptionColor} leading-relaxed text-center my-7 lg:w-3/4`}
+              className={`${backgroundClasses.descriptionColor} ${alignmentClasses.item} ${alignmentClasses.text} p_py-2 leading-relaxed my-7 lg:w-3/4`}
             >
               {RichText.render(primary.description)}
             </div>
           )}
           <div
-            className={`grid justify-items-center items-center w-full text-sm gap-4 ${gridColsForScreens}`}
+            className={`grid justify-items-center items-center w-full text-sm gap-8 ${gridColsForScreens}`}
           >
             {items.map((icon, index) => {
               return (
                 <div
-                  className="flex flex-col items-center justify-center space-y-3 text-center group hover:border-transparent"
+                  className="flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent"
                   key={index}
                 >
                   <div style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}>

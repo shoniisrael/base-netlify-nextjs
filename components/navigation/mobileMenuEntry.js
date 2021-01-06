@@ -10,8 +10,8 @@ class MobileMenuEntry extends Component {
     if (hasSubmenuItems) {
       arrowImg = (
         <Fragment>
-          <img id="closed" src="img/chevron-right.svg" />
-          <img id="open" src="img/chevron-down.svg" />
+          <img id="closed" src="/img/chevron-right.svg" />
+          <img id="open" src="/img/chevron-down.svg" />
         </Fragment>
       );
       submenus = (

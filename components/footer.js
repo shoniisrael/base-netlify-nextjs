@@ -5,7 +5,7 @@ class Footer extends Component {
     return (
       <div className="flex flex-col items-center md:items-start">
         <a href="/">
-          <img src="img/devsu-logo-alt.svg" alt="devsu logo" />
+          <img src="/img/devsu-logo-alt.svg" alt="devsu logo" />
         </a>
         <p className="text-xs font-light leading-6 text-center py-7 md:text-left">
           618 East South Street Suite 500
@@ -16,17 +16,17 @@ class Footer extends Component {
           <ul className="flex items-center justify-center text-2xl text-secondary">
             <li>
               <a className="hover:bg-white" href="https://www.facebook.com/DevsuSoftware">
-                <img className="w-5 h-6 text-secondary" src="img/facebook_icon.svg" />
+                <img className="w-5 h-6 text-secondary" src="/img/facebook_icon.svg" />
               </a>
             </li>
             <li className="mx-4">
               <a className="hover:text-white" href="https://www.linkedin.com/company/devsu/">
-                <img className="w-5 h-6 fill-current text-secondary" src="img/linkedin_icon.svg" />
+                <img className="w-5 h-6 fill-current text-secondary" src="/img/linkedin_icon.svg" />
               </a>
             </li>
             <li>
               <a className="hover:text-white" href="https://twitter.com/devsullc">
-                <img className="w-5 h-6 fill-current text-secondary" src="img/twitter_icon.svg" />
+                <img className="w-5 h-6 fill-current text-secondary" src="/img/twitter_icon.svg" />
               </a>
             </li>
           </ul>

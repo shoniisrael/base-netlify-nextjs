@@ -26,7 +26,7 @@ class Body extends Component {
     );
   }
   renderSlices() {
-    const { slices } = this.props;
+    const { slices = [] } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:

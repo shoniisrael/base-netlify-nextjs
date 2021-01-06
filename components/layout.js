@@ -11,6 +11,7 @@ class Layout extends Component {
           <title>{title}</title>
           <meta name="description" content={description} />
           <meta name="robots" content="noindex"></meta>
+          <link rel="shortcut icon" type="image/x-icon" href="img/logo-devsu.svg " />
         </Head>
         <Header nav={navigation.data.nav} />
         {children}

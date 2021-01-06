@@ -24,7 +24,7 @@ export const linkResolver = (doc) => {
     if (doc.uid === "home") {
       return "/";
     }
-    return `/${doc.uid}`;
+    return `/${doc.uid.replace("_", "/")}`;
   }
   return "/";
 };

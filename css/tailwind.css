@@ -181,6 +181,6 @@ a {
   background-size: 40vw auto;
 }
 
-.p_py-2 p{
+.p_py-2 p {
   @apply py-2;
 }

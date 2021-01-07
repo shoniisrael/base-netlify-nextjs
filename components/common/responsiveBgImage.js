@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import { MEDIA_QUERIES } from "../../utils/constants";
+import ImageWrapper from "../../utils/imageWrapper";
 
 class ResponsiveBgImage extends Component {
   render() {
     const { bgImage = {}, index, children, classes } = this.props;
     if (!bgImage.url) {
       throw new Error("ResponsiveBgImage requires the bgImage");
-    }
-
-    if (!bgImage.tablet || !bgImage.tablet.url) {
-      throw new Error("ResponsiveBgImage requires the bgImage.tablet");
     }
 
     if (!bgImage.mobile || !bgImage.mobile.url) {
@@ -28,17 +25,28 @@ class ResponsiveBgImage extends Component {
   }
 
   getStyle(bgImage, index) {
+    const nonRetinaFactor = 1;
+    const smallImageWrapper = new ImageWrapper(bgImage.mobile);
+    const smallNonRetinaUrl = smallImageWrapper.getResizedImageUrlForFactor(nonRetinaFactor);
+    const mediumImageWrapper = new ImageWrapper(bgImage);
+    const mediumNonRetinaUrl = mediumImageWrapper.getResizedImageUrlForFactor(nonRetinaFactor);
+
     return (
       <style jsx>
         {`
           ${MEDIA_QUERIES.SMALL_NON_RETINA_SCREEN} {
             .bg-image-${index} {
+              background-image: url("${smallNonRetinaUrl}");
+            }
+          }
+          ${MEDIA_QUERIES.SMALL_RETINA} {
+            .bg-image-${index} {
               background-image: url("${bgImage.mobile.url}");
             }
           }
-          ${MEDIA_QUERIES.SMALL_RETINA_AND_MEDIUM_NON_RETINA_SCREEN} {
+          ${MEDIA_QUERIES.MEDIUM_NON_RETINA_SCREEN} {
             .bg-image-${index} {
-              background-image: url("${bgImage.tablet.url}");
+              background-image: url("${mediumNonRetinaUrl}");
             }
           }
           ${MEDIA_QUERIES.MEDIUM_RETINA_AND_LARGE_SCREENS} {

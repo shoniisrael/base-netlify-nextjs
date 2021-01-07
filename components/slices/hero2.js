@@ -29,6 +29,7 @@ class Hero2 extends Component {
     const {
       bg_image: bgImage,
       description,
+      small_title: smallTitle,
       big_title: bigTitle,
       header_image: headerImage,
       alignment,
@@ -46,7 +47,8 @@ class Hero2 extends Component {
         <div className={`w-full ${containerWidth}`}>
           <Image image={headerImage} classes={`${imageAlignment} pt-10`} />
           <div className="mb-10 p_py-2">
-            <div className="my-6 text-3xl font-bold lg:text-5xl">{RichText.render(bigTitle)}</div>
+            {smallTitle && <div className={`text-sm uppercase`}>{RichText.render(smallTitle)}</div>}
+            <div className="text-3xl lg:text-5xl font-bold">{RichText.render(bigTitle)}</div>
             <div>{RichText.render(description)}</div>
           </div>
           <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />

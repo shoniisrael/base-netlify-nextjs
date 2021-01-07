@@ -22,15 +22,15 @@ a {
 
 /*custom classes*/
 .btn {
-  @apply py-4 px-5 transition duration-500 lg:hover:opacity-80;
+  @apply px-5 py-4 transition duration-500 lg:hover:opacity-80;
 }
 
 .btn.filled {
-  @apply bg-secondary text-center text-white font-bold border border-solid border-secondary;
+  @apply font-bold text-center text-white border border-solid bg-secondary border-secondary;
 }
 
 .btn.flat {
-  @apply text-secondary text-center font-bold border border-solid border-secondary hover:bg-secondary hover:text-white;
+  @apply font-bold text-center border border-solid text-secondary border-secondary hover:bg-secondary hover:text-white;
 }
 
 .card {
@@ -38,17 +38,17 @@ a {
 }
 
 .card-borderless {
-  @apply bg-white shadow-card rounded-none lg:transform hover:-translate-y-2;
+  @apply bg-white rounded-none shadow-card lg:transform hover:-translate-y-2;
 }
 
 .custom-line-bullets li::before {
   content: "— ";
-  @apply text-secondary font-bold leading-loose;
+  @apply font-bold leading-loose text-secondary;
 }
 
 .nav-item,
 .submenu-block > ul > li {
-  @apply h-6 px-0 pb-0 flex flex-col justify-center text-xs text-primary;
+  @apply flex flex-col justify-center h-6 px-0 pb-0 text-xs text-primary;
 }
 
 .nav-item,
@@ -155,7 +155,7 @@ a {
 }
 
 .two-column-bullets ul {
-  @apply custom-line-bullets space-y-1;
+  @apply space-y-1 custom-line-bullets;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -167,11 +167,11 @@ a {
 }
 
 .image-and-text > p {
-  @apply leading-loose mb-10;
+  @apply mb-10 leading-loose;
 }
 
 .custom-input {
-  @apply border-primary border-solid border placeholder-white placeholder-opacity-50 focus:outline-none opacity-70 md:text-sm lg:text-base;
+  @apply placeholder-white placeholder-opacity-50 border border-solid border-primary focus:outline-none opacity-70 md:text-sm lg:text-base;
 }
 
 .top-left-shadow {
@@ -181,6 +181,6 @@ a {
   background-size: 40vw auto;
 }
 
-.hero-richText p {
+.p_py-2 p {
   @apply py-2;
 }

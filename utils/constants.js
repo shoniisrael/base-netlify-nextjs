@@ -25,21 +25,36 @@ export const CARD_STYLE = {
 export const DEFAULT_SPACE_SIZE = 16;
 
 export const MEDIA_QUERIES = {
-  SMALL_NON_RETINA_SCREEN: "@media only screen and (max-width: 767px)",
-  SMALL_RETINA_AND_MEDIUM_NON_RETINA_SCREEN: `@media
-    only screen and (-webkit-min-device-pixel-ratio: 2)      and (max-width: 767px),
-    only screen and (   min--moz-device-pixel-ratio: 2)      and (max-width: 767px),
-    only screen and (     -o-min-device-pixel-ratio: 2/1)    and (max-width: 767px),
-    only screen and (        min-device-pixel-ratio: 2)      and (max-width: 767px),
-    only screen and (                min-resolution: 192dpi) and (max-width: 767px),
-    only screen and (                min-resolution: 2dppx)  and (max-width: 767px), 
-    only screen and (min-width: 768px) and (max-width: 1535px)`,
+  SMALL_NON_RETINA_SCREEN: `@media
+  only screen and (-webkit-max-device-pixel-ratio: 1.99)      and (max-width: 767px),
+  only screen and (   max--moz-device-pixel-ratio: 1.99)      and (max-width: 767px),
+  only screen and (     -o-max-device-pixel-ratio: 1.99)    and (max-width: 767px),
+  only screen and (        max-device-pixel-ratio: 1.99)      and (max-width: 767px),
+  only screen and (                max-resolution: 191dpi) and (max-width: 767px),
+  only screen and (                max-resolution: 1.99dppx)  and (max-width: 767px)`,
+
+  SMALL_RETINA: `@media
+  only screen and (-webkit-min-device-pixel-ratio: 2)      and (max-width: 767px),
+  only screen and (   min--moz-device-pixel-ratio: 2)      and (max-width: 767px),
+  only screen and (     -o-min-device-pixel-ratio: 2/1)    and (max-width: 767px),
+  only screen and (        min-device-pixel-ratio: 2)      and (max-width: 767px),
+  only screen and (                min-resolution: 192dpi) and (max-width: 767px),
+  only screen and (                min-resolution: 2dppx)  and (max-width: 767px)`,
+
+  MEDIUM_NON_RETINA_SCREEN: `@media
+  only screen and (-webkit-max-device-pixel-ratio: 1.99)      and (min-width: 768px) and (max-width: 1535px),
+  only screen and (   max--moz-device-pixel-ratio: 1.99)      and (min-width: 768px) and (max-width: 1535px),
+  only screen and (     -o-max-device-pixel-ratio: 1.99)    and (min-width: 768px) and (max-width: 1535px),
+  only screen and (        max-device-pixel-ratio: 1.99)      and (min-width: 768px) and (max-width: 1535px),
+  only screen and (                max-resolution: 191dpi) and (min-width: 768px) and (max-width: 1535px),
+  only screen and (                max-resolution: 1.99dppx)  and (min-width: 768px) and (max-width: 1535px)`,
+
   MEDIUM_RETINA_AND_LARGE_SCREENS: `@media
-    only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 768px),
-    only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 768px),
-    only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 768px),
-    only screen and (        min-device-pixel-ratio: 2)      and (min-width: 768px),
-    only screen and (                min-resolution: 192dpi) and (min-width: 768px),
-    only screen and (                min-resolution: 2dppx)  and (min-width: 768px),
-    only screen and (min-width: 1536px)`,
+  only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 768px),
+  only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 768px),
+  only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 768px),
+  only screen and (        min-device-pixel-ratio: 2)      and (min-width: 768px),
+  only screen and (                min-resolution: 192dpi) and (min-width: 768px),
+  only screen and (                min-resolution: 2dppx)  and (min-width: 768px),
+  only screen and (min-width: 1536px)`,
 };

@@ -7,6 +7,7 @@ export const SLICE_TYPES = {
   IMAGE_AND_TEXT: "image_and_text",
   IMAGES_ROW: "images_row",
   BANNER: "card",
+  QUOTES: "quotes",
 };
 
 export const SCREEN_SIZES = {

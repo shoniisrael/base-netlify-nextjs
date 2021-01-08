@@ -18,8 +18,15 @@ export async function getStaticProps(context) {
   const { uid } = params;
   const searchableUid = uid.join("_");
 
-  const document = await Client().getByUID("page", searchableUid);
-
+  const document = await Client().getByUID("page", searchableUid, {
+    fetchLinks: [
+      "career_quotes.photo",
+      "career_quotes.name",
+      "career_quotes.position",
+      "career_quotes.logo",
+      "career_quotes.quote",
+    ],
+  });
   return {
     props: {
       document,

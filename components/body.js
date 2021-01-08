@@ -12,6 +12,7 @@ import {
   CardsGrid,
   Cards,
   Banner,
+  Quotes,
 } from "./slices/";
 
 class Body extends Component {
@@ -75,6 +76,12 @@ class Body extends Component {
           return (
             <section>
               <Banner slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.QUOTES:
+          return (
+            <section>
+              <Quotes slice={slice} />
             </section>
           );
       }

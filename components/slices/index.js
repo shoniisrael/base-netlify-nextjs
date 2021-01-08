@@ -6,4 +6,5 @@ import Cards from "./cards";
 import ImageAndText from "./imageAndText";
 import ImagesRow from "./imagesRow";
 import Banner from "./banner";
-export { Hero1, Hero2, CardLinks, CardsGrid, Cards, ImageAndText, ImagesRow, Banner };
+import Quotes from "./quotes";
+export { Hero1, Hero2, CardLinks, CardsGrid, Cards, ImageAndText, ImagesRow, Banner, Quotes };

@@ -3,15 +3,12 @@ import Body from "../body";
 import Layout from "../layout";
 class Page extends Component {
   render() {
-    const { document = { data: {} }, navigation } = this.props;
+    const { document = {}, navigation } = this.props;
+    const { data = {} } = document;
 
     return (
-      <Layout
-        title={document.data.meta_title}
-        description={document.data.meta_description}
-        navigation={navigation}
-      >
-        <Body slices={document.data.body} />
+      <Layout title={data.meta_title} description={data.meta_description} navigation={navigation}>
+        <Body slices={data.body} />
       </Layout>
     );
   }

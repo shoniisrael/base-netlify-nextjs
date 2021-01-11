@@ -78,7 +78,7 @@ class ImageAndText extends Component {
           <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto lg:px-12`}>
             <ResponsiveImage
               image={image}
-              sizes="(min-width:1536) 648px, (min-width:768) 40vw, 90vw"
+              sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw"
             />
           </div>
           <div className={`pb-8 md:${textWidth} px-4`}>

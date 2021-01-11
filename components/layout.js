@@ -18,7 +18,7 @@ class Layout extends Component {
             onLoad="this.media='all'"
           />
           <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin />
-          <link rel="shortcut icon" type="image/x-icon" href="img/logo-devsu.svg " />
+          <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
         </Head>
         <Header nav={navigation.data.nav} />
         {children}

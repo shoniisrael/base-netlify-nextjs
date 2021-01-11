@@ -8,8 +8,8 @@
   @apply text-white;
 }
 
-.bg-primary-dark a {
-  @apply text-secondary;
+p > a {
+  @apply text-secondary underline;
 }
 
 footer.bg-primary-dark a {

@@ -105,7 +105,7 @@ class ImageAndText extends Component {
     return items.map((section, index) => {
       return (
         <div key={index}>
-          <div className={`${titleColor} text-3xl font-bold pb-4 md:text-5xl lg:text-6xl lg:pb-8`}>
+          <div className={`${titleColor} text-3xl font-bold pb-4 md:text-4xl lg:pb-8`}>
             {RichText.render(section.big_title)}
           </div>
           <div className={`${textColor} ${listClass} image-and-text text-base lg:text-lg`}>

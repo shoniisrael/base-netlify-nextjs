@@ -63,7 +63,7 @@ class Hero1 extends Component {
     const textColor = this.getTextColor(bgColor);
     return (
       <div
-        className={`font-bold text-2xl text-center pb-3 md:text-2xl lg:text-4xl lg:w-5/6 lg:pb-5 leading-6 ${textColor}`}
+        className={`py-4 font-bold text-2xl text-center pb-3 md:text-2xl lg:text-4xl lg:w-5/6 lg:pb-5 leading-6 ${textColor}`}
       >
         {RichText.render(title)}
       </div>
@@ -77,7 +77,7 @@ class Hero1 extends Component {
   renderDescription(bgColor, description) {
     const textColor = this.getTextColor(bgColor);
     return (
-      <div className={`md:w-3/5 lg:w-3/4 pb-8 lg:text-lg md:px-10 px-8 ${textColor}`}>
+      <div className={`lg:w-5/6 pb-16 lg:text-lg md:px-10 px-8 ${textColor}`}>
         {RichText.render(description)}
       </div>
     );
@@ -120,7 +120,7 @@ class Hero1 extends Component {
         </div>
         <div className="w-4/5 md:w-4/5 mx-auto z-10">
           <div
-            className={`p_py-2 flex flex-col justify-center items-center text-center py-16 lg:py-24 ${textContainerClasses}`}
+            className={`p_py-2 flex flex-col justify-center items-center text-center py-16 md:py-24 ${textContainerClasses}`}
           >
             {this.renderSmallTitle(bgColor, smallTitle)}
             {this.renderBigTitle(bgColor, bigTitle)}

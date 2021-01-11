@@ -5,13 +5,24 @@ class Header extends Component {
   render() {
     return (
       <header className="sticky top-0 bg-white z-20 text-primary-dark">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin />
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
           rel="stylesheet"
           media="print"
-          onLoad="this.onload=null;this.media='all'"
+          onLoad="this.media='all'"
         />
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin />
+        <noscript>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+          />
+        </noscript>
         <nav className="shadow-md relative">
           <div className="hidden lg:flex top-0 bg-white container m-auto px-5 items-center justify-between text-sm lg:text-md">
             <div className="flex">

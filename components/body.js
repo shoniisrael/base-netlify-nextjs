@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import sal from "sal.js";
-import "sal.js/dist/sal.css";
 
 import { SLICE_TYPES } from "../utils/constants";
 import {
@@ -16,9 +14,6 @@ import {
 } from "./slices/";
 
 class Body extends Component {
-  componentDidMount() {
-    sal();
-  }
   render() {
     return (
       <main className="text-sm font-light text-primary lg:text-base w-100">

@@ -75,23 +75,13 @@ class ImageAndText extends Component {
         <div
           className={`overflow-hidden flex flex-col container mx-auto w-full px-6 pb-12 ${flexStyles} md:pt-20 lg:py-28`}
         >
-          <div
-            data-sal="slide-right"
-            data-sal-delay="300"
-            data-sal-easing="ease-in-sine"
-            className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto lg:px-12`}
-          >
+          <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto lg:px-12`}>
             <ResponsiveImage
               image={image}
               sizes="(min-width:1536) 648px, (min-width:768) 40vw, 90vw"
             />
           </div>
-          <div
-            data-sal="slide-left"
-            data-sal-delay="300"
-            data-sal-easing="ease-in-sine"
-            className={`pb-8 md:${textWidth} px-4`}
-          >
+          <div className={`pb-8 md:${textWidth} px-4`}>
             <div className={`${titleColor} text-xs uppercase mb-8`}>
               {RichText.render(smallTitle)}
             </div>

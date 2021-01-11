@@ -126,7 +126,7 @@ class Hero1 extends Component {
             {this.renderBigTitle(bgColor, bigTitle)}
             {separator && <div className="separator" />}
             {this.renderDescription(bgColor, description)}
-            <div data-sal="slide-up" data-sal-delay="800" data-sal-easing="ease-out-back">
+            <div>
               <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
             </div>
           </div>

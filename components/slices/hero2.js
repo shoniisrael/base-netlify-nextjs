@@ -41,17 +41,19 @@ class Hero2 extends Component {
     const alignmentClasses = this.getAlignmentClasses(alignment);
     const containerWidth = this.getContainerWidth(alignment);
     const imageAlignment = this.getImageAlignment(alignment);
-    const classes = `px-6 lg:px-20 pb-10 pt-20 md:pb-40 md:pt-40 text-white flex ${alignmentClasses}`;
+    const classes = `px-4 md:px-20 pb-16 pt-24 md:pb-32 md:pt-32 text-white flex ${alignmentClasses}`;
     return (
       <ResponsiveBgImage index={index} bgImage={bgImage} classes={classes}>
         <div className={`w-full ${containerWidth}`}>
           <Image image={headerImage} classes={`${imageAlignment} pt-10`} />
           <div className="mb-10 p_py-2">
             {smallTitle && <div className={`text-sm uppercase`}>{RichText.render(smallTitle)}</div>}
-            <div className="text-3xl lg:text-5xl font-bold">{RichText.render(bigTitle)}</div>
-            <div>{RichText.render(description)}</div>
+            <div className="text-3xl py-4 lg:text-5xl font-bold">{RichText.render(bigTitle)}</div>
+            <div className="text-lg">{RichText.render(description)}</div>
           </div>
-          <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+          <div className="pb-8">
+            <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle}`} />
+          </div>
         </div>
       </ResponsiveBgImage>
     );

@@ -20,7 +20,7 @@ function getAnimationClasses(displayAnimationOnHover) {
   if (displayAnimationOnHover) {
     return {
       image: "transition duration-500 transform group-hover:scale-110",
-      text: "text-center text-white text-opacity-0 group-hover:text-opacity-100",
+      text: "text-center text-opacity-0 group-hover:text-opacity-100",
     };
   }
   return {
@@ -104,7 +104,7 @@ export default class ImagesRow extends Component {
           </div>
           {primary.description && (
             <div
-              className={`${backgroundClasses.descriptionColor} ${alignmentClasses.item} ${alignmentClasses.text} p_py-2 leading-relaxed my-7 lg:w-3/4`}
+              className={`${backgroundClasses.descriptionColor} ${alignmentClasses.item} ${alignmentClasses.text} p_py-2 leading-relaxed my-7 lg:w-3/4 xl:text-lg`}
             >
               {RichText.render(primary.description)}
             </div>
@@ -126,7 +126,9 @@ export default class ImagesRow extends Component {
                       options={{ maxWidth, maxHeight }}
                     />
                   </div>
-                  <div className={animationClasses.text}>{icon.image.alt}</div>
+                  <div className={`${backgroundClasses.descriptionColor} ${animationClasses.text}`}>
+                    {icon.image.alt}
+                  </div>
                 </div>
               );
             })}

@@ -6,8 +6,8 @@
   @apply text-white;
 }
 
-.bg-primary-dark a {
-  @apply text-secondary;
+p > a {
+  @apply text-secondary underline;
 }
 
 footer.bg-primary-dark a {
@@ -173,7 +173,7 @@ a {
 }
 
 .top-left-shadow {
-  background-image: url(../public/img/dots1-left-up.svg); /*cambiar por la imagen que es*/
+  background-image: url(../public/img/oval-top-left.svg);
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 40vw auto;

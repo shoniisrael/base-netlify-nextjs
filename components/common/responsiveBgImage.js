@@ -18,7 +18,7 @@ class ResponsiveBgImage extends Component {
       <div>
         {style}
         <div className={`bg-center bg-no-repeat bg-cover bg-image-${index}`}>
-          <div className={`container mx-auto w-full ${classes}`}>{children}</div>
+          <div className={`2xl:container mx-auto w-full ${classes}`}>{children}</div>
         </div>
       </div>
     );

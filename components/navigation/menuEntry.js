@@ -11,7 +11,10 @@ class MenuEntry extends Component {
     if (submenuItems.length > 0) {
       arrowImg = <img className="ml-2 object-scale-down" src="/img/chevron-down.svg" />;
       submenus = (
-        <div className="desktop-submenu hidden absolute top-full -mt-5">
+        <div
+          className="desktop-submenu hidden absolute top-full -mt-5"
+          style="font-family:Montserrat,sans-serif"
+        >
           <ul className="bg-white block px-6 py-2 relative -ml-5 rounded-lg shadow-card text-xs capitalize">
             {this.renderSubmenuEntries()}
           </ul>

@@ -148,10 +148,6 @@ a {
   }
 }
 
-.card-no-hover {
-  @apply bg-white shadow-card rounded-xl;
-}
-
 .two-column-bullets ul {
   @apply space-y-1 custom-line-bullets;
 }

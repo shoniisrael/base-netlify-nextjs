@@ -160,8 +160,25 @@ a {
   }
 }
 
-.image-and-text > p {
-  @apply mb-10 leading-loose;
+.p_mb-10 p {
+  @apply mb-10;
+}
+
+.p_leading-loose p {
+  @apply leading-loose;
+}
+.p_py-3 p {
+  @apply py-3;
+}
+.p_2xl_pb-8 p {
+  @apply 2xl:pb-8;
+}
+
+.strong_pt-6 strong {
+  @apply pt-6;
+}
+strong {
+  @apply font-bold;
 }
 
 .custom-input {

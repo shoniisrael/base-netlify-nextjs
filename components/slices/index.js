@@ -7,4 +7,16 @@ import ImageAndText from "./imageAndText";
 import ImagesRow from "./imagesRow";
 import Banner from "./banner";
 import Quotes from "./quotes";
-export { Hero1, Hero2, CardLinks, CardsGrid, Cards, ImageAndText, ImagesRow, Banner, Quotes };
+import FullWidthImageAndText from "./fullWidthImageAndText";
+export {
+  Hero1,
+  Hero2,
+  CardLinks,
+  CardsGrid,
+  Cards,
+  ImageAndText,
+  ImagesRow,
+  Banner,
+  Quotes,
+  FullWidthImageAndText,
+};

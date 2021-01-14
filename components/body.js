@@ -11,6 +11,7 @@ import {
   Cards,
   Banner,
   Quotes,
+  FullWidthImageAndText,
 } from "./slices/";
 
 class Body extends Component {
@@ -77,6 +78,12 @@ class Body extends Component {
           return (
             <section>
               <Quotes slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.FULL_WIDTH_IMAGE_AND_TEXT:
+          return (
+            <section>
+              <FullWidthImageAndText slice={slice} />
             </section>
           );
       }

@@ -108,7 +108,7 @@ class ImageAndText extends Component {
           <div className={`${titleColor} text-3xl font-bold pb-4 md:text-4xl lg:pb-8`}>
             {RichText.render(section.big_title)}
           </div>
-          <div className={`${textColor} ${listClass} image-and-text text-base lg:text-lg`}>
+          <div className={`${textColor} ${listClass} p_mb-10 p_leading-loose text-base lg:text-lg`}>
             {RichText.render(section.rich_text)}
           </div>
         </div>

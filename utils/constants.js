@@ -8,6 +8,7 @@ export const SLICE_TYPES = {
   IMAGES_ROW: "images_row",
   BANNER: "card",
   QUOTES: "quotes",
+  FULL_WIDTH_IMAGE_AND_TEXT: "full_width_image_and_text",
 };
 
 export const SCREEN_SIZES = {

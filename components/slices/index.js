@@ -8,6 +8,8 @@ import ImagesRow from "./imagesRow";
 import Banner from "./banner";
 import Quotes from "./quotes";
 import FullWidthImageAndText from "./fullWidthImageAndText";
+import TitleAndForm from "./titleAndForm";
+
 export {
   Hero1,
   Hero2,
@@ -19,4 +21,5 @@ export {
   Banner,
   Quotes,
   FullWidthImageAndText,
+  TitleAndForm,
 };

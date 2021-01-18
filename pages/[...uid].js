@@ -6,8 +6,8 @@ import Page from "../components/common/page";
 
 class Document extends Component {
   render() {
-    const { document, navigation } = this.props;
-    return <Page document={document} navigation={navigation} />;
+    const { document, navigation, forms } = this.props;
+    return <Page document={document} navigation={navigation} forms={forms} />;
   }
 }
 
@@ -27,9 +27,12 @@ export async function getStaticProps(context) {
       "career_quotes.quote",
     ],
   });
+
+  const { results: forms } = await Client().query(Prismic.Predicates.at("document.type", "form"));
   return {
     props: {
       document,
+      forms,
     },
   };
 }

@@ -1,0 +1,53 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "Enter the uid"
+      }
+    },
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, heading1, heading2, heading3, heading4",
+        "label": "name"
+      }
+    },
+    "photo": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 188,
+          "height": 188
+        },
+        "thumbnails": [],
+        "label": "photo"
+      }
+    },
+    "position": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, heading1, heading2, heading3, heading4",
+        "label": "position"
+      }
+    },
+    "logo": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "height": 80
+        },
+        "thumbnails": [],
+        "label": "logo"
+      }
+    },
+    "quote": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, heading1, heading2, heading3, heading4",
+        "label": "quote"
+      }
+    }
+  }
+}

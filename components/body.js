@@ -12,6 +12,7 @@ import {
   Banner,
   Quotes,
   FullWidthImageAndText,
+  TitleAndForm,
 } from "./slices/";
 
 class Body extends Component {
@@ -23,7 +24,7 @@ class Body extends Component {
     );
   }
   renderSlices() {
-    const { slices = [] } = this.props;
+    const { slices = [], forms } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:
@@ -84,6 +85,12 @@ class Body extends Component {
           return (
             <section>
               <FullWidthImageAndText slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.TITLE_AND_FORM:
+          return (
+            <section>
+              <TitleAndForm slice={slice} forms={forms} />
             </section>
           );
       }

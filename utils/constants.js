@@ -9,6 +9,7 @@ export const SLICE_TYPES = {
   BANNER: "card",
   QUOTES: "quotes",
   FULL_WIDTH_IMAGE_AND_TEXT: "full_width_image_and_text",
+  TITLE_AND_FORM: "title_and_form",
 };
 
 export const SCREEN_SIZES = {

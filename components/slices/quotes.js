@@ -6,7 +6,7 @@ class Quotes extends Component {
   render() {
     const { primary, items } = this.props.slice;
     return (
-      <div className="container m-auto px-6 py-12 md:py-20 lg:py-28 xl:px-40">
+      <div className="container m-auto px-6 md:px-14 lg:px-28 py-12 md:py-20 lg:py-28 xl:px-40">
         <div className={`text-4xl text-primary-dark text-center font-bold`}>
           {RichText.render(primary.title)}
         </div>

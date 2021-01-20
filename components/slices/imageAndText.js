@@ -73,7 +73,7 @@ class ImageAndText extends Component {
     return (
       <div className={`${bgClasses} w-full`}>
         <div
-          className={`overflow-hidden flex flex-col container mx-auto w-full px-6 pb-12 ${flexStyles} md:pt-20 lg:py-28`}
+          className={`overflow-hidden flex flex-col container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles} md:pt-20 lg:py-28`}
         >
           <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto lg:px-12`}>
             <ResponsiveImage
@@ -108,7 +108,9 @@ class ImageAndText extends Component {
           <div className={`${titleColor} text-3xl font-bold pb-4 md:text-4xl lg:pb-8`}>
             {RichText.render(section.big_title)}
           </div>
-          <div className={`${textColor} ${listClass} p_mb-10 p_leading-loose text-base lg:text-lg`}>
+          <div
+            className={`${textColor} ${listClass} p_mb-10 p_leading-loose li_leading-loose text-base lg:text-lg`}
+          >
             {RichText.render(section.rich_text)}
           </div>
         </div>

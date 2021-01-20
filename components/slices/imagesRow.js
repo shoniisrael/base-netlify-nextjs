@@ -89,7 +89,7 @@ export default class ImagesRow extends Component {
 
     return (
       <div className={`w-full py-12 ${backgroundClasses.background} md:py-20 lg:py-28`}>
-        <div className="container flex flex-col items-center w-full px-6 mx-auto">
+        <div className="container flex flex-col items-center w-full px-6 md:px-14 lg:px-28 mx-auto">
           {primary.small_title && (
             <div
               className={`pb-5 text-xs md:text-sm ${alignmentClasses.item} ${alignmentClasses.text} text-primary-dark`}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import TextUtils from "../../utils/text";
 
 const STYLE = {
   ALTERNATIVE: "alternative",
@@ -72,7 +73,7 @@ class Cards extends Component {
           <img src="/img/lightblue-circle.svg" />
         </div>
         <div
-          className={`${styleClasses.cardTitleColor} container px-10 font-semibold text-xl md:px-1 xl:px-12 py-4`}
+          className={`${styleClasses.cardTitleColor} px-10 font-semibold text-xl md:px-1 xl:px-12 py-4`}
         >
           {RichText.render(title)}
         </div>
@@ -98,7 +99,7 @@ class Cards extends Component {
   }
 
   getStyleClasses(style, hasTitle, raiseCards) {
-    const commonPadding = "p-6 md:p-12";
+    const commonPadding = "p-10 md:px-14 lg:px-28";
 
     switch (style) {
       case STYLE.DARK:
@@ -136,17 +137,22 @@ class Cards extends Component {
       hidden_title: hiddenTitle,
       style,
       footer_text: footerText,
-      columns_tablet: columnsTablet = 3,
-      columns_desktop: columnsDesktop = 3,
+      columns_tablet: columnsTablet,
+      columns_desktop: columnsDesktop,
       raise_cards: raiseCards,
     } = primary;
-    const hasHiddenTitle = hiddenTitle.length && !!hiddenTitle[0].text;
-    const hasSmallTitle = smallTitle.length && !!smallTitle[0].text;
-    const hasBigTitle = bigTitle.length && !!bigTitle[0].text;
+    const defaultColumns = 3;
+
+    const hasHiddenTitle = TextUtils.hasRichText(hiddenTitle);
+    const hasSmallTitle = TextUtils.hasRichText(smallTitle);
+    const hasBigTitle = TextUtils.hasRichText(bigTitle);
     const hasVisibleTitle = hasSmallTitle || hasBigTitle;
+
     const topPosition =
       raiseCards && !hasVisibleTitle ? "pt-10 md:pt-0 md:relative md:-top-16" : "";
-    const gridCols = `md:grid-cols-${columnsTablet} lg:grid-cols-${columnsDesktop}`;
+    const gridCols = `md:grid-cols-${columnsTablet || defaultColumns} lg:grid-cols-${
+      columnsDesktop || defaultColumns
+    }`;
     const { bgColor, titleColor, padding, gridGap, titlesBottomPadding } = this.getStyleClasses(
       style,
       hasVisibleTitle,

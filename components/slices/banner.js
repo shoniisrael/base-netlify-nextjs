@@ -8,7 +8,7 @@ export default class Banner extends Component {
     const { primary } = this.props.slice;
     const { header_image, image, button_label, button_link, button_style } = primary;
     return (
-      <div className="container w-full pt-12 px-6 mx-auto">
+      <div className="container w-full pt-12 px-6 md:px-14 lg:px-28 mx-auto">
         <div className="flex flex-col items-center justify-center pt-12 pl-4 md:pl-12 my-8 rounded-xl bg-primary-light md:flex-row md:items-start">
           <div className="flex-1 px-6 pb-10">
             {header_image && (

@@ -9,6 +9,8 @@ import Banner from "./banner";
 import Quotes from "./quotes";
 import FullWidthImageAndText from "./fullWidthImageAndText";
 import TitleAndForm from "./titleAndForm";
+import TextAndForm from "./textAndForm";
+import TextColumns from "./textColumns";
 
 export {
   Hero1,
@@ -22,4 +24,6 @@ export {
   Quotes,
   FullWidthImageAndText,
   TitleAndForm,
+  TextAndForm,
+  TextColumns,
 };

@@ -10,6 +10,8 @@ export const SLICE_TYPES = {
   QUOTES: "quotes",
   FULL_WIDTH_IMAGE_AND_TEXT: "full_width_image_and_text",
   TITLE_AND_FORM: "title_and_form",
+  TEXT_AND_FORM: "text_and_form",
+  TEXT_COLUMNS: "text_columns",
 };
 
 export const SCREEN_SIZES = {

@@ -1,5 +1,6 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import TextUtils from "../../utils/text";
 
 const FORM_FIELD_TYPE = {
   TEXT: "text_field",
@@ -18,10 +19,10 @@ class Form extends Component {
   }
 
   renderSubmitButton() {
-    const { form } = this.props;
+    const { form = { data: {} } } = this.props;
     const { submit_button_label: submitButtonLabel } = form.data;
     return (
-      <span className="w-full px-2 my-5 inline-block">
+      <span className="w-full px-2 mt-5 inline-block">
         <button type="button" className="btn filled w-full">
           <span className="text-xl">{submitButtonLabel}</span>
         </button>
@@ -30,22 +31,24 @@ class Form extends Component {
   }
 
   renderFooterText() {
-    const { form } = this.props;
+    const { form = { data: {} } } = this.props;
     const { footer_text: footerText } = form.data;
-    return (
-      <div className="text-center w-full px-2 my-5 inline-block a_text-black a_font-bold">
-        {RichText.render(footerText)}
-      </div>
-    );
+
+    if (TextUtils.hasRichText(footerText))
+      return (
+        <div className="text-center w-full px-2 my-5 inline-block a_text-black a_font-bold">
+          {RichText.render(footerText)}
+        </div>
+      );
   }
 
   renderFormFields() {
-    const { form } = this.props;
-    const { body: slices } = form.data;
+    const { form = { data: {} } } = this.props;
+    const { body: slices = [] } = form.data;
     return slices.map((slice, index) => {
       const { items, primary, slice_type: sliceType } = slice;
       const { placeholder, type, name, full_width: fullWidth = true, label } = primary;
-      const width = fullWidth ? "w-full" : "half-width-input";
+      const width = fullWidth ? "w-full" : "w-full  lg:w-1/2";
       switch (sliceType) {
         case FORM_FIELD_TYPE.TEXT:
           return (

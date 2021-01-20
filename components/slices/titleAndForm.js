@@ -1,5 +1,6 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import TextUtils from "../../utils/text";
 import Form from "../common/form";
 
 const ALIGNMENT = {
@@ -19,23 +20,20 @@ class TitleAndForm extends Component {
     const alignment = textAlignment === ALIGNMENT.LEFT ? "text-left" : "text-center";
     const { id } = primary.form;
     const form = id && forms.find((element) => element.id == id);
-    const hasSmallTitle = !!smallTitle.length && !!smallTitle[0].text;
-    const hasBigTitle = !!bigTitle.length && !!bigTitle[0].text;
-    const hasDescription = !!description.length && description[0].text;
 
     return (
       <div className=" blue-oval-bg">
-        <div className="text-primary-dark px-10 py-28 container mx-auto max-w-4xl">
+        <div className="text-primary-dark px-10 md:px-14 lg:px-28 py-28 container mx-auto max-w-4xl">
           <div className={`${alignment} pb-10`}>
-            {hasSmallTitle && (
+            {TextUtils.hasRichText(smallTitle) && (
               <div className="text-xs uppercase pb-3">{RichText.render(smallTitle)}</div>
             )}
-            {hasBigTitle && (
+            {TextUtils.hasRichText(bigTitle) && (
               <div className="text-2xl md:text-4xl xl:text-5xl py-4 font-bold">
                 {RichText.render(bigTitle)}
               </div>
             )}
-            {hasDescription && (
+            {TextUtils.hasRichText(description) && (
               <div className="text-xs py-2 lg:text-base">{RichText.render(description)}</div>
             )}
           </div>

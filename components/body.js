@@ -13,6 +13,8 @@ import {
   Quotes,
   FullWidthImageAndText,
   TitleAndForm,
+  TextAndForm,
+  TextColumns,
 } from "./slices/";
 
 class Body extends Component {
@@ -35,15 +37,15 @@ class Body extends Component {
           );
         case SLICE_TYPES.HERO_2:
           return (
-            <div key={index}>
+            <section key={index}>
               <Hero2 index={index} slice={slice} />
-            </div>
+            </section>
           );
         case SLICE_TYPES.CARD_LINKS:
           return (
-            <div key={index}>
+            <section key={index}>
               <CardLinks slice={slice} />
-            </div>
+            </section>
           );
         case SLICE_TYPES.IMAGES_ROW:
           return (
@@ -93,6 +95,20 @@ class Body extends Component {
               <TitleAndForm slice={slice} forms={forms} />
             </section>
           );
+        case SLICE_TYPES.TEXT_AND_FORM:
+          return (
+            <section>
+              <TextAndForm slice={slice} forms={forms} />
+            </section>
+          );
+        case SLICE_TYPES.TEXT_COLUMNS:
+          return (
+            <section>
+              <TextColumns slice={slice} forms={forms} />
+            </section>
+          );
+        default:
+          return <div className="text-red-700 text-3xl">{slice.slice_type} not found</div>;
       }
     });
   }

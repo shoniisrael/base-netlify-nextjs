@@ -20,7 +20,7 @@ a {
 
 /*custom classes*/
 .btn {
-  @apply px-5 py-4 transition duration-500 lg:hover:opacity-80;
+  @apply p-4 transition duration-500 lg:hover:opacity-80;
 }
 
 .btn.filled {
@@ -167,6 +167,10 @@ a {
 .p_leading-loose p {
   @apply leading-loose;
 }
+.li_leading-loose li {
+  @apply leading-loose;
+}
+
 .p_py-3 p {
   @apply py-3;
 }
@@ -224,10 +228,6 @@ select:focus {
   box-shadow: inset 0 -2px 0 0 #a3c412;
 }
 
-span.half-width-input {
-  width: 50%;
-}
-
 .blue-oval-bg {
   background-image: url(../public/img/oval-bottom-left.svg), url(../public/img/oval-top-right.svg);
   background-position: bottom left, top right;
@@ -241,4 +241,26 @@ span.half-width-input {
 
 .a_font-bold a {
   @apply font-bold;
+}
+
+li span.custom-dot-list:before {
+  content: "";
+  height: 0;
+  width: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  border: solid 5px #a4c22c;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+li span.custom-check-list:before {
+  content: "";
+  display: inline-block;
+  margin-right: 8px;
+  height: 14px;
+  width: 14px;
+  background-image: url(../public/img/check-circle.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }

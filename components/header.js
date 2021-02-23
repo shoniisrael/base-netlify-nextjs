@@ -57,16 +57,14 @@ class Header extends Component {
     const { nav } = this.props;
 
     return nav.map((menuEntry, index) => {
-      return <MenuEntry key={index} menuEntry={menuEntry}></MenuEntry>;
+      return <MenuEntry key={index} menuEntry={menuEntry} />;
     });
   }
   renderMobileMenu() {
     const { nav } = this.props;
 
     return nav.map((menuEntry, index) => {
-      return (
-        <MobileMenuEntry key={index} index={index + 1} menuEntry={menuEntry}></MobileMenuEntry>
-      );
+      return <MobileMenuEntry key={index} index={index + 1} menuEntry={menuEntry} />;
     });
   }
 }

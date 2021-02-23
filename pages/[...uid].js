@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Client } from "../prismic-configuration";
 import Prismic from "prismic-javascript";
 import Page from "../components/common/page";
+import RoutingUtils from "../utils/routing";
 
 class Document extends Component {
   render() {
@@ -16,8 +17,10 @@ export default Document;
 export async function getStaticProps(context) {
   const { params } = context;
   const { uid } = params;
-  const searchableUid = uid.join("_");
-
+  const pages = await Client().query(Prismic.Predicates.at("document.type", "page"), {
+    fetch: ["page.uid", "page.parent"],
+  });
+  const searchableUid = RoutingUtils.getSearchableUid(uid, pages.results);
   const document = await Client().getByUID("page", searchableUid, {
     fetchLinks: [
       "career_quotes.photo",
@@ -39,10 +42,10 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const pages = await Client().query(Prismic.Predicates.at("document.type", "page"), {
-    fetch: "page.uid",
+    fetch: ["page.uid", "page.parent"],
   });
   const paths = pages.results.map((page) => {
-    return { params: { uid: page.uid.split("_") } };
+    return { params: { uid: RoutingUtils.getPath(page, pages.results).split("_") } };
   });
 
   return {

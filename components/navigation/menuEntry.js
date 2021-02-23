@@ -3,7 +3,6 @@ import CustomLink from "../common/customLink";
 class MenuEntry extends Component {
   render() {
     const { primary: menu, items: submenuItems } = this.props.menuEntry;
-
     let arrowImg,
       submenus,
       menuClasses = "mx-6",

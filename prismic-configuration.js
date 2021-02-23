@@ -1,4 +1,5 @@
 import Prismic from "prismic-javascript";
+import RoutingUtils from "./utils/routing";
 
 export const apiEndpoint = "https://devsucom.cdn.prismic.io/api/v2";
 
@@ -20,22 +21,18 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
 
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
+  const { uid, pages } = doc;
+  const page = pages.find((page) => page.uid === uid);
+
   if (doc.type === "page") {
     if (doc.uid === "home") {
       return "/";
     }
-    return `/${doc.uid.replace("_", "/")}`;
+    const result = RoutingUtils.getPath(page, pages);
+    return result.split("_").join("/");
   }
   return "/";
 };
 
 // Additional helper function for Next/Link component
-export const hrefResolver = (doc) => {
-  if (doc.type === "page") {
-    if (doc.uid === "home") {
-      return "/";
-    }
-    return "/[uid]";
-  }
-  return "/";
-};
+export const hrefResolver = linkResolver;

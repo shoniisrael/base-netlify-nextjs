@@ -120,10 +120,22 @@ a {
     url(../public/img/dots2-dark-right-down.svg);
 }
 
+.dots3 {
+  background-image: url(../public/img/dots3-left-up.svg), url(../public/img/dots3-right-up.svg);
+  background-position: top left, top right;
+  background-repeat: no-repeat;
+  background-size: 30vw auto, 30vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
 @media only screen and (min-width: 1280px) {
   .dots1,
   .dots2 {
     background-size: 20vw auto, 20vw auto;
+  }
+  .dots3 {
+    background-size: 26vw auto, 25vw auto;
   }
 }
 

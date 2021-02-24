@@ -13,6 +13,7 @@ const BG_COLOR = {
 const BG_STYLE = {
   DOTS_1: "dots1",
   DOTS_2: "dots2",
+  DOTS_3: "dots3",
 };
 
 class Hero1 extends Component {
@@ -35,6 +36,8 @@ class Hero1 extends Component {
         return "dots1";
       case BG_STYLE.DOTS_2:
         return color === BG_COLOR.DARK ? "dots2 dark" : "dots2";
+      case BG_STYLE.DOTS_3:
+        return "dots3";
       default:
         return "";
     }

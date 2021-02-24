@@ -5,8 +5,10 @@ import ResponsiveImage from "../common/responsiveImage";
 import { SCREEN_SIZES, DEFAULT_SPACE_SIZE } from "../../utils/constants.js";
 
 function getSizes(maxWidth, colsMobile, colsTablet) {
-  const tablet = getSizeForScreen(SCREEN_SIZES.LG, colsTablet);
-  const mobile = getSizeForScreen(SCREEN_SIZES.SM, colsMobile);
+  const largeSize = SCREEN_SIZES.LG.substring(0, SCREEN_SIZES.LG.length - 2);
+  const smallSize = SCREEN_SIZES.SM.substring(0, SCREEN_SIZES.SM.length - 2);
+  const tablet = getSizeForScreen(largeSize, colsTablet);
+  const mobile = getSizeForScreen(smallSize, colsMobile);
   return `(min-width:${SCREEN_SIZES.LG}) ${maxWidth}px, (min-width:${SCREEN_SIZES.SM}) ${tablet}vw, ${mobile}vw`;
 }
 
@@ -85,7 +87,7 @@ export default class ImagesRow extends Component {
       columns_tablet,
       columns_desktop,
     );
-    const sizes = getSizes(maxHeight, columns_mobile, columns_tablet);
+    const sizes = getSizes(maxWidth, columns_mobile, columns_tablet);
 
     return (
       <div className={`w-full py-12 ${backgroundClasses.background} md:py-20 lg:py-28`}>
@@ -118,17 +120,21 @@ export default class ImagesRow extends Component {
                   className="flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent"
                   key={index}
                 >
-                  <div style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}>
+                  <div style={{ width: `${maxWidth}px`, height: `${maxHeight}px` }}>
                     <ResponsiveImage
                       image={icon.image}
                       sizes={sizes}
-                      className={animationClasses.image}
+                      className={`${animationClasses.image} max-h-full w-auto mx-auto`}
                       options={{ maxWidth, maxHeight }}
                     />
                   </div>
-                  <div className={`${backgroundClasses.descriptionColor} ${animationClasses.text}`}>
-                    {icon.image.alt}
-                  </div>
+                  {display_animation_on_hover && (
+                    <div
+                      className={`${backgroundClasses.descriptionColor} ${animationClasses.text} `}
+                    >
+                      {icon.image.alt}
+                    </div>
+                  )}
                 </div>
               );
             })}

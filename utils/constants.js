@@ -27,7 +27,7 @@ export const CARD_STYLE = {
   HIGHLIGHTED: "highlighted",
 };
 
-export const DEFAULT_SPACE_SIZE = 16;
+export const DEFAULT_SPACE_SIZE = 48;
 
 export const MEDIA_QUERIES = {
   SMALL_NON_RETINA_SCREEN: `@media

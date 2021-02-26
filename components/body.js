@@ -16,6 +16,7 @@ import {
   TextAndForm,
   TextColumns,
 } from "./slices/";
+import JobPostCards from "./slices/jobPostCards";
 
 class Body extends Component {
   render() {
@@ -105,6 +106,12 @@ class Body extends Component {
           return (
             <section>
               <TextColumns slice={slice} forms={forms} />
+            </section>
+          );
+        case SLICE_TYPES.JOB_POST_CARDS:
+          return (
+            <section>
+              <JobPostCards slice={slice} />
             </section>
           );
         default:

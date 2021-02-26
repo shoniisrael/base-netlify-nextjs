@@ -4,6 +4,7 @@ export const SLICE_TYPES = {
   CARD_LINKS: "card_links",
   CARDS_GRID: "cards_grid",
   CARDS: "cards",
+  JOB_POST_CARDS: "job_post_cards",
   IMAGE_AND_TEXT: "image_and_text",
   IMAGES_ROW: "images_row",
   BANNER: "card",

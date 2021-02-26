@@ -17,7 +17,7 @@ class CardLinks extends Component {
             return (
               <CustomLink key={index} link={card_link}>
                 <div
-                  className={`card h-full w-full flex flex-col items-center mb-10 md:mb-0 py-10 px-8 xl:max-w-1/5 ${cardClass}`}
+                  className={`card hover_translate-y-2 h-full w-full flex flex-col items-center mb-10 md:mb-0 py-10 px-8 xl:max-w-1/5 ${cardClass}`}
                 >
                   <Image image={card_image} />
                   <div className=" text-xl font-bold py-6 lg:text-2xl lg:pt-6 lg:pb-12">

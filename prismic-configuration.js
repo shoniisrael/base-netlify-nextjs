@@ -31,6 +31,12 @@ export const linkResolver = (doc) => {
     const result = RoutingUtils.getPath(page, pages);
     return result.split("_").join("/");
   }
+  if (doc.type === "job_post") {
+    return `careers/${uid.split("_").join("/")}`;
+  }
+  if (doc.type === "blog_post") {
+    return `sprint/${uid.split("_").join("/")}`;
+  }
   return "/";
 };
 

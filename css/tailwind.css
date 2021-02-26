@@ -32,7 +32,11 @@ a {
 }
 
 .card {
-  @apply bg-white shadow-card rounded-xl lg:transform hover:-translate-y-2;
+  @apply bg-white shadow-card rounded-xl;
+}
+
+.hover_translate-y-2 {
+  @apply lg:transform hover:-translate-y-2;
 }
 
 .card-borderless {

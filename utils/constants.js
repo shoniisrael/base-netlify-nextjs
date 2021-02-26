@@ -13,6 +13,7 @@ export const SLICE_TYPES = {
   TITLE_AND_FORM: "title_and_form",
   TEXT_AND_FORM: "text_and_form",
   TEXT_COLUMNS: "text_columns",
+  LATEST_POSTS: "latest_posts",
 };
 
 export const SCREEN_SIZES = {

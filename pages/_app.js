@@ -8,10 +8,9 @@ const AppContext = React.createContext();
 
 export default class App extends NextApp {
   render() {
-    const { Component, pageProps, navigation, pages, jobPosts } = this.props;
-
+    const { Component, pageProps, navigation, pages, jobPosts, blogPosts } = this.props;
     return (
-      <AppContext.Provider value={{ pages, jobPosts }}>
+      <AppContext.Provider value={{ pages, jobPosts, blogPosts }}>
         <Component {...pageProps} navigation={navigation} />
       </AppContext.Provider>
     );
@@ -30,12 +29,17 @@ export default class App extends NextApp {
         fetch: ["page.uid", "page.parent"],
       },
     );
+
     const { results: jobPosts } = await Client().query(
       Prismic.Predicates.at("document.type", "job_post"),
     );
 
+    const { results: blogPosts } = await Client().query(
+      Prismic.Predicates.at("document.type", "blog_post"),
+    );
+
     const navigation = await Client(req).getSingle("navigation");
-    return { pageProps, navigation, pages, jobPosts };
+    return { pageProps, navigation, pages, jobPosts, blogPosts };
   }
 }
 

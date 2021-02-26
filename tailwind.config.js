@@ -35,6 +35,9 @@ module.exports = {
           ivory: "#F6F6F5",
         },
       },
+      spacing: {
+        105: "26.25rem",
+      },
       boxShadow: {
         card: "0 0 34px 0 rgba(0,0,0,.08)",
       },

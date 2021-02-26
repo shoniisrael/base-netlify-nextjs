@@ -11,6 +11,7 @@ import FullWidthImageAndText from "./fullWidthImageAndText";
 import TitleAndForm from "./titleAndForm";
 import TextAndForm from "./textAndForm";
 import TextColumns from "./textColumns";
+import LatestPosts from "./latestPosts";
 
 export {
   Hero1,
@@ -26,4 +27,5 @@ export {
   TitleAndForm,
   TextAndForm,
   TextColumns,
+  LatestPosts,
 };

@@ -23,6 +23,10 @@ a {
   @apply p-4 transition duration-500 lg:hover:opacity-80;
 }
 
+.btnCategory {
+  @apply text-lg h-12 bg-transparent hover:bg-secondary text-secondary hover:text-white py-2 px-4 mr-3 mb-3 border border-secondary hover:border-transparent rounded-none;
+}
+
 .btn.filled {
   @apply font-bold text-center text-white border border-solid bg-secondary border-secondary;
 }
@@ -33,6 +37,10 @@ a {
 
 .card {
   @apply bg-white shadow-card rounded-xl;
+}
+
+.hover_translate-y-2 {
+  @apply lg:transform hover:-translate-y-2;
 }
 
 .hover_translate-y-2 {
@@ -279,4 +287,12 @@ li span.custom-check-list:before {
   background-image: url(../public/img/check-circle.svg);
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.cardText > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

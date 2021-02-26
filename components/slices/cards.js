@@ -169,7 +169,7 @@ class Cards extends Component {
                 </div>
               )}
               {hasBigTitle && (
-                <div className="text-center text-4xl font-bold pt-4 capitalize">
+                <div className="text-center text-4xl font-bold pt-4">
                   {RichText.render(bigTitle)}
                 </div>
               )}

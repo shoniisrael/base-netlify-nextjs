@@ -7,8 +7,8 @@ import RoutingUtils from "../utils/routing";
 
 class Document extends Component {
   render() {
-    const { document, navigation, forms } = this.props;
-    return <Page document={document} navigation={navigation} forms={forms} />;
+    const { document, navigation, forms, blogPosts } = this.props;
+    return <Page document={document} navigation={navigation} forms={forms} blogPosts={blogPosts} />;
   }
 }
 

@@ -15,6 +15,7 @@ import {
   TitleAndForm,
   TextAndForm,
   TextColumns,
+  LatestPosts,
 } from "./slices/";
 import JobPostCards from "./slices/jobPostCards";
 
@@ -112,6 +113,12 @@ class Body extends Component {
           return (
             <section>
               <JobPostCards slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.LATEST_POSTS:
+          return (
+            <section key={index}>
+              <LatestPosts slice={slice} />
             </section>
           );
         default:

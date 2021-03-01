@@ -5,8 +5,8 @@ import ResponsiveImage from "../common/responsiveImage";
 import { SCREEN_SIZES, DEFAULT_SPACE_SIZE } from "../../utils/constants.js";
 
 function getSizes(maxWidth, colsMobile, colsTablet) {
-  const largeSize = SCREEN_SIZES.LG.substring(0, SCREEN_SIZES.LG.length - 2);
-  const smallSize = SCREEN_SIZES.SM.substring(0, SCREEN_SIZES.SM.length - 2);
+  const largeSize = parseInt(SCREEN_SIZES.MD);
+  const smallSize = parseInt(SCREEN_SIZES.SM);
   const tablet = getSizeForScreen(largeSize, colsTablet);
   const mobile = getSizeForScreen(smallSize, colsMobile);
   return `(min-width:${SCREEN_SIZES.LG}) ${maxWidth}px, (min-width:${SCREEN_SIZES.SM}) ${tablet}vw, ${mobile}vw`;
@@ -120,17 +120,22 @@ export default class ImagesRow extends Component {
                   className="flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent"
                   key={index}
                 >
-                  <div style={{ width: `${maxWidth}px`, height: `${maxHeight}px` }}>
+                  <div
+                    className="flex flex-col items-center justify-center"
+                    style={{ height: `${maxHeight}px` }}
+                  >
                     <ResponsiveImage
+                      style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}
                       image={icon.image}
                       sizes={sizes}
-                      className={`${animationClasses.image} max-h-full w-auto mx-auto`}
+                      className={`${animationClasses.image} mx-auto object-contain`}
                       options={{ maxWidth, maxHeight }}
                     />
                   </div>
+
                   {display_animation_on_hover && (
                     <div
-                      className={`${backgroundClasses.descriptionColor} ${animationClasses.text} `}
+                      className={`${backgroundClasses.descriptionColor} ${animationClasses.text} max-h-5`}
                     >
                       {icon.image.alt}
                     </div>

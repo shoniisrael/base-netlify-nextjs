@@ -97,7 +97,7 @@ class LatestPosts extends Component {
                   <ResponsiveImage
                     image={image}
                     className={"object-cover h-full w-full"}
-                    sizes="(min-width:1280) 400px, 25vw"
+                    sizes="(min-width:1280) 400px, (min-width:768)25vw, 75vw"
                   />
                 </div>
                 <p className="cardText h-20 my-4 text-xl font-bold text-left w-full overflow-hidden">

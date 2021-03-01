@@ -57,7 +57,7 @@ class TextAndForm extends Component {
     );
   }
   renderForm(padding) {
-    const { slice, forms } = this.props;
+    const { slice, forms, index } = this.props;
     const { primary } = slice;
     const { form_title: formTitle, form_description: formDescription } = primary;
     const { id } = primary.form;
@@ -77,7 +77,7 @@ class TextAndForm extends Component {
           {hasFormDescription && (
             <div className="text-primary-dark px-2 pb-4">{RichText.render(formDescription)}</div>
           )}
-          {form && <Form form={form} />}
+          {form && <Form form={form} index={index} />}
         </div>
       </div>
     );

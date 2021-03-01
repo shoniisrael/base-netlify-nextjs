@@ -75,43 +75,43 @@ class Body extends Component {
           );
         case SLICE_TYPES.BANNER:
           return (
-            <section>
+            <section key={index}>
               <Banner slice={slice} />
             </section>
           );
         case SLICE_TYPES.QUOTES:
           return (
-            <section>
+            <section key={index}>
               <Quotes slice={slice} />
             </section>
           );
         case SLICE_TYPES.FULL_WIDTH_IMAGE_AND_TEXT:
           return (
-            <section>
+            <section key={index}>
               <FullWidthImageAndText slice={slice} />
             </section>
           );
         case SLICE_TYPES.TITLE_AND_FORM:
           return (
-            <section>
-              <TitleAndForm slice={slice} forms={forms} />
+            <section key={index}>
+              <TitleAndForm slice={slice} forms={forms} index={index} />
             </section>
           );
         case SLICE_TYPES.TEXT_AND_FORM:
           return (
-            <section>
-              <TextAndForm slice={slice} forms={forms} />
+            <section key={index}>
+              <TextAndForm slice={slice} forms={forms} index={index} />
             </section>
           );
         case SLICE_TYPES.TEXT_COLUMNS:
           return (
-            <section>
+            <section key={index}>
               <TextColumns slice={slice} forms={forms} />
             </section>
           );
         case SLICE_TYPES.JOB_POST_CARDS:
           return (
-            <section>
+            <section key={index}>
               <JobPostCards slice={slice} />
             </section>
           );

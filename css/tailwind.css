@@ -6,7 +6,8 @@
   @apply text-white;
 }
 
-p > a {
+p > a,
+.text-columns a {
   @apply text-secondary underline;
 }
 

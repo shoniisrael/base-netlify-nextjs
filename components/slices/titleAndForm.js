@@ -9,7 +9,7 @@ const ALIGNMENT = {
 
 class TitleAndForm extends Component {
   render() {
-    const { slice, forms } = this.props;
+    const { slice, forms, index } = this.props;
     const { primary } = slice;
     const {
       small_title: smallTitle,
@@ -37,7 +37,7 @@ class TitleAndForm extends Component {
               <div className="text-xs py-2 lg:text-base">{RichText.render(description)}</div>
             )}
           </div>
-          {form && <Form form={form} />}
+          {form && <Form form={form} index={index} />}
         </div>
       </div>
     );

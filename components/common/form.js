@@ -43,7 +43,7 @@ class Form extends Component {
   }
 
   renderFormFields() {
-    const { form = { data: {} } } = this.props;
+    const { form = { data: {} }, index: formIndex } = this.props;
     const { body: slices = [] } = form.data;
     return slices.map((slice, index) => {
       const { items, primary, slice_type: sliceType } = slice;
@@ -55,8 +55,8 @@ class Form extends Component {
             <span key={index} className={`${width} px-2 inline-block`}>
               <input
                 type={type}
-                id={name}
-                name={name}
+                id={`${name}-${formIndex}`}
+                name={`${name}-${formIndex}`}
                 placeholder={placeholder}
                 className={`w-full p-4 my-2 bg-gray-ivory`}
               />
@@ -65,7 +65,17 @@ class Form extends Component {
         case FORM_FIELD_TYPE.SELECT:
           return (
             <span key={index} className={`${width} px-2 inline-block`}>
-              <select name={`${name}`} id={`${name}`} className="w-full p-4 my-2 bg-gray-ivory">
+              <select
+                name={`${name}-${formIndex}`}
+                id={`${name}-${formIndex}`}
+                required
+                className="w-full p-4 my-2 bg-gray-ivory"
+              >
+                {placeholder && (
+                  <option value="" disabled selected hidden>
+                    {placeholder}
+                  </option>
+                )}
                 {items.map((item, index) => {
                   return <option key={index} value={`${item.value}`}>{`${item.label}`}</option>;
                 })}
@@ -75,8 +85,16 @@ class Form extends Component {
         case FORM_FIELD_TYPE.CHECKBOX:
           return (
             <span key={index} className="flex flex-col my-4 px-2">
-              <input type="checkbox" id={name} name={name} className="hidden" />
-              <label htmlFor={`${name}`} className="checkbox-label flex items-center relative">
+              <input
+                type="checkbox"
+                id={`${name}-${formIndex}`}
+                name={`${name}-${formIndex}`}
+                className="hidden"
+              />
+              <label
+                htmlFor={`${name}-${formIndex}`}
+                className="checkbox-label flex items-center relative"
+              >
                 <span className="devsu-checkbox" />
                 <span className="ml-3">{`${label}`}</span>
               </label>

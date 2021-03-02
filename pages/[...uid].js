@@ -28,6 +28,9 @@ export async function getStaticProps(context) {
       "career_quotes.position",
       "career_quotes.logo",
       "career_quotes.quote",
+      "testimonial.quote",
+      "testimonial.name_and_position",
+      "testimonial.company_logo",
     ],
   });
 

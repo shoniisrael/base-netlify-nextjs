@@ -18,6 +18,7 @@ import {
   LatestPosts,
 } from "./slices/";
 import JobPostCards from "./slices/jobPostCards";
+import Testimonial from "./slices/testimonial";
 
 class Body extends Component {
   render() {
@@ -119,6 +120,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <LatestPosts slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.TESTIMONIALS:
+          return (
+            <section key={index}>
+              <Testimonial slice={slice} />
             </section>
           );
         default:

@@ -177,6 +177,13 @@ a {
   display: block;
 }
 
+.separator-2 {
+  width: 216px;
+  margin: 22px auto;
+  border: 1px solid #a3c412;
+  display: block;
+}
+
 .cards-grid {
   background-image: url(../public/img/oval-left.svg), url(../public/img/oval-right.svg);
   background-position: top 50% left, top 20% right;

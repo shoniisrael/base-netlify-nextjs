@@ -4,7 +4,7 @@ import Footer from "./footer";
 import Header from "./header";
 class Layout extends Component {
   render() {
-    const { children, title, description, navigation } = this.props;
+    const { children, title, description, navigation, headerAndFooterStyle } = this.props;
     return (
       <div>
         <Head>
@@ -20,9 +20,9 @@ class Layout extends Component {
           <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin />
           <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
         </Head>
-        <Header nav={navigation.data.nav} />
+        <Header headerAndFooterStyle={headerAndFooterStyle} nav={navigation.data.nav} />
         {children}
-        <Footer nav={navigation.data.footer} />
+        <Footer headerAndFooterStyle={headerAndFooterStyle} nav={navigation.data.footer} />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { HEADER_AND_FOOTER_STYLE } from "../utils/constants";
 import CustomLink from "./common/customLink";
 class Footer extends Component {
   renderLogoSection() {
@@ -71,6 +72,13 @@ class Footer extends Component {
     });
   }
   render() {
+    const { headerAndFooterStyle } = this.props;
+    if (HEADER_AND_FOOTER_STYLE.SIMPLE === headerAndFooterStyle) {
+      return this.renderSimpleFooter();
+    }
+    return this.renderFooterWithNavigationMenu();
+  }
+  renderFooterWithNavigationMenu() {
     return (
       <footer className="w-full py-10 font-medium bg-primary-dark">
         <div className="container flex flex-col justify-between px-5 mx-auto md:flex-row md:space-x-10">
@@ -81,6 +89,44 @@ class Footer extends Component {
           {this.renderNewsletterSection()}
         </div>
       </footer>
+    );
+  }
+  renderSimpleFooter() {
+    return (
+      <footer className="w-full py-10 font-medium bg-white">
+        <div className="container flex flex-row justify-between px-5 mx-auto md:flex-row md:space-x-10">
+          {this.renderSimpleLogoSection()}
+        </div>
+      </footer>
+    );
+  }
+  renderSimpleLogoSection() {
+    return (
+      <div className="flex flex-col md:flex-row md:justify-between w-full text-center items-center">
+        <a href="/">
+          <img src="/img/logo-devsu.svg" alt="devsu logo" className="h-14" />
+        </a>
+        <div className="py-8">
+          <div className="flex items-center justify-center text-base text-primary-dark w-full">
+            <div className="pr-5">Find us at</div>
+            <div>
+              <a className="hover:bg-white" href="https://www.facebook.com/DevsuSoftware">
+                <img className="h-10" src="/img/facebook_icon_dark_blue.svg" />
+              </a>
+            </div>
+            <div className="mx-4">
+              <a className="hover:text-white" href="https://www.linkedin.com/company/devsu/">
+                <img className="h-10" src="/img/linkedin_icon_dark_blue.svg" />
+              </a>
+            </div>
+            <div>
+              <a className="hover:text-white" href="https://twitter.com/devsullc">
+                <img className="h-10" src="/img/twitter_icon_dark_blue.svg" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

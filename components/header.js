@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import { HEADER_AND_FOOTER_STYLE } from "../utils/constants";
 import MenuEntry from "./navigation/menuEntry";
 import MobileMenuEntry from "./navigation/mobileMenuEntry";
 class Header extends Component {
   render() {
+    const { headerAndFooterStyle } = this.props;
+    if (HEADER_AND_FOOTER_STYLE.SIMPLE === headerAndFooterStyle) {
+      return this.renderSimpleHeader();
+    }
+    return this.renderHeaderWithNavigationMenu();
+  }
+
+  renderHeaderWithNavigationMenu() {
     return (
       <header className="sticky top-0 bg-white z-20 text-primary-dark">
         <nav className="shadow-md relative">
@@ -53,6 +62,29 @@ class Header extends Component {
       </header>
     );
   }
+
+  renderSimpleHeader() {
+    return (
+      <header className="sticky top-0 bg-white z-20 text-primary-dark">
+        <nav className="shadow-md relative">
+          <div className="flex bg-white container justify-center m-auto items-center text-sm lg:text-md">
+            <div className="flex items-center font-medium uppercase center h-24 text-center">
+              <a href="/" className="flex items-center justify-items-center">
+                <img
+                  className="object-contain"
+                  src="/img/logo-devsu.svg"
+                  alt="logo devsu"
+                  width="101"
+                  height="39"
+                />
+              </a>
+            </div>
+          </div>
+        </nav>
+      </header>
+    );
+  }
+
   renderMenu() {
     const { nav } = this.props;
 

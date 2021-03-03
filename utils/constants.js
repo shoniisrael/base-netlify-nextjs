@@ -66,3 +66,8 @@ export const MEDIA_QUERIES = {
   only screen and (                min-resolution: 2dppx)  and (min-width: 768px),
   only screen and (min-width: 1536px)`,
 };
+
+export const HEADER_AND_FOOTER_STYLE = {
+  SIMPLE: "Simple (Without navigation)",
+  NORMAL: "Normal (With navigation)",
+};

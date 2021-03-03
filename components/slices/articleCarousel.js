@@ -6,6 +6,13 @@ import ResponsiveImage from "../common/responsiveImage";
 import Carousel, { Dots } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
+const BG_STYLE = {
+  DOTS_1: "dots1",
+  DOTS_2: "dots2",
+  DOTS_3: "dots3",
+  DOTS_4: "dots4",
+};
+
 class ArticleCarousel extends Component {
   constructor() {
     super();
@@ -29,6 +36,21 @@ class ArticleCarousel extends Component {
     link.isBroken = false;
     return link;
   }
+  getBackgroundStyleClasses(style) {
+    switch (style) {
+      case BG_STYLE.DOTS_1:
+        return "dots1";
+      case BG_STYLE.DOTS_2:
+        return "dots2";
+      case BG_STYLE.DOTS_3:
+        return "dots3";
+      case BG_STYLE.DOTS_4:
+        return "dots4";
+      default:
+        return "";
+    }
+  }
+
   renderCarouselItem(image, title, content, index, generatedLink) {
     return (
       <div key={index} className="w-full flex flex-col md:flex-row">
@@ -62,11 +84,11 @@ class ArticleCarousel extends Component {
       image_header: imageHeader,
       number_of_post: numberOfPost,
     } = slice.primary;
-
+    const backgroundClasses = this.getBackgroundStyleClasses(backgroundStyle);
     const blogPostsArrayReduced = blogPostsArray.slice(0, numberOfPost || 3);
     return (
       <div
-        className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundStyle} bg-primary-aliceBlue`}
+        className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} bg-primary-aliceBlue`}
       >
         <div className=" container mx-auto pt-24 pb-9 px-6 lg:px-20">
           <div className="w-full pb-11">

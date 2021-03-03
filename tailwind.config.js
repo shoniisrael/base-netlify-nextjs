@@ -1,7 +1,13 @@
 module.exports = {
   purge: {
     mode: "all",
-    content: ["./components/**/*.js", "./components/*.js", "./pages/**/*.js", "./pages/*.js"],
+    content: [
+      "./components/**/*.js",
+      "./components/*.js",
+      "./pages/**/*.js",
+      "./pages/*.js",
+      "./node_modules/@brainhubeu/react-carousel/**/*.js",
+    ],
     options: {
       safelist: {
         standard: [/grid-cols-/, "custom-dot-list"],

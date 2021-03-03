@@ -16,9 +16,10 @@ import {
   TextAndForm,
   TextColumns,
   LatestPosts,
+  JobPostCards,
+  ArticleCarousel,
+  Testimonial,
 } from "./slices/";
-import JobPostCards from "./slices/jobPostCards";
-import Testimonial from "./slices/testimonial";
 
 class Body extends Component {
   render() {
@@ -120,6 +121,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <LatestPosts slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.ARTICLE_CAROUSEL:
+          return (
+            <section key={index}>
+              <ArticleCarousel slice={slice} />
             </section>
           );
         case SLICE_TYPES.TESTIMONIALS:

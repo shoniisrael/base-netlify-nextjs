@@ -34,6 +34,7 @@
     ]
   },
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.19.26",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "autoprefixer": "^10.0.4",

@@ -14,6 +14,7 @@ export const SLICE_TYPES = {
   TEXT_AND_FORM: "text_and_form",
   TEXT_COLUMNS: "text_columns",
   LATEST_POSTS: "latest_posts",
+  ARTICLE_CAROUSEL: "article_carousel",
   TESTIMONIALS: "testimonial",
 };
 

@@ -12,6 +12,9 @@ import TitleAndForm from "./titleAndForm";
 import TextAndForm from "./textAndForm";
 import TextColumns from "./textColumns";
 import LatestPosts from "./latestPosts";
+import JobPostCards from "./jobPostCards";
+import ArticleCarousel from "./articleCarousel";
+import Testimonial from "./testimonial";
 
 export {
   Hero1,
@@ -28,4 +31,7 @@ export {
   TextAndForm,
   TextColumns,
   LatestPosts,
+  JobPostCards,
+  ArticleCarousel,
+  Testimonial,
 };

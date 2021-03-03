@@ -36,7 +36,12 @@ module.exports = {
         },
       },
       spacing: {
+        29: "7.75rem",
         105: "26.25rem",
+        106: "27.25rem",
+        107: "29.125rem",
+        108: "34.25rem",
+        109: "43.5rem",
       },
       boxShadow: {
         card: "0 0 34px 0 rgba(0,0,0,.08)",

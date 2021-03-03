@@ -4,7 +4,7 @@ module.exports = {
     content: ["./components/**/*.js", "./components/*.js", "./pages/**/*.js", "./pages/*.js"],
     options: {
       safelist: {
-        standard: [/grid-cols-/],
+        standard: [/grid-cols-/, "custom-dot-list"],
         deep: [/^flat$/],
       },
     },

@@ -15,7 +15,7 @@ class Testimonial extends Component {
         </div>
         <div className="separator-2" />
         <div className="text-center flex flex-col justify-center items-center">
-          <div className="mx-4 md:mx-16 xl:mx-44 text-base lg:text-2xl leading-tight pb-5 text-primary-dark">
+          <div className="font-normal mx-4 md:mx-16 xl:mx-44 text-base lg:text-2xl leading-tight pb-5 text-primary-dark">
             {RichText.render(quote)}
           </div>
           <div className="py-4 text-base">{RichText.render(name_and_position)}</div>

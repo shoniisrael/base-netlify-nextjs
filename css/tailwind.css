@@ -25,7 +25,7 @@ a {
 }
 
 .btnCategory {
-  @apply text-lg h-12 bg-transparent hover:bg-secondary text-secondary hover:text-white py-2 px-4 mr-3 mb-3 border border-secondary hover:border-transparent rounded-none;
+  @apply text-lg h-auto bg-transparent hover:bg-secondary text-secondary hover:text-white py-2 px-4 mr-3 mb-3 border border-secondary hover:border-transparent rounded-none;
 }
 
 .btn.filled {
@@ -37,7 +37,7 @@ a {
 }
 
 .btn.contentBtn {
-  @apply font-bold h-12 bg-transparent px-5 rounded-none items-center content-center w-40 mb-11 flex mr-auto text-base;
+  @apply font-bold h-12 bg-transparent px-5 rounded-none items-center content-center mb-11 flex mr-auto text-base;
 }
 
 .card {
@@ -204,7 +204,12 @@ a {
   border: 1px solid #a3c412;
   display: block;
 }
-
+.separator.no-margin {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0px;
+  margin-right: 0px;
+}
 .cards-grid {
   background-image: url(../public/img/oval-left.svg), url(../public/img/oval-right.svg);
   background-position: top 50% left, top 20% right;

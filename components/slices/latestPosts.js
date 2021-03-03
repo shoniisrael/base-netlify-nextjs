@@ -6,7 +6,7 @@ import ResponsiveImage from "../common/responsiveImage";
 
 class LatestPosts extends Component {
   getBlogWithStyle(showSocialMedia, showCategories) {
-    return showSocialMedia || showCategories ? "w-2/3 " : "w-full";
+    return showSocialMedia || showCategories ? "md:w-2/3" : "md:w-full";
   }
   getSingleBlogWithStyle(showSocialMedia, showCategories) {
     return showSocialMedia || showCategories ? "w-1/2 md:flex-initial md:pr-7" : "w-1/3 md:flex-1";
@@ -14,10 +14,10 @@ class LatestPosts extends Component {
   getBlogSpacingStyle(showSocialMedia, showCategories) {
     return showSocialMedia || showCategories ? "" : "md:space-x-7";
   }
-  getGeneratedLink(id, slug, uid) {
+  getGeneratedLink(id, type, slug, uid) {
     const link = new Object();
     link.id = id;
-    link.type = "blog_post";
+    link.type = type;
     link.tags = ["sprint"];
     link.slug = slug;
     link.lang = "en-us";
@@ -27,12 +27,15 @@ class LatestPosts extends Component {
     return link;
   }
   renderViewMoreButton() {
+    const viewMoreLink = this.getGeneratedLink("sprint", "page", "sprint", "sprint");
     return (
-      <div className="text-right object-right self-start text-2xl md:text-4xl text-primary-dark md:flex-auto">
-        <button className="text-base font-bold h-12 bg-transparent hover:bg-secondary text-secondary hover:text-white px-5 border border-secondary hover:border-transparent rounded-none flex items-center content-center  ml-auto">
-          <span className="mr-2 ">View More Articles </span>
-          <img src="/img/chevron-right.svg" />
-        </button>
+      <div className="flex justify-end w-full md:w-auto">
+        <div className="object-right text-right self-start text-2xl md:text-4xl text-primary-dark">
+          <CustomLink link={viewMoreLink} classes="btn flat contentBtn w-56">
+            <span className="mr-2 ">View More Articles </span>
+            <img className="w-min" src="/img/chevron-right.svg" />
+          </CustomLink>
+        </div>
       </div>
     );
   }
@@ -88,7 +91,12 @@ class LatestPosts extends Component {
     return (
       <div className={`md:flex md:flex-wrap ${spacing}`}>
         {blogPostsArray.map((card, index) => {
-          const generatedLink = this.getGeneratedLink(card.id, card.slugs[0], card.uid);
+          const generatedLink = this.getGeneratedLink(
+            card.id,
+            "blog_post",
+            card.slugs[0],
+            card.uid,
+          );
           const { image, title, content } = card.data;
           return (
             <CustomLink key={index} link={generatedLink} classes={`md:${singleBlogWithStyle}`}>
@@ -137,16 +145,18 @@ class LatestPosts extends Component {
     return (
       <div className="bg-white container mx-auto py-14 px-6 lg:px-20">
         <div className="container flex flex-col  md:px-0 mx-auto">
-          <div className="w-full flex flex-col md:flex-row">
+          <div className="w-full flex flex-col md:flex-row md:justify-between">
             <div className="items-start text-2xl font-bold text-left self-start md:text-4xl text-primary-dark ">
               {RichText.render(gridTitle)}
-              <div className="separator ml-2 mr-auto items-start" />
+              <div className="flex justify-start">
+                <div className="separator no-margin my-4 mx-0 items-start" />
+              </div>
             </div>
             {showButton && this.renderViewMoreButton()}
           </div>
 
           <div className="flex flex-col my-10 md:flex-row w-full h-auto z-10 lg:-top-20 md:pb-20 text-primary-dark">
-            <div className={`md:flex-auto md:${blogWithStyle}`}>
+            <div className={`md:flex-auto w-full ${blogWithStyle}`}>
               {this.renderBlogs(blogPostsArrayReduced, singleBlogWithStyle, blogSpacingStyle)}
             </div>
             {(showSocialMedia || showCategories) && (

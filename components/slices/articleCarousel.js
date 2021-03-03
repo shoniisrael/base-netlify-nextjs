@@ -36,7 +36,7 @@ class ArticleCarousel extends Component {
           <div className="cardText carouselTitle">{RichText.render(title)}</div>
           <p className="cardText carouselText">{content[0].text}</p>
           <div className=" text-2xl md:text-4xl text-primary-dark">
-            <CustomLink link={generatedLink} classes="btn flat contentBtn">
+            <CustomLink link={generatedLink} classes="btn flat contentBtn w-40">
               <span className="mr-2 ">Read More </span>
               <img className="w-min" src="/img/chevron-right.svg" />
             </CustomLink>

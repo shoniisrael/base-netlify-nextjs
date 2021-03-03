@@ -3,6 +3,7 @@ import { RichText } from "prismic-reactjs";
 import CustomLink from "../common/customLink";
 import { useAppContext } from "../../pages/_app";
 import ResponsiveImage from "../common/responsiveImage";
+import SortingUtils from "../../utils/sorting";
 
 class LatestPosts extends Component {
   getBlogWithStyle(showSocialMedia, showCategories) {
@@ -134,13 +135,12 @@ class LatestPosts extends Component {
     const blogWithStyle = this.getBlogWithStyle(showSocialMedia, showCategories);
     const singleBlogWithStyle = this.getSingleBlogWithStyle(showSocialMedia, showCategories);
     const blogSpacingStyle = this.getBlogSpacingStyle(showSocialMedia, showCategories);
-    let blogPostsArrayReduced;
-
-    blogPostsArrayReduced = showFullPost
-      ? blogPostsArray
+    const blogPostsArraySorted = SortingUtils.getArraySortedByPublicationDate(blogPostsArray);
+    const blogPostsArrayReduced = showFullPost
+      ? blogPostsArraySorted
       : showSocialMedia || showCategories
-      ? blogPostsArray.slice(0, 2)
-      : blogPostsArray.slice(0, 3);
+      ? blogPostsArraySorted.slice(0, 2)
+      : blogPostsArraySorted.slice(0, 3);
 
     return (
       <div className="bg-white container mx-auto py-14 px-6 lg:px-20">

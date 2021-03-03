@@ -5,6 +5,7 @@ import CustomLink from "../common/customLink";
 import ResponsiveImage from "../common/responsiveImage";
 import Carousel, { Dots } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
+import SortingUtils from "../../utils/sorting";
 
 const BG_STYLE = {
   DOTS_1: "dots1",
@@ -85,7 +86,8 @@ class ArticleCarousel extends Component {
       number_of_post: numberOfPost,
     } = slice.primary;
     const backgroundClasses = this.getBackgroundStyleClasses(backgroundStyle);
-    const blogPostsArrayReduced = blogPostsArray.slice(0, numberOfPost || 3);
+    const blogPostsArraySorted = SortingUtils.getArraySortedByPublicationDate(blogPostsArray);
+    const blogPostsArrayReduced = blogPostsArraySorted.slice(0, numberOfPost || 3);
     return (
       <div
         className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} bg-primary-aliceBlue`}

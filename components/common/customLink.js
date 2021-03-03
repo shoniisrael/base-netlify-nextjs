@@ -25,7 +25,7 @@ class CustomLink extends Component {
     }
 
     return (
-      <a className={classes} href={linkUrl}>
+      <a className={classes} href={linkUrl} rel="noreferrer" target="_blank">
         {children}
       </a>
     );

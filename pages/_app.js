@@ -3,6 +3,7 @@ import NextApp from "next/app";
 import "../css/styles.css";
 import { Client } from "../prismic-configuration";
 import Prismic from "prismic-javascript";
+import CookieDisclaimer from "../components/common/cookieDisclaimer";
 
 const AppContext = React.createContext();
 
@@ -20,6 +21,7 @@ export default class App extends NextApp {
     return (
       <AppContext.Provider value={{ pages, jobPosts, blogPosts, blogCategories }}>
         <Component {...pageProps} navigation={navigation} />
+        <CookieDisclaimer />
       </AppContext.Provider>
     );
   }

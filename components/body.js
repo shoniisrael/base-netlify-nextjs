@@ -20,6 +20,7 @@ import {
   ArticleCarousel,
   Testimonial,
 } from "./slices/";
+import Suscribe from "./slices/suscribe";
 
 class Body extends Component {
   render() {
@@ -135,6 +136,13 @@ class Body extends Component {
               <Testimonial slice={slice} />
             </section>
           );
+        case SLICE_TYPES.SUSCRIBE:
+          return (
+            <section key={index}>
+              <Suscribe slice={slice} />
+            </section>
+          );
+
         default:
           return <div className="text-red-700 text-3xl">{slice.slice_type} not found</div>;
       }

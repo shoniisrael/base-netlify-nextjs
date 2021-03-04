@@ -31,6 +31,7 @@ module.exports = {
           lightBlue: "#83B2CB",
           lightest: "#E6F3FA",
           aliceBlue: "#F4FAFD",
+          paleBlue: "#EFF7FC",
         },
         secondary: {
           DEFAULT: "#A4C22C",

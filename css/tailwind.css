@@ -163,6 +163,15 @@ a {
   animation: dotsFadeIn 2s;
 }
 
+.dots5 {
+  background-image: url(../public/img/dots5-left-down.svg), url(../public/img/dots3-right-up.svg);
+  background-position: bottom left, top right;
+  background-repeat: no-repeat;
+  background-size: 80vw auto, 80vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
 @media only screen and (min-width: 768px) {
   .dots3 {
     background-image: url(../public/img/dots3-left-up.svg), url(../public/img/dots3-right-up.svg);
@@ -172,10 +181,16 @@ a {
     -webkit-animation: dotsFadeIn 2s;
     animation: dotsFadeIn 2s;
   }
+  .dots5 {
+    background-size: 40vw auto, 40vw auto;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .dots3 {
     background-size: 26vw auto, 45vw auto;
+  }
+  .dots5 {
+    background-size: 30vw auto, 30vw auto;
   }
 }
 
@@ -186,6 +201,9 @@ a {
   }
   .dots3 {
     background-size: 15vw auto, 25vw auto;
+  }
+  .dots5 {
+    background-size: 18vw auto, 18vw auto;
   }
 }
 
@@ -261,6 +279,10 @@ strong {
 
 .custom-input {
   @apply placeholder-white placeholder-opacity-50 border border-solid border-primary focus:outline-none opacity-70 md:text-sm lg:text-base;
+}
+
+.custom-email-input {
+  @apply placeholder-black placeholder-opacity-50 focus:outline-none opacity-70 md:text-sm lg:text-base;
 }
 
 .top-left-shadow {

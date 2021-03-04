@@ -3,17 +3,15 @@ import { RichText } from "prismic-reactjs";
 import CustomLink from "../common/customLink";
 import { useAppContext } from "../../pages/_app";
 import ResponsiveImage from "../common/responsiveImage";
-import SortingUtils from "../../utils/sorting";
 
 class LatestPosts extends Component {
   getBlogWithStyle(showSocialMedia, showCategories) {
     return showSocialMedia || showCategories ? "md:w-2/3" : "md:w-full";
   }
-  getSingleBlogWithStyle(showSocialMedia, showCategories) {
-    return showSocialMedia || showCategories ? "w-1/2 md:flex-initial md:pr-7" : "w-1/3 md:flex-1";
-  }
   getBlogSpacingStyle(showSocialMedia, showCategories) {
-    return showSocialMedia || showCategories ? "" : "md:space-x-7";
+    return showSocialMedia || showCategories
+      ? "md:grid md:grid-cols-2 md:gap-7 md:pr-7"
+      : "md:grid md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-7";
   }
   getGeneratedLink(id, type, slug, uid) {
     const link = new Object();
@@ -74,21 +72,29 @@ class LatestPosts extends Component {
       </div>
     );
   }
-  renderCategories() {
+  renderCategories(blogCategoriesArray) {
     return (
       <div>
         CATEGORIES
         <div className="my-6 flex flex-wrap ">
-          <div className="btnCategory">Design</div>
-          <div className="btnCategory">Featured</div>
-          <div className="btnCategory">iOS</div>
-          <div className="btnCategory">Management</div>
-          <div className="btnCategory">Web Development</div>
+          {blogCategoriesArray.map((card, index) => {
+            const viewMoreLink = this.getGeneratedLink(
+              card.id,
+              "blog_category",
+              card.slugs[0],
+              card.uid,
+            );
+            return (
+              <CustomLink key={index} link={viewMoreLink} classes="btnCategory text-xl">
+                {card.data.name}
+              </CustomLink>
+            );
+          })}
         </div>
       </div>
     );
   }
-  renderBlogs(blogPostsArray, singleBlogWithStyle, spacing) {
+  renderBlogs(blogPostsArray, spacing) {
     return (
       <div className={`md:flex md:flex-wrap ${spacing}`}>
         {blogPostsArray.map((card, index) => {
@@ -100,7 +106,7 @@ class LatestPosts extends Component {
           );
           const { image, title, content } = card.data;
           return (
-            <CustomLink key={index} link={generatedLink} classes={`md:${singleBlogWithStyle}`}>
+            <CustomLink key={index} link={generatedLink}>
               <div className="border overflow-hidden border-gray-100 shadow-sm rounded-md h-105 w-full flex flex-col items-center mb-7">
                 <div className="h-56 w-full">
                   <ResponsiveImage
@@ -123,8 +129,8 @@ class LatestPosts extends Component {
     );
   }
   render() {
-    const { blogPosts: blogPostsArray } = useAppContext();
-    const { slice } = this.props;
+    const { blogPosts: allBlogPostsArray, blogCategories: blogCategoriesArray } = useAppContext();
+    const { slice, blogs: categoryBlogPostArray } = this.props;
     const {
       grid_title: gridTitle,
       show_social_media: showSocialMedia,
@@ -132,15 +138,16 @@ class LatestPosts extends Component {
       number_of_post: showFullPost,
       show_button: showButton,
     } = slice.primary;
-    const blogWithStyle = this.getBlogWithStyle(showSocialMedia, showCategories);
-    const singleBlogWithStyle = this.getSingleBlogWithStyle(showSocialMedia, showCategories);
-    const blogSpacingStyle = this.getBlogSpacingStyle(showSocialMedia, showCategories);
-    const blogPostsArraySorted = SortingUtils.getArraySortedByPublicationDate(blogPostsArray);
+
+    const blogPostsArraySorted = categoryBlogPostArray || allBlogPostsArray;
     const blogPostsArrayReduced = showFullPost
       ? blogPostsArraySorted
       : showSocialMedia || showCategories
       ? blogPostsArraySorted.slice(0, 2)
       : blogPostsArraySorted.slice(0, 3);
+
+    const blogWithStyle = this.getBlogWithStyle(showSocialMedia, showCategories);
+    const blogSpacingStyle = this.getBlogSpacingStyle(showSocialMedia, showCategories);
 
     return (
       <div className="bg-white container mx-auto py-14 px-6 lg:px-20">
@@ -157,12 +164,12 @@ class LatestPosts extends Component {
 
           <div className="flex flex-col my-10 md:flex-row w-full h-auto z-10 lg:-top-20 md:pb-20 text-primary-dark">
             <div className={`md:flex-auto w-full ${blogWithStyle}`}>
-              {this.renderBlogs(blogPostsArrayReduced, singleBlogWithStyle, blogSpacingStyle)}
+              {this.renderBlogs(blogPostsArrayReduced, blogSpacingStyle)}
             </div>
             {(showSocialMedia || showCategories) && (
               <div className="md:flex-auto flex flex-col md:w-1/3">
                 {showSocialMedia && this.renderSocialMedia()}
-                {showCategories && this.renderCategories()}
+                {showCategories && this.renderCategories(blogCategoriesArray)}
               </div>
             )}
           </div>

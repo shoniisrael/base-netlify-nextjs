@@ -5,7 +5,6 @@ import CustomLink from "../common/customLink";
 import ResponsiveImage from "../common/responsiveImage";
 import Carousel, { Dots } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
-import SortingUtils from "../../utils/sorting";
 
 const BG_STYLE = {
   DOTS_1: "dots1",
@@ -78,35 +77,44 @@ class ArticleCarousel extends Component {
     );
   }
   render() {
-    const { blogPosts: blogPostsArray } = useAppContext();
-    const { slice } = this.props;
+    const { blogPosts: allBlogPostsArray } = useAppContext();
+    const { slice, blogs: categoryBlogPostArray } = this.props;
     const {
       background_style: backgroundStyle,
       image_header: imageHeader,
       number_of_post: numberOfPost,
     } = slice.primary;
+
+    const blogPostsArrayReduced = categoryBlogPostArray
+      ? categoryBlogPostArray.slice(0, numberOfPost || 3)
+      : allBlogPostsArray.slice(0, numberOfPost || 3);
+
     const backgroundClasses = this.getBackgroundStyleClasses(backgroundStyle);
-    const blogPostsArraySorted = SortingUtils.getArraySortedByPublicationDate(blogPostsArray);
-    const blogPostsArrayReduced = blogPostsArraySorted.slice(0, numberOfPost || 3);
+
+    const carouselHasContent = blogPostsArrayReduced && numberOfPost;
     return (
-      <div
-        className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} bg-primary-aliceBlue`}
-      >
-        <div className=" container mx-auto pt-24 pb-9 px-6 lg:px-20">
-          <div className="w-full pb-11">
-            <ResponsiveImage image={imageHeader} className="h-11" sizes="195px" />
+      <div>
+        {carouselHasContent && (
+          <div
+            className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} bg-primary-aliceBlue`}
+          >
+            <div className=" container mx-auto pt-24 pb-9 px-6 lg:px-20">
+              <div className="w-full pb-11">
+                <ResponsiveImage image={imageHeader} className="h-11" sizes="195px" />
+              </div>
+              <div className="h-109 md:h-106 lg:h-107 xl:h-108">
+                <Carousel value={this.state.value} onChange={this.onchange} className="mb-24">
+                  {blogPostsArrayReduced.map((card, index) => {
+                    const generatedLink = this.getGeneratedLink(card.id, card.slugs[0], card.uid);
+                    const { image, title, content } = card.data;
+                    return this.renderCarouselItem(image, title, content, index, generatedLink);
+                  })}
+                </Carousel>
+              </div>
+              <Dots value={this.state.value} onChange={this.onchange} number={numberOfPost || 3} />
+            </div>
           </div>
-          <div className="h-109 md:h-106 lg:h-107 xl:h-108">
-            <Carousel value={this.state.value} onChange={this.onchange} className="mb-24">
-              {blogPostsArrayReduced.map((card, index) => {
-                const generatedLink = this.getGeneratedLink(card.id, card.slugs[0], card.uid);
-                const { image, title, content } = card.data;
-                return this.renderCarouselItem(image, title, content, index, generatedLink);
-              })}
-            </Carousel>
-          </div>
-          <Dots value={this.state.value} onChange={this.onchange} number={numberOfPost || 3} />
-        </div>
+        )}
       </div>
     );
   }

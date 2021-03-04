@@ -37,6 +37,9 @@ export const linkResolver = (doc) => {
   if (doc.type === "blog_post") {
     return `sprint/${uid.split("_").join("/")}`;
   }
+  if (doc.type === "blog_category") {
+    return `sprint/category/${uid.split("_").join("/")}`;
+  }
   return "/";
 };
 

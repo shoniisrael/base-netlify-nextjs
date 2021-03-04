@@ -25,7 +25,7 @@ a {
 }
 
 .btnCategory {
-  @apply text-lg h-auto bg-transparent hover:bg-secondary text-secondary hover:text-white py-2 px-4 mr-3 mb-3 border border-secondary hover:border-transparent rounded-none;
+  @apply font-medium h-auto bg-transparent hover:bg-secondary text-secondary hover:text-white py-2 px-4 mr-3 mb-3 border border-secondary hover:border-transparent rounded-none;
 }
 
 .btn.filled {

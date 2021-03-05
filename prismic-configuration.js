@@ -29,16 +29,16 @@ export const linkResolver = (doc) => {
       return "/";
     }
     const result = RoutingUtils.getPath(page, pages);
-    return result.split("_").join("/");
+    return `/${result.split("_").join("/")}`;
   }
   if (doc.type === "job_post") {
-    return `careers/${uid.split("_").join("/")}`;
+    return `/careers/${uid.split("_").join("/")}`;
   }
   if (doc.type === "blog_post") {
-    return `sprint/${uid.split("_").join("/")}`;
+    return `/sprint/${uid.split("_").join("/")}`;
   }
   if (doc.type === "blog_category") {
-    return `sprint/category/${uid.split("_").join("/")}`;
+    return `/sprint/category/${uid.split("_").join("/")}`;
   }
   return "/";
 };

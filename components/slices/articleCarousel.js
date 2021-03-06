@@ -7,6 +7,7 @@ import Carousel, { Dots } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 
 const BG_STYLE = {
+  NONE: "none",
   DOTS_1: "dots1",
   DOTS_2: "dots2",
   DOTS_3: "dots3",
@@ -38,6 +39,8 @@ class ArticleCarousel extends Component {
   }
   getBackgroundStyleClasses(style) {
     switch (style) {
+      case BG_STYLE.NONE:
+        return "";
       case BG_STYLE.DOTS_1:
         return "dots1";
       case BG_STYLE.DOTS_2:
@@ -103,7 +106,12 @@ class ArticleCarousel extends Component {
                 <ResponsiveImage image={imageHeader} className="h-11" sizes="195px" />
               </div>
               <div className="h-109 md:h-106 lg:h-107 xl:h-108">
-                <Carousel value={this.state.value} onChange={this.onchange} className="mb-24">
+                <Carousel
+                  value={this.state.value}
+                  onChange={this.onchange}
+                  plugins={["autoplay"]}
+                  className="mb-24"
+                >
                   {blogPostsArrayReduced.map((card, index) => {
                     const generatedLink = this.getGeneratedLink(card.id, card.slugs[0], card.uid);
                     const { image, title, content } = card.data;

@@ -15,6 +15,7 @@ import LatestPosts from "./latestPosts";
 import JobPostCards from "./jobPostCards";
 import ArticleCarousel from "./articleCarousel";
 import Testimonial from "./testimonial";
+import Suscribe from "./suscribe";
 
 export {
   Hero1,
@@ -34,4 +35,5 @@ export {
   JobPostCards,
   ArticleCarousel,
   Testimonial,
+  Suscribe,
 };

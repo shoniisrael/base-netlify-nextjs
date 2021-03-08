@@ -3,9 +3,9 @@ import { useAppContext } from "../../pages/_app";
 import { RichText } from "prismic-reactjs";
 import CustomLink from "../common/customLink";
 import ResponsiveImage from "../common/responsiveImage";
+import TextUtils from "../../utils/text";
 import Carousel, { Dots } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
-
 const BG_STYLE = {
   NONE: "none",
   DOTS_1: "dots1",
@@ -53,7 +53,6 @@ class ArticleCarousel extends Component {
         return "";
     }
   }
-
   renderCarouselItem(image, title, content, index, generatedLink) {
     return (
       <div key={index} className="w-full flex flex-col md:flex-row">
@@ -79,22 +78,57 @@ class ArticleCarousel extends Component {
       </div>
     );
   }
+  renderHeader(imageTitle, textTitle, headerConfiguration) {
+    return (
+      <div className="w-full pb-11">
+        {headerConfiguration ? (
+          TextUtils.hasRichText(textTitle) && (
+            <div className="text-3xl font-bold text-primary-dark py-4">
+              {RichText.render(textTitle)}
+            </div>
+          )
+        ) : (
+          <ResponsiveImage image={imageTitle} className="h-11" sizes="195px" />
+        )}
+      </div>
+    );
+  }
+  renderCarousel(blogPostsArrayReduced) {
+    return (
+      <div className="h-109 md:h-106 lg:h-107 xl:h-108">
+        <Carousel
+          value={this.state.value}
+          onChange={this.onchange}
+          plugins={["autoplay"]}
+          className="mb-24"
+        >
+          {blogPostsArrayReduced.map((card, index) => {
+            const generatedLink = this.getGeneratedLink(card.id, card.slugs[0], card.uid);
+            const { image, title, content } = card.data;
+            return this.renderCarouselItem(image, title, content, index, generatedLink);
+          })}
+        </Carousel>
+      </div>
+    );
+  }
+
   render() {
     const { blogPosts: allBlogPostsArray } = useAppContext();
     const { slice, blogs: categoryBlogPostArray } = this.props;
     const {
+      text_title: textTitle,
       background_style: backgroundStyle,
-      image_header: imageHeader,
+      image_title: imageTitle,
       number_of_post: numberOfPost,
+      header_configuration: headerConfiguration,
     } = slice.primary;
-
     const blogPostsArrayReduced = categoryBlogPostArray
       ? categoryBlogPostArray.slice(0, numberOfPost || 3)
       : allBlogPostsArray.slice(0, numberOfPost || 3);
 
     const backgroundClasses = this.getBackgroundStyleClasses(backgroundStyle);
-
     const carouselHasContent = blogPostsArrayReduced && numberOfPost;
+
     return (
       <div>
         {carouselHasContent && (
@@ -102,23 +136,8 @@ class ArticleCarousel extends Component {
             className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} bg-primary-aliceBlue`}
           >
             <div className=" container mx-auto pt-24 pb-9 px-6 lg:px-20">
-              <div className="w-full pb-11">
-                <ResponsiveImage image={imageHeader} className="h-11" sizes="195px" />
-              </div>
-              <div className="h-109 md:h-106 lg:h-107 xl:h-108">
-                <Carousel
-                  value={this.state.value}
-                  onChange={this.onchange}
-                  plugins={["autoplay"]}
-                  className="mb-24"
-                >
-                  {blogPostsArrayReduced.map((card, index) => {
-                    const generatedLink = this.getGeneratedLink(card.id, card.slugs[0], card.uid);
-                    const { image, title, content } = card.data;
-                    return this.renderCarouselItem(image, title, content, index, generatedLink);
-                  })}
-                </Carousel>
-              </div>
+              {this.renderHeader(imageTitle, textTitle, headerConfiguration)}
+              {this.renderCarousel(blogPostsArrayReduced)}
               <Dots value={this.state.value} onChange={this.onchange} number={numberOfPost || 3} />
             </div>
           </div>

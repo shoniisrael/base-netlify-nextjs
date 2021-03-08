@@ -2,16 +2,71 @@ import React, { Component } from "react";
 import { Client } from "../../prismic-configuration";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
+import Layout from "../../components/layout";
+import { LatestPosts, Suscribe } from "../../components/slices";
 
 class BlogPost extends Component {
+  getLatestPostSlice() {
+    const slicePrimaryTitle = [{ type: "paragraph", text: "Read more", spans: [] }];
+    const slicePrimary = {
+      grid_title: slicePrimaryTitle,
+      show_button: true,
+      show_social_media: false,
+      show_categories: false,
+      number_of_post: false,
+    };
+    const latestPostsSlice = { primary: slicePrimary };
+    return latestPostsSlice;
+  }
+  getSubscribeSlice() {
+    const slicePrimaryTitle = [{ type: "paragraph", text: "", spans: [] }];
+    const slicePrimary = {
+      grid_title: slicePrimaryTitle,
+      small_description: [
+        {
+          type: "paragraph",
+          text: "Subscribe to our Newsletter",
+          spans: [],
+        },
+      ],
+      big_title: [
+        {
+          type: "paragraph",
+          text: "Get the latest insights on technology right in your inbox",
+          spans: [],
+        },
+      ],
+      type: "Email input",
+      button_label: "Subscribe",
+      button_url: { link_type: "Any" },
+    };
+    const subscribeSlice = { primary: slicePrimary };
+    return subscribeSlice;
+  }
   render() {
-    const { blogPost } = this.props;
-    const { title, content } = blogPost.data;
+    const { blogPost, navigation } = this.props;
+    const latestPostsSlice = this.getLatestPostSlice();
+    const subscribeSlice = this.getSubscribeSlice();
     return (
-      <>
-        <div>{RichText.render(title)}</div>
-        <div>{RichText.render(content)}</div>
-      </>
+      <Layout
+        title={blogPost.data.meta_title}
+        description={blogPost.data.meta_description}
+        navigation={navigation}
+      >
+        <section key={1}>
+          <div>
+            <div>{RichText.render(blogPost.data.title)}</div>
+            <div>{blogPost.first_publication_date}</div>
+            <div>{RichText.render(blogPost.data.content)}</div>
+          </div>
+        </section>
+        <section key={2}>
+          <LatestPosts slice={latestPostsSlice} />
+        </section>
+        <section key={3}>
+          <Suscribe slice={subscribeSlice} />
+        </section>
+      </Layout>
     );
   }
 }

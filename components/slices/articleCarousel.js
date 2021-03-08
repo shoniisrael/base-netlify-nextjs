@@ -97,9 +97,10 @@ class ArticleCarousel extends Component {
     return (
       <div className="h-109 md:h-106 lg:h-107 xl:h-108">
         <Carousel
+          infinite
+          autoPlay={2000}
           value={this.state.value}
           onChange={this.onchange}
-          plugins={["autoplay"]}
           className="mb-24"
         >
           {blogPostsArrayReduced.map((card, index) => {

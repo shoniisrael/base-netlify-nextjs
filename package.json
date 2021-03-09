@@ -5,7 +5,7 @@
     "dev": "run-p env:dev watch:css next:dev",
     "build": "run-s env:prod build:css next:build",
     "next:dev": "next dev",
-    "prenext:build": "rimraf out/",
+    "prenext:build": "node sitemap-generator/index.js && rimraf out/",
     "next:build": "next build",
     "postnext:build": "next export",
     "build:css": "postcss css/tailwind.css -o css/styles.css",
@@ -53,6 +53,7 @@
     "react-dom": "npm:@preact/compat@0.0.3",
     "react-test-renderer": "^17.0.1",
     "sal.js": "^0.8.2",
+    "sitemap": "^6.4.0",
     "styled-jsx": "^3.3.2",
     "tailwindcss": "^2.0.1"
   },

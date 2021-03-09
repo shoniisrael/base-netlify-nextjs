@@ -141,7 +141,7 @@ class LatestPosts extends Component {
 
     const blogPostsArraySorted = categoryBlogPostArray || allBlogPostsArray;
     const blogPostsArrayReduced = showFullPost
-      ? blogPostsArraySorted
+      ? blogPostsArraySorted.slice(0, 15)
       : showSocialMedia || showCategories
       ? blogPostsArraySorted.slice(0, 2)
       : blogPostsArraySorted.slice(0, 3);

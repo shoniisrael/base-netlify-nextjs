@@ -83,7 +83,7 @@ class ArticleCarousel extends Component {
       <div className="w-full pb-11">
         {headerConfiguration ? (
           TextUtils.hasRichText(textTitle) && (
-            <div className="text-3xl font-bold text-primary-dark py-4">
+            <div className="text-4xl md:text-5xl 2xl:text-6xl font-bold text-primary-dark">
               {RichText.render(textTitle)}
             </div>
           )
@@ -136,7 +136,7 @@ class ArticleCarousel extends Component {
           <div
             className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} bg-primary-aliceBlue`}
           >
-            <div className=" container mx-auto pt-24 pb-9 px-6 lg:px-20">
+            <div className=" container mx-auto pt-20 pb-9 px-6 lg:px-20">
               {this.renderHeader(imageTitle, textTitle, headerConfiguration)}
               {this.renderCarousel(blogPostsArrayReduced)}
               <Dots value={this.state.value} onChange={this.onchange} number={numberOfPost || 3} />

@@ -10,7 +10,7 @@ class BlogCategory extends Component {
   }
   getArticleCarouselSlice(categoryName, numberOfPost) {
     const lengthForCarousel = numberOfPost >= 3 ? 3 : numberOfPost;
-    const textTitle = [{ type: "paragraph", text: categoryName, spans: [] }];
+    const textTitle = [{ type: "heading1", text: categoryName, spans: [] }];
     const slicePrimary = {
       hidden_title: textTitle,
       text_title: textTitle,

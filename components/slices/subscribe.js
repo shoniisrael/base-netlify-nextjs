@@ -23,7 +23,7 @@ class Subscribe extends Component {
             <div className={`w-full lg:${textWidth} text-primary-dark`}>
               <div className="pb-2 text-xs uppercase">{RichText.render(smallTitle)}</div>
               <div className="text-base font-medium">{RichText.render(smallDescription)}</div>
-              <div className="pt-3 pb-4 font-bold text-3xl xl:text-4_5xl">
+              <div className="pt-3 pb-4 font-bold text-3xl 2xl:text-4_5xl">
                 {RichText.render(bigTitle)}
               </div>
             </div>
@@ -51,7 +51,7 @@ class Subscribe extends Component {
     return (
       <form action="" className="flex flex-row items-start w-full justify-start">
         <input
-          className="font-medium flex px-5 py-4 mb-8 custom-form-input w-2/3 lg:w-2/3 bg-gray-light lg:mb-0 md:text-sm lg:text-base"
+          className="font-medium border-gray-light border border-solid flex px-5 py-4 mb-8 custom-form-input w-2/3 lg:w-2/3 bg-gray-light lg:mb-0 md:text-sm lg:text-base"
           type="text"
           placeholder="Your email"
         />

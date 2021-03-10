@@ -57,7 +57,7 @@ class Hero1 extends Component {
   renderSmallTitle(bgColor, title) {
     if (TextUtils.hasRichText(title)) {
       const color = this.getSmallTitleColor(bgColor);
-      return <div className={`text-sm uppercase pb-3 ${color}`}>{RichText.render(title)}</div>;
+      return <div className={`text-sm uppercase ${color}`}>{RichText.render(title)}</div>;
     }
   }
 

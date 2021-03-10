@@ -28,7 +28,7 @@ class BlogCategory extends Component {
       show_button: false,
       show_social_media: false,
       show_categories: false,
-      number_of_post: true,
+      number_of_post: 15,
     };
     const latestPostsSlice = { primary: slicePrimary };
     return latestPostsSlice;

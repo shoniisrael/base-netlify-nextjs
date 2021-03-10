@@ -13,7 +13,7 @@ class BlogPost extends Component {
       show_button: true,
       show_social_media: false,
       show_categories: false,
-      number_of_post: false,
+      number_of_post: 3,
     };
     const latestPostsSlice = { primary: slicePrimary };
     return latestPostsSlice;

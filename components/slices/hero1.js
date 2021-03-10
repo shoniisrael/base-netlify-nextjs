@@ -87,7 +87,7 @@ class Hero1 extends Component {
       const textColor = this.getTextColor(bgColor);
 
       return (
-        <div className={`lg:w-5/6 pb-16 lg:text-lg md:px-10 px-8 ${textColor}`}>
+        <div className={`lg:w-5/6 pb-12 lg:text-lg md:px-10 px-8 ${textColor}`}>
           {RichText.render(description)}
         </div>
       );
@@ -137,7 +137,7 @@ class Hero1 extends Component {
             {this.renderBigTitle(bgColor, bigTitle)}
             {separator && <div className="separator" />}
             {this.renderDescription(bgColor, description)}
-            <div>
+            <div className="pt-4">
               <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
             </div>
           </div>

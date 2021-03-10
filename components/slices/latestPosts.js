@@ -135,16 +135,12 @@ class LatestPosts extends Component {
       grid_title: gridTitle,
       show_social_media: showSocialMedia,
       show_categories: showCategories,
-      number_of_post: showFullPost,
+      number_of_post: numberOfPost,
       show_button: showButton,
     } = slice.primary;
-
+    const validatedNumberOfPost = numberOfPost < 1 ? 1 : numberOfPost;
     const blogPostsArraySorted = categoryBlogPostArray || allBlogPostsArray;
-    const blogPostsArrayReduced = showFullPost
-      ? blogPostsArraySorted.slice(0, 15)
-      : showSocialMedia || showCategories
-      ? blogPostsArraySorted.slice(0, 2)
-      : blogPostsArraySorted.slice(0, 3);
+    const blogPostsArrayReduced = blogPostsArraySorted.slice(0, validatedNumberOfPost);
 
     const blogWithStyle = this.getBlogWithStyle(showSocialMedia, showCategories);
     const blogSpacingStyle = this.getBlogSpacingStyle(showSocialMedia, showCategories);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Client } from "../../../prismic-configuration";
 import Prismic from "prismic-javascript";
 import Layout from "../../../components/layout";
-import { ArticleCarousel, LatestPosts, Suscribe } from "../../../components/slices";
+import { ArticleCarousel, LatestPosts, Subscribe } from "../../../components/slices";
 
 class BlogCategory extends Component {
   getCategoryName(blogCategory) {
@@ -77,7 +77,7 @@ class BlogCategory extends Component {
           <LatestPosts slice={latestPostsSlice} blogs={blogsByCategory} />
         </section>
         <section key={3}>
-          <Suscribe slice={subscribeSlice} />
+          <Subscribe slice={subscribeSlice} />
         </section>
       </Layout>
     );

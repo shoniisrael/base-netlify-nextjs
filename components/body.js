@@ -19,8 +19,8 @@ import {
   JobPostCards,
   ArticleCarousel,
   Testimonial,
+  Subscribe,
 } from "./slices/";
-import Suscribe from "./slices/suscribe";
 
 class Body extends Component {
   render() {
@@ -136,10 +136,10 @@ class Body extends Component {
               <Testimonial slice={slice} />
             </section>
           );
-        case SLICE_TYPES.SUSCRIBE:
+        case SLICE_TYPES.SUBSCRIBE:
           return (
             <section key={index}>
-              <Suscribe slice={slice} />
+              <Subscribe slice={slice} />
             </section>
           );
 

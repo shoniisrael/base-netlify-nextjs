@@ -36,7 +36,7 @@ class Form extends Component {
 
     if (TextUtils.hasRichText(footerText))
       return (
-        <div className="text-center w-full px-2 my-5 inline-block a_text-black a_font-bold">
+        <div className="font-medium text-center w-full px-2 my-5 inline-block a_text-black a_font-bold">
           {RichText.render(footerText)}
         </div>
       );
@@ -48,7 +48,7 @@ class Form extends Component {
     return slices.map((slice, index) => {
       const { items, primary, slice_type: sliceType } = slice;
       const { placeholder, type, name, full_width: fullWidth = true, label } = primary;
-      const width = fullWidth ? "w-full" : "w-full  lg:w-1/2";
+      const width = fullWidth ? "w-full" : "w-full lg:w-1/2";
       switch (sliceType) {
         case FORM_FIELD_TYPE.TEXT:
           return (
@@ -58,7 +58,7 @@ class Form extends Component {
                 id={`${name}-${formIndex}`}
                 name={`${name}-${formIndex}`}
                 placeholder={placeholder}
-                className={`w-full p-4 my-2 bg-gray-ivory`}
+                className="w-full p-4 my-2 bg-gray-light custom-form-input"
               />
             </span>
           );
@@ -69,7 +69,7 @@ class Form extends Component {
                 name={`${name}-${formIndex}`}
                 id={`${name}-${formIndex}`}
                 required
-                className="w-full p-4 my-2 bg-gray-ivory"
+                className="w-full p-4 my-2 bg-gray-light custom-form-input"
               >
                 {placeholder && (
                   <option value="" disabled selected hidden>

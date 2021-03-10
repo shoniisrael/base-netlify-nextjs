@@ -3,7 +3,7 @@ import { Client } from "../../prismic-configuration";
 import Prismic from "prismic-javascript";
 import { RichText } from "prismic-reactjs";
 import Layout from "../../components/layout";
-import { LatestPosts, Suscribe } from "../../components/slices";
+import { LatestPosts, Subscribe } from "../../components/slices";
 
 class BlogPost extends Component {
   getLatestPostSlice() {
@@ -64,7 +64,7 @@ class BlogPost extends Component {
           <LatestPosts slice={latestPostsSlice} />
         </section>
         <section key={3}>
-          <Suscribe slice={subscribeSlice} />
+          <Subscribe slice={subscribeSlice} />
         </section>
       </Layout>
     );

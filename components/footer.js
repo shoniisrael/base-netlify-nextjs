@@ -111,17 +111,17 @@ class Footer extends Component {
             <div className="pr-5">Find us at</div>
             <div>
               <a className="hover:bg-white" href="https://www.facebook.com/DevsuSoftware">
-                <img className="h-10" src="/img/facebook2_icon.svg" />
+                <img className="h-6" src="/img/facebook2_icon.svg" />
               </a>
             </div>
             <div className="mx-4">
               <a className="hover:text-white" href="https://twitter.com/devsullc">
-                <img className="h-10" src="/img/twitter2_icon.svg" />
+                <img className="h-6" src="/img/twitter2_icon.svg" />
               </a>
             </div>
             <div>
               <a className="hover:text-white" href="https://www.linkedin.com/company/devsu/">
-                <img className="h-10" src="/img/linkedin2_icon.svg" />
+                <img className="h-6" src="/img/linkedin2_icon.svg" />
               </a>
             </div>
           </div>

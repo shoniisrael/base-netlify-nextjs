@@ -26,7 +26,9 @@ class TitleAndForm extends Component {
         <div className="text-primary-dark px-10 md:px-14 lg:px-28 py-28 container mx-auto max-w-4xl">
           <div className={`${alignment} pb-10`}>
             {TextUtils.hasRichText(smallTitle) && (
-              <div className="text-xs uppercase pb-3">{RichText.render(smallTitle)}</div>
+              <div className="text-xs font-medium uppercase pb-3">
+                {RichText.render(smallTitle)}
+              </div>
             )}
             {TextUtils.hasRichText(bigTitle) && (
               <div className="text-2xl md:text-4xl xl:text-5xl py-4 font-bold">

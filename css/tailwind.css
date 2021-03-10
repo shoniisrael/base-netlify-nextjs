@@ -281,8 +281,8 @@ strong {
   @apply placeholder-white placeholder-opacity-50 border border-solid border-primary focus:outline-none opacity-70 md:text-sm lg:text-base;
 }
 
-.custom-email-input {
-  @apply placeholder-black placeholder-opacity-50 focus:outline-none opacity-70 md:text-sm lg:text-base;
+.custom-form-input {
+  @apply placeholder-black placeholder-opacity-50 focus:outline-none text-sm md:text-lg;
 }
 
 .top-left-shadow {
@@ -297,7 +297,7 @@ strong {
 }
 
 label.checkbox-label::before {
-  background-color: #f6f6f5;
+  background-color: #eaeaea;
   content: "";
   height: 24px;
   width: 24px;

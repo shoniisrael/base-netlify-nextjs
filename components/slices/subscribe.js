@@ -5,7 +5,7 @@ const CONTACT_TYPE = {
   EMAIL: "Email input",
   BUTTON: "Button",
 };
-class Suscribe extends Component {
+class Subscribe extends Component {
   render() {
     const { primary } = this.props.slice;
     const {
@@ -21,9 +21,7 @@ class Suscribe extends Component {
         <div className="bg-primary-paleBlue rounded-xl dots5">
           <div className="px-7 xl:px-20 pt-20 pb-8 xl:pb-16 flex flex-col lg:flex-row">
             <div className={`w-full lg:${textWidth} text-primary-dark`}>
-              <div className="pb-2 text-xs uppercase font-normal">
-                {RichText.render(smallTitle)}
-              </div>
+              <div className="pb-2 text-xs uppercase">{RichText.render(smallTitle)}</div>
               <div className="text-base font-medium">{RichText.render(smallDescription)}</div>
               <div className="pt-3 pb-4 font-bold text-3xl xl:text-4_5xl">
                 {RichText.render(bigTitle)}
@@ -51,17 +49,17 @@ class Suscribe extends Component {
     const { primary } = this.props.slice;
     const { button_label: buttonLabel } = primary;
     return (
-      <form action="" className="flex items-start w-full justify-start">
+      <form action="" className="flex flex-row items-start w-full justify-start">
         <input
-          className="px-5 py-4 mb-8 custom-email-input w-2/3 lg:w-2/3 bg-gray-ivory lg:mb-0 md:text-sm lg:text-base"
+          className="font-medium flex px-5 py-4 mb-8 custom-form-input w-2/3 lg:w-2/3 bg-gray-light lg:mb-0 md:text-sm lg:text-base"
           type="text"
           placeholder="Your email"
         />
-        <button className="btn filled md:text-sm lg:text-base whitespace-nowrap">
+        <button className="flex btn filled md:text-sm lg:text-base whitespace-nowrap">
           {buttonLabel}
         </button>
       </form>
     );
   }
 }
-export default Suscribe;
+export default Subscribe;

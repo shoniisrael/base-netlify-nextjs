@@ -12,7 +12,7 @@ class Layout extends Component {
           <meta name="description" content={description} />
           <meta name="robots" content="noindex"></meta>
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
             rel="stylesheet"
             media="print"
             onLoad="this.media='all'"

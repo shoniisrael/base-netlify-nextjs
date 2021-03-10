@@ -16,7 +16,7 @@ export const SLICE_TYPES = {
   LATEST_POSTS: "latest_posts",
   ARTICLE_CAROUSEL: "article_carousel",
   TESTIMONIALS: "testimonial",
-  SUSCRIBE: "suscribe_section",
+  SUBSCRIBE: "subscribe_section",
 };
 
 export const SCREEN_SIZES = {

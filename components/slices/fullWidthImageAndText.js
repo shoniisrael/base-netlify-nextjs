@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
 import ResponsiveImage from "../common/responsiveImage";
+import TextUtils from "../../utils/text";
 
 const IMAGE_ALIGNMENT = {
   LEFT: "left",
@@ -34,17 +35,25 @@ class FullWidthImageAndText extends Component {
             className={`py-0 md:py-0 md:${imageWidth} h-auto items-start justify-between
           `}
           >
-            <ResponsiveImage image={image} sizes="(min-width:768) 50vw, 100vw" />
+            <ResponsiveImage
+              image={image}
+              sizes="(min-width:768) 50vw, 100vw"
+              className="md:border-secondary md:border-l-4 md:border-solid"
+            />
           </div>
           <div
             className={`py-10 px-11 xl:pl-40 xl:pr-24 xl:pt-16 xl:pb-0 md:${textWidth} text-primary-dark`}
           >
-            <div className={`${titleColor} text-xs uppercase py-2 font-medium`}>
-              {RichText.render(smallTitle)}
-            </div>
-            <div className={`${titleColor} text-4xl capitalize font-bold mb-5`}>
-              {RichText.render(bigTitle)}
-            </div>
+            {TextUtils.hasRichText(smallTitle) && (
+              <div className={`${titleColor} text-xs uppercase py-2 font-medium`}>
+                {RichText.render(smallTitle)}
+              </div>
+            )}
+            {TextUtils.hasRichText(bigTitle) && (
+              <div className={`${titleColor} text-3xl md:text-4xl capitalize font-bold mb-5 pb-6`}>
+                {RichText.render(bigTitle)}
+              </div>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 xl:gap-x-24 2xl:gap-x-32 2xl:pr-32">
               {this.renderRichTextSections()}
             </div>

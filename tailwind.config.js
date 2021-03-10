@@ -53,9 +53,6 @@ module.exports = {
       boxShadow: {
         card: "0 0 34px 0 rgba(0,0,0,.08)",
       },
-      fontSize: {
-        "4_5xl": ["2.625rem", { lineHeight: "1" }],
-      },
     },
   },
   variants: {

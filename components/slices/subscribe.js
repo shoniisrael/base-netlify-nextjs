@@ -23,7 +23,7 @@ class Subscribe extends Component {
             <div className={`w-full lg:${textWidth} text-primary-dark`}>
               <div className="pb-2 text-xs uppercase">{RichText.render(smallTitle)}</div>
               <div className="text-base font-medium">{RichText.render(smallDescription)}</div>
-              <div className="pt-3 pb-4 font-bold text-3xl 2xl:text-4_5xl">
+              <div className="pt-3 pb-4 font-bold text-3xl 2xl:text-4xl">
                 {RichText.render(bigTitle)}
               </div>
             </div>

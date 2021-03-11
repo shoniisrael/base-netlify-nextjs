@@ -23,7 +23,7 @@ class FullWidthImageAndText extends Component {
       big_title: bigTitle,
       image_alignment: imageAlignment,
     } = primary;
-    const bgClasses = "bg-primary-light";
+    const bgClasses = "bg-primary-paleBlue";
     const titleColor = "text-primary-dark";
     const flexStyles = this.getFlexStyles(imageAlignment);
     const imageWidth = "w-1/2";
@@ -42,7 +42,7 @@ class FullWidthImageAndText extends Component {
             />
           </div>
           <div
-            className={`py-10 px-11 xl:pl-40 xl:pr-24 xl:pt-16 xl:pb-0 md:${textWidth} text-primary-dark`}
+            className={`py-10 px-11 2xl:pl-40 2xl:pr-24 xl:pt-16 xl:pb-0 md:${textWidth} text-primary-dark`}
           >
             {TextUtils.hasRichText(smallTitle) && (
               <div className={`${titleColor} text-xs uppercase py-2 font-medium`}>

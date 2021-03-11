@@ -93,7 +93,7 @@ class Footer extends Component {
   }
   renderSimpleFooter() {
     return (
-      <footer className="w-full py-10 font-medium bg-white">
+      <footer className="w-full py-10 md:px-14 lg:px-28 font-medium bg-white">
         <div className="container flex flex-row justify-between px-5 mx-auto md:flex-row md:space-x-10">
           {this.renderSimpleLogoSection()}
         </div>
@@ -110,17 +110,17 @@ class Footer extends Component {
           <div className="flex items-center justify-center text-base text-primary-dark w-full">
             <div className="pr-5">Find us at</div>
             <div>
-              <a className="hover:bg-white" href="https://www.facebook.com/DevsuSoftware">
+              <a href="https://www.facebook.com/DevsuSoftware">
                 <img className="h-6" src="/img/facebook2_icon.svg" />
               </a>
             </div>
             <div className="mx-4">
-              <a className="hover:text-white" href="https://twitter.com/devsullc">
+              <a href="https://twitter.com/devsullc">
                 <img className="h-6" src="/img/twitter2_icon.svg" />
               </a>
             </div>
             <div>
-              <a className="hover:text-white" href="https://www.linkedin.com/company/devsu/">
+              <a href="https://www.linkedin.com/company/devsu/">
                 <img className="h-6" src="/img/linkedin2_icon.svg" />
               </a>
             </div>

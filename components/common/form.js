@@ -9,8 +9,9 @@ const FORM_FIELD_TYPE = {
 };
 class Form extends Component {
   render() {
+    const { form = { data: {} } } = this.props;
     return (
-      <form>
+      <form name={form.uid} method="post">
         {this.renderFormFields()}
         {this.renderSubmitButton()}
         {this.renderFooterText()}
@@ -23,9 +24,11 @@ class Form extends Component {
     const { submit_button_label: submitButtonLabel } = form.data;
     return (
       <span className="w-full px-2 mt-5 inline-block">
-        <button type="button" className="btn filled w-full">
-          <span className="text-xl">{submitButtonLabel}</span>
-        </button>
+        <input
+          type="submit"
+          className="btn filled w-full text-xl cursor-pointer"
+          value={submitButtonLabel}
+        />
       </span>
     );
   }
@@ -58,6 +61,7 @@ class Form extends Component {
                 id={`${name}-${formIndex}`}
                 name={`${name}-${formIndex}`}
                 placeholder={placeholder}
+                required
                 className="w-full p-4 my-2 bg-gray-light custom-form-input"
               />
             </span>

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Client } from "../../prismic-configuration";
 import Prismic from "prismic-javascript";
-import { RichText } from "prismic-reactjs";
 import Layout from "../../components/layout";
-import { LatestPosts, Subscribe } from "../../components/slices";
+import BodyBlog from "../../components/bodyBlog";
 
 class BlogPost extends Component {
   getLatestPostSlice() {
@@ -13,7 +12,7 @@ class BlogPost extends Component {
       show_button: true,
       show_social_media: false,
       show_categories: false,
-      number_of_post: 3,
+      number_of_post: false,
     };
     const latestPostsSlice = { primary: slicePrimary };
     return latestPostsSlice;
@@ -45,28 +44,17 @@ class BlogPost extends Component {
   }
   render() {
     const { blogPost, navigation } = this.props;
-    const latestPostsSlice = this.getLatestPostSlice();
-    const subscribeSlice = this.getSubscribeSlice();
+
     return (
-      <Layout
-        title={blogPost.data.meta_title}
-        description={blogPost.data.meta_description}
-        navigation={navigation}
-      >
-        <section key={1}>
-          <div>
-            <div>{RichText.render(blogPost.data.title)}</div>
-            <div>{blogPost.first_publication_date}</div>
-            <div>{RichText.render(blogPost.data.content)}</div>
-          </div>
-        </section>
-        <section key={2}>
-          <LatestPosts slice={latestPostsSlice} />
-        </section>
-        <section key={3}>
-          <Subscribe slice={subscribeSlice} />
-        </section>
-      </Layout>
+      <>
+        <Layout
+          title={blogPost.data.meta_title}
+          description={blogPost.data.meta_description}
+          navigation={navigation}
+        >
+          <BodyBlog bodyData={blogPost.data} />
+        </Layout>
+      </>
     );
   }
 }

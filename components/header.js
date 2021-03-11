@@ -4,8 +4,8 @@ import MenuEntry from "./navigation/menuEntry";
 import MobileMenuEntry from "./navigation/mobileMenuEntry";
 class Header extends Component {
   render() {
-    const { headerAndFooterStyle } = this.props;
-    if (HEADER_AND_FOOTER_STYLE.SIMPLE === headerAndFooterStyle) {
+    const { headerStyle } = this.props;
+    if (HEADER_AND_FOOTER_STYLE.SIMPLE === headerStyle) {
       return this.renderSimpleHeader();
     }
     return this.renderHeaderWithNavigationMenu();

@@ -72,8 +72,8 @@ class Footer extends Component {
     });
   }
   render() {
-    const { headerAndFooterStyle } = this.props;
-    if (HEADER_AND_FOOTER_STYLE.SIMPLE === headerAndFooterStyle) {
+    const { footerStyle } = this.props;
+    if (HEADER_AND_FOOTER_STYLE.SIMPLE === footerStyle) {
       return this.renderSimpleFooter();
     }
     return this.renderFooterWithNavigationMenu();

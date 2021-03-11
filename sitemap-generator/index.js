@@ -11,6 +11,7 @@ const DOC_TYPES = {
   JOB_POST: "job_post",
   BLOG_POST: "blog_post",
   BLOG_CATEGORY: "blog_category",
+  CASE_STUDIES: "case_studies",
 };
 
 const CHANGE_FREQUENCY = {
@@ -59,6 +60,9 @@ const linkResolver = (doc, pages) => {
   if (doc.type === DOC_TYPES.BLOG_CATEGORY) {
     return `/sprint/category/${uid.split("_").join("/")}`;
   }
+  if (doc.type === DOC_TYPES.CASE_STUDIES) {
+    return `/case_studies/${uid.split("_").join("/")}`;
+  }
   return "/";
 };
 
@@ -70,6 +74,7 @@ const run = async () => {
       DOC_TYPES.JOB_POST,
       DOC_TYPES.BLOG_POST,
       DOC_TYPES.BLOG_CATEGORY,
+      DOC_TYPES.CASE_STUDIES,
     ]),
     {
       pageSize: 100,
@@ -88,6 +93,7 @@ const run = async () => {
     job_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.7 },
     blog_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.9 },
     blog_category: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
+    case_studies: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
   };
 
   docs

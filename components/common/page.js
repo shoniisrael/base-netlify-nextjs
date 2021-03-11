@@ -6,14 +6,15 @@ class Page extends Component {
   render() {
     const { document = {}, navigation, forms } = this.props;
     const { data = {} } = document;
-    const { header_and_footer_style: headerAndFooterStyle } = data;
+    const { header_style: headerStyle, footer_style: footerStyle } = data;
 
     return (
       <Layout
         title={data.meta_title}
         description={data.meta_description}
         navigation={navigation}
-        headerAndFooterStyle={headerAndFooterStyle}
+        headerStyle={headerStyle}
+        footerStyle={footerStyle}
       >
         <Body slices={data.body} forms={forms} />
       </Layout>

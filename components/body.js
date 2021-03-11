@@ -31,7 +31,7 @@ class Body extends Component {
     );
   }
   renderSlices() {
-    const { slices = [], forms, blogContent, blogCategoryContent } = this.props;
+    const { slices = [], forms, blogContent, blogCategoryContent, caseStudy } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:
@@ -160,6 +160,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <BodyBlog bodyData={blogContent} />
+            </section>
+          );
+        case SLICE_TYPES.CASE_STUDY_CONTENT:
+          return (
+            <section key={index}>
+              <Body slices={caseStudy} />
             </section>
           );
         default:

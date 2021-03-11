@@ -16,6 +16,7 @@ import JobPostCards from "./jobPostCards";
 import ArticleCarousel from "./articleCarousel";
 import Testimonial from "./testimonial";
 import Subscribe from "./subscribe";
+import ImageAndForm from "./imageAndForm";
 
 export {
   Hero1,
@@ -36,4 +37,5 @@ export {
   ArticleCarousel,
   Testimonial,
   Subscribe,
+  ImageAndForm,
 };

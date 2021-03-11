@@ -282,7 +282,7 @@ strong {
 }
 
 .custom-form-input {
-  @apply placeholder-black placeholder-opacity-50 focus:outline-none text-sm md:text-lg;
+  @apply placeholder-black placeholder-opacity-50 focus:outline-none text-lg;
 }
 
 .top-left-shadow {
@@ -329,6 +329,25 @@ select:focus {
   background-position: bottom left, top right;
   background-repeat: no-repeat;
   background-size: 30vw auto, 30vw auto;
+}
+
+.blue-top-right-oval-bg {
+  background-image: url(../public/img/oval-top-right-2.svg);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 500vw auto;
+}
+@media only screen and (min-width: 768px) {
+  .blue-top-right-oval-bg {
+    background-position: top left;
+    background-size: 150vw auto;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .blue-top-right-oval-bg {
+    background-position: top right;
+    background-size: 55vw auto;
+  }
 }
 
 .a_text-black a {

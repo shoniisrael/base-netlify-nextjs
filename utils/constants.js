@@ -18,6 +18,7 @@ export const SLICE_TYPES = {
   TESTIMONIALS: "testimonial",
   SUBSCRIBE: "subscribe_section",
   BLOG_CONTENT: "blog_content",
+  IMAGE_AND_FORM: "image_and_form",
   CASE_STUDY_CONTENT: "case_study_content",
 };
 

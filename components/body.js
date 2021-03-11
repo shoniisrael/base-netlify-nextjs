@@ -20,6 +20,7 @@ import {
   ArticleCarousel,
   Testimonial,
   Subscribe,
+  ImageAndForm,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 class Body extends Component {
@@ -160,6 +161,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <BodyBlog bodyData={blogContent} />
+            </section>
+          );
+        case SLICE_TYPES.IMAGE_AND_FORM:
+          return (
+            <section key={index}>
+              <ImageAndForm slice={slice} forms={forms} index={index} />
             </section>
           );
         case SLICE_TYPES.CASE_STUDY_CONTENT:

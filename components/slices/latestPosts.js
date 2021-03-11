@@ -25,13 +25,15 @@ class LatestPosts extends Component {
     link.isBroken = false;
     return link;
   }
-  renderViewMoreButton() {
-    const viewMoreLink = this.getGeneratedLink("sprint", "page", "sprint", "sprint");
+  renderViewMoreButton(buttonLink, buttonLabel, buttonStyle) {
+    if (!buttonLabel) {
+      return <></>;
+    }
     return (
       <div className="flex justify-end w-full md:w-auto">
         <div className="object-right text-right self-start text-2xl md:text-4xl text-primary-dark">
-          <CustomLink link={viewMoreLink} classes="btn flat contentBtn w-56">
-            <span className="mr-2 ">View More Articles </span>
+          <CustomLink link={buttonLink} classes={`btn ${buttonStyle} contentBtn `}>
+            <span className="mr-2 ">{buttonLabel} </span>
             <img className="w-min" src="/img/chevron-right.svg" />
           </CustomLink>
         </div>
@@ -105,21 +107,26 @@ class LatestPosts extends Component {
             card.uid,
           );
           const { image, title, content } = card.data;
+          if (!card) {
+            return <> </>;
+          }
           return (
             <CustomLink key={index} link={generatedLink}>
-              <div className="border overflow-hidden border-gray-100 shadow-sm rounded-md h-105 w-full flex flex-col items-center mb-7">
+              <div className="border overflow-hidden border-gray-100 shadow-md rounded-none h-105 w-full flex flex-col items-center mb-7">
                 <div className="h-56 w-full">
                   <ResponsiveImage
                     image={image}
-                    className={"object-cover h-full w-full"}
+                    className={"object-cover object-left-top h-full w-full"}
                     sizes="(min-width:1280) 400px, (min-width:768)25vw, 75vw"
                   />
                 </div>
-                <p className="cardText h-20 my-4 text-xl font-bold text-left w-full overflow-hidden">
-                  {RichText.render(title)}
-                </p>
-                <div className="cardText text-left w-full overflow-hidden">
-                  <p>{content[0].text}</p>
+                <div className="px-6">
+                  <p className="cardText h-20 my-4 text-xl font-bold text-left w-full overflow-hidden">
+                    {RichText.render(title)}
+                  </p>
+                  <div className="cardText text-left w-full overflow-hidden">
+                    <p>{content[0].text}</p>
+                  </div>
                 </div>
               </div>
             </CustomLink>
@@ -130,16 +137,20 @@ class LatestPosts extends Component {
   }
   render() {
     const { blogPosts: allBlogPostsArray, blogCategories: blogCategoriesArray } = useAppContext();
-    const { slice, blogs: categoryBlogPostArray } = this.props;
+    const { slice, blogCategoryContent: blogCategoryContent } = this.props;
     const {
       grid_title: gridTitle,
       show_social_media: showSocialMedia,
       show_categories: showCategories,
       number_of_post: numberOfPost,
-      show_button: showButton,
+      button_label: buttonLabel,
+      button_link: buttonLink,
+      button_style: buttonStyle,
     } = slice.primary;
     const validatedNumberOfPost = numberOfPost < 1 ? 1 : numberOfPost;
-    const blogPostsArraySorted = categoryBlogPostArray || allBlogPostsArray;
+    const blogPostsArraySorted = blogCategoryContent
+      ? blogCategoryContent.blogsByCategory
+      : allBlogPostsArray;
     const blogPostsArrayReduced = blogPostsArraySorted.slice(0, validatedNumberOfPost);
 
     const blogWithStyle = this.getBlogWithStyle(showSocialMedia, showCategories);
@@ -155,10 +166,10 @@ class LatestPosts extends Component {
                 <div className="separator no-margin my-4 mx-0 items-start" />
               </div>
             </div>
-            {showButton && this.renderViewMoreButton()}
+            {this.renderViewMoreButton(buttonLink, buttonLabel, buttonStyle)}
           </div>
 
-          <div className="flex flex-col my-10 md:flex-row w-full h-auto z-10 lg:-top-20 md:pb-20 text-primary-dark">
+          <div className="flex flex-col mt-10 md:flex-row w-full h-auto z-10 lg:-top-20 text-primary-dark">
             <div className={`md:flex-auto w-full ${blogWithStyle}`}>
               {this.renderBlogs(blogPostsArrayReduced, blogSpacingStyle)}
             </div>

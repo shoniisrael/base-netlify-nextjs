@@ -17,6 +17,7 @@ export const SLICE_TYPES = {
   ARTICLE_CAROUSEL: "article_carousel",
   TESTIMONIALS: "testimonial",
   SUBSCRIBE: "subscribe_section",
+  BLOG_CONTENT: "blog_content",
 };
 
 export const SCREEN_SIZES = {

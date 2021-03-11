@@ -21,7 +21,7 @@ import {
   Testimonial,
   Subscribe,
 } from "./slices/";
-
+import BodyBlog from "./bodyBlog";
 class Body extends Component {
   render() {
     return (
@@ -31,7 +31,7 @@ class Body extends Component {
     );
   }
   renderSlices() {
-    const { slices = [], forms } = this.props;
+    const { slices = [], forms, blogContent, blogCategoryContent } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:
@@ -119,12 +119,26 @@ class Body extends Component {
             </section>
           );
         case SLICE_TYPES.LATEST_POSTS:
+          if (blogCategoryContent) {
+            return (
+              <section key={index}>
+                <LatestPosts slice={slice} blogCategoryContent={blogCategoryContent} />
+              </section>
+            );
+          }
           return (
             <section key={index}>
               <LatestPosts slice={slice} />
             </section>
           );
         case SLICE_TYPES.ARTICLE_CAROUSEL:
+          if (blogCategoryContent) {
+            return (
+              <section key={index}>
+                <ArticleCarousel slice={slice} blogCategoryContent={blogCategoryContent} />
+              </section>
+            );
+          }
           return (
             <section key={index}>
               <ArticleCarousel slice={slice} />
@@ -142,7 +156,12 @@ class Body extends Component {
               <Subscribe slice={slice} />
             </section>
           );
-
+        case SLICE_TYPES.BLOG_CONTENT:
+          return (
+            <section key={index}>
+              <BodyBlog bodyData={blogContent} />
+            </section>
+          );
         default:
           return <div className="text-red-700 text-3xl">{slice.slice_type} not found</div>;
       }

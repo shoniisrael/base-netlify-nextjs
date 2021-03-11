@@ -115,7 +115,7 @@ class ArticleCarousel extends Component {
 
   render() {
     const { blogPosts: allBlogPostsArray } = useAppContext();
-    const { slice, blogs: categoryBlogPostArray } = this.props;
+    const { slice, blogCategoryContent: blogCategoryContent } = this.props;
     const {
       text_title: textTitle,
       background_style: backgroundStyle,
@@ -123,9 +123,11 @@ class ArticleCarousel extends Component {
       number_of_post: numberOfPost,
       header_configuration: headerConfiguration,
     } = slice.primary;
-    const blogPostsArrayReduced = categoryBlogPostArray
-      ? categoryBlogPostArray.slice(0, numberOfPost || 3)
-      : allBlogPostsArray.slice(0, numberOfPost || 3);
+    const headerTitle = blogCategoryContent ? blogCategoryContent.categoryName : textTitle;
+    const blogPostsArraySorted = blogCategoryContent
+      ? blogCategoryContent.blogsByCategory
+      : allBlogPostsArray;
+    const blogPostsArrayReduced = blogPostsArraySorted.slice(0, numberOfPost || 3);
 
     const backgroundClasses = this.getBackgroundStyleClasses(backgroundStyle);
     const carouselHasContent = blogPostsArrayReduced && numberOfPost;
@@ -137,9 +139,13 @@ class ArticleCarousel extends Component {
             className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} bg-primary-aliceBlue`}
           >
             <div className=" container mx-auto pt-20 pb-9 px-6 lg:px-20">
-              {this.renderHeader(imageTitle, textTitle, headerConfiguration)}
+              {this.renderHeader(imageTitle, headerTitle, headerConfiguration)}
               {this.renderCarousel(blogPostsArrayReduced)}
-              <Dots value={this.state.value} onChange={this.onchange} number={numberOfPost || 3} />
+              <Dots
+                value={this.state.value}
+                onChange={this.onchange}
+                number={blogPostsArrayReduced.length}
+              />
             </div>
           </div>
         )}

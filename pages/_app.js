@@ -16,7 +16,7 @@ export default class App extends NextApp {
       pages,
       jobPosts,
       blogPosts,
-      blogCategories,
+      usedBlogCategories: blogCategories,
     } = this.props;
     return (
       <AppContext.Provider value={{ pages, jobPosts, blogPosts, blogCategories }}>
@@ -53,9 +53,20 @@ export default class App extends NextApp {
       Prismic.Predicates.at("document.type", "blog_category"),
       { orderings: "[document.last_publication_date desc]" },
     );
+    let usedBlogCategories = [];
+    blogPosts.forEach((element) => {
+      usedBlogCategories.push(...element.data.categories);
+    });
+    const textUsedBlogCategories = JSON.stringify(usedBlogCategories);
+    usedBlogCategories = [];
+    blogCategories.forEach((element) => {
+      if (textUsedBlogCategories.includes(element.id)) {
+        usedBlogCategories.push(element);
+      }
+    });
 
     const navigation = await Client(req).getSingle("navigation");
-    return { pageProps, navigation, pages, jobPosts, blogPosts, blogCategories };
+    return { pageProps, navigation, pages, jobPosts, blogPosts, usedBlogCategories };
   }
 }
 

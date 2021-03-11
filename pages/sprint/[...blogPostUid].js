@@ -2,59 +2,17 @@ import React, { Component } from "react";
 import { Client } from "../../prismic-configuration";
 import Prismic from "prismic-javascript";
 import Layout from "../../components/layout";
-import BodyBlog from "../../components/bodyBlog";
+import Body from "../../components/body";
 
 class BlogPost extends Component {
-  getLatestPostSlice() {
-    const slicePrimaryTitle = [{ type: "paragraph", text: "Read more", spans: [] }];
-    const slicePrimary = {
-      grid_title: slicePrimaryTitle,
-      show_button: true,
-      show_social_media: false,
-      show_categories: false,
-      number_of_post: false,
-    };
-    const latestPostsSlice = { primary: slicePrimary };
-    return latestPostsSlice;
-  }
-  getSubscribeSlice() {
-    const slicePrimaryTitle = [{ type: "paragraph", text: "", spans: [] }];
-    const slicePrimary = {
-      grid_title: slicePrimaryTitle,
-      small_description: [
-        {
-          type: "paragraph",
-          text: "Subscribe to our Newsletter",
-          spans: [],
-        },
-      ],
-      big_title: [
-        {
-          type: "paragraph",
-          text: "Get the latest insights on technology right in your inbox",
-          spans: [],
-        },
-      ],
-      type: "Email input",
-      button_label: "Subscribe",
-      button_url: { link_type: "Any" },
-    };
-    const subscribeSlice = { primary: slicePrimary };
-    return subscribeSlice;
-  }
   render() {
-    const { blogPost, navigation } = this.props;
-
+    const { blogPost, blogPostsSettings = {}, navigation } = this.props;
+    const { results = {} } = blogPostsSettings;
+    const { data = {} } = results[0];
     return (
-      <>
-        <Layout
-          title={blogPost.data.meta_title}
-          description={blogPost.data.meta_description}
-          navigation={navigation}
-        >
-          <BodyBlog bodyData={blogPost.data} />
-        </Layout>
-      </>
+      <Layout title={data.meta_title} description={data.meta_description} navigation={navigation}>
+        <Body slices={data.body} blogContent={blogPost.data} />
+      </Layout>
     );
   }
 }
@@ -66,9 +24,13 @@ export async function getStaticProps(context) {
   const { blogPostUid } = params;
   const searchableUid = blogPostUid.join("_");
   const blogPost = await Client().getByUID("blog_post", searchableUid);
+  const blogPostsSettings = await Client().query(
+    Prismic.Predicates.at("document.type", "blog_post_settings"),
+  );
   return {
     props: {
       blogPost,
+      blogPostsSettings,
     },
   };
 }

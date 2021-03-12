@@ -42,7 +42,7 @@ class FullWidthImageAndText extends Component {
             />
           </div>
           <div
-            className={`py-10 px-11 2xl:pl-40 2xl:pr-24 xl:pt-16 xl:pb-0 md:${textWidth} text-primary-dark`}
+            className={`py-10 px-11 2xl:pl-40 xl:pr-28 2xl:pt-24 md:${textWidth} text-primary-dark`}
           >
             {TextUtils.hasRichText(smallTitle) && (
               <div className={`${titleColor} text-xs uppercase py-2 font-medium`}>
@@ -54,7 +54,7 @@ class FullWidthImageAndText extends Component {
                 {RichText.render(bigTitle)}
               </div>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 xl:gap-x-24 2xl:gap-x-32 2xl:pr-32">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-10 xl:gap-x-24 2xl:gap-x-32 2xl:pr-32">
               {this.renderRichTextSections()}
             </div>
           </div>
@@ -66,11 +66,11 @@ class FullWidthImageAndText extends Component {
   renderRichTextSections() {
     const { items } = this.props.slice;
     return items.map((section, index) => {
+      const { column_text: columnText, column_title: columnTitle } = section;
       return (
-        <div key={index}>
-          <div className="p_py-3 p_2xl_pb-8 strong_pt-6 text-sm">
-            {RichText.render(section.column_text)}
-          </div>
+        <div className="p_py-3 p_2xl_pb-8 strong_pt-6" key={index}>
+          <div className="2xl:pt-6 font-bold text-base">{RichText.render(columnTitle)}</div>
+          <div className="text-sm">{RichText.render(columnText)}</div>
         </div>
       );
     });

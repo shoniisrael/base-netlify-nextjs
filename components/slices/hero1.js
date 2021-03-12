@@ -15,6 +15,7 @@ const BG_STYLE = {
   DOTS_1: "dots1",
   DOTS_2: "dots2",
   DOTS_3: "dots3",
+  BLUE_OVAL: "blue-oval",
 };
 
 class Hero1 extends Component {
@@ -39,6 +40,8 @@ class Hero1 extends Component {
         return color === BG_COLOR.DARK ? "dots2 dark" : "dots2";
       case BG_STYLE.DOTS_3:
         return "dots3";
+      case BG_STYLE.BLUE_OVAL:
+        return "blue-oval-bg";
       default:
         return "";
     }
@@ -82,12 +85,16 @@ class Hero1 extends Component {
     return bgColor === BG_COLOR.DARK ? "text-white" : "text-primary-dark";
   }
 
-  renderDescription(bgColor, description) {
+  getDescriptionStyle(hasImages) {
+    return hasImages ? "text-lg md:text-xl" : "pb-12 lg:text-lg md:px-10 px-8 ";
+  }
+
+  renderDescription(bgColor, description, hasTitleImage) {
     if (TextUtils.hasRichText(description)) {
       const textColor = this.getTextColor(bgColor);
-
+      const descriptionStyle = this.getDescriptionStyle(hasTitleImage);
       return (
-        <div className={`lg:w-5/6 pb-12 lg:text-lg md:px-10 px-8 ${textColor}`}>
+        <div className={`lg:w-5/6 ${descriptionStyle} ${textColor}`}>
           {RichText.render(description)}
         </div>
       );
@@ -98,10 +105,13 @@ class Hero1 extends Component {
     return hasImages ? "md:pb-6 lg:pb-20" : "";
   }
 
-  getTextContainerPaddingClasses(hasImages) {
+  getTextContainerXPaddingClasses(hasImages) {
     return hasImages ? "lg:px-24" : "";
   }
 
+  getTextContainerYPaddingClasses(hasImages) {
+    return hasImages ? "pt-20 pb-11 md:py-36 lg:py-40" : "py-16 md:py-24 ";
+  }
   render() {
     const { primary } = this.props.slice;
     const {
@@ -110,6 +120,7 @@ class Hero1 extends Component {
       background_style: bgStyle,
       background_color: bgColor,
       small_title: smallTitle,
+      small_title_image: smallTitleImage,
       big_title: bigTitle,
       button_link: buttonLink,
       button_label: buttonLabel,
@@ -119,8 +130,10 @@ class Hero1 extends Component {
     } = primary;
     const backgroundClasses = this.getBackgroundClasses(bgStyle, bgColor);
     const hasImages = this.checkIfSliceHasImages(leftBgImage, rightBgImage);
+    const hasTitleImage = Object.values(smallTitleImage).length;
     const containerPaddingClasses = this.getContainerPaddingClasses(hasImages);
-    const textContainerClasses = this.getTextContainerPaddingClasses(hasImages);
+    const textContainerXClasses = this.getTextContainerXPaddingClasses(hasImages);
+    const textContainerYClasses = this.getTextContainerYPaddingClasses(hasTitleImage);
 
     return (
       <div
@@ -131,12 +144,17 @@ class Hero1 extends Component {
         </div>
         <div className="w-4/5 md:w-4/5 xl:w-3/5 mx-auto z-10">
           <div
-            className={`p_py-2 flex flex-col justify-center items-center text-center py-16 md:py-24 ${textContainerClasses}`}
+            className={`p_py-2 flex flex-col justify-center items-center text-center ${textContainerXClasses} ${textContainerYClasses}`}
           >
+            <ResponsiveImage
+              image={smallTitleImage}
+              className={"p-6"}
+              sizes="(min-width:1280) 48px, 48px"
+            />
             {this.renderSmallTitle(bgColor, smallTitle)}
             {this.renderBigTitle(bgColor, bigTitle)}
             {separator && <div className="separator" />}
-            {this.renderDescription(bgColor, description)}
+            {this.renderDescription(bgColor, description, hasTitleImage)}
             <div className="pt-4">
               <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
             </div>

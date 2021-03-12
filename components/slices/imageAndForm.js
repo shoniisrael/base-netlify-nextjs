@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import TextUtils from "../../utils/text";
 import Form from "../common/form";
 import ResponsiveImage from "../common/responsiveImage";
+import { useAppContext } from "../../pages/_app";
+
 const FORM_ALIGNMENT = {
   LEFT: "left",
   RIGHT: "right",
@@ -39,7 +41,6 @@ class ImageAndForm extends Component {
   renderTextAndImage() {
     const { slice } = this.props;
     const { primary } = slice;
-    console.log(primary);
     const {
       small_title: smallTitle,
       big_title: bigTitle,
@@ -73,7 +74,8 @@ class ImageAndForm extends Component {
     );
   }
   renderForm(padding) {
-    const { slice, forms, index } = this.props;
+    const { slice, index } = this.props;
+    const { forms } = useAppContext();
     const { primary } = slice;
     const { form_title: formTitle, form_description: formDescription } = primary;
     const { id } = primary.form;

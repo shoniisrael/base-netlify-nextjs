@@ -116,7 +116,7 @@ const run = async () => {
   fs.writeFileSync(path.join(__dirname, OUTPUT_DIRECTORY, FILE_NAME), sitemapData, "utf-8");
 
   // Logging
-  console.log("Generated sitemap:\n\n", sitemapData.toString());
+  console.info("Generated sitemap:\n\n", sitemapData.toString());
 };
 
 run();

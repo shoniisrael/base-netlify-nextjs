@@ -2,6 +2,8 @@ import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
 import TextUtils from "../../utils/text";
 import Form from "../common/form";
+import { useAppContext } from "../../pages/_app";
+
 const FORM_ALIGNMENT = {
   LEFT: "left",
   RIGHT: "right",
@@ -57,7 +59,8 @@ class TextAndForm extends Component {
     );
   }
   renderForm(padding) {
-    const { slice, forms, index } = this.props;
+    const { forms } = useAppContext();
+    const { slice, index } = this.props;
     const { primary } = slice;
     const { form_title: formTitle, form_description: formDescription } = primary;
     const { id } = primary.form;

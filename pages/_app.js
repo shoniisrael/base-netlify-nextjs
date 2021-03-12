@@ -17,9 +17,10 @@ export default class App extends NextApp {
       jobPosts,
       blogPosts,
       usedBlogCategories: blogCategories,
+      forms,
     } = this.props;
     return (
-      <AppContext.Provider value={{ pages, jobPosts, blogPosts, blogCategories }}>
+      <AppContext.Provider value={{ pages, jobPosts, blogPosts, blogCategories, forms }}>
         <Component {...pageProps} navigation={navigation} />
         <CookieDisclaimer />
       </AppContext.Provider>
@@ -65,8 +66,10 @@ export default class App extends NextApp {
       }
     });
 
+    const { results: forms } = await Client().query(Prismic.Predicates.at("document.type", "form"));
+
     const navigation = await Client(req).getSingle("navigation");
-    return { pageProps, navigation, pages, jobPosts, blogPosts, usedBlogCategories };
+    return { pageProps, navigation, pages, jobPosts, blogPosts, usedBlogCategories, forms };
   }
 }
 

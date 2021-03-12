@@ -2,6 +2,7 @@ import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
 import TextUtils from "../../utils/text";
 import Form from "../common/form";
+import { useAppContext } from "../../pages/_app";
 
 const ALIGNMENT = {
   LEFT: "left",
@@ -9,7 +10,8 @@ const ALIGNMENT = {
 
 class TitleAndForm extends Component {
   render() {
-    const { slice, forms, index } = this.props;
+    const { forms } = useAppContext();
+    const { slice, index } = this.props;
     const { primary } = slice;
     const {
       small_title: smallTitle,

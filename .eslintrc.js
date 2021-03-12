@@ -12,5 +12,6 @@ module.exports = {
   plugins: ["react"],
   rules: {
     "react/prop-types": ["error", { skipUndeclared: true }],
+    "no-console": [2, { allow: ["warn", "error", "info"] }],
   },
 };

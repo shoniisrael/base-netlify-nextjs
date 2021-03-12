@@ -3,7 +3,6 @@ import { Client } from "../../prismic-configuration";
 import Prismic from "prismic-javascript";
 import Layout from "../../components/layout";
 import Body from "../../components/body";
-
 class CaseStudy extends Component {
   render() {
     const { caseStudy: document, caseStudySettings = {}, navigation } = this.props;

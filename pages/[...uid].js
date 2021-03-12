@@ -7,8 +7,8 @@ import RoutingUtils from "../utils/routing";
 
 class Document extends Component {
   render() {
-    const { document, navigation, forms } = this.props;
-    return <Page document={document} navigation={navigation} forms={forms} />;
+    const { document, navigation } = this.props;
+    return <Page document={document} navigation={navigation} />;
   }
 }
 
@@ -34,11 +34,9 @@ export async function getStaticProps(context) {
     ],
   });
 
-  const { results: forms } = await Client().query(Prismic.Predicates.at("document.type", "form"));
   return {
     props: {
       document,
-      forms,
     },
   };
 }

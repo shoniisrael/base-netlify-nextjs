@@ -32,7 +32,7 @@ class Body extends Component {
     );
   }
   renderSlices() {
-    const { slices = [], forms, blogContent, blogCategoryContent, caseStudy } = this.props;
+    const { slices = [], blogContent, blogCategoryContent, caseStudy } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:
@@ -98,19 +98,19 @@ class Body extends Component {
         case SLICE_TYPES.TITLE_AND_FORM:
           return (
             <section key={index}>
-              <TitleAndForm slice={slice} forms={forms} index={index} />
+              <TitleAndForm slice={slice} index={index} />
             </section>
           );
         case SLICE_TYPES.TEXT_AND_FORM:
           return (
             <section key={index}>
-              <TextAndForm slice={slice} forms={forms} index={index} />
+              <TextAndForm slice={slice} index={index} />
             </section>
           );
         case SLICE_TYPES.TEXT_COLUMNS:
           return (
             <section key={index}>
-              <TextColumns slice={slice} forms={forms} />
+              <TextColumns slice={slice} />
             </section>
           );
         case SLICE_TYPES.JOB_POST_CARDS:
@@ -166,7 +166,7 @@ class Body extends Component {
         case SLICE_TYPES.IMAGE_AND_FORM:
           return (
             <section key={index}>
-              <ImageAndForm slice={slice} forms={forms} index={index} />
+              <ImageAndForm slice={slice} index={index} />
             </section>
           );
         case SLICE_TYPES.CASE_STUDY_CONTENT:

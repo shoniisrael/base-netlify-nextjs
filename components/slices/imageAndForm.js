@@ -47,7 +47,8 @@ class ImageAndForm extends Component {
       big_image: bigImage,
       header_image: headerImage,
     } = primary;
-    const smallTitlePaddingTop = headerImage.url && "pt-10";
+    const hasHeaderImage = headerImage && headerImage.dimensions;
+    const smallTitlePaddingTop = hasHeaderImage && "pt-10";
     return (
       <div className="lg:w-1/2 px-2 lg:pr-14 xl:pr-20 text-primary-dark custom-check-list">
         {headerImage && (

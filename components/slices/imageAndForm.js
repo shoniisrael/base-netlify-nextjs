@@ -52,7 +52,7 @@ class ImageAndForm extends Component {
     return (
       <div className="lg:w-1/2 px-2 lg:pr-14 xl:pr-20 text-primary-dark custom-check-list">
         {headerImage && (
-          <ResponsiveImage image={headerImage} className="h-16 w-auto mb-auto" sizes="150px" />
+          <ResponsiveImage image={headerImage} className="h-14 w-auto mb-auto" sizes="150px" />
         )}
         {TextUtils.hasRichText(smallTitle) && (
           <div className={`${smallTitlePaddingTop} pb-2 text-xs uppercase md:text-sm`}>

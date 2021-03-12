@@ -23,8 +23,8 @@ class ImageAndForm extends Component {
     };
   }
   render() {
-    const { slice } = this.props;
-    const { primary } = slice;
+    const { slice, formConfig } = this.props;
+    const { primary } = formConfig ? formConfig : slice;
     const { form_alignment: alignment } = primary;
     const { flexDirection, padding } = this.getAlignmentClasses(alignment);
     return (
@@ -75,9 +75,9 @@ class ImageAndForm extends Component {
     );
   }
   renderForm(padding) {
-    const { slice, index } = this.props;
+    const { slice, index, formConfig } = this.props;
     const { forms } = useAppContext();
-    const { primary } = slice;
+    const { primary } = formConfig ? formConfig : slice;
     const { form_title: formTitle, form_description: formDescription } = primary;
     const { id } = primary.form;
     const form = id && forms.find((element) => element.id == id);

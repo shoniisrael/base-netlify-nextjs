@@ -115,15 +115,15 @@ class LatestPosts extends Component {
           const hasContent = TextUtils.hasRichText(content);
           return (
             <CustomLink key={index} link={generatedLink}>
-              <div className="border overflow-hidden border-gray-100 shadow-md rounded-none h-105 w-full flex flex-col items-center mb-7">
-                <div className="h-56 w-full">
+              <div className="border overflow-hidden border-gray-100 shadow-md rounded-none w-full flex flex-col items-center mb-7">
+                <div className="w-full">
                   <ResponsiveImage
                     image={image}
                     className={"object-cover object-left-top h-full w-full"}
                     sizes="(min-width:1280) 400px, (min-width:768)25vw, 75vw"
                   />
                 </div>
-                <div className="px-6">
+                <div className="h-52 px-6">
                   {hasTitle && (
                     <p className="cardText h-20 my-4 text-xl font-bold text-left w-full overflow-hidden">
                       {RichText.render(title)}
@@ -164,19 +164,19 @@ class LatestPosts extends Component {
     const blogSpacingStyle = this.getBlogSpacingStyle(showSocialMedia, showCategories);
 
     return (
-      <div className="bg-white container mx-auto py-14 px-6 lg:px-20">
+      <div className="bg-white container mx-auto pt-20 pb-5 px-6 lg:px-20">
         <div className="container flex flex-col  md:px-0 mx-auto">
           <div className="w-full flex flex-col md:flex-row md:justify-between">
             <div className="items-start text-2xl font-bold text-left self-start md:text-4xl text-primary-dark ">
               {RichText.render(gridTitle)}
               <div className="flex justify-start">
-                <div className="separator no-margin my-4 mx-0 items-start" />
+                <div className="separator no-margin my-4 md:h-auto  mx-0 items-start" />
               </div>
             </div>
             {this.renderViewMoreButton(buttonLink, buttonLabel, buttonStyle)}
           </div>
 
-          <div className="flex flex-col mt-10 md:flex-row w-full h-auto z-10 lg:-top-20 text-primary-dark">
+          <div className="flex flex-col mt-7 md:flex-row w-full h-auto z-10 text-primary-dark">
             <div className={`md:flex-auto w-full ${blogWithStyle}`}>
               {this.renderBlogs(blogPostsArrayReduced, blogSpacingStyle)}
             </div>

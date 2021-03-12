@@ -37,7 +37,7 @@ a {
 }
 
 .btn.contentBtn {
-  @apply font-bold h-12 px-5 rounded-none items-center content-center mb-11 flex mr-auto text-base;
+  @apply font-bold h-12 px-5 rounded-none items-center content-center mb-11 md:mb-auto flex mr-auto text-base;
 }
 
 .card {

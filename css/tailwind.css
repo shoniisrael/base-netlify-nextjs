@@ -172,6 +172,15 @@ a {
   animation: dotsFadeIn 2s;
 }
 
+.dots6 {
+  background-image: url(../public/img/dots2-left-up.svg), url(../public/img/dots2-right-down.svg);
+  background-position: top left, bottom right;
+  background-repeat: no-repeat;
+  background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
 @media only screen and (min-width: 768px) {
   .dots3 {
     background-image: url(../public/img/dots3-left-up.svg), url(../public/img/dots3-right-up.svg);
@@ -204,6 +213,9 @@ a {
   }
   .dots5 {
     background-size: 18vw auto, 18vw auto;
+  }
+  .dots6 {
+    background-size: 30vw auto, 30vw auto;
   }
 }
 
@@ -380,6 +392,19 @@ li span.custom-check-list:before {
   background-repeat: no-repeat;
 }
 
+/*! purgecss start ignore */
+li span.custom-dot-list-primary:before {
+  content: "";
+  height: 0;
+  width: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  border: solid 5px #617a88;
+  display: inline-block;
+  margin-right: 8px;
+}
+/*! purgecss end ignore */
+
 .cardText {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -408,100 +433,111 @@ li span.custom-check-list:before {
   width: 19px;
 }
 
-.paragraph {
-  font-size: 20px;
-  text-align: left;
-  height: auto;
-
-  font-stretch: normal;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.67;
-  letter-spacing: 0.11px;
-  color: #617a88;
-}
-
-.paragraph a {
+/*! purgecss start ignore */
+.richtext-content-container a {
   text-decoration: underline;
   color: #a4c22c;
 }
+/*! purgecss end ignore */
 
-.title-2 {
-  font-size: 36px;
-  line-height: 1.21;
-  letter-spacing: -0.2px;
-
-  text-transform: initial;
-  font-weight: 700;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.2;
-  color: #0c3248;
+/*! purgecss start ignore */
+.richtext-content-container .title-2 {
+  @apply text-4xl leading-5 font-bold text-primary-dark text-left;
 }
+/*! purgecss end ignore */
 
-.title-3 {
-  font-size: 2em;
-  line-height: 1.17;
-  letter-spacing: -0.15px;
-  text-transform: initial;
-  font-weight: 700;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.2;
-  color: #0c3248;
-  text-align: left;
-  font-family: "Montserrat", "sans-serif";
+/*! purgecss start ignore */
+.richtext-content-container .title-3 {
+  @apply text-3xl leading-5 font-bold text-primary-dark text-left;
 }
+/*! purgecss end ignore */
 
-.quote {
+/*! purgecss start ignore */
+.richtext-content-container .title-4 {
+  @apply text-2xl leading-tight font-bold text-primary-dark text-left;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.richtext-content-container .title-5 {
+  @apply text-xl lg:text-2xl leading-tight font-bold text-primary-dark text-left;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.richtext-content-container .quote {
   border-left: 4px solid #a4c22c;
   padding: 0 14px 0px 10px;
   margin: 25px 0 25px 20px;
-
   font-stretch: normal;
   font-style: normal;
-  font-weight: 400;
   line-height: 1.67;
   letter-spacing: 0.11px;
   color: #617a88;
   text-align: left;
-  font-size: 1.143em;
   font-weight: 300;
 }
+/*! purgecss end ignore */
 
-.richtext-content-container {
-  justify-content: center;
-  width: 83.33%;
-}
-
+/*! purgecss start ignore */
 .richtext-content-container ul {
-  list-style-type: disc;
-  padding-bottom: 20px;
-  list-style-position: inside;
-  color: #617a88;
+  list-style-type: none;
+  list-style-position: unset;
 }
+/*! purgecss end ignore */
 
+/*! purgecss start ignore */
+.richtext-content-container li span.custom-line-bullets:before {
+  @apply font-bold text-secondary;
+  content: "— ";
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
 .richtext-content-container ol {
   list-style-type: decimal;
   padding-left: 15px;
   text-align: left;
   color: #617a88;
 }
+/*! purgecss end ignore */
 
+/*! purgecss start ignore */
 .richtext-content-container p {
-  margin-top: 40px;
-  margin-bottom: 20px;
+  @apply text-base text-left h-auto text-primary;
+}
+/*! purgecss end ignore */
+
+.p_mt-10 p {
+  @apply mt-10;
 }
 
-.richtext-content-container h2,
-.richtext-content-container h3 {
-  margin-top: 60px;
-  margin-bottom: 20px;
+.p_mb-5 p {
+  @apply mb-5;
 }
 
-@media only screen and (min-width: 1280px) {
-  .richtext-content-container {
-    justify-content: center;
-    width: 50%;
-  }
+.p_text-lg p {
+  @apply text-lg;
+}
+
+.p_leading-relaxed p {
+  @apply leading-relaxed;
+}
+
+.title_mt-14 .title-2,
+.title_mt-14 .title-3,
+.title_mt-14 .title-4,
+.title_mt-14 .title-5 {
+  @apply block mt-14;
+}
+
+.title_mb-5 .title-2,
+.title_mb-5 .title-3,
+.title_mb-5 .title-4,
+.title_mb-5 .title-5 {
+  @apply block mb-5;
+}
+
+.p_lg-text-lg p {
+  @apply lg:text-lg;
 }

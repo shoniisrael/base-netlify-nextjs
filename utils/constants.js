@@ -20,6 +20,7 @@ export const SLICE_TYPES = {
   BLOG_CONTENT: "blog_content",
   IMAGE_AND_FORM: "image_and_form",
   CASE_STUDY_CONTENT: "case_study_content",
+  RICH_TEXT: "rich_text",
 };
 
 export const SCREEN_SIZES = {

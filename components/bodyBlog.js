@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ResponsiveImage from "./common/responsiveImage";
-import RichTextProcessor from "./richText";
 import { RichText } from "prismic-reactjs";
 import TextUtils from "../utils/text";
 import Image from "../components/common/Image";
@@ -9,10 +8,8 @@ const BodyBlog = (props) => {
   const getTitle = (title) => {
     if (TextUtils.hasRichText(title)) {
       return (
-        <div className="richtext-content-container">
-          <div className="pt-9 pb-5 text-3xl font-bold leading-8 text-left text-primary-dark  md:text-4xl lg:text-4xl">
-            {RichText.render(title)}
-          </div>
+        <div className="pt-9 pb-5 text-3xl font-bold leading-8 text-left text-primary-dark  md:text-4xl lg:text-4xl">
+          {RichText.render(title)}
         </div>
       );
     }
@@ -97,9 +94,9 @@ const BodyBlog = (props) => {
 
   const getSocialMediaBar = () => {
     return (
-      <div className="flex justify-end w-10/12 xl:w-3/6 h-20">
+      <div className="flex justify-end w-full h-20">
         <div className="flex text-sm items-center font-normal">
-          <p>SHARE ON SOCIAL</p>
+          <div>SHARE ON SOCIAL</div>
           {getButton()}
         </div>
       </div>
@@ -108,7 +105,7 @@ const BodyBlog = (props) => {
 
   const getPostImage = (image) => {
     return (
-      <div className="pb-9 richtext-content-container">
+      <div className="pb-9">
         <ResponsiveImage image={image} sizes="(min-width:1280) 770px, 90vw" />
       </div>
     );
@@ -123,14 +120,14 @@ const BodyBlog = (props) => {
   const { title, image, content } = props.bodyData;
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mt-10 p_mb-5 w-5/6 lg:w-1/2 mx-auto">
       {getTitle(title)}
 
       {getSocialMediaBar()}
 
       {getPostImage(image)}
 
-      <RichTextProcessor content={content} />
+      {TextUtils.hasRichText(content) && <div>{RichText.render(content)}</div>}
 
       {getSocialMediaBar()}
     </div>

@@ -21,6 +21,7 @@ import {
   Testimonial,
   Subscribe,
   ImageAndForm,
+  RichTextContent,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 class Body extends Component {
@@ -173,6 +174,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <Body slices={caseStudy} />
+            </section>
+          );
+        case SLICE_TYPES.RICH_TEXT:
+          return (
+            <section key={index}>
+              <RichTextContent slice={slice} />
             </section>
           );
         default:

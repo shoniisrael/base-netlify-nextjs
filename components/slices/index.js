@@ -17,6 +17,7 @@ import ArticleCarousel from "./articleCarousel";
 import Testimonial from "./testimonial";
 import Subscribe from "./subscribe";
 import ImageAndForm from "./imageAndForm";
+import RichTextContent from "./richTextContent";
 
 export {
   Hero1,
@@ -38,4 +39,5 @@ export {
   Testimonial,
   Subscribe,
   ImageAndForm,
+  RichTextContent,
 };

@@ -3,6 +3,7 @@ import { RichText } from "prismic-reactjs";
 import CustomLink from "../common/customLink";
 import { useAppContext } from "../../pages/_app";
 import ResponsiveImage from "../common/responsiveImage";
+import TextUtils from "../../utils/text";
 
 class LatestPosts extends Component {
   getBlogWithStyle(showSocialMedia, showCategories) {
@@ -110,6 +111,8 @@ class LatestPosts extends Component {
           if (!card) {
             return <> </>;
           }
+          const hasTitle = TextUtils.hasRichText(title);
+          const hasContent = TextUtils.hasRichText(content);
           return (
             <CustomLink key={index} link={generatedLink}>
               <div className="border overflow-hidden border-gray-100 shadow-md rounded-none h-105 w-full flex flex-col items-center mb-7">
@@ -121,12 +124,16 @@ class LatestPosts extends Component {
                   />
                 </div>
                 <div className="px-6">
-                  <p className="cardText h-20 my-4 text-xl font-bold text-left w-full overflow-hidden">
-                    {RichText.render(title)}
-                  </p>
-                  <div className="cardText text-left w-full overflow-hidden">
-                    <p>{content[0].text}</p>
-                  </div>
+                  {hasTitle && (
+                    <p className="cardText h-20 my-4 text-xl font-bold text-left w-full overflow-hidden">
+                      {RichText.render(title)}
+                    </p>
+                  )}
+                  {hasContent && (
+                    <div className="cardText text-left w-full overflow-hidden ">
+                      <p className="text-primary">{content[0].text}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </CustomLink>

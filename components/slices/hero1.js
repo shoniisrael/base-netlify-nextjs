@@ -130,7 +130,7 @@ class Hero1 extends Component {
     } = primary;
     const backgroundClasses = this.getBackgroundClasses(bgStyle, bgColor);
     const hasImages = this.checkIfSliceHasImages(leftBgImage, rightBgImage);
-    const hasTitleImage = Object.values(smallTitleImage).length;
+    const hasTitleImage = smallTitleImage && Object.values(smallTitleImage).length;
     const containerPaddingClasses = this.getContainerPaddingClasses(hasImages);
     const textContainerXClasses = this.getTextContainerXPaddingClasses(hasImages);
     const textContainerYClasses = this.getTextContainerYPaddingClasses(hasTitleImage);

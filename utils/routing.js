@@ -1,6 +1,6 @@
 export default class RoutingUtils {
-  static getPath(page, pages, childPages = []) {
-    const { parent } = page.data;
+  static getPath(page = { data: {} }, pages, childPages = []) {
+    const { parent = {} } = page.data;
     const { uid: parentUid } = parent;
 
     if (parentUid) {

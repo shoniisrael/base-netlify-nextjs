@@ -1,5 +1,6 @@
 import { RichText } from "prismic-reactjs";
-import React, { Component } from "react";
+import React from "react";
+import { useRouter } from "next/router";
 import TextUtils from "../../utils/text";
 import { Link } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
@@ -10,24 +11,13 @@ const FORM_FIELD_TYPE = {
   SELECT: "select",
   CHECKBOX: "checkbox",
 };
-
-class Form extends Component {
-  render() {
-    const { form = { data: {} } } = this.props;
-    const { redirect_to: redirectToUrl } = form.data;
-    const { pages } = useAppContext();
-    const linkUrl = Link.url({ ...redirectToUrl, pages }, linkResolver);
-    return (
-      <form name={form.uid} method="post" action={linkUrl}>
-        {this.renderFormFields()}
-        {this.renderSubmitButton()}
-        {this.renderFooterText()}
-      </form>
-    );
-  }
-
-  renderSubmitButton() {
-    const { form = { data: {} } } = this.props;
+const Form = (props) => {
+  const { form = { data: {} }, index: formIndex } = props;
+  const { redirect_to: redirectToUrl } = form.data;
+  const { pages } = useAppContext();
+  const linkUrl = Link.url({ ...redirectToUrl, pages }, linkResolver);
+  const router = useRouter();
+  const renderSubmitButton = () => {
     const { submit_button_label: submitButtonLabel } = form.data;
     return (
       <span className="w-full px-2 mt-5 inline-block">
@@ -38,22 +28,18 @@ class Form extends Component {
         />
       </span>
     );
-  }
-
-  renderFooterText() {
-    const { form = { data: {} } } = this.props;
+  };
+  const handleSubmit = () => router.push({ pathname: linkUrl });
+  const renderFooterText = () => {
     const { footer_text: footerText } = form.data;
-
     if (TextUtils.hasRichText(footerText))
       return (
         <div className="font-medium text-center w-full px-2 my-5 inline-block a_text-black a_font-bold">
           {RichText.render(footerText)}
         </div>
       );
-  }
-
-  renderFormFields() {
-    const { form = { data: {} }, index: formIndex } = this.props;
+  };
+  const renderFormFields = () => {
     const { body: slices = [] } = form.data;
     return slices.map((slice, index) => {
       const { items, primary, slice_type: sliceType } = slice;
@@ -113,7 +99,13 @@ class Form extends Component {
           );
       }
     });
-  }
-}
-
+  };
+  return (
+    <form name={form.uid} method="post" onSubmit={handleSubmit}>
+      {renderFormFields()}
+      {renderSubmitButton()}
+      {renderFooterText()}
+    </form>
+  );
+};
 export default Form;

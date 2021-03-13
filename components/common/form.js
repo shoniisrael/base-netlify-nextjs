@@ -1,17 +1,24 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
 import TextUtils from "../../utils/text";
+import { Link } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
+import { useAppContext } from "../../pages/_app";
 
 const FORM_FIELD_TYPE = {
   TEXT: "text_field",
   SELECT: "select",
   CHECKBOX: "checkbox",
 };
+
 class Form extends Component {
   render() {
     const { form = { data: {} } } = this.props;
+    const { redirect_to: redirectToUrl } = form.data;
+    const { pages } = useAppContext();
+    const linkUrl = Link.url({ ...redirectToUrl, pages }, linkResolver);
     return (
-      <form name={form.uid} method="post">
+      <form name={form.uid} method="post" action={linkUrl}>
         {this.renderFormFields()}
         {this.renderSubmitButton()}
         {this.renderFooterText()}

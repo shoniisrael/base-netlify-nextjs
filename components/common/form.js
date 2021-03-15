@@ -102,6 +102,7 @@ const Form = (props) => {
   };
   return (
     <form name={form.uid} method="post" onSubmit={handleSubmit}>
+      <input type="hidden" name="form-name" value={form.uid} />
       {renderFormFields()}
       {renderSubmitButton()}
       {renderFooterText()}

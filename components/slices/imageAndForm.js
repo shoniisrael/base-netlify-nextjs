@@ -14,12 +14,12 @@ class ImageAndForm extends Component {
     if (alignment === FORM_ALIGNMENT.RIGHT) {
       return {
         flexDirection: "lg:flex-row",
-        padding: "2xl:pl-20",
+        padding: "lg:pl-14 xl:pl-20 2xl:pl-40",
       };
     }
     return {
       flexDirection: "lg:flex-row-reverse",
-      padding: "2xl:pr-20",
+      padding: "lg:pr-14 xl:pr-20 2xl:pr-40",
     };
   }
   render() {
@@ -50,7 +50,7 @@ class ImageAndForm extends Component {
     const hasHeaderImage = headerImage && headerImage.dimensions;
     const smallTitlePaddingTop = hasHeaderImage && "pt-10";
     return (
-      <div className="lg:w-1/2 px-2 lg:pr-14 xl:pr-20 text-primary-dark custom-check-list">
+      <div className="lg:w-1/2 px-2 text-primary-dark custom-check-list">
         {headerImage && (
           <ResponsiveImage image={headerImage} className="h-14 w-auto mb-auto" sizes="150px" />
         )}

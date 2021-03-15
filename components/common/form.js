@@ -1,6 +1,5 @@
 import { RichText } from "prismic-reactjs";
 import React from "react";
-import { useRouter } from "next/router";
 import TextUtils from "../../utils/text";
 import { Link } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
@@ -16,7 +15,6 @@ const Form = (props) => {
   const { redirect_to: redirectToUrl } = form.data;
   const { pages } = useAppContext();
   const linkUrl = Link.url({ ...redirectToUrl, pages }, linkResolver);
-  const router = useRouter();
   const renderSubmitButton = () => {
     const { submit_button_label: submitButtonLabel } = form.data;
     return (
@@ -29,7 +27,7 @@ const Form = (props) => {
       </span>
     );
   };
-  const handleSubmit = () => router.push(linkUrl);
+
   const renderFooterText = () => {
     const { footer_text: footerText } = form.data;
     if (TextUtils.hasRichText(footerText))
@@ -101,7 +99,7 @@ const Form = (props) => {
     });
   };
   return (
-    <form name={form.uid} method="post" onSubmit={handleSubmit}>
+    <form name={form.uid} method="post" action={linkUrl}>
       <input type="hidden" name="form-name" value={form.uid} />
       {renderFormFields()}
       {renderSubmitButton()}

@@ -24,8 +24,8 @@ const CHANGE_FREQUENCY = {
 const OUTPUT_DIRECTORY = "../public";
 const FILE_NAME = "sitemap.xml";
 
-const getPath = (page, pages, childPages = []) => {
-  const { parent } = page.data;
+const getPath = (page = { data: {} }, pages, childPages = []) => {
+  const { parent = {} } = page.data;
   const { uid: parentUid } = parent;
 
   if (parentUid) {

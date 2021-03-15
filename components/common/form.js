@@ -29,7 +29,7 @@ const Form = (props) => {
       </span>
     );
   };
-  const handleSubmit = () => router.push({ pathname: linkUrl });
+  const handleSubmit = () => router.push(linkUrl);
   const renderFooterText = () => {
     const { footer_text: footerText } = form.data;
     if (TextUtils.hasRichText(footerText))

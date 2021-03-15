@@ -99,7 +99,7 @@ const Form = (props) => {
     });
   };
   return (
-    <form netlify name={form.uid} method="post" action={linkUrl}>
+    <form netlify id={form.uid} method="post" action={linkUrl}>
       <input type="hidden" name="form-name" value={form.uid} />
       {renderFormFields()}
       {renderSubmitButton()}

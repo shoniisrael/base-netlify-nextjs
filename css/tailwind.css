@@ -442,25 +442,25 @@ li span.custom-dot-list-primary:before {
 
 /*! purgecss start ignore */
 .richtext-content-container .title-2 {
-  @apply text-4xl leading-5 font-bold text-primary-dark text-left;
+  @apply text-4xl font-bold text-primary-dark text-left;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
 .richtext-content-container .title-3 {
-  @apply text-3xl leading-5 font-bold text-primary-dark text-left;
+  @apply text-3xl font-bold text-primary-dark text-left;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
 .richtext-content-container .title-4 {
-  @apply text-2xl leading-tight font-bold text-primary-dark text-left;
+  @apply text-2xl font-bold text-primary-dark text-left;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
 .richtext-content-container .title-5 {
-  @apply text-xl lg:text-2xl leading-tight font-bold text-primary-dark text-left;
+  @apply text-xl lg:text-2xl font-bold text-primary-dark text-left;
 }
 /*! purgecss end ignore */
 
@@ -524,20 +524,26 @@ li span.custom-dot-list-primary:before {
   @apply leading-relaxed;
 }
 
+/*! purgecss start ignore */
 .title_mt-14 .title-2,
 .title_mt-14 .title-3,
 .title_mt-14 .title-4,
 .title_mt-14 .title-5 {
   @apply block mt-14;
 }
+/*! purgecss end ignore */
 
+/*! purgecss start ignore */
 .title_mb-5 .title-2,
 .title_mb-5 .title-3,
 .title_mb-5 .title-4,
 .title_mb-5 .title-5 {
   @apply block mb-5;
 }
+/*! purgecss end ignore */
 
+/*! purgecss start ignore */
 .p_lg-text-lg p {
   @apply lg:text-lg;
 }
+/*! purgecss end ignore */

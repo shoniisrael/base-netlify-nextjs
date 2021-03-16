@@ -16,7 +16,7 @@ class RichTextContent extends Component {
             </div>
           )}
           {TextUtils.hasRichText(richText) && (
-            <div className="p_leading-relaxed richtext-content-container title_mt-14 title_mb-5 text-base p_lg-text-lg 6 p_mb-14">
+            <div className="p_leading-relaxed richtext-content-container title_mt-14 title_mb-5 text-base p_lg-text-lg">
               {RichText.render(richText)}
             </div>
           )}

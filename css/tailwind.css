@@ -508,6 +508,13 @@ li span.custom-dot-list-primary:before {
 }
 /*! purgecss end ignore */
 
+/*! purgecss start ignore */
+.richtext-content-container p:empty::after {
+  content: "\A";
+  white-space: pre;
+}
+/*! purgecss end ignore */
+
 .p_mt-10 p {
   @apply mt-10;
 }

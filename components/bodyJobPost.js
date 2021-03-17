@@ -19,7 +19,7 @@ const bodyJobPost = (props) => {
   const renderDescription = (description) => {
     if (TextUtils.hasRichText(description)) {
       return (
-        <div className="text-primary py-12 richtext-content-container">
+        <div className="text-primary py-12 richtext-content-container font-medium">
           {RichText.render(description)}
         </div>
       );
@@ -55,11 +55,14 @@ const bodyJobPost = (props) => {
       button_link: buttonLink,
       button_style: buttonStyle,
     } = props.bodyData;
+    const buttonUnderline = `no-underline ${buttonStyle}`;
     return (
-      <div className="flex flex-col p_text-lg text-lg richtext-content-container title_mt-14 title_mb-5 p_mt-10 p_mb-5 ul_mt-7 ul_mb-5 mx-auto">
-        {RichText.render(content)}
+      <div className="flex flex-col mx-auto">
+        <div className="p_text-lg text-lg richtext-content-container title_mt-14 title_mb-5 p_mt-10 p_mb-5 ul_mt-7 ul_mb-5 font-medium">
+          {RichText.render(content)}
+        </div>
         <div className="pt-8">
-          <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+          <Button link={buttonLink} label={buttonLabel} style={buttonUnderline} />
         </div>
       </div>
     );

@@ -522,6 +522,13 @@ li span.custom-dot-list-primary:before {
 .p_mb-5 p {
   @apply mb-5;
 }
+.ul_mt-7 ul {
+  @apply mt-7;
+}
+
+.ul_mb-5 ul {
+  @apply mb-5;
+}
 
 .p_text-lg p {
   @apply text-lg;

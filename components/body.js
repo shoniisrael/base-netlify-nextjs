@@ -24,6 +24,7 @@ import {
   RichTextContent,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
+import BodyJobPost from "./bodyJobPost";
 class Body extends Component {
   render() {
     return (
@@ -33,7 +34,14 @@ class Body extends Component {
     );
   }
   renderSlices() {
-    const { slices = [], blogContent, blogCategoryContent, caseStudy, form } = this.props;
+    const {
+      slices = [],
+      blogContent,
+      jobPostContent,
+      blogCategoryContent,
+      caseStudy,
+      form,
+    } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
         case SLICE_TYPES.HERO_1:
@@ -162,6 +170,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <BodyBlog bodyData={blogContent} />
+            </section>
+          );
+        case SLICE_TYPES.JOB_POST_CONTENT:
+          return (
+            <section key={index}>
+              <BodyJobPost bodyData={jobPostContent} />
             </section>
           );
         case SLICE_TYPES.IMAGE_AND_FORM:

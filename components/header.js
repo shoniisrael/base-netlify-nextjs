@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { HEADER_AND_FOOTER_STYLE } from "../utils/constants";
 import MenuEntry from "./navigation/menuEntry";
 import MobileMenuEntry from "./navigation/mobileMenuEntry";
+import Button from "./common/button";
 class Header extends Component {
   render() {
     const { headerStyle } = this.props;
@@ -12,26 +13,40 @@ class Header extends Component {
   }
 
   renderHeaderWithNavigationMenu() {
+    const buttonLink = new Object();
+    buttonLink.id = "contact-us";
+    buttonLink.type = "page";
+    buttonLink.tags = ["contact-us"];
+    buttonLink.slug = "contact-us";
+    buttonLink.lang = "en-us";
+    buttonLink.uid = "contact-us";
+    buttonLink.link_type = "Document";
+    buttonLink.isBroken = false;
     return (
       <header className="sticky top-0 bg-white z-20 text-primary-dark">
         <nav className="shadow-md relative">
           <div className="hidden lg:flex top-0 bg-white container m-auto px-5 items-center justify-between text-sm lg:text-md">
-            <div className="flex">
-              <a href="/" className="flex items-center">
-                <img
-                  className="mr-5 object-contain"
-                  src="/img/logo-devsu.svg"
-                  alt="logo devsu"
-                  width="101"
-                  height="39"
-                />
-              </a>
-              <ul
-                className="flex items-center font-medium uppercase h-24"
-                style="font-family:sans-serif"
-              >
-                {this.renderMenu()}
-              </ul>
+            <div className="flex justify-between w-full">
+              <div className="flex">
+                <a href="/" className="flex items-center">
+                  <img
+                    className="mr-5 object-contain"
+                    src="/img/logo-devsu.svg"
+                    alt="logo devsu"
+                    width="101"
+                    height="39"
+                  />
+                </a>
+                <ul
+                  className="flex items-center font-medium uppercase h-24"
+                  style="font-family:sans-serif"
+                >
+                  {this.renderMenu()}
+                </ul>
+              </div>
+              <div className="flex items-center">
+                <Button link={buttonLink} label={"Let's Talk"} style={"filled"} />
+              </div>
             </div>
           </div>
           <div className="lg:hidden">
@@ -92,6 +107,7 @@ class Header extends Component {
       return <MenuEntry key={index} menuEntry={menuEntry} />;
     });
   }
+
   renderMobileMenu() {
     const { nav } = this.props;
 

@@ -8,7 +8,7 @@ const BodyBlog = (props) => {
   const getTitle = (title) => {
     if (TextUtils.hasRichText(title)) {
       return (
-        <div className="pt-9 pb-5 text-3xl font-bold leading-8 text-left text-primary-dark  md:text-4xl lg:text-4xl">
+        <div className="w-full pt-14 pb-10 text-3xl font-bold leading-8 text-left text-primary-dark  md:text-4xl lg:text-4xl capitalize">
           {RichText.render(title)}
         </div>
       );
@@ -84,7 +84,7 @@ const BodyBlog = (props) => {
         onMouseEnter={() => setIsShownSocialMediaMenu(true)}
         onMouseLeave={() => setIsShownSocialMediaMenu(false)}
       >
-        <div className="w-20 h-7 border-secondary border text-secondary hover:bg-secondary hover:text-white text-center pt-1 pl-1 relative">
+        <div className="w-20 h-7 border-secondary border text-secondary hover:bg-secondary hover:text-white text-center pt-1 pl-1">
           Share
         </div>
         {getMenuSocialMedia(isShownSocialMediaMenu)}
@@ -105,7 +105,7 @@ const BodyBlog = (props) => {
 
   const getPostImage = (image) => {
     return (
-      <div className="pb-9">
+      <div className="pb-9 w-full">
         <ResponsiveImage image={image} sizes="(min-width:1280) 770px, 90vw" />
       </div>
     );
@@ -120,7 +120,7 @@ const BodyBlog = (props) => {
   const { title, image, content } = props.bodyData;
 
   return (
-    <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mt-10 p_mb-5 w-5/6 lg:w-1/2 mx-auto">
+    <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 w-5/6 lg:w-5/6 mx-auto sm:w-4/5 md:w-10/12 2xl:w-1/2">
       {getTitle(title)}
 
       {getSocialMediaBar()}

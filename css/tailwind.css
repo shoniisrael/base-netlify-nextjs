@@ -399,9 +399,10 @@ li span.custom-dot-list-primary:before {
   width: 0;
   background-color: #fff;
   border-radius: 50%;
-  border: solid 5px #617a88;
+  border: solid 3px #617a88;
   display: inline-block;
   margin-right: 8px;
+  margin-bottom: 2px;
 }
 /*! purgecss end ignore */
 
@@ -442,13 +443,13 @@ li span.custom-dot-list-primary:before {
 
 /*! purgecss start ignore */
 .richtext-content-container .title-2 {
-  @apply text-4xl font-bold text-primary-dark text-left;
+  @apply text-4xl font-bold text-primary-dark text-left sm:leading-10 sm:text-3xl;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
 .richtext-content-container .title-3 {
-  @apply text-3xl font-bold text-primary-dark text-left;
+  @apply text-3xl leading-5 font-bold text-primary-dark text-left sm:text-2xl;
 }
 /*! purgecss end ignore */
 
@@ -465,17 +466,8 @@ li span.custom-dot-list-primary:before {
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.richtext-content-container .quote {
-  border-left: 4px solid #a4c22c;
-  padding: 0 14px 0px 10px;
-  margin: 25px 0 25px 20px;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.67;
-  letter-spacing: 0.11px;
-  color: #617a88;
-  text-align: left;
-  font-weight: 300;
+.richtext-content-container p > .quote {
+  @apply block border-l-4 border-secondary pl-2 ml-5;
 }
 /*! purgecss end ignore */
 
@@ -504,7 +496,7 @@ li span.custom-dot-list-primary:before {
 
 /*! purgecss start ignore */
 .richtext-content-container p {
-  @apply text-base text-left h-auto text-primary;
+  @apply text-base text-left h-auto text-primary w-full;
 }
 /*! purgecss end ignore */
 
@@ -514,10 +506,6 @@ li span.custom-dot-list-primary:before {
   white-space: pre;
 }
 /*! purgecss end ignore */
-
-.p_mt-10 p {
-  @apply mt-10;
-}
 
 .p_mb-5 p {
   @apply mb-5;
@@ -559,5 +547,17 @@ li span.custom-dot-list-primary:before {
 /*! purgecss start ignore */
 .p_lg-text-lg p {
   @apply lg:text-lg;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.richtext-content-container .footer-text-1 {
+  @apply block border-primary border-t-2 pt-14 w-full;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.richtext-content-container .footer-text-2 {
+  @apply border-primary border-t-2 pt-5 w-7;
 }
 /*! purgecss end ignore */

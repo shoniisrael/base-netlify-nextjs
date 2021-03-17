@@ -4,14 +4,12 @@ import CustomLink from "./common/customLink";
 class Footer extends Component {
   renderLogoSection() {
     return (
-      <div className="flex flex-col items-center md:items-start">
+      <div className="md:w-3/12 lg:w-2/12 flex flex-col items-center md:items-start pb-5">
         <a href="/">
           <img src="/img/devsu-logo-alt.svg" alt="devsu logo" />
         </a>
         <p className="text-xs font-light leading-6 text-center py-7 md:text-left">
-          618 East South Street Suite 500
-          <br />
-          Orlando, FL 32801
+          618 East South Street Suite 500 Orlando, FL 32801
         </p>
         <div className="pb-6">
           <ul className="flex items-center justify-center text-2xl text-secondary">
@@ -37,16 +35,18 @@ class Footer extends Component {
   }
   renderNewsletterSection() {
     return (
-      <div className="flex flex-col items-center md:items-start">
+      <div className="md:w-3/12 flex flex-col items-center md:items-start pb-5">
         <p className="pb-3 text-xs font-bold text-secondary">SUBSCRIBE TO OUR NEWSLETTER</p>
         <p className="pb-4 font-bold lg:text-xl">Stay in touch</p>
-        <form action="" className="flex flex-col items-center w-full md:flex-row md:items-start">
+        <form action="" className="flex flex-col items-center w-full lg:flex-row md:items-start">
           <input
-            className="px-5 py-4 mb-8 custom-input md:w-1/2 lg:w-3/5 bg-primary md:mb-0 md:text-sm lg:text-base"
+            className="px-5 py-4 mb-8 custom-input w-full lg:w-3/5 bg-primary lg:mb-0 md:text-sm lg:text-base"
             type="text"
             placeholder="Your email"
           />
-          <button className="btn filled md:text-sm lg:text-base whitespace-nowrap">Sign up</button>
+          <button className="btn filled md:text-sm lg:text-base whitespace-nowrap">
+            Subscribe
+          </button>
         </form>
       </div>
     );
@@ -56,13 +56,13 @@ class Footer extends Component {
     return nav.map((navItem, index) => {
       const { primary, items } = navItem;
       return (
-        <div key={index} className="pb-6">
+        <div key={index} className="pb-6 lg:w-1/3">
           <p className="pb-3 text-xs font-bold text-center text-secondary lg:text-left">
             {primary.label}
           </p>
           <ul className="text-xs text-center lg:text-left">
             {items.map((subItem, subIndex) => (
-              <li key={subIndex} className="py-1">
+              <li key={subIndex} className="py-1 font-bold">
                 <CustomLink link={subItem.sub_nav_link}>{subItem.sub_nav_link_label}</CustomLink>
               </li>
             ))}
@@ -83,7 +83,7 @@ class Footer extends Component {
       <footer className="w-full py-10 font-medium bg-primary-dark">
         <div className="container flex flex-col justify-between px-5 mx-auto md:flex-row md:space-x-10">
           {this.renderLogoSection()}
-          <div className="flex flex-col items-center lg:flex-row lg:items-start lg:space-x-10">
+          <div className="md:w-3/12 lg:w-7/12 flex flex-col items-center lg:flex-row lg:items-start lg:space-x-10 pb-5">
             {this.renderNav()}
           </div>
           {this.renderNewsletterSection()}

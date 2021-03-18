@@ -81,10 +81,11 @@ const run = async () => {
     },
   );
   const { results: pages } = await api.query(
-    Prismic.Predicates.at("document.type", DOC_TYPES.PAGE, {
+    Prismic.Predicates.at("document.type", DOC_TYPES.PAGE),
+    {
       pageSize: 100,
-      fetch: [],
-    }),
+      fetch: ["page.uid", "page.parent"],
+    },
   );
 
   // Create the sitemap according to prismic documents
@@ -99,7 +100,13 @@ const run = async () => {
   };
   docs = [...docs, ...pages];
   docs
-    .sort((a, b) => (a.type < b.type ? -1 : 1)) // sort by type
+    .sort((a, b) => {
+      //order by type(z-a) and uid(a-z)
+      if (a.type === b.type) {
+        return a.uid < b.uid ? -1 : 1;
+      }
+      return a.type > b.type ? -1 : 1;
+    })
     .forEach((doc) => {
       const options = optionsMapPerDocumentType[doc.type];
       sitemapStream.write({

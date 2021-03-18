@@ -93,9 +93,9 @@ const run = async () => {
 
   const optionsMapPerDocumentType = {
     page: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 1 },
-    job_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.7 },
-    blog_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.9 },
-    blog_category: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
+    job_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.4 },
+    blog_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.7 },
+    blog_category: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.6 },
     case_studies: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
   };
   docs = [...docs, ...pages];

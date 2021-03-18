@@ -37,6 +37,7 @@ export default class App extends NextApp {
     const { results: pages } = await Client().query(
       Prismic.Predicates.at("document.type", "page"),
       {
+        pageSize: 100,
         fetch: ["page.uid", "page.parent"],
       },
     );

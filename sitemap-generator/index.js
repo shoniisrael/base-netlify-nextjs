@@ -36,7 +36,7 @@ const getPath = (page = { data: {} }, pages, childPages = []) => {
     }
     return this.getPath(parentPage, pages, childPages) + `_${page.uid}`;
   }
-  return `${page.uid}`;
+  return page.uid;
 };
 
 const linkResolver = (doc, pages) => {
@@ -51,7 +51,7 @@ const linkResolver = (doc, pages) => {
     const result = getPath(page, pages);
     return `/${result.split("_").join("/")}`;
   }
-  if (doc.type === DOC_TYPES.PAGE.JOB_POST) {
+  if (doc.type === DOC_TYPES.JOB_POST) {
     return `/careers/${uid.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.BLOG_POST) {
@@ -68,9 +68,8 @@ const linkResolver = (doc, pages) => {
 
 const run = async () => {
   const api = await Prismic.getApi(API_ENDPOINT);
-  const { results: docs } = await api.query(
+  let { results: docs } = await api.query(
     Prismic.Predicates.any("document.type", [
-      DOC_TYPES.PAGE,
       DOC_TYPES.JOB_POST,
       DOC_TYPES.BLOG_POST,
       DOC_TYPES.BLOG_CATEGORY,
@@ -82,7 +81,10 @@ const run = async () => {
     },
   );
   const { results: pages } = await api.query(
-    Prismic.Predicates.at("document.type", DOC_TYPES.PAGE, { pageSize: 100, fetch: [] }),
+    Prismic.Predicates.at("document.type", DOC_TYPES.PAGE, {
+      pageSize: 100,
+      fetch: [],
+    }),
   );
 
   // Create the sitemap according to prismic documents
@@ -95,7 +97,7 @@ const run = async () => {
     blog_category: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
     case_studies: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
   };
-
+  docs = [...docs, ...pages];
   docs
     .sort((a, b) => (a.type < b.type ? -1 : 1)) // sort by type
     .forEach((doc) => {

@@ -78,3 +78,7 @@ export const HEADER_AND_FOOTER_STYLE = {
   SIMPLE: "Simple (Without navigation)",
   NORMAL: "Normal (With navigation)",
 };
+
+export const FORMS = {
+  CASE_STUDY: "case-study",
+};

@@ -10,7 +10,12 @@ class CaseStudy extends Component {
     const { data: settingsData = {} } = results[0];
     const { data = {} } = document;
     const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
-    const { meta_title: metaTitle, meta_description: metaDescription } = data;
+    const {
+      meta_title: metaTitle,
+      meta_description: metaDescription,
+      file = {},
+      case_study_name: caseName,
+    } = data;
     return (
       <Layout
         title={metaTitle}
@@ -19,7 +24,12 @@ class CaseStudy extends Component {
         headerStyle={headerStyle}
         footerStyle={footerStyle}
       >
-        <Body slices={settingsData.body} caseStudy={data.body} />
+        <Body
+          slices={settingsData.body}
+          caseStudy={data.body}
+          file={file.url}
+          caseName={caseName}
+        />
       </Layout>
     );
   }

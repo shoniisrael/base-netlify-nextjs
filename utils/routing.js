@@ -1,3 +1,4 @@
+import { useAppContext } from "../pages/_app";
 export default class RoutingUtils {
   static getPath(page = { data: {} }, pages, childPages = []) {
     const { parent = {} } = page.data;
@@ -12,6 +13,12 @@ export default class RoutingUtils {
       return this.getPath(parentPage, pages, childPages) + `_${page.uid}`;
     }
     return `${page.uid}`;
+  }
+
+  static getBlogPath(uid) {
+    const { blogPosts } = useAppContext();
+    const blogPost = blogPosts.find((blogPost) => blogPost.uid === uid);
+    return blogPost.data.main_category.uid ? `${blogPost.data.main_category.uid}_${uid}` : uid;
   }
 
   static getSearchableUid(uidArray, pages) {

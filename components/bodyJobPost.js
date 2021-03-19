@@ -75,7 +75,7 @@ const bodyJobPost = (props) => {
       </section>
       <section>
         <div className="bg-white pb-20 lg:pb-28 xl:pb-32">
-          <div className="container  lg:px-24 mx-auto pt-20 pb-5">
+          <div className="container  lg:px-24 mx-auto pt-12 pb-5">
             <div className="w-full xl:pl-12 xl:pr-28 px-8 ">
               {TextUtils.hasRichText(content) && renderRichTextSections(content)}
             </div>

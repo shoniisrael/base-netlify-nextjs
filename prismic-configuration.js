@@ -35,7 +35,8 @@ export const linkResolver = (doc) => {
     return `/careers/${uid.split("_").join("/")}`;
   }
   if (doc.type === "blog_post") {
-    return `/sprint/${uid.split("_").join("/")}`;
+    const result = RoutingUtils.getBlogPath(uid);
+    return `/sprint/${result.split("_").join("/")}`;
   }
   if (doc.type === "blog_category") {
     return `/sprint/category/${uid.split("_").join("/")}`;

@@ -55,7 +55,8 @@ const linkResolver = (doc, pages) => {
     return `/careers/${uid.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.BLOG_POST) {
-    return `/sprint/${uid.split("_").join("/")}`;
+    const result = doc.data.main_category.uid ? `${doc.data.main_category.uid}_${uid}` : uid;
+    return `/sprint/${result.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.BLOG_CATEGORY) {
     return `/sprint/category/${uid.split("_").join("/")}`;

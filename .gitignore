@@ -50,3 +50,4 @@ css/styles.css
 /public/sitemap.xml
 #Remove report
 report.*.json
+yarn.lock

@@ -45,7 +45,7 @@ class Header extends Component {
                 </ul>
               </div>
               <div className="flex items-center">
-                <Button link={buttonLink} label={"Let's Talk"} style={"filled"} />
+                <Button link={buttonLink} label="Let's Talk" style="filled" />
               </div>
             </div>
           </div>

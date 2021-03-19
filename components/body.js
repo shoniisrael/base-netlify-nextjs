@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { SLICE_TYPES } from "../utils/constants";
 import {
   Hero1,
@@ -40,7 +39,9 @@ class Body extends Component {
       jobPostContent,
       blogCategoryContent,
       caseStudy,
+      file,
       form,
+      caseName,
     } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
@@ -107,13 +108,13 @@ class Body extends Component {
         case SLICE_TYPES.TITLE_AND_FORM:
           return (
             <section key={index}>
-              <TitleAndForm slice={slice} index={index} />
+              <TitleAndForm slice={slice} index={index} file={file} caseName={caseName} />
             </section>
           );
         case SLICE_TYPES.TEXT_AND_FORM:
           return (
             <section key={index}>
-              <TextAndForm slice={slice} index={index} />
+              <TextAndForm slice={slice} index={index} file={file} caseName={caseName} />
             </section>
           );
         case SLICE_TYPES.TEXT_COLUMNS:
@@ -181,13 +182,19 @@ class Body extends Component {
         case SLICE_TYPES.IMAGE_AND_FORM:
           return (
             <section key={index}>
-              <ImageAndForm slice={slice} index={index} formConfig={form} />
+              <ImageAndForm
+                slice={slice}
+                index={index}
+                formConfig={form}
+                file={file}
+                caseName={caseName}
+              />
             </section>
           );
         case SLICE_TYPES.CASE_STUDY_CONTENT:
           return (
             <section key={index}>
-              <Body slices={caseStudy} form={slice} />
+              <Body slices={caseStudy} form={slice} file={file} caseName={caseName} />
             </section>
           );
         case SLICE_TYPES.RICH_TEXT:

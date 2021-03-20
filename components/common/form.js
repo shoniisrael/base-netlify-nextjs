@@ -54,7 +54,7 @@ const Form = (props) => {
               <input
                 type={type}
                 id={`${name}-${formIndex}`}
-                name={type === "email" ? "email" : `${name}-${formIndex}`}
+                name={type === "email" ? "email" : `${name}`}
                 placeholder={placeholder}
                 required
                 className="w-full p-4 my-2 bg-gray-light custom-form-input"

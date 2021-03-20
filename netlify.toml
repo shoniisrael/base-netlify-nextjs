@@ -1,10 +1,8 @@
 [build]
   command   = "npm run build"
-  functions = ""
   publish   = "out"
-
+  functions = "functions"
 [dev]
-  functions = ""
   publish   = "out"
   # We manually set the framework to static, otherwise Netlify automatically
   # detects Next.js and redirects do not work.

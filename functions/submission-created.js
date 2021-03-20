@@ -77,7 +77,7 @@ exports.handler = function (event, _, callback) {
   const body = JSON.parse(event.body);
   const { payload } = body;
   const { data } = payload;
-  const { caseStudy, email, file, "form-name": formType } = data;
+  const { caseStudy, email, file, formType } = data;
   const templateId = getTemplate(formType);
   client.setApiKey(SENDGRID_API_KEY);
   sendEmail({

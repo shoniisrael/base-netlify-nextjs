@@ -18,8 +18,8 @@ class CaseStudy extends Component {
     } = data;
     return (
       <Layout
-        title={metaTitle}
-        description={metaDescription}
+        title={metaTitle[0].text}
+        description={metaDescription[0].text}
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}

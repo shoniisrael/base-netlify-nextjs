@@ -120,7 +120,7 @@ const BodyBlog = (props) => {
   const { title, image, content } = props.bodyData;
 
   return (
-    <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 w-5/6 lg:w-5/6 mx-auto sm:w-4/5 md:w-10/12 2xl:w-1/2">
+    <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto w-5/12">
       {getTitle(title)}
 
       {getSocialMediaBar()}

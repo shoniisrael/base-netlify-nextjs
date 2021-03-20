@@ -442,25 +442,25 @@ li span.custom-dot-list-primary:before {
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.richtext-content-container .title-2 {
-  @apply text-4xl font-bold text-primary-dark text-left sm:leading-10 sm:text-3xl;
+.richtext-content-container h2 {
+  @apply text-4xl font-bold text-primary-dark text-left sm:leading-10 sm:text-3xl mt-7 mb-5 xl:mt-14;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.richtext-content-container .title-3 {
+.richtext-content-container h3 {
   @apply text-3xl leading-5 font-bold text-primary-dark text-left sm:text-2xl;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.richtext-content-container .title-4 {
+.richtext-content-container h4 {
   @apply text-2xl font-bold text-primary-dark text-left;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.richtext-content-container .title-5 {
+.richtext-content-container h5 {
   @apply text-xl lg:text-2xl font-bold text-primary-dark text-left;
 }
 /*! purgecss end ignore */
@@ -475,6 +475,7 @@ li span.custom-dot-list-primary:before {
 .richtext-content-container ul {
   list-style-type: none;
   list-style-position: unset;
+  margin-bottom: 20px;
 }
 /*! purgecss end ignore */
 

@@ -9,8 +9,13 @@ class BlogPost extends Component {
     const { blogPost, blogPostsSettings = {}, navigation } = this.props;
     const { results = {} } = blogPostsSettings;
     const { data = {} } = results[0];
+
     return (
-      <Layout title={data.meta_title} description={data.meta_description} navigation={navigation}>
+      <Layout
+        title={blogPost.data.meta_title}
+        description={blogPost.data.meta_description}
+        navigation={navigation}
+      >
         <Body slices={data.body} blogContent={blogPost.data} />
       </Layout>
     );

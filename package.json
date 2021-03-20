@@ -20,7 +20,7 @@
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "validate": "npm run test:ci && npm run format && npm run lint",
-    "copy": "@powershell copy _redirects out/"
+    "copy": "node copyFiles.js"
   },
   "husky": {
     "hooks": {
@@ -45,7 +45,6 @@
     "next-plugin-preact": "^3.0.3",
     "next-routes": "^1.4.2",
     "postcss": "^8.1.14",
-    "powershell": "^2.3.2",
     "preact": "^10.5.7",
     "preact-render-to-string": "^5.1.12",
     "prismic-dom": "^2.1.0",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "run-p env:dev watch:css next:dev",
-    "build": "run-s env:prod build:css next:build",
+    "build": "run-s env:prod build:css next:build && npm run copy",
     "next:dev": "next dev",
     "prenext:build": "node sitemap-generator/index.js && rimraf out/",
     "next:build": "next build",
@@ -19,7 +19,8 @@
     "lint:fix": "npm run lint --fix",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "validate": "npm run test:ci && npm run format && npm run lint"
+    "validate": "npm run test:ci && npm run format && npm run lint",
+    "copy": "node copyFiles.js"
   },
   "husky": {
     "hooks": {

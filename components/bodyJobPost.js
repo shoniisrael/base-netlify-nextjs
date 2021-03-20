@@ -37,7 +37,7 @@ const bodyJobPost = (props) => {
     return (
       <div className="flex items-center mx-auto relative xl:h-3/4 blue-top-right-oval-bg bg-primary-lighter">
         <div className="container lg:px-24 mx-auto z-10">
-          <div className="w-full flex flex-col py-16 md:pt-20 md:pb-24 lg:pt-36 xl:pl-12 xl:pr-28 px-8">
+          <div className="w-full flex flex-col py-16 md:pt-20 lg:pt-36 xl:pl-12 xl:pr-28 px-8">
             {renderBigTitle(headerTitle)}
             {renderDescription(headerContent)}
             <div className="pt-4">
@@ -75,7 +75,7 @@ const bodyJobPost = (props) => {
       </section>
       <section>
         <div className="bg-white pb-20 lg:pb-28 xl:pb-32">
-          <div className="container  lg:px-24 mx-auto pt-12 pb-5">
+          <div className="container  lg:px-24 mx-auto pb-5">
             <div className="w-full xl:pl-12 xl:pr-28 px-8 ">
               {TextUtils.hasRichText(content) && renderRichTextSections(content)}
             </div>

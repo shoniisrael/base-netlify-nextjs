@@ -38,16 +38,25 @@ class Footer extends Component {
       <div className="md:w-3/12 flex flex-col items-center md:items-start pb-5">
         <p className="pb-3 text-xs font-bold text-secondary">SUBSCRIBE TO OUR NEWSLETTER</p>
         <p className="pb-4 font-bold lg:text-xl">Stay in touch</p>
-        <form action="" className="flex flex-col items-center w-full lg:flex-row md:items-start">
+        <form
+          netlify
+          id="subscribe"
+          action=""
+          method="post"
+          className="flex flex-col items-center w-full lg:flex-row md:items-start"
+        >
           <input
             className="px-5 py-4 mb-8 custom-input w-full lg:w-3/5 bg-primary lg:mb-0 md:text-sm lg:text-base"
-            type="text"
+            type="email"
+            name="email"
             placeholder="Your email"
           />
-          <button className="btn filled md:text-sm lg:text-base whitespace-nowrap">
+          <input type="hidden" name="form-name" value="subscribe" />
+          <button className="btn filled md:text-sm lg:text-base whitespace-nowrap" type="submit">
             Subscribe
           </button>
         </form>
+        <p className="pb-4 font-bold">Stay in touch</p>
       </div>
     );
   }

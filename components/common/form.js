@@ -23,8 +23,10 @@ const Form = (props) => {
       <span className="w-full px-2 mt-5 inline-block">
         <input
           type="submit"
-          className="btn filled w-full text-xl cursor-pointer"
+          className="g-recaptcha btn filled w-full text-xl cursor-pointer"
           value={submitButtonLabel}
+          data-sitekey={process.env.NEXT_PUBLIC_G_RECAPTCHA_KEY}
+          data-callback="handleOnSubmit"
         />
       </span>
     );
@@ -119,6 +121,7 @@ const Form = (props) => {
     <form netlify id={form.uid} method="post" action={linkUrl}>
       <input type="hidden" name="form-name" value={form.uid} />
       <input type="hidden" name="formType" value={form.uid} />
+      <input type="hidden" name="recaptchaResponse" className="recaptchaResponse"></input>
       {renderFormFields()}
       {renderCaseStudyFields()}
       {renderSubmitButton()}

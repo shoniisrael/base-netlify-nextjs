@@ -49,24 +49,23 @@ class Subscribe extends Component {
     const { primary } = this.props.slice;
     const { button_label: buttonLabel } = primary;
     return (
-      <form
-        netlify
-        id="subscribe"
-        action=""
-        method="post"
-        className="flex flex-row items-start w-full justify-start"
-      >
-        <input
-          className="font-medium border-gray-light border border-solid flex px-5 py-4 mb-8 custom-form-input w-2/3 lg:w-2/3 bg-gray-light lg:mb-0 md:text-sm lg:text-base"
-          type="email"
-          name="email"
-          placeholder="Your email"
-        />
-        <input type="hidden" name="form-name" value="subscribe" />
-        <button type="submit" className="flex btn filled md:text-sm lg:text-base whitespace-nowrap">
-          {buttonLabel}
-        </button>
-      </form>
+      <div className="flex flex-row items-start w-full justify-start">
+        <form netlify id="subscribe" action="" method="post">
+          <input
+            className="font-medium border-gray-light border border-solid flex px-5 py-4 mb-8 custom-form-input w-2/3 lg:w-2/3 bg-gray-light lg:mb-0 md:text-sm lg:text-base"
+            type="email"
+            name="email"
+            placeholder="Your email"
+          />
+          <input type="hidden" name="form-name" value="subscribe" />
+          <button
+            type="submit"
+            className="flex btn filled md:text-sm lg:text-base whitespace-nowrap"
+          >
+            {buttonLabel}
+          </button>
+        </form>
+      </div>
     );
   }
 }

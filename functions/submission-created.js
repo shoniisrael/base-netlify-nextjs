@@ -78,7 +78,7 @@ exports.handler = function (event, _, callback) {
   const { payload } = body;
   const { data } = payload;
   const { caseStudy, email, file, formType } = data;
-  console.log("🚀 ~ file: submission-created.js ~ line 81 ~ data", data);
+  console.info("Data received from form: ", data);
   const templateId = getTemplate(formType);
   client.setApiKey(SENDGRID_API_KEY);
   sendEmail({

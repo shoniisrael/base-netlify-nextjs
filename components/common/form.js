@@ -118,7 +118,7 @@ const Form = (props) => {
     return null;
   };
   return (
-    <form netlify id={form.uid} method="post" action={linkUrl}>
+    <form netlify id={form.uid} method="post" onSubmit="handleOnSubmit()" action={linkUrl}>
       <input type="hidden" name="form-name" value={form.uid} />
       <input type="hidden" name="formType" value={form.uid} />
       <input type="hidden" name="recaptchaResponse" className="recaptchaResponse"></input>

@@ -7,6 +7,7 @@ class Page extends Component {
     const { document = {}, navigation } = this.props;
     const { data = {} } = document;
     const { header_style: headerStyle, footer_style: footerStyle } = data;
+    const { index = "index", follow = "follow", canonical_url: canonicalUrl } = data;
 
     return (
       <Layout
@@ -15,6 +16,9 @@ class Page extends Component {
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}
+        index={index}
+        follow={follow}
+        canonical_url={canonicalUrl}
       >
         <Body slices={data.body} />
       </Layout>

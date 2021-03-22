@@ -27,7 +27,7 @@ export default BlogPost;
 export async function getStaticProps(context) {
   const { params } = context;
   const { blogPostUid } = params;
-  const searchableUid = blogPostUid.join("_");
+  const searchableUid = blogPostUid[blogPostUid.length - 1];
   const blogPost = await Client().getByUID("blog_post", searchableUid);
   const blogPostsSettings = await Client().query(
     Prismic.Predicates.at("document.type", "blog_post_settings"),
@@ -43,10 +43,18 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"));
   const paths = blogPosts.results.map((blogPost) => {
+    const blogCategoryUid = blogPost.data.main_category.uid.split("_");
+    const blogPostUid = blogPost.uid.split("_");
+
+    if (blogCategoryUid.length > 1) {
+      const reducedBlogCategoryUid = blogCategoryUid.slice(1);
+      blogPostUid.unshift(...reducedBlogCategoryUid);
+    }
+
     return {
       params: {
-        blogCategoryUid: blogPost.data.main_category.uid || "unlabeled",
-        blogPostUid: blogPost.uid.split("_"),
+        blogCategoryUid: blogCategoryUid[0],
+        blogPostUid: blogPostUid,
       },
     };
   });

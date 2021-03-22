@@ -39,7 +39,7 @@ export const linkResolver = (doc) => {
     return `/sprint/${result.split("_").join("/")}`;
   }
   if (doc.type === "blog_category") {
-    return `/sprint/category/${uid.split("_").join("/")}`;
+    return `/sprint/${uid.split("_").join("/")}`;
   }
   if (doc.type === "case_studies") {
     return `/case-studies/${uid.split("_").join("/")}`;

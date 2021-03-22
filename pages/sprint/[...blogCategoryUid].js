@@ -15,9 +15,14 @@ class BlogCategory extends Component {
     const { results = {} } = blogCategorySettings;
     const { data = {} } = results[0];
     const categoryName = this.getCategoryName(blogCategory);
+    const metaTitle = blogCategory.data.meta_title || "Category | Archives | Devsu Blog Post";
+    const metaDescription =
+      blogCategory.data.meta_description ||
+      "The best Blog Posts are in Sprint, the blog of Devsu, Software Developer Company";
     const blogCategoryContent = { blogsByCategory: blogsByCategory, categoryName: categoryName };
+
     return (
-      <Layout title={data.meta_title} description={data.meta_description} navigation={navigation}>
+      <Layout title={metaTitle} description={metaDescription} navigation={navigation}>
         <Body slices={data.body} blogCategoryContent={blogCategoryContent} />
       </Layout>
     );

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Client } from "../../../prismic-configuration";
+import { Client } from "../../prismic-configuration";
 import Prismic from "prismic-javascript";
-import Layout from "../../../components/layout";
-import Body from "../../../components/body";
+import Layout from "../../components/layout";
+import Body from "../../components/body";
 
 class BlogCategory extends Component {
   getCategoryName(blogCategory) {

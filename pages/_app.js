@@ -57,6 +57,7 @@ export default class App extends NextApp {
     );
     let usedBlogCategories = [];
     blogPosts.forEach((element) => {
+      usedBlogCategories.push(element.data.main_category);
       usedBlogCategories.push(...element.data.categories);
     });
     const textUsedBlogCategories = JSON.stringify(usedBlogCategories);

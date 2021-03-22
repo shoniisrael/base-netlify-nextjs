@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Client } from "../../prismic-configuration";
+import { Client } from "../../../prismic-configuration";
 import Prismic from "prismic-javascript";
-import Layout from "../../components/layout";
-import Body from "../../components/body";
+import Layout from "../../../components/layout";
+import Body from "../../../components/body";
 
 class BlogPost extends Component {
   render() {
@@ -27,7 +27,7 @@ export default BlogPost;
 export async function getStaticProps(context) {
   const { params } = context;
   const { blogPostUid } = params;
-  const searchableUid = blogPostUid[blogPostUid.length - 1];
+  const searchableUid = blogPostUid.join("_");
   const blogPost = await Client().getByUID("blog_post", searchableUid);
   const blogPostsSettings = await Client().query(
     Prismic.Predicates.at("document.type", "blog_post_settings"),
@@ -43,12 +43,10 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"));
   const paths = blogPosts.results.map((blogPost) => {
-    const blogPostUid = blogPost.data.main_category.uid
-      ? new Array(blogPost.data.main_category.uid, blogPost.uid)
-      : new Array(blogPost.uid);
     return {
       params: {
-        blogPostUid,
+        blogCategoryUid: blogPost.data.main_category.uid || "unlabeled",
+        blogPostUid: blogPost.uid.split("_"),
       },
     };
   });

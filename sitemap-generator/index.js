@@ -59,7 +59,7 @@ const linkResolver = (doc, pages) => {
     return `/sprint/${result.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.BLOG_CATEGORY) {
-    return `/sprint/category/${uid.split("_").join("/")}`;
+    return `/sprint/${uid.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.CASE_STUDIES) {
     return `/case_studies/${uid.split("_").join("/")}`;

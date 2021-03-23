@@ -5,13 +5,25 @@ import Footer from "./footer";
 import Header from "./header";
 class Layout extends Component {
   render() {
-    const { children, title, description, navigation, headerStyle, footerStyle } = this.props;
+    const {
+      children,
+      title,
+      description,
+      navigation,
+      headerStyle,
+      footerStyle,
+      index = "index",
+      follow = "follow",
+      canonical_url: canonicalUrl,
+    } = this.props;
     return (
       <div>
         <Head>
           <title>{title}</title>
           <meta name="description" content={description} />
-          <meta name="robots" content="noindex"></meta>
+          <meta name="robots" content={index}></meta>
+          <meta name="robots" content={follow}></meta>
+          {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
             rel="stylesheet"

@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { HEADER_AND_FOOTER_STYLE } from "../utils/constants";
 import CustomLink from "./common/customLink";
 import SubscribeForm from "./common/subscribeForm";
+import SocialMedia from "./socialMedia";
 
 class Footer extends Component {
   renderLogoSection() {
+    const socialMedias = ["facebook", "linkedin", "twitter"];
     return (
       <div className="md:w-3/12 lg:w-2/12 flex flex-col items-center md:items-start pb-5">
         <a href="/">
@@ -13,25 +15,15 @@ class Footer extends Component {
         <p className="text-xs font-light leading-6 text-center py-7 md:text-left">
           618 East South Street Suite 500 Orlando, FL 32801
         </p>
-        <div className="pb-6">
-          <ul className="flex items-center justify-center text-2xl text-secondary">
-            <li>
-              <a className="hover:bg-white" href="https://www.facebook.com/DevsuSoftware">
-                <img className="w-5 h-6 text-secondary" src="/img/facebook_icon.svg" />
-              </a>
-            </li>
-            <li className="mx-4">
-              <a className="hover:text-white" href="https://www.linkedin.com/company/devsu/">
-                <img className="w-5 h-6 fill-current text-secondary" src="/img/linkedin_icon.svg" />
-              </a>
-            </li>
-            <li>
-              <a className="hover:text-white" href="https://twitter.com/devsullc">
-                <img className="w-5 h-6 fill-current text-secondary" src="/img/twitter_icon.svg" />
-              </a>
-            </li>
-          </ul>
-        </div>
+
+        <SocialMedia
+          socialMediaOrder={socialMedias}
+          classNameIcon="w-5 h-6 fill-current text-secondary"
+          classNameDiv="pb-6"
+          classNameFacebook="mx-0"
+          classNameLinkedin="mx-4"
+          classNameTwitter="mx-0"
+        />
       </div>
     );
   }

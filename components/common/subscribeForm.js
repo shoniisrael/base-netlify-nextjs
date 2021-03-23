@@ -7,8 +7,7 @@ const SubscribeForm = (props) => {
 
   const submitData = async (token, data) => {
     const url = `/.netlify/functions/verify-captcha?token=${token}`;
-    /* global window*/
-    const fetchUrl = window.location.href;
+    const fetchUrl = "/";
     try {
       /*global fetch*/
       const response = await fetch(url);
@@ -55,8 +54,7 @@ const SubscribeForm = (props) => {
         disabled={disableSubmit}
         type="submit"
         value="Subscribe"
-        data-sitekey={process.env.NEXT_PUBLIC_G_RECAPTCHA_KEY}
-      ></input>
+      />
 
       <GoogleReCaptcha action={"subscribe"} />
     </form>

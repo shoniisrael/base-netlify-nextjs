@@ -82,3 +82,9 @@ export const HEADER_AND_FOOTER_STYLE = {
 export const FORMS = {
   CASE_STUDY: "case-study",
 };
+
+export const SOCIAL_MEDIA = {
+  FACEBOOK: "facebook",
+  TWITTER: "twitter",
+  LINKEDIN: "linkedin",
+};

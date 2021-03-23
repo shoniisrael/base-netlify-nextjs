@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { HEADER_AND_FOOTER_STYLE } from "../utils/constants";
 import CustomLink from "./common/customLink";
+import SubscribeForm from "./common/subscribeForm";
+
 class Footer extends Component {
   renderLogoSection() {
     return (
@@ -39,18 +41,7 @@ class Footer extends Component {
         <p className="pb-3 text-xs font-bold text-secondary">SUBSCRIBE TO OUR NEWSLETTER</p>
         <p className="pb-4 font-bold lg:text-xl">Stay in touch</p>
         <div className="flex flex-col items-center w-full lg:flex-row md:items-start">
-          <form netlify id="subscribe" action="" method="post">
-            <input
-              className="px-5 py-4 mb-8 custom-input w-full lg:w-3/5 bg-primary lg:mb-0 md:text-sm lg:text-base"
-              type="email"
-              name="email"
-              placeholder="Your email"
-            />
-            <input type="hidden" name="form-name" value="subscribe" />
-            <button className="btn filled md:text-sm lg:text-base whitespace-nowrap" type="submit">
-              Subscribe
-            </button>
-          </form>
+          <SubscribeForm classes="px-5 py-4 mb-8 custom-input w-full lg:w-3/5 bg-primary lg:mb-0 md:text-sm lg:text-base" />
         </div>
       </div>
     );

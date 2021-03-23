@@ -28,8 +28,9 @@ class Layout extends Component {
           scriptProps={{ async: true, defer: true, appendTo: "body" }}
         >
           {children}
+
+          <Footer footerStyle={footerStyle} nav={navigation.data.footer} />
         </GoogleReCaptchaProvider>
-        <Footer footerStyle={footerStyle} nav={navigation.data.footer} />
       </div>
     );
   }

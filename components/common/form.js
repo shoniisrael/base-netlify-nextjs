@@ -32,7 +32,6 @@ const Form = (props) => {
           className="g-recaptcha btn filled w-full text-xl cursor-pointer"
           value={submitButtonLabel}
           data-sitekey={process.env.NEXT_PUBLIC_G_RECAPTCHA_KEY}
-          data-callback="handleOnSubmit"
         />
       </span>
     );

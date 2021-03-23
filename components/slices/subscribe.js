@@ -50,6 +50,7 @@ class Subscribe extends Component {
     return (
       <div className="flex flex-row items-start w-full justify-start">
         <SubscribeForm
+          identifier="slice"
           classes="font-medium border-gray-light border border-solid flex px-5 py-4 mb-8 custom-form-input
         w-2/3 bg-gray-light lg:mb-0 md:text-sm lg:text-base"
         />

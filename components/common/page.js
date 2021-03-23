@@ -24,8 +24,8 @@ class Page extends Component {
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}
-        index={index}
-        follow={follow}
+        index={index || "index"}
+        follow={follow || "follow"}
         canonical_url={canonicalUrl}
         keywords={data.keywords}
       >

@@ -12,18 +12,39 @@ class BlogCategory extends Component {
 
   render() {
     const { blogCategory, navigation, blogsByCategory, blogCategorySettings = {} } = this.props;
+
     const { results = {} } = blogCategorySettings;
-    const { data = {} } = results[0];
+    const { data: settingsData = {} } = results[0];
+    const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
+
+    const { data = {} } = blogCategory;
+    const {
+      meta_title: metaTitle,
+      meta_description: metaDescription,
+      index,
+      follow,
+      canonical_url: canonicalUrl,
+    } = data;
+
     const categoryName = this.getCategoryName(blogCategory);
-    const metaTitle = blogCategory.data.meta_title || "Category | Archives | Devsu Blog Post";
-    const metaDescription =
-      blogCategory.data.meta_description ||
-      "The best Blog Posts are in Sprint, the blog of Devsu, Software Developer Company";
     const blogCategoryContent = { blogsByCategory: blogsByCategory, categoryName: categoryName };
 
     return (
-      <Layout title={metaTitle} description={metaDescription} navigation={navigation}>
-        <Body slices={data.body} blogCategoryContent={blogCategoryContent} />
+      <Layout
+        title={metaTitle || "Archives | Devsu "}
+        description={
+          metaDescription ||
+          "The best Blog Posts are in Sprint, the blog of Devsu, Software Developer Company"
+        }
+        navigation={navigation}
+        headerStyle={headerStyle}
+        footerStyle={footerStyle}
+        index={index || "index"}
+        follow={follow || "follow"}
+        canonical_url={canonicalUrl}
+        keywords={data.keywords}
+      >
+        <Body slices={settingsData.body} blogCategoryContent={blogCategoryContent} />
       </Layout>
     );
   }

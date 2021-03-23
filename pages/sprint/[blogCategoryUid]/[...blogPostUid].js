@@ -7,16 +7,35 @@ import Body from "../../../components/body";
 class BlogPost extends Component {
   render() {
     const { blogPost, blogPostsSettings = {}, navigation } = this.props;
-    const { results = {} } = blogPostsSettings;
-    const { data = {} } = results[0];
 
+    const { results = {} } = blogPostsSettings;
+    const { data: settingsData = {} } = results[0];
+    const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
+
+    const { data = {} } = blogPost;
+    const {
+      meta_title: metaTitle,
+      meta_description: metaDescription,
+      index,
+      follow,
+      canonical_url: canonicalUrl,
+    } = data;
     return (
       <Layout
-        title={blogPost.data.meta_title}
-        description={blogPost.data.meta_description}
+        title={metaTitle || "Blog Post Article | Devsu "}
+        description={
+          metaDescription ||
+          "The best Blog Posts are in Sprint, the blog of Devsu, Software Developer Company"
+        }
         navigation={navigation}
+        headerStyle={headerStyle}
+        footerStyle={footerStyle}
+        index={index || "index"}
+        follow={follow || "follow"}
+        canonical_url={canonicalUrl}
+        keywords={data.keywords}
       >
-        <Body slices={data.body} blogContent={blogPost.data} />
+        <Body slices={settingsData.body} blogContent={blogPost.data} />
       </Layout>
     );
   }

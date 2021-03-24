@@ -36,7 +36,7 @@ export const linkResolver = (doc) => {
   }
   if (doc.type === "blog_post") {
     const result = RoutingUtils.getBlogPath(uid);
-    return `/sprint/${result.split("_").join("/")}`;
+    return `/sprint/${result}`;
   }
   if (doc.type === "blog_category") {
     return `/sprint/${uid.split("_").join("/")}`;

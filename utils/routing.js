@@ -18,14 +18,9 @@ export default class RoutingUtils {
   static getBlogPath(uid) {
     const { blogPosts } = useAppContext();
     const blogPost = blogPosts.find((blogPost) => blogPost.uid === uid);
-    const category = blogPost.data.main_category.uid;
-
-    let urlCategory;
-    if (category) {
-      urlCategory = category.split("_").join("/");
-    } else {
-      urlCategory = "unlabeled";
-    }
+    const urlCategory = blogPost.data.main_category.uid
+      ? blogPost.data.main_category.uid.split("_").join("/")
+      : "unlabeled";
     return `${urlCategory}/${uid}`;
   }
 

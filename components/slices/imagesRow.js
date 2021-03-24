@@ -115,6 +115,7 @@ export default class ImagesRow extends Component {
             className={`grid justify-items-center items-center w-full text-sm gap-8 ${gridColsForScreens}`}
           >
             {items.map((icon, index) => {
+              const hasImage = !!Object.values(icon.image).length;
               return (
                 <div
                   className="flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent"
@@ -124,20 +125,24 @@ export default class ImagesRow extends Component {
                     className="flex flex-col items-center justify-center"
                     style={{ height: `${maxHeight}px` }}
                   >
-                    <ResponsiveImage
-                      style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}
-                      image={icon.image}
-                      sizes={sizes}
-                      className={`${animationClasses.image} mx-auto object-contain`}
-                      options={{ maxWidth, maxHeight }}
-                    />
+                    {hasImage && (
+                      <ResponsiveImage
+                        style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}
+                        image={icon.image}
+                        sizes={sizes}
+                        className={`${animationClasses.image} mx-auto object-contain`}
+                        options={{ maxWidth, maxHeight }}
+                      />
+                    )}
                   </div>
-
-                  {display_animation_on_hover && (
+                  {(display_animation_on_hover || !hasImage) && (
                     <div
-                      className={`${backgroundClasses.descriptionColor} ${animationClasses.text} max-h-5`}
+                      className={`${backgroundClasses.descriptionColor} 
+                      ${display_animation_on_hover ? animationClasses.text : ""} 
+                      ${hasImage ? "" : "md:text-lg"} 
+                      max-h-5`}
                     >
-                      {icon.image.alt}
+                      {RichText.render(icon.text)}
                     </div>
                   )}
                 </div>

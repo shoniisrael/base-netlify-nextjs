@@ -93,10 +93,11 @@ const run = async () => {
   const sitemapStream = new SitemapStream({ hostname: SITE_URL });
 
   const optionsMapPerDocumentType = {
-    page: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 1 },
-    job_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.4 },
-    blog_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.7 },
-    blog_category: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.6 },
+    page: { changefreq: CHANGE_FREQUENCY.DAILY, priority: 1 },
+    job_post: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.3 },
+    blog_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.4 },
+    featured_blog_post: { changefreq: CHANGE_FREQUENCY.WEEKLY, priority: 0.6 },
+    blog_category: { changefreq: CHANGE_FREQUENCY.DAILY, priority: 0.7 },
     case_studies: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
   };
   docs = [...docs, ...pages];
@@ -109,7 +110,11 @@ const run = async () => {
       return a.type > b.type ? -1 : 1;
     })
     .forEach((doc) => {
-      const options = optionsMapPerDocumentType[doc.type];
+      const { data = {}, type } = doc;
+      let options = optionsMapPerDocumentType[type];
+      if (type === DOC_TYPES.BLOG_POST && data.isfeatured) {
+        options = optionsMapPerDocumentType.featured_blog_post;
+      }
       sitemapStream.write({
         url: linkResolver(doc, pages),
         ...options,

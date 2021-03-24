@@ -12,6 +12,7 @@ const DOC_TYPES = {
   BLOG_POST: "blog_post",
   BLOG_CATEGORY: "blog_category",
   CASE_STUDIES: "case_studies",
+  EBOOK: "ebook",
 };
 
 const CHANGE_FREQUENCY = {
@@ -65,6 +66,9 @@ const linkResolver = (doc, pages) => {
   }
   if (doc.type === DOC_TYPES.CASE_STUDIES) {
     return `/case_studies/${uid.split("_").join("/")}`;
+  }
+  if (doc.type === DOC_TYPES.EBOOK) {
+    return `/ebooks/${uid.split("_").join("/")}`;
   }
   return "/";
 };

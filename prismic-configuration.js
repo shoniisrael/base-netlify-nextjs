@@ -44,6 +44,9 @@ export const linkResolver = (doc) => {
   if (doc.type === "case_studies") {
     return `/case-studies/${uid.split("_").join("/")}`;
   }
+  if (doc.type === "ebook") {
+    return `/ebooks/${uid.split("_").join("/")}`;
+  }
   return "/";
 };
 

@@ -55,8 +55,10 @@ const linkResolver = (doc, pages) => {
     return `/careers/${uid.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.BLOG_POST) {
-    const result = doc.data.main_category.uid ? `${doc.data.main_category.uid}_${uid}` : uid;
-    return `/sprint/${result.split("_").join("/")}`;
+    const result = doc.data.main_category.uid
+      ? `${doc.data.main_category.uid.split("_").join("/")}/${uid}`
+      : `unlabeled/${uid}`;
+    return `/sprint/${result}`;
   }
   if (doc.type === DOC_TYPES.BLOG_CATEGORY) {
     return `/sprint/${uid.split("_").join("/")}`;

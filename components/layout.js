@@ -15,14 +15,19 @@ class Layout extends Component {
       index = "index",
       follow = "follow",
       canonical_url: canonicalUrl,
+      keywords,
     } = this.props;
+    const keywordList =
+      keywords && keywords.length >= 1 ? keywords.map((e) => e.keyword).join(",") : "";
     return (
       <div>
         <Head>
           <title>{title}</title>
           <meta name="description" content={description} />
-          <meta name="robots" content={index}></meta>
-          <meta name="robots" content={follow}></meta>
+          <meta name="robots" content={`${index}, ${follow}`}></meta>
+          <meta name="googlebot" content={`${index}, ${follow}`}></meta>
+          <meta name="bingbot" content={`${index}, ${follow}`}></meta>
+          {keywordList && <meta name="keywords" content={keywordList} />}
           {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
           <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"

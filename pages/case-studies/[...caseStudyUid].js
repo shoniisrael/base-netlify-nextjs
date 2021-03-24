@@ -15,14 +15,24 @@ class CaseStudy extends Component {
       meta_description: metaDescription,
       file = {},
       case_study_name: caseName,
+      index,
+      follow,
+      canonical_url: canonicalUrl,
     } = data;
     return (
       <Layout
-        title={metaTitle}
-        description={metaDescription}
+        title={metaTitle || "Case Study | Devsu"}
+        description={
+          metaDescription ||
+          "A case study on how Devsu's team develops quality software that helps companies meet their needs with a smart solution."
+        }
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}
+        index={index || "index"}
+        follow={follow || "follow"}
+        canonical_url={canonicalUrl}
+        keywords={data.keywords}
       >
         <Body
           slices={settingsData.body}

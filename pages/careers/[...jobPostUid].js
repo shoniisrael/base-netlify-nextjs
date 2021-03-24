@@ -12,15 +12,27 @@ class Document extends Component {
     const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
 
     const { data = {} } = document;
-    const { meta_title: metaTitle, meta_description: metaDescription } = data;
-
+    const {
+      meta_title: metaTitle,
+      meta_description: metaDescription,
+      index,
+      follow,
+      canonical_url: canonicalUrl,
+    } = data;
     return (
       <Layout
-        title={metaTitle}
-        description={metaDescription}
+        title={metaTitle || "Job Post | Careers | Devsu"}
+        description={
+          metaDescription ||
+          "At Devsu, we are hiring it profesionals to work remotely from anywhere in Latin America. Apply and join our team."
+        }
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}
+        index={index || "index"}
+        follow={follow || "follow"}
+        canonical_url={canonicalUrl}
+        keywords={data.keywords}
       >
         {/* <Body slices={settingsData.body} /> */}
         <Body slices={settingsData.body} jobPostContent={document.data} />

@@ -39,6 +39,7 @@ class Body extends Component {
       jobPostContent,
       blogCategoryContent,
       caseStudy,
+      ebook,
       file,
       form,
       caseName,
@@ -195,6 +196,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <Body slices={caseStudy} form={slice} file={file} caseName={caseName} />
+            </section>
+          );
+        case SLICE_TYPES.EBOOK_CONTENT:
+          return (
+            <section key={index}>
+              <Body slices={ebook} form={slice} file={file} caseName={caseName} />
             </section>
           );
         case SLICE_TYPES.RICH_TEXT:

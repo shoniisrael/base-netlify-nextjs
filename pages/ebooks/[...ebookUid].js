@@ -16,7 +16,7 @@ class Ebook extends Component {
       meta_title: metaTitle,
       meta_description: metaDescription,
       file = {},
-      ebook_name: caseName,
+      ebook_name: downloadName,
       index,
       follow,
       canonical_url: canonicalUrl,
@@ -36,7 +36,12 @@ class Ebook extends Component {
         canonical_url={canonicalUrl}
         keywords={data.keywords}
       >
-        <Body slices={settingsData.body} ebook={data.body} file={file.url} caseName={caseName} />
+        <Body
+          slices={settingsData.body}
+          ebook={data.body}
+          file={file.url}
+          downloadName={downloadName}
+        />
       </Layout>
     );
   }

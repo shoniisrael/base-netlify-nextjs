@@ -1,35 +1,27 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import CryptoJS from "crypto-js";
 import { RichText } from "prismic-reactjs";
-import { useGoogleReCaptcha, GoogleReCaptcha } from "react-google-recaptcha-v3";
 import TextUtils from "../../utils/text";
 import { Link } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
 import { useAppContext } from "../../pages/_app";
-import { FORMS } from "../../utils/constants";
 const FORM_FIELD_TYPE = {
   TEXT: "text_field",
   SELECT: "select",
   CHECKBOX: "checkbox",
 };
 const Form = (props) => {
-  const router = useRouter();
-  const { executeRecaptcha } = useGoogleReCaptcha();
-  const { form = { data: {} }, index: formIndex, file = "", caseName = "" } = props;
+  const { form = { data: {} }, index: formIndex, file = "", downloadName = "" } = props;
   const { redirect_to: redirectToUrl } = form.data;
   const { pages } = useAppContext();
   const linkUrl = Link.url({ ...redirectToUrl, pages }, linkResolver);
-  const [disableSubmit, setDisableSubmit] = useState(false);
-  const formId = form.uid.replace("-", "_");
   const renderSubmitButton = () => {
     const { submit_button_label: submitButtonLabel } = form.data;
     return (
       <span className="w-full px-2 mt-5 inline-block">
         <input
-          disabled={disableSubmit}
           type="submit"
-          className="g-recaptcha btn filled w-full text-xl cursor-pointer"
+          className="btn filled w-full text-xl cursor-pointer"
           value={submitButtonLabel}
         />
       </span>
@@ -92,7 +84,7 @@ const Form = (props) => {
               <input
                 type="checkbox"
                 id={`${name}-${formIndex}`}
-                name={`${name}-${formIndex}`}
+                name={`${name}`}
                 className="hidden"
               />
               <label
@@ -107,64 +99,32 @@ const Form = (props) => {
       }
     });
   };
-  const renderCaseStudyFields = () => {
-    if (form.uid === FORMS.CASE_STUDY) {
+  const renderFileFields = () => {
+    let fileInput = null;
+    let downloadNameInput = null;
+    if (file) {
       const cipherFile = CryptoJS.AES.encrypt(file, process.env.NEXT_PUBLIC_SECRET_KEY).toString();
-      return (
-        <>
-          <input type="hidden" name="file" value={cipherFile} />
-          <input type="hidden" name="caseStudy" value={caseName} />
-        </>
-      );
+      fileInput = <input type="hidden" name="file" value={cipherFile} />;
     }
-    return null;
-  };
-  const submitData = async (token, data) => {
-    const url = `/.netlify/functions/verify-captcha?token=${token}`;
-    try {
-      /*global fetch*/
-      const response = await fetch(url);
-      if (response.ok) {
-        let urlEncodedData = "";
-        urlEncodedData = data.join("&").replace(/%20/g, "+");
-        fetch(linkUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: urlEncodedData,
-        });
-        router.push(linkUrl);
-      } else {
-        /*global alert*/
-        alert("Error: Please Try Again!");
-      }
-      setDisableSubmit(false);
-    } catch (err) {
-      alert("Error: Please Try Again!");
-      console.error(err);
-      setDisableSubmit(false);
+    if (downloadName) {
+      downloadNameInput = <input type="hidden" name="downloadName" value={downloadName} />;
     }
+    return (
+      <>
+        {fileInput}
+        {downloadNameInput}
+      </>
+    );
   };
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    setDisableSubmit(true);
-    let urlEncodedDataPairs = [];
-    for (const pair of event.target.elements) {
-      urlEncodedDataPairs.push(
-        encodeURIComponent(pair.name) + "=" + encodeURIComponent(pair.value),
-      );
-    }
-    const result = await executeRecaptcha(formId);
-    submitData(result, urlEncodedDataPairs);
-  };
+
   return (
-    <form netlify id={form.uid} method="post" onSubmit={onSubmit} action={linkUrl}>
+    <form netlify id={form.uid} method="post" action={linkUrl}>
       <input type="hidden" name="form-name" value={form.uid} />
       <input type="hidden" name="formType" value={form.uid} />
       {renderFormFields()}
-      {renderCaseStudyFields()}
+      {renderFileFields()}
       {renderSubmitButton()}
       {renderFooterText()}
-      <GoogleReCaptcha action={formId} />
     </form>
   );
 };

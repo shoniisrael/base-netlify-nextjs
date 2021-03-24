@@ -60,7 +60,7 @@ class TextAndForm extends Component {
   }
   renderForm(padding) {
     const { forms } = useAppContext();
-    const { slice, index, file, caseName } = this.props;
+    const { slice, index, file, downloadName } = this.props;
     const { primary } = slice;
     const { form_title: formTitle, form_description: formDescription } = primary;
     const { id } = primary.form;
@@ -80,7 +80,7 @@ class TextAndForm extends Component {
           {hasFormDescription && (
             <div className="text-primary-dark px-2 pb-4">{RichText.render(formDescription)}</div>
           )}
-          {form && <Form form={form} index={index} file={file} caseName={caseName} />}
+          {form && <Form form={form} index={index} file={file} downloadName={downloadName} />}
         </div>
       </div>
     );

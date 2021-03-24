@@ -562,9 +562,3 @@ li span.custom-dot-list-primary:before {
   @apply border-primary border-t-2 pt-5 w-7;
 }
 /*! purgecss end ignore */
-
-/*! purgecss start ignore */
-.grecaptcha-badge {
-  visibility: hidden;
-}
-/*! purgecss end ignore */

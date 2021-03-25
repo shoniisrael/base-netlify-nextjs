@@ -8,6 +8,7 @@ import { linkResolver } from "../../prismic-configuration";
 const STYLE = {
   LIGHT: "light",
   DARK: "dark",
+  WHITE: "white",
 };
 
 const IMAGE_ALIGNMENT = {
@@ -23,6 +24,10 @@ const IMAGE_SIZE = {
 const TITLE_SIZE = {
   MEDIUM: "medium",
 };
+const BULLET_POINT = {
+  GREEN_POINT: "green point",
+  GREEN_LINE: "green line",
+};
 
 class ImageAndText extends Component {
   getBackgroundColorClasses(style) {
@@ -31,6 +36,8 @@ class ImageAndText extends Component {
         return "bg-primary-lighter top-left-shadow";
       case STYLE.DARK:
         return "bg-primary-dark";
+      case STYLE.WHITE:
+        return "bg-primary-white";
       default:
         return "bg-white";
     }
@@ -41,12 +48,33 @@ class ImageAndText extends Component {
   }
 
   getTextColor(style) {
-    return style === STYLE.DARK ? "text-white" : "text-primary-dark";
+    switch (style) {
+      case STYLE.LIGHT:
+        return "text-primary-dark";
+      case STYLE.DARK:
+        return "text-white";
+      case STYLE.WHITE:
+        return "text-primary font-medium";
+      default:
+        return "text-primary font-medium";
+    }
+  }
+  getBulletPointStyle(style, columns) {
+    switch (style) {
+      case BULLET_POINT.GREEN_POINT:
+        return columns === "2" ? "two-column-dot-bullets" : "custom-dot-list";
+      case BULLET_POINT.GREEN_LINE:
+        return columns === "2" ? "two-column-bullets" : "custom-line-bullets";
+      default:
+        return columns === "2" ? "two-column-bullets" : "custom-line-bullets";
+    }
   }
 
   getFlexStyles(imagePosition, size) {
     const direction =
-      imagePosition === IMAGE_ALIGNMENT.LEFT ? "md:flex-row" : "md:flex-row-reverse";
+      imagePosition === IMAGE_ALIGNMENT.LEFT
+        ? "flex-col md:flex-row"
+        : "pt-20 flex-col-reverse md:flex-row-reverse";
     const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
     return `${direction} ${position}`;
   }
@@ -57,6 +85,16 @@ class ImageAndText extends Component {
 
   getTextWidth(imageSize) {
     return imageSize === IMAGE_SIZE.MEDIUM ? "w-2/3" : "w-1/2";
+  }
+  getTextPadding(imagePosition) {
+    switch (imagePosition) {
+      case IMAGE_ALIGNMENT.LEFT:
+        return "md:pl-12 md:pr-0";
+      case IMAGE_ALIGNMENT.RIGHT:
+        return "md:pl-0 md:pr-12";
+      default:
+        return "md:px-0";
+    }
   }
 
   getTextStyle(fontSize) {
@@ -84,12 +122,13 @@ class ImageAndText extends Component {
     const bgClasses = this.getBackgroundColorClasses(style);
     const titleColor = this.getTitleColor(style);
     const flexStyles = this.getFlexStyles(imageAlignment, imageSize);
+    const textPadding = this.getTextPadding(imageAlignment);
     const imageWidth = this.getImageWidth(imageSize);
     const textWidth = this.getTextWidth(imageSize);
     return (
       <div className={`${bgClasses} w-full`}>
         <div
-          className={`overflow-hidden flex flex-col container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles} md:pt-20 lg:py-28`}
+          className={`overflow-hidden flex container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles} md:pt-20 lg:py-28`}
         >
           <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto`}>
             <ResponsiveImage
@@ -97,7 +136,7 @@ class ImageAndText extends Component {
               sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw"
             />
           </div>
-          <div className={`pb-8 md:${textWidth} px-4 md:px-12`}>
+          <div className={`pb-8 md:${textWidth} px-4 ${textPadding}`}>
             <div className={`${titleColor} text-xs uppercase mb-8`}>
               {RichText.render(smallTitle, linkResolver)}
             </div>
@@ -117,7 +156,7 @@ class ImageAndText extends Component {
     const { items, primary } = this.props.slice;
     const titleColor = this.getTitleColor(primary.style);
     const textColor = this.getTextColor(primary.style);
-    const listClass = primary.list_columns === "2" ? "two-column-bullets" : "custom-line-bullets";
+    const bulletPointStyle = this.getBulletPointStyle(primary.bullet_point, primary.list_columns);
     return items.map((section, index) => {
       const { font_size: fontSize, big_title: bigTitle, rich_text: richText } = section;
       const textStyle = this.getTextStyle(fontSize);
@@ -130,7 +169,7 @@ class ImageAndText extends Component {
             </div>
           )}
           {TextUtils.hasRichText(richText) && (
-            <div className={`${textColor} ${listClass} ${textStyle}`}>
+            <div className={`${textColor} ${bulletPointStyle} ${textStyle}`}>
               {RichText.render(richText, linkResolver)}
             </div>
           )}

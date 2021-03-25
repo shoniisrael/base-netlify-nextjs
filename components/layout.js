@@ -21,8 +21,8 @@ class Layout extends Component {
     return (
       <div>
         <Head>
-          <title>{title}</title>
-          <meta name="description" content={description} />
+          {title && <title>{title}</title>}
+          {description && <meta name="description" content={description} />}
           <meta name="robots" content={`${index}, ${follow}`}></meta>
           <meta name="googlebot" content={`${index}, ${follow}`}></meta>
           <meta name="bingbot" content={`${index}, ${follow}`}></meta>

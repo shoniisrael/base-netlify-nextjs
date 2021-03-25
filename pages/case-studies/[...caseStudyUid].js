@@ -21,11 +21,8 @@ class CaseStudy extends Component {
     } = data;
     return (
       <Layout
-        title={metaTitle || "Case Study | Devsu"}
-        description={
-          metaDescription ||
-          "A case study on how Devsu's team develops quality software that helps companies meet their needs with a smart solution."
-        }
+        title={metaTitle}
+        description={metaDescription}
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}

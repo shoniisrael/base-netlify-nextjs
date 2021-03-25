@@ -61,6 +61,26 @@ a {
   @apply font-bold leading-loose text-secondary;
 }
 
+.custom-dot-list ul {
+  @apply text-primary-dark font-medium;
+}
+
+.custom-dot-list li {
+  line-height: 1.25 !important;
+}
+
+.custom-dot-list li::before {
+  @apply leading-tight;
+  content: "";
+  height: 0;
+  width: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  border: solid 5px #a4c22c;
+  display: inline-block;
+  margin-right: 8px;
+}
+
 .nav-item,
 .submenu-block > ul > li {
   @apply flex flex-col justify-center h-6 px-0 pb-0 text-xs text-primary;
@@ -145,6 +165,17 @@ a {
     url(../public/img/dots2-dark-right-down.svg);
 }
 
+.dots2-left {
+  background-image: url(../public/img/dots2-left-up.svg);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 25vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+.dots2-left.dark {
+  background-image: url(../public/img/dots2-dark-left-up.svg);
+}
 .dots3 {
   background-image: url(../public/img/dots3-left-up.svg);
   background-position: top left;
@@ -255,9 +286,17 @@ a {
 .two-column-bullets ul {
   @apply space-y-1 custom-line-bullets;
 }
+.two-column-dot-bullets ul {
+  @apply space-y-1 custom-dot-list;
+}
 
 @media only screen and (min-width: 1024px) {
   .two-column-bullets ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+  }
+  .two-column-dot-bullets ul {
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
@@ -483,6 +522,17 @@ li span.custom-dot-list-primary:before {
 .richtext-content-container li span.custom-line-bullets:before {
   @apply font-bold text-secondary;
   content: "— ";
+}
+
+.richtext-content-container li span.custom-dot-list:before {
+  content: "";
+  height: 0;
+  width: 0;
+  background-color: #fff;
+  border-radius: 50%;
+  border: solid 5px #a4c22c;
+  display: inline-block;
+  margin-right: 8px;
 }
 /*! purgecss end ignore */
 

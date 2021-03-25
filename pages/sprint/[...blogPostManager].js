@@ -39,11 +39,8 @@ class BlogCategory extends Component {
 
       return (
         <Layout
-          title={metaTitle || "Archives | Devsu "}
-          description={
-            metaDescription ||
-            "The best Blog Posts are in Sprint, the blog of Devsu, Software Developer Company"
-          }
+          title={metaTitle}
+          description={metaDescription}
           navigation={navigation}
           headerStyle={headerStyle}
           footerStyle={footerStyle}
@@ -70,11 +67,8 @@ class BlogCategory extends Component {
       } = data;
       return (
         <Layout
-          title={metaTitle || "Blog Post Article | Devsu "}
-          description={
-            metaDescription ||
-            "The best Blog Posts are in Sprint, the blog of Devsu, Software Developer Company"
-          }
+          title={metaTitle}
+          description={metaDescription}
           navigation={navigation}
           headerStyle={headerStyle}
           footerStyle={footerStyle}

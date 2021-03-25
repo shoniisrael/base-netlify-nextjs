@@ -22,13 +22,15 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
   const { uid, pages } = doc;
-  const page = pages.find((page) => page.uid === uid);
-
   if (doc.type === "page") {
+    let result = uid;
     if (doc.uid === "home") {
       return "/";
     }
-    const result = RoutingUtils.getPath(page, pages);
+    if (pages) {
+      const page = pages.find((page) => page.uid === uid);
+      result = RoutingUtils.getPath(page, pages);
+    }
     return `/${result.split("_").join("/")}`;
   }
   if (doc.type === "job_post") {

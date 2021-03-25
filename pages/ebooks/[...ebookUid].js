@@ -23,11 +23,8 @@ class Ebook extends Component {
     } = data;
     return (
       <Layout
-        title={metaTitle || "Ebook | Devsu"}
-        description={
-          metaDescription ||
-          "An Ebook about how Devsu's team develops quality software that helps companies meet their needs with a smart solution."
-        }
+        title={metaTitle}
+        description={metaDescription}
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}

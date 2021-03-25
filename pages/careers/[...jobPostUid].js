@@ -21,11 +21,8 @@ class Document extends Component {
     } = data;
     return (
       <Layout
-        title={metaTitle || "Job Post | Careers | Devsu"}
-        description={
-          metaDescription ||
-          "At Devsu, we are hiring it profesionals to work remotely from anywhere in Latin America. Apply and join our team."
-        }
+        title={metaTitle}
+        description={metaDescription}
         navigation={navigation}
         headerStyle={headerStyle}
         footerStyle={footerStyle}

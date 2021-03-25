@@ -3,6 +3,7 @@ import { RichText } from "prismic-reactjs";
 import Button from "./../common/button";
 import ResponsiveImage from "../common/responsiveImage";
 import TextUtils from "../../utils/text";
+import { linkResolver } from "../../prismic-configuration";
 
 const STYLE = {
   LIGHT: "light",
@@ -98,7 +99,7 @@ class ImageAndText extends Component {
           </div>
           <div className={`pb-8 md:${textWidth} px-4 md:px-12`}>
             <div className={`${titleColor} text-xs uppercase mb-8`}>
-              {RichText.render(smallTitle)}
+              {RichText.render(smallTitle, linkResolver)}
             </div>
             {this.renderRichTextSections()}
             {buttonLabel && (
@@ -125,12 +126,12 @@ class ImageAndText extends Component {
         <div key={index}>
           {TextUtils.hasRichText(bigTitle) && (
             <div className={`${titleColor} ${titleStyle} font-bold`}>
-              {RichText.render(bigTitle)}
+              {RichText.render(bigTitle, linkResolver)}
             </div>
           )}
           {TextUtils.hasRichText(richText) && (
             <div className={`${textColor} ${listClass} ${textStyle}`}>
-              {RichText.render(richText)}
+              {RichText.render(richText, linkResolver)}
             </div>
           )}
         </div>

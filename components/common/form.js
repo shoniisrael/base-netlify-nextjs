@@ -32,7 +32,7 @@ const Form = (props) => {
     if (TextUtils.hasRichText(footerText)) {
       return (
         <div className="font-medium text-center w-full px-2 my-5 inline-block a_text-black a_font-bold">
-          {RichText.render(footerText)}
+          {RichText.render(footerText, linkResolver)}
         </div>
       );
     }

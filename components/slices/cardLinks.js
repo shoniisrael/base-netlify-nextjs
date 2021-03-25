@@ -3,6 +3,7 @@ import Image from "../common/Image";
 import CustomLink from "../common/customLink";
 import { CARD_STYLE } from "../../utils/constants";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import TextUtils from "../../utils/text";
 
 class CardLinks extends Component {
@@ -12,7 +13,7 @@ class CardLinks extends Component {
     return (
       <div className="container mx-auto px-6 lg:px-20 text-center">
         {TextUtils.hasRichText(hiddenTitle) && (
-          <div className="hidden">{RichText.render(hiddenTitle)}</div>
+          <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
         )}
         <div className="flex flex-col h-auto relative -top-4 z-10 lg:-top-20 md:pb-20 md:flex-row md:space-x-7 md:items-center text-primary-dark text-center">
           {cards.map((card, index) => {
@@ -26,7 +27,7 @@ class CardLinks extends Component {
                 >
                   <Image image={card_image} />
                   <div className=" text-xl font-bold py-6 lg:text-2xl lg:pt-6 lg:pb-12">
-                    {RichText.render(card_title)}
+                    {RichText.render(card_title, linkResolver)}
                   </div>
                   <div>{card_description}</div>
                 </div>

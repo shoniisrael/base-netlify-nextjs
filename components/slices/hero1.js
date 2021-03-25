@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import Button from "./../common/button";
 import ResponsiveImage from "../common/responsiveImage";
 import TextUtils from "../../utils/text";
@@ -60,7 +61,9 @@ class Hero1 extends Component {
   renderSmallTitle(bgColor, title) {
     if (TextUtils.hasRichText(title)) {
       const color = this.getSmallTitleColor(bgColor);
-      return <div className={`text-sm uppercase ${color}`}>{RichText.render(title)}</div>;
+      return (
+        <div className={`text-sm uppercase ${color}`}>{RichText.render(title, linkResolver)}</div>
+      );
     }
   }
 
@@ -75,7 +78,7 @@ class Hero1 extends Component {
         <div
           className={`py-4 font-bold text-2xl md:text-4xl text-center pb-3 2xl:text-5xl lg:w-5/6 lg:pb-5 leading-6 ${textColor}`}
         >
-          {RichText.render(title)}
+          {RichText.render(title, linkResolver)}
         </div>
       );
     }
@@ -95,7 +98,7 @@ class Hero1 extends Component {
       const descriptionStyle = this.getDescriptionStyle(hasTitleImage);
       return (
         <div className={`lg:w-5/6 ${descriptionStyle} ${textColor}`}>
-          {RichText.render(description)}
+          {RichText.render(description, linkResolver)}
         </div>
       );
     }

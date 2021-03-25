@@ -1,5 +1,6 @@
 import React from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../prismic-configuration";
 import TextUtils from "../utils/text";
 import Button from "./common/button";
 const bodyJobPost = (props) => {
@@ -10,7 +11,7 @@ const bodyJobPost = (props) => {
       const textColor = "text-primary-dark";
       return (
         <div className={`font-bold text-3xl md:text-4xl 2xl:text-5xl  pt-3 pb-2 ${textColor}`}>
-          {RichText.render(title)}
+          {RichText.render(title, linkResolver)}
         </div>
       );
     }
@@ -20,7 +21,7 @@ const bodyJobPost = (props) => {
     if (TextUtils.hasRichText(description)) {
       return (
         <div className="text-primary py-12 richtext-content-container font-medium">
-          {RichText.render(description)}
+          {RichText.render(description, linkResolver)}
         </div>
       );
     }
@@ -59,7 +60,7 @@ const bodyJobPost = (props) => {
     return (
       <div className="flex flex-col mx-auto">
         <div className="p_text-lg text-lg richtext-content-container title_mt-14 title_mb-5 p_mt-10 p_mb-5 ul_mt-7 ul_mb-5 font-medium">
-          {RichText.render(content)}
+          {RichText.render(content, linkResolver)}
         </div>
         <div className="pt-8">
           <Button link={buttonLink} label={buttonLabel} style={buttonUnderline} />

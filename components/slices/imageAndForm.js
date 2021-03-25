@@ -1,5 +1,6 @@
-import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import TextUtils from "../../utils/text";
 import Form from "../common/form";
 import ResponsiveImage from "../common/responsiveImage";
@@ -56,12 +57,12 @@ class ImageAndForm extends Component {
         )}
         {TextUtils.hasRichText(smallTitle) && (
           <div className={`${smallTitlePaddingTop} pb-2 text-xs uppercase md:text-sm`}>
-            {RichText.render(smallTitle)}
+            {RichText.render(smallTitle, linkResolver)}
           </div>
         )}
         {TextUtils.hasRichText(bigTitle) && (
           <div className="text-4xl pb-16 font-bold leading-tight text-primary-dark">
-            {RichText.render(bigTitle)}
+            {RichText.render(bigTitle, linkResolver)}
           </div>
         )}
         {bigImage && (
@@ -90,12 +91,12 @@ class ImageAndForm extends Component {
         <div className="lg:border-black lg:px-4 pt-16 lg:pb-8 lg:border lg:bg-white w-full">
           {hasFormTitle && (
             <div className="text-primary-dark text-xl font-bold px-2 pb-4">
-              {RichText.render(formTitle)}
+              {RichText.render(formTitle, linkResolver)}
             </div>
           )}
           {hasFormDescription && (
             <div className="text-primary-dark px-2 pb-4 text-base">
-              {RichText.render(formDescription)}
+              {RichText.render(formDescription, linkResolver)}
             </div>
           )}
           {form && <Form form={form} index={index} file={file} downloadName={downloadName} />}

@@ -1,5 +1,6 @@
-import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 class Testimonial extends Component {
   render() {
@@ -11,14 +12,14 @@ class Testimonial extends Component {
     return (
       <div className="container mx-auto px-10 md:px-4 lg:px-24 pb-6 pt-28 2xl:px-60">
         <div className={`text-sm uppercase text-center text-primary-dark`}>
-          {RichText.render(title)}
+          {RichText.render(title, linkResolver)}
         </div>
         <div className="separator-2" />
         <div className="text-center flex flex-col justify-center items-center">
           <div className="mx-4 md:mx-16 xl:mx-44 text-base lg:text-2xl leading-tight pb-5 text-primary-dark">
-            {RichText.render(quote)}
+            {RichText.render(quote, linkResolver)}
           </div>
-          <div className="py-4 text-base">{RichText.render(name_and_position)}</div>
+          <div className="py-4 text-base">{RichText.render(name_and_position, linkResolver)}</div>
           <ResponsiveImage image={company_logo} sizes="82px" className="py-4" />
         </div>
       </div>

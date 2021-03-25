@@ -1,5 +1,6 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import { linkResolver } from "../../prismic-configuration";
 import TextUtils from "../../utils/text";
 import Form from "../common/form";
 import { useAppContext } from "../../pages/_app";
@@ -45,15 +46,19 @@ class TextAndForm extends Component {
     return (
       <div className="lg:w-1/2 py-10 px-2 text-primary-dark custom-check-list">
         {TextUtils.hasRichText(smallTitle) && (
-          <div className="py-4 text-xs uppercase md:text-sm">{RichText.render(smallTitle)}</div>
+          <div className="py-4 text-xs uppercase md:text-sm">
+            {RichText.render(smallTitle, linkResolver)}
+          </div>
         )}
         {TextUtils.hasRichText(bigTitle) && (
           <div className="text-3xl font-bold text-primary-dark py-4">
-            {RichText.render(bigTitle)}
+            {RichText.render(bigTitle, linkResolver)}
           </div>
         )}
         {TextUtils.hasRichText(richText) && (
-          <div className="p_py-3 p_leading-loose li_leading-loose">{RichText.render(richText)}</div>
+          <div className="p_py-3 p_leading-loose li_leading-loose">
+            {RichText.render(richText, linkResolver)}
+          </div>
         )}
       </div>
     );
@@ -74,11 +79,13 @@ class TextAndForm extends Component {
         <div className="lg:border-black lg:p-4 lg:border lg:bg-white w-full">
           {hasFormTitle && (
             <div className="text-primary-dark text-2xl font-bold px-2 pb-4">
-              {RichText.render(formTitle)}
+              {RichText.render(formTitle, linkResolver)}
             </div>
           )}
           {hasFormDescription && (
-            <div className="text-primary-dark px-2 pb-4">{RichText.render(formDescription)}</div>
+            <div className="text-primary-dark px-2 pb-4">
+              {RichText.render(formDescription, linkResolver)}
+            </div>
           )}
           {form && <Form form={form} index={index} file={file} downloadName={downloadName} />}
         </div>

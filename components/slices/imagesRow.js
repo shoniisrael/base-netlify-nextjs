@@ -122,11 +122,11 @@ export default class ImagesRow extends Component {
                   className="flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent"
                   key={index}
                 >
-                  <div
-                    className="flex flex-col items-center justify-center"
-                    style={{ height: `${maxHeight}px` }}
-                  >
-                    {hasImage && (
+                  {hasImage && (
+                    <div
+                      className="flex flex-col items-center justify-center"
+                      style={{ height: `${maxHeight}px` }}
+                    >
                       <ResponsiveImage
                         style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}
                         image={icon.image}
@@ -134,13 +134,14 @@ export default class ImagesRow extends Component {
                         className={`${animationClasses.image} mx-auto object-contain`}
                         options={{ maxWidth, maxHeight }}
                       />
-                    )}
-                  </div>
+                    </div>
+                  )}
+
                   {(display_animation_on_hover || !hasImage) && (
                     <div
                       className={`${backgroundClasses.descriptionColor} 
                       ${display_animation_on_hover ? animationClasses.text : ""} 
-                      ${hasImage ? "" : "md:text-lg"} 
+                      ${hasImage ? "" : "text-base 2xl:text-lg"} 
                       max-h-5`}
                     >
                       {RichText.render(icon.text, linkResolver)}

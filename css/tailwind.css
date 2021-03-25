@@ -145,6 +145,17 @@ a {
     url(../public/img/dots2-dark-right-down.svg);
 }
 
+.dots2-left {
+  background-image: url(../public/img/dots2-left-up.svg);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 25vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+.dots2-left.dark {
+  background-image: url(../public/img/dots2-dark-left-up.svg);
+}
 .dots3 {
   background-image: url(../public/img/dots3-left-up.svg);
   background-position: top left;

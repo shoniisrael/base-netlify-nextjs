@@ -42,7 +42,13 @@ const SubscribeForm = (props) => {
   const { classes, identifier = "" } = props;
   return (
     <div>
-      <form netlify id={`subscribe-${identifier}`} method="post" onSubmit={onSubmit}>
+      <form
+        netlify
+        id={`subscribe-${identifier}`}
+        method="post"
+        onSubmit={onSubmit}
+        className="flex flex-col md:flex-row"
+      >
         <input type="hidden" name="form-name" value="subscribe" />
         <input type="hidden" name="formType" value="subscribe" />
         <input
@@ -61,7 +67,7 @@ const SubscribeForm = (props) => {
           value="Subscribe"
         />
       </form>
-      <div className={submitted ? "p-2 mt-4 border-2 border-secondary" : "hidden"}>
+      <div className={submitted ? "p-2 mt-4 border-2 border-secondary text-center" : "hidden"}>
         THANK YOU FOR SUBSCRIBING
       </div>
     </div>

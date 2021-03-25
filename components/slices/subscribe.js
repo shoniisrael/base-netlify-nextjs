@@ -56,7 +56,7 @@ class Subscribe extends Component {
       <div className="flex flex-row items-start w-full justify-start">
         <SubscribeForm
           classes="font-medium border-gray-light border border-solid flex px-5 py-4 mb-8 custom-form-input
-        w-2/3 bg-gray-light lg:mb-0 md:text-sm lg:text-base"
+        sm:w-full md:w-2/3 bg-gray-light md:text-sm lg:text-base"
         />
       </div>
     );

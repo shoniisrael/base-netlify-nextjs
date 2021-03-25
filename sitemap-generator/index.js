@@ -91,7 +91,7 @@ const run = async () => {
     Prismic.Predicates.at("document.type", DOC_TYPES.PAGE),
     {
       pageSize: 100,
-      fetch: ["page.uid", "page.parent"],
+      fetch: ["page.uid", "page.parent", "page.index"],
     },
   );
 
@@ -116,15 +116,17 @@ const run = async () => {
       return a.type > b.type ? -1 : 1;
     })
     .forEach((doc) => {
-      const { data = {}, type } = doc;
-      let options = optionsMapPerDocumentType[type];
-      if (type === DOC_TYPES.BLOG_POST && data.isfeatured) {
-        options = optionsMapPerDocumentType.featured_blog_post;
+      if (doc.data.index && doc.data.index != "noindex") {
+        const { data = {}, type } = doc;
+        let options = optionsMapPerDocumentType[type];
+        if (type === DOC_TYPES.BLOG_POST && data.isfeatured) {
+          options = optionsMapPerDocumentType.featured_blog_post;
+        }
+        sitemapStream.write({
+          url: linkResolver(doc, pages),
+          ...options,
+        });
       }
-      sitemapStream.write({
-        url: linkResolver(doc, pages),
-        ...options,
-      });
     });
   sitemapStream.end();
 

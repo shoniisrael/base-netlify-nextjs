@@ -39,12 +39,12 @@ const SubscribeForm = (props) => {
     }
   };
 
-  const { classes, identifier = "" } = props;
+  const { classes } = props;
   return (
     <div>
       <form
         netlify
-        id={`subscribe-${identifier}`}
+        id="subscribe"
         method="post"
         onSubmit={onSubmit}
         className="flex flex-col md:flex-row"
@@ -61,7 +61,7 @@ const SubscribeForm = (props) => {
           required
         />
         <input
-          className="btn cursor-pointer filled md:text-sm lg:text-base whitespace-nowrap"
+          className="btn cursor-pointer filled md:text-sm lg:text-base whitespace-nowrap md:mb-8"
           disabled={disableSubmit}
           type="submit"
           value="Subscribe"

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
 import TextUtils from "../../utils/text";
+import { linkResolver } from "../../prismic-configuration";
 
 const STYLE = {
   ALTERNATIVE: "alternative",
@@ -20,10 +21,12 @@ class Cards extends Component {
         className={`${styleClasses.background} flex flex-col justify-between items-start px-6 py-8`}
       >
         <div className=" lg:text-base font-semibold text-primary-dark">
-          {RichText.render(title)}
+          {RichText.render(title, linkResolver)}
         </div>
-        <div className="border-b-2 border-secondary py-3">{RichText.render(subtitle)}</div>
-        <div className="pt-4 lg:text-base">{RichText.render(description)}</div>
+        <div className="border-b-2 border-secondary py-3">
+          {RichText.render(subtitle, linkResolver)}
+        </div>
+        <div className="pt-4 lg:text-base">{RichText.render(description, linkResolver)}</div>
       </div>
     );
   }
@@ -43,13 +46,13 @@ class Cards extends Component {
         className={`${styleClasses.background} flex flex-col items-center text-center xl:px-4 py-6 rounded-xl`}
       >
         <div className={`${styleClasses.cardTitleColor} font-medium text-6xl`}>
-          {RichText.render(title)}
+          {RichText.render(title, linkResolver)}
         </div>
         <div className={`py-3 text-2xl font-bold ${styleClasses.cardSubtitleColor}`}>
-          {RichText.render(subtitle)}
+          {RichText.render(subtitle, linkResolver)}
         </div>
         <div className={`lg:text-base ${styleClasses.cardSubtitleColor}`}>
-          {RichText.render(description)}
+          {RichText.render(description, linkResolver)}
         </div>
       </div>
     );
@@ -75,13 +78,13 @@ class Cards extends Component {
         <div
           className={`${styleClasses.cardTitleColor} px-10 font-semibold text-xl md:px-1 xl:px-12 py-4`}
         >
-          {RichText.render(title)}
+          {RichText.render(title, linkResolver)}
         </div>
         <div className={`py-3 text-2xl font-bold ${styleClasses.cardSubtitleColor}`}>
-          {RichText.render(subtitle)}
+          {RichText.render(subtitle, linkResolver)}
         </div>
         <div className={`lg:text-base ${styleClasses.cardSubtitleColor}`}>
-          {RichText.render(description)}
+          {RichText.render(description, linkResolver)}
         </div>
       </div>
     );
@@ -165,23 +168,25 @@ class Cards extends Component {
             <div className={`${titleColor} ${titlesBottomPadding}`}>
               {hasSmallTitle && (
                 <div className="text-center text-sm py-3 uppercase">
-                  {RichText.render(smallTitle)}
+                  {RichText.render(smallTitle, linkResolver)}
                 </div>
               )}
               {hasBigTitle && (
                 <div className="text-center text-4xl font-bold pt-4">
-                  {RichText.render(bigTitle)}
+                  {RichText.render(bigTitle, linkResolver)}
                 </div>
               )}
             </div>
           )}
-          {hasHiddenTitle && <div className="hidden">{RichText.render(hiddenTitle)}</div>}
+          {hasHiddenTitle && (
+            <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
+          )}
           <div
             className={`mx-auto grid grid-cols-1 place-items-stretch pb-6 ${gridCols} ${gridGap} text-sm ${topPosition}`}
           >
             {this.renderStyledCards(style, items)}
           </div>
-          <div className="text-right">{RichText.render(footerText)}</div>
+          <div className="text-right">{RichText.render(footerText, linkResolver)}</div>
         </div>
       </div>
     );

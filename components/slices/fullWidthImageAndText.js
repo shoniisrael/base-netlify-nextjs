@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 import TextUtils from "../../utils/text";
 
@@ -46,12 +47,12 @@ class FullWidthImageAndText extends Component {
           >
             {TextUtils.hasRichText(smallTitle) && (
               <div className={`${titleColor} text-xs uppercase py-2 font-medium`}>
-                {RichText.render(smallTitle)}
+                {RichText.render(smallTitle, linkResolver)}
               </div>
             )}
             {TextUtils.hasRichText(bigTitle) && (
               <div className={`${titleColor} text-3xl md:text-4xl capitalize font-bold mb-5 pb-6`}>
-                {RichText.render(bigTitle)}
+                {RichText.render(bigTitle, linkResolver)}
               </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-10 xl:gap-x-24 2xl:gap-x-32 2xl:pr-32">
@@ -69,8 +70,10 @@ class FullWidthImageAndText extends Component {
       const { column_text: columnText, column_title: columnTitle } = section;
       return (
         <div className="p_py-3 p_2xl_pb-8 strong_pt-6" key={index}>
-          <div className="2xl:pt-6 font-bold text-base">{RichText.render(columnTitle)}</div>
-          <div className="text-sm">{RichText.render(columnText)}</div>
+          <div className="2xl:pt-6 font-bold text-base">
+            {RichText.render(columnTitle, linkResolver)}
+          </div>
+          <div className="text-sm">{RichText.render(columnText, linkResolver)}</div>
         </div>
       );
     });

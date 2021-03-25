@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
 import { useAppContext } from "../../pages/_app";
 import ResponsiveImage from "../common/responsiveImage";
@@ -126,7 +127,7 @@ class LatestPosts extends Component {
                 <div className="h-52 px-6">
                   {hasTitle && (
                     <p className="cardText h-20 my-4 text-xl font-bold text-left w-full overflow-hidden">
-                      {RichText.render(title)}
+                      {RichText.render(title, linkResolver)}
                     </p>
                   )}
                   {hasContent && (
@@ -168,7 +169,7 @@ class LatestPosts extends Component {
         <div className="container flex flex-col  md:px-0 mx-auto">
           <div className="w-full flex flex-col md:flex-row md:justify-between">
             <div className="items-start text-2xl font-bold text-left self-start md:text-4xl text-primary-dark ">
-              {RichText.render(gridTitle)}
+              {RichText.render(gridTitle, linkResolver)}
               <div className="flex justify-start">
                 <div className="separator no-margin my-4 md:h-auto  mx-0 items-start" />
               </div>

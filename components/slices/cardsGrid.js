@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
 import Image from "../common/Image";
 
@@ -11,9 +12,9 @@ class CardsGrid extends Component {
         <div className="h-full flex flex-col justify-center items-center px-7 py-16 card-borderless">
           <Image image={image} />
           <span className=" text-lg font-bold text-center py-7 lg:w-3/4 text-primary-dark">
-            {RichText.render(title)}
+            {RichText.render(title, linkResolver)}
           </span>
-          <span className="text-center">{RichText.render(description)}</span>
+          <span className="text-center">{RichText.render(description, linkResolver)}</span>
         </div>
       </CustomLink>
     );
@@ -35,16 +36,18 @@ class CardsGrid extends Component {
       <div className="flex flex-col justify-between items-center py-12 px-6 container mx-auto lg:py-28">
         <div className="pb-3">
           <span className="text-xs lg:text-sm font-light capitalize">
-            {RichText.render(small_title)}
+            {RichText.render(small_title, linkResolver)}
           </span>
         </div>
         <div className="pb-10">
           <span className=" font-bold text-xl lg:text-5xl text-primary-dark">
-            {RichText.render(big_title)}
+            {RichText.render(big_title, linkResolver)}
           </span>
         </div>
         <div className="lg:w-4/5">
-          <span className="text-center font-light">{RichText.render(description)}</span>
+          <span className="text-center font-light">
+            {RichText.render(description, linkResolver)}
+          </span>
         </div>
         <div className="border-b-2 border-secondary w-28 pb-10"></div>
       </div>

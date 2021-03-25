@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 
 import { SCREEN_SIZES, DEFAULT_SPACE_SIZE } from "../../utils/constants.js";
@@ -96,19 +97,19 @@ export default class ImagesRow extends Component {
             <div
               className={`pb-5 text-xs md:text-sm ${alignmentClasses.item} ${alignmentClasses.text} text-primary-dark`}
             >
-              {RichText.render(primary.small_title)}
+              {RichText.render(primary.small_title, linkResolver)}
             </div>
           )}
           <div
             className={`text-2xl font-bold ${alignmentClasses.item} ${alignmentClasses.text} ${backgroundClasses.titleColor} md:text-4xl`}
           >
-            {RichText.render(primary.big_title)}
+            {RichText.render(primary.big_title, linkResolver)}
           </div>
           {primary.description && (
             <div
               className={`${backgroundClasses.descriptionColor} ${alignmentClasses.item} ${alignmentClasses.text} p_py-2 leading-relaxed my-7 lg:w-3/4 xl:text-lg`}
             >
-              {RichText.render(primary.description)}
+              {RichText.render(primary.description, linkResolver)}
             </div>
           )}
           <div
@@ -142,7 +143,7 @@ export default class ImagesRow extends Component {
                       ${hasImage ? "" : "md:text-lg"} 
                       max-h-5`}
                     >
-                      {RichText.render(icon.text)}
+                      {RichText.render(icon.text, linkResolver)}
                     </div>
                   )}
                 </div>

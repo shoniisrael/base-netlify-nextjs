@@ -1,6 +1,6 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
-
+import { linkResolver } from "../../prismic-configuration";
 import Image from "../common/Image";
 import ResponsiveBgImage from "../common/responsiveBgImage";
 import Button from "./../common/button";
@@ -53,9 +53,13 @@ class Hero2 extends Component {
         <div className={`w-full ${containerWidth}`}>
           <Image image={headerImage} classes={`${imageAlignment} pt-10`} />
           <div className="mb-10 p_py-2">
-            {smallTitle && <div className={`text-sm uppercase`}>{RichText.render(smallTitle)}</div>}
-            <div className={`py-4 ${bigTitleStyle} font-bold`}>{RichText.render(bigTitle)}</div>
-            <div className="text-lg">{RichText.render(description)}</div>
+            {smallTitle && (
+              <div className={`text-sm uppercase`}>{RichText.render(smallTitle, linkResolver)}</div>
+            )}
+            <div className={`py-4 ${bigTitleStyle} font-bold`}>
+              {RichText.render(bigTitle, linkResolver)}
+            </div>
+            <div className="text-lg">{RichText.render(description, linkResolver)}</div>
           </div>
           <div className="pb-8">
             <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle}`} />

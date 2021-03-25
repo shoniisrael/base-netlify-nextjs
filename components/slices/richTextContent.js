@@ -1,5 +1,6 @@
-import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import TextUtils from "../../utils/text";
 
 class RichTextContent extends Component {
@@ -12,12 +13,12 @@ class RichTextContent extends Component {
         <div className="container mx-auto max-w-2xl pt-12 md:pt-16 pb-16 md:pb-29 px-10 md:px-16 xl:px-1 flex flex-col">
           {TextUtils.hasRichText(title) && (
             <div className="text-3xl md:text-4xl font-bold pb-7 text-primary-dark">
-              {RichText.render(title)}
+              {RichText.render(title, linkResolver)}
             </div>
           )}
           {TextUtils.hasRichText(richText) && (
             <div className="p_leading-relaxed richtext-content-container title_mt-14 title_mb-5 text-base p_lg-text-lg">
-              {RichText.render(richText)}
+              {RichText.render(richText, linkResolver)}
             </div>
           )}
         </div>

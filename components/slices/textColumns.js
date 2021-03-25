@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 
 class TextColumns extends Component {
@@ -18,9 +19,13 @@ class TextColumns extends Component {
     const { small_title: smallTitle, big_title: bigTitle, hidden_title: hiddenTitle } = primary;
     return (
       <React.Fragment>
-        <div className="p-4 text-xs uppercase md:text-sm">{RichText.render(smallTitle)}</div>
-        <div className="text-4xl font-bold text-primary-dark p-4">{RichText.render(bigTitle)}</div>
-        <div className="hidden">{RichText.render(hiddenTitle)}</div>
+        <div className="p-4 text-xs uppercase md:text-sm">
+          {RichText.render(smallTitle, linkResolver)}
+        </div>
+        <div className="text-4xl font-bold text-primary-dark p-4">
+          {RichText.render(bigTitle, linkResolver)}
+        </div>
+        <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
       </React.Fragment>
     );
   }
@@ -38,7 +43,7 @@ class TextColumns extends Component {
     return (
       <div className="flex flex-col md:flex-row text-columns">
         <div className="md:w-1/2 my-4 px-4 li_leading-loose">
-          <div className="text-lg p_py-2 pb-8">{RichText.render(leftRichText)}</div>
+          <div className="text-lg p_py-2 pb-8">{RichText.render(leftRichText, linkResolver)}</div>
           {leftImage && (
             <div className="w-full m-auto">
               <ResponsiveImage
@@ -51,10 +56,12 @@ class TextColumns extends Component {
         </div>
 
         <div className="md:w-1/2 my-4 px-4">
-          <div className="font-bold text-xl text-primary-dark">{RichText.render(rightTitle)}</div>
+          <div className="font-bold text-xl text-primary-dark">
+            {RichText.render(rightTitle, linkResolver)}
+          </div>
           {this.renderGrid()}
           <div className="p_py-2 p_leading-loose li_leading-loose">
-            {RichText.render(rightFooter)}
+            {RichText.render(rightFooter, linkResolver)}
           </div>
         </div>
       </div>
@@ -76,8 +83,10 @@ class TextColumns extends Component {
     return (
       <div>
         <div className="text-secondary text-4xl pb-3">{index}.</div>
-        <div className="font-medium text-base py-2 text-primary-dark">{RichText.render(title)}</div>
-        <div className="text-sm p_py-3">{RichText.render(richText)}</div>
+        <div className="font-medium text-base py-2 text-primary-dark">
+          {RichText.render(title, linkResolver)}
+        </div>
+        <div className="text-sm p_py-3">{RichText.render(richText, linkResolver)}</div>
       </div>
     );
   }

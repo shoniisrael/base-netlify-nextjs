@@ -1,5 +1,6 @@
-import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import Button from "../common/button";
 import SubscribeForm from "../common/subscribeForm";
 const CONTACT_TYPE = {
@@ -22,10 +23,14 @@ class Subscribe extends Component {
         <div className="bg-primary-paleBlue rounded-xl dots5">
           <div className="px-7 xl:px-20 pt-20 pb-8 xl:pb-16 flex flex-col lg:flex-row">
             <div className={`w-full lg:${textWidth} text-primary-dark`}>
-              <div className="pb-2 text-xs uppercase">{RichText.render(smallTitle)}</div>
-              <div className="text-base font-medium">{RichText.render(smallDescription)}</div>
+              <div className="pb-2 text-xs uppercase">
+                {RichText.render(smallTitle, linkResolver)}
+              </div>
+              <div className="text-base font-medium">
+                {RichText.render(smallDescription, linkResolver)}
+              </div>
               <div className="pt-3 pb-4 font-bold text-3xl 2xl:text-4xl">
-                {RichText.render(bigTitle)}
+                {RichText.render(bigTitle, linkResolver)}
               </div>
             </div>
             <div className={`pb-5 text-right flex items-end justify-end w-full lg:${width}`}>

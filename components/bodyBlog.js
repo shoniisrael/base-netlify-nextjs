@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ResponsiveImage from "./common/responsiveImage";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../prismic-configuration";
 import TextUtils from "../utils/text";
 import SocialMedia from "./socialMedia";
 
@@ -9,7 +10,7 @@ class BodyBlog extends Component {
     if (TextUtils.hasRichText(title)) {
       return (
         <div className="w-full pt-14 pb-10 text-3xl font-bold leading-8 text-left text-primary-dark  md:text-4xl lg:text-4xl capitalize">
-          {RichText.render(title)}
+          {RichText.render(title, linkResolver)}
         </div>
       );
     }
@@ -52,7 +53,7 @@ class BodyBlog extends Component {
 
         {this.getPostImage(image)}
 
-        {TextUtils.hasRichText(content) && <div>{RichText.render(content)}</div>}
+        {TextUtils.hasRichText(content) && <div>{RichText.render(content, linkResolver)}</div>}
 
         {this.getSocialMediaBar()}
       </div>

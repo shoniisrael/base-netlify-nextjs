@@ -77,7 +77,7 @@ class ImageAndForm extends Component {
     const { flexDirection, padding } = this.getAlignmentClasses(alignment);
     const backgroundStyle = this.getBackgroundStyle(background_style);
     return (
-      <div className={`${backgroundStyle}`}>
+      <div className={backgroundStyle}>
         <div className="container m-auto pt-12 px-6 md:px-14 lg:px-28 lg:pb-0">
           <div className={`flex flex-col ${flexDirection} 3xl:px-28`}>
             {this.renderTextAndImage()}
@@ -106,7 +106,6 @@ class ImageAndForm extends Component {
     const floatingImageStyle = hasHeaderImage
       ? "max-h-80 "
       : "max-h-full lg:max-h-96 lg:-bottom-28 lg:relative flex items-end";
-    // const floatingImageStyle = hasHeaderImage ? "" : "lg:-bottom-28 lg:relative flex items-end";
     return (
       <div className={`lg:w-1/2 px-2 ${textStyle} custom-check-list`}>
         {headerImage && (

@@ -42,7 +42,7 @@ class Body extends Component {
       ebook,
       file,
       form,
-      caseName,
+      downloadName,
     } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
@@ -109,13 +109,13 @@ class Body extends Component {
         case SLICE_TYPES.TITLE_AND_FORM:
           return (
             <section key={index}>
-              <TitleAndForm slice={slice} index={index} file={file} caseName={caseName} />
+              <TitleAndForm slice={slice} index={index} file={file} downloadName={downloadName} />
             </section>
           );
         case SLICE_TYPES.TEXT_AND_FORM:
           return (
             <section key={index}>
-              <TextAndForm slice={slice} index={index} file={file} caseName={caseName} />
+              <TextAndForm slice={slice} index={index} file={file} downloadName={downloadName} />
             </section>
           );
         case SLICE_TYPES.TEXT_COLUMNS:
@@ -188,20 +188,20 @@ class Body extends Component {
                 index={index}
                 formConfig={form}
                 file={file}
-                caseName={caseName}
+                downloadName={downloadName}
               />
             </section>
           );
         case SLICE_TYPES.CASE_STUDY_CONTENT:
           return (
             <section key={index}>
-              <Body slices={caseStudy} form={slice} file={file} caseName={caseName} />
+              <Body slices={caseStudy} form={slice} file={file} downloadName={downloadName} />
             </section>
           );
         case SLICE_TYPES.EBOOK_CONTENT:
           return (
             <section key={index}>
-              <Body slices={ebook} form={slice} file={file} caseName={caseName} />
+              <Body slices={ebook} form={slice} file={file} downloadName={downloadName} />
             </section>
           );
         case SLICE_TYPES.RICH_TEXT:

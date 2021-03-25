@@ -1,5 +1,6 @@
-import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
+import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import TextUtils from "../../utils/text";
 import Form from "../common/form";
 import { useAppContext } from "../../pages/_app";
@@ -11,7 +12,7 @@ const ALIGNMENT = {
 class TitleAndForm extends Component {
   render() {
     const { forms } = useAppContext();
-    const { slice, index, file, caseName } = this.props;
+    const { slice, index, file, downloadName } = this.props;
     const { primary } = slice;
     const {
       small_title: smallTitle,
@@ -29,17 +30,21 @@ class TitleAndForm extends Component {
           <div className={`${alignment} pb-10`}>
             {TextUtils.hasRichText(smallTitle) && (
               <div className="text-xs font-medium uppercase pb-3">
-                {RichText.render(smallTitle)}
+                {RichText.render(smallTitle, linkResolver)}
               </div>
             )}
             {TextUtils.hasRichText(bigTitle) && (
-              <div className="text-2xl md:text-4xl py-4 font-bold">{RichText.render(bigTitle)}</div>
+              <div className="text-2xl md:text-4xl py-4 font-bold">
+                {RichText.render(bigTitle, linkResolver)}
+              </div>
             )}
             {TextUtils.hasRichText(description) && (
-              <div className="text-xs py-2 lg:text-base">{RichText.render(description)}</div>
+              <div className="text-xs py-2 lg:text-base">
+                {RichText.render(description, linkResolver)}
+              </div>
             )}
           </div>
-          {form && <Form form={form} index={index} file={file} caseName={caseName} />}
+          {form && <Form form={form} index={index} file={file} downloadName={downloadName} />}
         </div>
       </div>
     );

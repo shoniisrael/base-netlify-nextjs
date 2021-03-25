@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 import Button from "../common/button";
 
@@ -15,10 +16,10 @@ export default class Banner extends Component {
               <ResponsiveImage image={header_image} sizes="94px" className="flex-grow-0 pb-4" />
             )}
             <div className="pb-4 text-xs uppercase md:text-sm">
-              {RichText.render(primary.small_title)}
+              {RichText.render(primary.small_title, linkResolver)}
             </div>
             <div className="pb-8 text-lg font-semibold md:text-2xl lg:text-3xl text-primary-dark">
-              {RichText.render(primary.title)}
+              {RichText.render(primary.title, linkResolver)}
             </div>
             <Button link={button_link} label={button_label} style={button_style} />
           </div>

@@ -14,7 +14,7 @@ class CaseStudy extends Component {
       meta_title: metaTitle,
       meta_description: metaDescription,
       file = {},
-      case_study_name: caseName,
+      case_study_name: downloadName,
       index,
       follow,
       canonical_url: canonicalUrl,
@@ -38,7 +38,7 @@ class CaseStudy extends Component {
           slices={settingsData.body}
           caseStudy={data.body}
           file={file.url}
-          caseName={caseName}
+          downloadName={downloadName}
         />
       </Layout>
     );

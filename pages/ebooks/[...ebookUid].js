@@ -16,7 +16,7 @@ class Ebook extends Component {
       meta_title: metaTitle,
       meta_description: metaDescription,
       file = {},
-      ebook_name: caseName,
+      ebook_name: downloadName,
       index,
       follow,
       canonical_url: canonicalUrl,
@@ -26,7 +26,7 @@ class Ebook extends Component {
         title={metaTitle || "Ebook | Devsu"}
         description={
           metaDescription ||
-          "An ebook about how Devsu's team develops quality software that helps companies meet their needs with a smart solution."
+          "An Ebook about how Devsu's team develops quality software that helps companies meet their needs with a smart solution."
         }
         navigation={navigation}
         headerStyle={headerStyle}
@@ -36,7 +36,12 @@ class Ebook extends Component {
         canonical_url={canonicalUrl}
         keywords={data.keywords}
       >
-        <Body slices={settingsData.body} ebook={data.body} file={file.url} caseName={caseName} />
+        <Body
+          slices={settingsData.body}
+          ebook={data.body}
+          file={file.url}
+          downloadName={downloadName}
+        />
       </Layout>
     );
   }

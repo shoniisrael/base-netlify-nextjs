@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { useAppContext } from "../../pages/_app";
 import { RichText } from "prismic-reactjs";
+import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
 import ResponsiveImage from "../common/responsiveImage";
 import TextUtils from "../../utils/text";
@@ -57,7 +58,7 @@ class ArticleCarousel extends Component {
     return (
       <div key={index} className="w-full flex flex-col md:flex-row">
         <div className="md:w-1/2 pb-12 md:pb-0 md:pr-7 xl:pr-12 xl:pt-12">
-          <div className="cardText carouselTitle">{RichText.render(title)}</div>
+          <div className="cardText carouselTitle">{RichText.render(title, linkResolver)}</div>
           <p className="cardText carouselText">{content[0].text}</p>
           <div className=" text-2xl md:text-4xl text-primary-dark">
             <CustomLink link={generatedLink} classes="btn flat contentBtn w-40">
@@ -84,7 +85,7 @@ class ArticleCarousel extends Component {
         {headerConfiguration ? (
           TextUtils.hasRichText(textTitle) && (
             <div className="text-4xl md:text-5xl 2xl:text-6xl font-bold text-primary-dark">
-              {RichText.render(textTitle)}
+              {RichText.render(textTitle, linkResolver)}
             </div>
           )
         ) : (

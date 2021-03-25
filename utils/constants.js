@@ -82,6 +82,7 @@ export const HEADER_AND_FOOTER_STYLE = {
 
 export const FORMS = {
   CASE_STUDY: "case-study",
+  EBOOK: "ebook",
 };
 
 export const SOCIAL_MEDIA = {

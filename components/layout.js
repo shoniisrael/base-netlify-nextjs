@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React, { Component } from "react";
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import Footer from "./footer";
 import Header from "./header";
 class Layout extends Component {
@@ -39,14 +38,8 @@ class Layout extends Component {
           <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
         </Head>
         <Header headerStyle={headerStyle} nav={navigation.data.nav} />
-        <GoogleReCaptchaProvider
-          useRecaptchaNet
-          reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-          scriptProps={{ async: true, defer: true, appendTo: "body" }}
-        >
-          {children}
-          <Footer footerStyle={footerStyle} nav={navigation.data.footer} />
-        </GoogleReCaptchaProvider>
+        {children}
+        <Footer footerStyle={footerStyle} nav={navigation.data.footer} />
       </div>
     );
   }

@@ -1,0 +1,273 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "uid"
+        }
+      },
+      "case_study_name" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Case Study Name",
+          "placeholder" : "Case Study Name"
+        }
+      },
+      "hidden_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "paragraph, heading1, heading2, heading3, heading4",
+          "label" : "hidden title",
+          "placeholder" : "hidden title only for SEO purposes"
+        }
+      },
+      "file" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "media",
+          "label" : "File",
+          "placeholder" : "Case study file"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : {
+            "image_and_form" : [ ],
+            "text_columns_and_image" : [ ]
+          },
+          "choices" : {
+            "text_columns" : {
+              "type" : "Slice",
+              "fieldset" : "Text Columns",
+              "description" : "Title, Rich text and image at left and title, repeatable columns and footer at right ",
+              "icon" : "view_column",
+              "display" : "list",
+              "non-repeat" : {
+                "small_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Small title"
+                  }
+                },
+                "big_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6",
+                    "label" : "Big title"
+                  }
+                },
+                "hidden_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6",
+                    "label" : "Hidden title"
+                  }
+                },
+                "left_rich_text" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                    "label" : "Left Rich Text",
+                    "labels" : {
+                      "" : [ {
+                        "name" : "custom-dot-list"
+                      }, {
+                        "name" : "custom-check-list"
+                      } ]
+                    }
+                  }
+                },
+                "left_image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : {
+                      "height" : 820
+                    },
+                    "thumbnails" : [ ],
+                    "label" : "Left Image"
+                  }
+                },
+                "right_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Right Title"
+                  }
+                },
+                "right_footer" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4, strong, em, hyperlink, list-item",
+                    "label" : "Right Footer",
+                    "labels" : {
+                      "" : [ {
+                        "name" : "custom-dot-list"
+                      }, {
+                        "name" : "custom-check-list"
+                      } ]
+                    }
+                  }
+                }
+              },
+              "repeat" : {
+                "title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6",
+                    "label" : "Title"
+                  }
+                },
+                "rich_text" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, list-item, o-list-item, rtl",
+                    "label" : "Rich text",
+                    "labels" : {
+                      "" : [ {
+                        "name" : "custom-dot-list"
+                      }, {
+                        "name" : "custom-check-list"
+                      } ]
+                    }
+                  }
+                }
+              }
+            },
+            "testimonial" : {
+              "type" : "Slice",
+              "fieldset" : "Testimonial",
+              "description" : "Title and \"testimonial\" document",
+              "icon" : "speaker_notes",
+              "display" : "list",
+              "non-repeat" : {
+                "title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Title"
+                  }
+                },
+                "testimonial" : {
+                  "type" : "Link",
+                  "config" : {
+                    "select" : "document",
+                    "customtypes" : [ "testimonial" ],
+                    "label" : "testimonial"
+                  }
+                }
+              },
+              "repeat" : { }
+            },
+            "image_and_form" : {
+              "type" : "Slice",
+              "fieldset" : "Image and Form",
+              "description" : "Image and Form displayed in two columns",
+              "icon" : "account_balance_wallet",
+              "display" : "list",
+              "non-repeat" : {
+                "header_image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : {
+                      "height" : 104
+                    },
+                    "thumbnails" : [ ],
+                    "label" : "Header image"
+                  }
+                },
+                "small_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Small title"
+                  }
+                },
+                "big_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Big title"
+                  }
+                },
+                "big_image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : {
+                      "width" : null,
+                      "height" : 692
+                    },
+                    "thumbnails" : [ ],
+                    "label" : "Big image"
+                  }
+                },
+                "background_style" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "light", "dark" ],
+                    "default_value" : "light",
+                    "label" : "Background Style"
+                  }
+                }
+              },
+              "repeat" : { }
+            }
+          }
+        }
+      }
+    },
+    "SEO" : {
+      "meta_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "meta_title"
+        }
+      },
+      "meta_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "meta_description"
+        }
+      },
+      "index" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "index", "noindex" ],
+          "default_value" : "index",
+          "label" : "Index Page"
+        }
+      },
+      "follow" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "follow", "nofollow" ],
+          "default_value" : "follow",
+          "label" : "Follow"
+        }
+      },
+      "canonical_url" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Canonical Url",
+          "placeholder" : "original link for duplicated pages"
+        }
+      },
+      "keywords" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "keyword" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Keyword",
+                "placeholder" : "single Keywords or coma separated Keywords"
+              }
+            }
+          },
+          "label" : "Keywords"
+        }
+      }
+    }
+  }

@@ -65,10 +65,6 @@ a {
   @apply text-primary-dark font-medium;
 }
 
-.custom-dot-list li {
-  line-height: 1.25 !important;
-}
-
 .custom-dot-list li::before {
   @apply leading-tight;
   content: "";

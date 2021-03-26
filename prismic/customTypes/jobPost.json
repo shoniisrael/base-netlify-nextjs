@@ -1,0 +1,129 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "uid"
+        }
+      },
+      "is_active" : {
+        "type" : "Boolean",
+        "config" : {
+          "placeholder_false" : "false if the job post is inactive",
+          "placeholder_true" : "true if the job post is active (only active ones will be rendered in the job posts cards slice)",
+          "default_value" : true,
+          "label" : "is Active"
+        }
+      },
+      "card_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, heading3, heading4",
+          "label" : "Card title",
+          "placeholder" : "Title for job post cards slice"
+        }
+      },
+      "card_description" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, heading3, heading4",
+          "label" : "Card description",
+          "placeholder" : "Description for job post cards slice"
+        }
+      },
+      "position_title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, heading3, heading4",
+          "label" : "Position title"
+        }
+      },
+      "position_summary" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, heading3, heading4, strong, em",
+          "label" : "Position summary"
+        }
+      },
+      "button_label" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Button label"
+        }
+      },
+      "button_link" : {
+        "type" : "Link",
+        "config" : {
+          "label" : "Button link"
+        }
+      },
+      "button_style" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "filled", "flat" ],
+          "default_value" : "filled",
+          "label" : "Button style"
+        }
+      },
+      "content" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+          "label" : "Rich text Content",
+          "labels" : [ "quote", "custom-dot-list-primary", "custom-check-list", "footer-text-1", "footer-text-2" ]
+        }
+      }
+    },
+    "SEO" : {
+      "meta_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "meta title"
+        }
+      },
+      "meta_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "meta description"
+        }
+      },
+      "index" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "index", "noindex" ],
+          "default_value" : "index",
+          "label" : "Index Page"
+        }
+      },
+      "follow" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "follow", "nofollow" ],
+          "default_value" : "follow",
+          "label" : "Follow"
+        }
+      },
+      "canonical_url" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Canonical Url",
+          "placeholder" : "original link for duplicated pages"
+        }
+      },
+      "keywords" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "keyword" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Keyword",
+                "placeholder" : "single Keywords or coma separated Keywords"
+              }
+            }
+          },
+          "label" : "Keywords"
+        }
+      }
+    }
+  }

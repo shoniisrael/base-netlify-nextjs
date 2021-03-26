@@ -10,6 +10,70 @@ class BlogCategory extends Component {
     return [{ type: "heading1", text: categoryName, spans: [] }];
   }
 
+  renderBlogCategoryPage(blogCategorySettings, blogCategory, blogsByCategory, navigation) {
+    const { results = {} } = blogCategorySettings;
+    const { data: settingsData = {} } = results[0];
+    const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
+
+    const { data = {} } = blogCategory;
+    const {
+      meta_title: metaTitle,
+      meta_description: metaDescription,
+      index,
+      follow,
+      canonical_url: canonicalUrl,
+    } = data;
+
+    const categoryName = this.getCategoryName(blogCategory);
+    const blogCategoryContent = { blogsByCategory: blogsByCategory, categoryName: categoryName };
+
+    return (
+      <Layout
+        title={metaTitle}
+        description={metaDescription}
+        navigation={navigation}
+        headerStyle={headerStyle}
+        footerStyle={footerStyle}
+        index={index || "index"}
+        follow={follow || "follow"}
+        canonical_url={canonicalUrl}
+        keywords={data.keywords}
+      >
+        <Body slices={settingsData.body} blogCategoryContent={blogCategoryContent} />
+      </Layout>
+    );
+  }
+
+  renderBlogPostPage(blogPostsSettings, blogPost, navigation) {
+    const { results = {} } = blogPostsSettings;
+    const { data: settingsData = {} } = results[0];
+    const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
+
+    const { data = {} } = blogPost;
+    const {
+      meta_title: metaTitle,
+      meta_description: metaDescription,
+      index,
+      follow,
+      canonical_url: canonicalUrl,
+    } = data;
+    return (
+      <Layout
+        title={metaTitle}
+        description={metaDescription}
+        navigation={navigation}
+        headerStyle={headerStyle}
+        footerStyle={footerStyle}
+        index={index || "index"}
+        follow={follow || "follow"}
+        canonical_url={canonicalUrl}
+        keywords={data.keywords}
+      >
+        <Body slices={settingsData.body} blogContent={blogPost.data} />
+      </Layout>
+    );
+  }
+
   render() {
     const {
       blogCategory,
@@ -21,111 +85,21 @@ class BlogCategory extends Component {
     } = this.props;
 
     if (blogCategory && blogCategorySettings) {
-      const { results = {} } = blogCategorySettings;
-      const { data: settingsData = {} } = results[0];
-      const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
-
-      const { data = {} } = blogCategory;
-      const {
-        meta_title: metaTitle,
-        meta_description: metaDescription,
-        index,
-        follow,
-        canonical_url: canonicalUrl,
-      } = data;
-
-      const categoryName = this.getCategoryName(blogCategory);
-      const blogCategoryContent = { blogsByCategory: blogsByCategory, categoryName: categoryName };
-
-      return (
-        <Layout
-          title={metaTitle}
-          description={metaDescription}
-          navigation={navigation}
-          headerStyle={headerStyle}
-          footerStyle={footerStyle}
-          index={index || "index"}
-          follow={follow || "follow"}
-          canonical_url={canonicalUrl}
-          keywords={data.keywords}
-        >
-          <Body slices={settingsData.body} blogCategoryContent={blogCategoryContent} />
-        </Layout>
+      return this.renderBlogCategoryPage(
+        blogCategorySettings,
+        blogCategory,
+        blogsByCategory,
+        navigation,
       );
     } else if (blogPost && blogPostsSettings) {
-      const { results = {} } = blogPostsSettings;
-      const { data: settingsData = {} } = results[0];
-      const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
-
-      const { data = {} } = blogPost;
-      const {
-        meta_title: metaTitle,
-        meta_description: metaDescription,
-        index,
-        follow,
-        canonical_url: canonicalUrl,
-      } = data;
-      return (
-        <Layout
-          title={metaTitle}
-          description={metaDescription}
-          navigation={navigation}
-          headerStyle={headerStyle}
-          footerStyle={footerStyle}
-          index={index || "index"}
-          follow={follow || "follow"}
-          canonical_url={canonicalUrl}
-          keywords={data.keywords}
-        >
-          <Body slices={settingsData.body} blogContent={blogPost.data} />
-        </Layout>
-      );
+      return this.renderBlogPostPage(blogPostsSettings, blogPost, navigation);
     }
   }
 }
 
 export default BlogCategory;
 
-export async function getStaticProps(context) {
-  const { params } = context;
-  const { blogPostManager } = params;
-  const searchableLastPosition = blogPostManager[blogPostManager.length - 1];
-  const blogPost = await Client().getByUID("blog_post", searchableLastPosition);
-  if (blogPostManager.length > 1 && blogPost) {
-    const blogPostsSettings = await Client().query(
-      Prismic.Predicates.at("document.type", "blog_post_settings"),
-    );
-    return {
-      props: {
-        blogPost,
-        blogPostsSettings,
-      },
-    };
-  } else {
-    const searchableUid = blogPostManager.join("_");
-    const blogCategory = await Client().getByUID("blog_category", searchableUid);
-
-    const { results: blogsByCategory } = await Client().query([
-      Prismic.Predicates.at("document.type", "blog_post"),
-      Prismic.Predicates.at("my.blog_post.categories.category", blogCategory.id),
-    ]);
-    const blogCategorySettings = await Client().query(
-      Prismic.Predicates.at("document.type", "blog_category_settings"),
-    );
-    return {
-      props: {
-        blogCategory,
-        blogsByCategory,
-        blogCategorySettings,
-      },
-    };
-  }
-}
-
-export async function getStaticPaths() {
-  const blogCategories = await Client().query(
-    Prismic.Predicates.at("document.type", "blog_category"),
-  );
+async function getBlogCateroriesStaticPaths(blogCategories) {
   const blogCategoriesPaths = blogCategories.results.map((blogCategory) => {
     const blogPostManager = blogCategory.uid.split("_");
     return {
@@ -134,8 +108,9 @@ export async function getStaticPaths() {
       },
     };
   });
-
-  const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"));
+  return blogCategoriesPaths;
+}
+async function getBlogPostsStaticPaths(blogPosts) {
   const blogPostsPaths = blogPosts.results.map((blogPost) => {
     let blogPostManager;
     let categoryLevels;
@@ -152,6 +127,79 @@ export async function getStaticPaths() {
       },
     };
   });
+  return blogPostsPaths;
+}
+
+async function queryBlogPostSettings() {
+  return await Client().query(Prismic.Predicates.at("document.type", "blog_post_settings"));
+}
+async function queryBlogCategorySettings() {
+  return await Client().query(Prismic.Predicates.at("document.type", "blog_category_settings"));
+}
+async function queryBlogsByMainCategory(blogCategory) {
+  return await Client().query([
+    Prismic.Predicates.at("document.type", "blog_post"),
+    Prismic.Predicates.at("my.blog_post.main_category", blogCategory.id),
+  ]);
+}
+async function queryBlogsBySecondaryCategory(blogCategory) {
+  return await Client().query([
+    Prismic.Predicates.at("document.type", "blog_post"),
+    Prismic.Predicates.at("my.blog_post.categories.category", blogCategory.id),
+  ]);
+}
+
+async function getBlogsByCaterory(blogsByMainCategory, blogsBySecondaryCategory) {
+  let blogsByTwoCategories = await blogsByMainCategory.concat(blogsBySecondaryCategory);
+  var hash = {};
+  return blogsByTwoCategories.filter(function (current) {
+    var exists = !hash[current.id];
+    hash[current.id] = true;
+    return exists;
+  });
+}
+
+export async function getStaticProps(context) {
+  const { params } = context;
+  const { blogPostManager } = params;
+  const searchableLastPosition = blogPostManager[blogPostManager.length - 1];
+  const posibleBlogPost = await Client().getByUID("blog_post", searchableLastPosition);
+  const isblog = blogPostManager.length > 1 && posibleBlogPost;
+
+  if (isblog) {
+    const blogPostsSettings = await queryBlogPostSettings();
+    return {
+      props: {
+        blogPost: posibleBlogPost,
+        blogPostsSettings,
+      },
+    };
+  } else {
+    const searchableUid = blogPostManager.join("_");
+    const blogCategory = await Client().getByUID("blog_category", searchableUid);
+    const { results: blogsByMainCategory } = await queryBlogsByMainCategory(blogCategory);
+    const { results: blogsBySecondaryCategory } = await queryBlogsBySecondaryCategory(blogCategory);
+
+    const blogsByCategory = await getBlogsByCaterory(blogsByMainCategory, blogsBySecondaryCategory);
+    const blogCategorySettings = await queryBlogCategorySettings();
+    return {
+      props: {
+        blogCategory,
+        blogsByCategory,
+        blogCategorySettings,
+      },
+    };
+  }
+}
+
+export async function getStaticPaths() {
+  const blogCategories = await Client().query(
+    Prismic.Predicates.at("document.type", "blog_category"),
+  );
+  const blogCategoriesPaths = await getBlogCateroriesStaticPaths(blogCategories);
+
+  const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"));
+  const blogPostsPaths = await getBlogPostsStaticPaths(blogPosts);
 
   const paths = blogCategoriesPaths.concat(blogPostsPaths);
   return {

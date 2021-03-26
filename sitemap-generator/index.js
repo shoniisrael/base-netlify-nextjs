@@ -89,6 +89,14 @@ const run = async () => {
       fetch: [],
     },
   );
+  let { results: blogs } = await api.query(
+    Prismic.Predicates.any("document.type", [DOC_TYPES.BLOG_POST]),
+    {
+      pageSize: 100,
+      fetch: [],
+    },
+  );
+
   const { results: pages } = await api.query(
     Prismic.Predicates.at("document.type", DOC_TYPES.PAGE),
     {
@@ -108,7 +116,7 @@ const run = async () => {
     blog_category: { changefreq: CHANGE_FREQUENCY.DAILY, priority: 0.7 },
     case_studies: { changefreq: CHANGE_FREQUENCY.MONTHLY, priority: 0.8 },
   };
-  docs = [...docs, ...pages];
+  docs = [...docs, ...pages, ...blogs];
   docs
     .sort((a, b) => {
       //order by type(z-a) and uid(a-z)
@@ -121,8 +129,15 @@ const run = async () => {
       if (doc.data.index && doc.data.index != "noindex") {
         const { data = {}, type } = doc;
         let options = optionsMapPerDocumentType[type];
-        if (type === DOC_TYPES.BLOG_POST && data.isfeatured) {
-          options = optionsMapPerDocumentType.featured_blog_post;
+
+        if (type === DOC_TYPES.BLOG_POST) {
+          const isMainFeatured = data.main_category.uid === "featured";
+          const isFeatured = data.categories.find((item) => item.category.uid === "featured")
+            ? true
+            : false;
+          if (isMainFeatured || isFeatured) {
+            options = optionsMapPerDocumentType.featured_blog_post;
+          }
         }
         sitemapStream.write({
           url: linkResolver(doc, pages),

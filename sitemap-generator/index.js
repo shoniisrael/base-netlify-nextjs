@@ -81,6 +81,7 @@ const run = async () => {
       DOC_TYPES.BLOG_POST,
       DOC_TYPES.BLOG_CATEGORY,
       DOC_TYPES.CASE_STUDIES,
+      DOC_TYPES.EBOOK,
     ]),
     {
       pageSize: 100,

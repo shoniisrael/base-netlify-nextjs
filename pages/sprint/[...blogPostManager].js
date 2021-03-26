@@ -99,7 +99,7 @@ class BlogCategory extends Component {
 
 export default BlogCategory;
 
-async function getBlogCateroriesStaticPaths(blogCategories) {
+async function getBlogCategoriesStaticPaths(blogCategories) {
   const blogCategoriesPaths = blogCategories.results.map((blogCategory) => {
     const blogPostManager = blogCategory.uid.split("_");
     return {
@@ -149,7 +149,7 @@ async function queryBlogsBySecondaryCategory(blogCategory) {
   ]);
 }
 
-async function getBlogsByCaterory(blogsByMainCategory, blogsBySecondaryCategory) {
+async function getBlogsByCategory(blogsByMainCategory, blogsBySecondaryCategory) {
   let blogsByTwoCategories = await blogsByMainCategory.concat(blogsBySecondaryCategory);
   var hash = {};
   return blogsByTwoCategories.filter(function (current) {
@@ -180,7 +180,7 @@ export async function getStaticProps(context) {
     const { results: blogsByMainCategory } = await queryBlogsByMainCategory(blogCategory);
     const { results: blogsBySecondaryCategory } = await queryBlogsBySecondaryCategory(blogCategory);
 
-    const blogsByCategory = await getBlogsByCaterory(blogsByMainCategory, blogsBySecondaryCategory);
+    const blogsByCategory = await getBlogsByCategory(blogsByMainCategory, blogsBySecondaryCategory);
     const blogCategorySettings = await queryBlogCategorySettings();
     return {
       props: {
@@ -196,7 +196,7 @@ export async function getStaticPaths() {
   const blogCategories = await Client().query(
     Prismic.Predicates.at("document.type", "blog_category"),
   );
-  const blogCategoriesPaths = await getBlogCateroriesStaticPaths(blogCategories);
+  const blogCategoriesPaths = await getBlogCategoriesStaticPaths(blogCategories);
 
   const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"));
   const blogPostsPaths = await getBlogPostsStaticPaths(blogPosts);

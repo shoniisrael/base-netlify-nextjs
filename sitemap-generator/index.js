@@ -42,14 +42,15 @@ const getPath = (page = { data: {} }, pages, childPages = []) => {
 
 const linkResolver = (doc, pages) => {
   const { uid } = doc;
-
-  const page = pages.find((page) => page.uid === uid);
-
   if (doc.type === DOC_TYPES.PAGE) {
+    let result = uid;
     if (doc.uid === "home") {
       return "/";
     }
-    const result = getPath(page, pages);
+    if (pages) {
+      const page = pages.find((page) => page.uid === uid);
+      result = getPath(page, pages);
+    }
     return `/${result.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.JOB_POST) {
@@ -65,7 +66,7 @@ const linkResolver = (doc, pages) => {
     return `/sprint/${uid.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.CASE_STUDIES) {
-    return `/case_studies/${uid.split("_").join("/")}`;
+    return `/case-studies/${uid.split("_").join("/")}`;
   }
   if (doc.type === DOC_TYPES.EBOOK) {
     return `/ebooks/${uid.split("_").join("/")}`;
@@ -81,6 +82,7 @@ const run = async () => {
       DOC_TYPES.BLOG_POST,
       DOC_TYPES.BLOG_CATEGORY,
       DOC_TYPES.CASE_STUDIES,
+      DOC_TYPES.EBOOK,
     ]),
     {
       pageSize: 100,

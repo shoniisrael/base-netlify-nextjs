@@ -25,7 +25,7 @@ class BlogCategory extends Component {
     } = data;
 
     const categoryName = this.getCategoryName(blogCategory);
-    const blogCategoryContent = { blogsByCategory: blogsByCategory, categoryName: categoryName };
+    const blogCategoryContent = { blogsByCategory, categoryName };
 
     return (
       <Layout
@@ -164,9 +164,9 @@ export async function getStaticProps(context) {
   const { blogPostManager } = params;
   const searchableLastPosition = blogPostManager[blogPostManager.length - 1];
   const posibleBlogPost = await Client().getByUID("blog_post", searchableLastPosition);
-  const isblog = blogPostManager.length > 1 && posibleBlogPost;
+  const isBlog = blogPostManager.length > 1 && posibleBlogPost;
 
-  if (isblog) {
+  if (isBlog) {
     const blogPostsSettings = await queryBlogPostSettings();
     return {
       props: {

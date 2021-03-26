@@ -1,0 +1,238 @@
+{
+  "Main" : {
+    "header_style" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Normal (With navigation)", "Simple (Without navigation)" ],
+        "default_value" : "Normal (With navigation)",
+        "label" : "Header Style"
+      }
+    },
+    "footer_style" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Normal (With navigation)", "Simple (Without navigation)" ],
+        "default_value" : "Normal (With navigation)",
+        "label" : "Footer Style"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "blog_content" : [ ]
+        },
+        "choices" : {
+          "article_carousel" : {
+            "type" : "Slice",
+            "fieldset" : "Article Carousel",
+            "description" : "Carousel of Published Articles",
+            "icon" : "burst_mode",
+            "display" : "grid",
+            "non-repeat" : {
+              "hidden_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                  "label" : "Hidden Title",
+                  "placeholder" : "Hidden title (only for SEO purposes)"
+                }
+              },
+              "background_style" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "none", "dots1", "dots2", "dots3", "dots4" ],
+                  "default_value" : "none",
+                  "label" : "Background style"
+                }
+              },
+              "header_configuration" : {
+                "type" : "Boolean",
+                "config" : {
+                  "placeholder_false" : "Show image title",
+                  "placeholder_true" : "Show text title",
+                  "default_value" : true,
+                  "label" : "Header configuration"
+                }
+              },
+              "text_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6",
+                  "label" : "Text Title (to be displayed according to the header configuration)"
+                }
+              },
+              "image_title" : {
+                "type" : "Image",
+                "config" : {
+                  "constraint" : {
+                    "width" : 372,
+                    "height" : 84
+                  },
+                  "thumbnails" : [ ],
+                  "label" : "Image Title (to be displayed according to the header configuration)"
+                }
+              },
+              "number_of_post" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Number Of Post (min 1 - 10 max)",
+                  "min" : 1,
+                  "max" : 10,
+                  "placeholder" : "3"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "latest_posts" : {
+            "type" : "Slice",
+            "fieldset" : "Latest Posts",
+            "description" : "Grid for latest Posts",
+            "icon" : "border_clear",
+            "display" : "grid",
+            "non-repeat" : {
+              "grid_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "single" : "paragraph, heading1, heading2, heading3, heading4",
+                  "label" : "Grid title"
+                }
+              },
+              "button_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Button label"
+                }
+              },
+              "button_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Button link"
+                }
+              },
+              "button_style" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "filled", "flat" ],
+                  "default_value" : "filled",
+                  "label" : "Button Style"
+                }
+              },
+              "show_social_media" : {
+                "type" : "Boolean",
+                "config" : {
+                  "default_value" : false,
+                  "label" : "show social media"
+                }
+              },
+              "show_categories" : {
+                "type" : "Boolean",
+                "config" : {
+                  "default_value" : false,
+                  "label" : "show categories"
+                }
+              },
+              "number_of_post" : {
+                "type" : "Number",
+                "config" : {
+                  "label" : "Number Of Post (min 1)",
+                  "min" : 1,
+                  "placeholder" : "3"
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "subscribe_section" : {
+            "type" : "Slice",
+            "fieldset" : "Subscribe section",
+            "description" : "Subscribe section. An email input can be added.",
+            "icon" : "contact_mail",
+            "display" : "list",
+            "non-repeat" : {
+              "small_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                  "label" : "Small title"
+                }
+              },
+              "small_description" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                  "label" : "Small description"
+                }
+              },
+              "big_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                  "label" : "Big title"
+                }
+              },
+              "type" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "Email input", "Button" ],
+                  "default_value" : "Email input",
+                  "label" : "type"
+                }
+              },
+              "button_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Button label"
+                }
+              },
+              "button_url" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Button url (only will be used if Button is selected as type)",
+                  "allowTargetBlank" : true
+                }
+              }
+            },
+            "repeat" : { }
+          },
+          "blog_content" : {
+            "type" : "Slice",
+            "fieldset" : "Blog Content",
+            "description" : "Blog Post Content",
+            "icon" : "border_color",
+            "display" : "list",
+            "non-repeat" : {
+              "hidden_title" : {
+                "type" : "StructuredText",
+                "config" : {
+                  "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                  "label" : "Hidden title",
+                  "placeholder" : "Hidden title (only for SEO purposes)"
+                }
+              }
+            },
+            "repeat" : { }
+          }
+        }
+      }
+    }
+  },
+  "SEO" : {
+    "meta_title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5",
+        "label" : "Meta Title"
+      }
+    },
+    "meta_description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, heading1, heading2, heading3, heading4",
+        "label" : "Meta Description"
+      }
+    }
+  }
+}

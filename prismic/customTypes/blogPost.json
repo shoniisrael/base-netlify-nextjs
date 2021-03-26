@@ -1,0 +1,139 @@
+{
+    "Main" : {
+      "main_category" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "document",
+          "customtypes" : [ "blog_category" ],
+          "label" : "Main Category"
+        }
+      },
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "uid"
+        }
+      },
+      "categories" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "category" : {
+              "type" : "Link",
+              "config" : {
+                "select" : "document",
+                "customtypes" : [ "blog_category" ],
+                "label" : "Category"
+              }
+            }
+          },
+          "label" : "Secondary Categories"
+        }
+      },
+      "blog_post_name" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Blog Post Name",
+          "placeholder" : "This field will not be rendered, it only helps to identify the blog post in prismic"
+        }
+      },
+      "image" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : {
+            "width" : 768,
+            "height" : 540
+          },
+          "thumbnails" : [ ],
+          "label" : "Image"
+        }
+      },
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, heading3, heading4",
+          "label" : "Title",
+          "placeholder" : "Blog Post Title"
+        }
+      },
+      "content" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item",
+          "label" : "Content",
+          "placeholder" : "Blog Content",
+          "labels" : [ "quote", "custom-dot-list-primary", "footer-text-1", "footer-text-2" ]
+        }
+      },
+      "isfeatured" : {
+        "type" : "Boolean",
+        "config" : {
+          "default_value" : false,
+          "label" : "isFeatured"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : {
+            "latest_posts" : [ ]
+          },
+          "choices" : { }
+        }
+      }
+    },
+    "SEO" : {
+      "meta_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "meta title"
+        }
+      },
+      "meta_description" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "meta description"
+        }
+      },
+      "index" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "index", "noindex" ],
+          "default_value" : "index",
+          "label" : "Index Page"
+        }
+      },
+      "follow" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "follow", "nofollow" ],
+          "default_value" : "follow",
+          "label" : "Follow"
+        }
+      },
+      "canonical_url" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Canonical Url",
+          "placeholder" : "original link for duplicated pages"
+        }
+      },
+      "keywords" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "keyword" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Keyword",
+                "placeholder" : "single Keyword or coma separated Keywords"
+              }
+            }
+          },
+          "label" : "Keywords"
+        }
+      }
+    }
+  }

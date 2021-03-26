@@ -1,0 +1,131 @@
+{
+    "Main" : {
+      "header_style" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "Simple (Without navigation)", "Normal (With navigation)" ],
+          "default_value" : "Simple (Without navigation)",
+          "label" : "Header Style"
+        }
+      },
+      "footer_style" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "Normal (With navigation)", "Simple (Without navigation)" ],
+          "default_value" : "Normal (With navigation)",
+          "label" : "Footer Style"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : {
+            "ebook_content" : [ ]
+          },
+          "choices" : {
+            "subscribe_section" : {
+              "type" : "Slice",
+              "fieldset" : "Subscribe section",
+              "description" : "Subscribe section. An email input can be added.",
+              "icon" : "contact_mail",
+              "display" : "list",
+              "non-repeat" : {
+                "small_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Small title"
+                  }
+                },
+                "small_description" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Small description"
+                  }
+                },
+                "big_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Big title"
+                  }
+                },
+                "type" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "Email input", "Button" ],
+                    "default_value" : "Email input",
+                    "label" : "type"
+                  }
+                },
+                "button_label" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Button label"
+                  }
+                },
+                "button_url" : {
+                  "type" : "Link",
+                  "config" : {
+                    "label" : "Button url (only will be used if Button is selected as type)",
+                    "allowTargetBlank" : true
+                  }
+                }
+              },
+              "repeat" : { }
+            },
+            "ebook_content" : {
+              "type" : "Slice",
+              "fieldset" : "Ebook Content",
+              "description" : "This section displays a ebook document type",
+              "icon" : "border_color",
+              "display" : "list",
+              "non-repeat" : {
+                "hidden_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Hidden title",
+                    "placeholder" : "Hidden title (only for SEO purposes)"
+                  }
+                },
+                "form_alignment" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "right", "left" ],
+                    "default_value" : "right",
+                    "label" : "form alignment"
+                  }
+                },
+                "form_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Form title"
+                  }
+                },
+                "form_description" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Form description"
+                  }
+                },
+                "form" : {
+                  "type" : "Link",
+                  "config" : {
+                    "select" : "document",
+                    "customtypes" : [ "form" ],
+                    "label" : "form"
+                  }
+                }
+              },
+              "repeat" : { }
+            }
+          }
+        }
+      }
+    }
+  }

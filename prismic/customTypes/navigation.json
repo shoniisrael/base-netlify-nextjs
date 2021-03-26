@@ -1,55 +1,55 @@
 {
-  "Main": {
-    "uid": {
-      "type": "UID",
-      "config": {
-        "label": "uid"
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "uid"
       }
     },
-    "title": {
-      "type": "Text",
-      "config": {
-        "label": "title"
+    "title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "title"
       }
     },
-    "nav": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {},
-        "choices": {
-          "nav_item": {
-            "type": "Slice",
-            "fieldset": "Nav Item",
-            "description": "Nav Item with Sub Navigation",
-            "icon": "insert_link",
-            "non-repeat": {
-              "label": {
-                "type": "Text",
-                "config": {
-                  "label": "label"
+    "nav" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : { },
+        "choices" : {
+          "nav_item" : {
+            "type" : "Slice",
+            "fieldset" : "Nav Item",
+            "description" : "Nav Item with Sub Navigation",
+            "icon" : "insert_link",
+            "non-repeat" : {
+              "label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "label"
                 }
               },
-              "link": {
-                "type": "Link",
-                "config": {
-                  "label": "Link",
-                  "placeholder": "Select Link..."
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Link",
+                  "placeholder" : "Select Link..."
                 }
               }
             },
-            "repeat": {
-              "sub_nav_link_label": {
-                "type": "Text",
-                "config": {
-                  "label": "Sub Nav Link Label"
+            "repeat" : {
+              "sub_nav_link_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Sub Nav Link Label"
                 }
               },
-              "sub_nav_link": {
-                "type": "Link",
-                "config": {
-                  "label": "Sub Nav Link",
-                  "placeholder": "Select Sub Nav Link..."
+              "sub_nav_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Sub Nav Link",
+                  "placeholder" : "Select Sub Nav Link..."
                 }
               }
             }
@@ -58,45 +58,45 @@
       }
     }
   },
-  "Footer": {
-    "footer": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {},
-        "choices": {
-          "nav_item": {
-            "type": "Slice",
-            "fieldset": "Nav Item",
-            "description": "Nav Item with Sub Navigation",
-            "icon": "insert_link",
-            "non-repeat": {
-              "label": {
-                "type": "Text",
-                "config": {
-                  "label": "label"
+  "Footer" : {
+    "footer" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : { },
+        "choices" : {
+          "nav_item" : {
+            "type" : "Slice",
+            "fieldset" : "Nav Item",
+            "description" : "Nav Item with Sub Navigation",
+            "icon" : "insert_link",
+            "non-repeat" : {
+              "label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "label"
                 }
               },
-              "link": {
-                "type": "Link",
-                "config": {
-                  "label": "Link",
-                  "placeholder": "Select Link..."
+              "link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Link",
+                  "placeholder" : "Select Link..."
                 }
               }
             },
-            "repeat": {
-              "sub_nav_link_label": {
-                "type": "Text",
-                "config": {
-                  "label": "Sub Nav Link Label"
+            "repeat" : {
+              "sub_nav_link_label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "Sub Nav Link Label"
                 }
               },
-              "sub_nav_link": {
-                "type": "Link",
-                "config": {
-                  "label": "Sub Nav Link",
-                  "placeholder": "Select Sub Nav Link..."
+              "sub_nav_link" : {
+                "type" : "Link",
+                "config" : {
+                  "label" : "Sub Nav Link",
+                  "placeholder" : "Select Sub Nav Link..."
                 }
               }
             }

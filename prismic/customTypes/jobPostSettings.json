@@ -1,0 +1,190 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "uid"
+        }
+      },
+      "header_style" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "Normal (With navigation)", "Simple (Without navigation)" ],
+          "default_value" : "Normal (With navigation)",
+          "label" : "Header Style"
+        }
+      },
+      "footer_style" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "Normal (With navigation)", "Simple (Without navigation)" ],
+          "default_value" : "Normal (With navigation)",
+          "label" : "Footer Style"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : {
+            "job_post_content" : [ ]
+          },
+          "choices" : {
+            "image_and_text" : {
+              "type" : "Slice",
+              "fieldset" : "Image and Text",
+              "description" : "Image, title and rich text",
+              "icon" : "assignment_ind",
+              "display" : "list",
+              "non-repeat" : {
+                "small_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Small title"
+                  }
+                },
+                "style" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "dark", "light" ],
+                    "label" : "Style"
+                  }
+                },
+                "image_alignment" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "left", "right" ],
+                    "default_value" : "left",
+                    "label" : "Image alignment"
+                  }
+                },
+                "button_label" : {
+                  "type" : "Text",
+                  "config" : {
+                    "label" : "Button label"
+                  }
+                },
+                "button_link" : {
+                  "type" : "Link",
+                  "config" : {
+                    "label" : "Button link"
+                  }
+                },
+                "button_style" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "filled", "flat" ],
+                    "default_value" : "filled",
+                    "label" : "Button style"
+                  }
+                },
+                "image_size" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "medium", "large" ],
+                    "default_value" : "medium",
+                    "label" : "image size"
+                  }
+                },
+                "list_columns" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "1", "2" ],
+                    "default_value" : "1",
+                    "label" : "list columns"
+                  }
+                },
+                "image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : {
+                      "width" : 563
+                    },
+                    "thumbnails" : [ {
+                      "name" : "tablet",
+                      "width" : 394,
+                      "height" : null
+                    }, {
+                      "name" : "mobile",
+                      "width" : 225,
+                      "height" : null
+                    } ],
+                    "label" : "Image"
+                  }
+                }
+              },
+              "repeat" : {
+                "big_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Big Title"
+                  }
+                },
+                "font_size" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "large", "medium" ],
+                    "default_value" : "large",
+                    "label" : "font size"
+                  }
+                },
+                "rich_text" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, hyperlink, list-item",
+                    "label" : "Rich Text"
+                  }
+                }
+              }
+            },
+            "quotes" : {
+              "type" : "Slice",
+              "fieldset" : "Quotes",
+              "description" : "Title and linked \"quotes\" documents.",
+              "icon" : "face",
+              "display" : "list",
+              "non-repeat" : {
+                "title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6",
+                    "label" : "Title"
+                  }
+                }
+              },
+              "repeat" : {
+                "quote" : {
+                  "type" : "Link",
+                  "config" : {
+                    "select" : "document",
+                    "customtypes" : [ "career_quotes" ],
+                    "label" : "quote"
+                  }
+                }
+              }
+            },
+            "job_post_content" : {
+              "type" : "Slice",
+              "fieldset" : "Job Post Content",
+              "description" : "Job Post Content",
+              "icon" : "border_color",
+              "display" : "list",
+              "non-repeat" : {
+                "hidden_title" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, heading1, heading2, heading3, heading4",
+                    "label" : "Hidden title",
+                    "placeholder" : "Hidden title (only for SEO purposes)"
+                  }
+                }
+              },
+              "repeat" : { }
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,129 +1,143 @@
 {
-  "Main": {
-    "uid": {
-      "type": "UID",
-      "config": {
-        "label": "uid"
+  "Main" : {
+    "uid" : {
+      "type" : "UID",
+      "config" : {
+        "label" : "uid"
       }
     },
-    "form_name": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
-        "label": "Form name (This field will not be rendered, it only helps to identify the page in prismic)",
-        "placeholder": "This field will not be rendered, it only helps to identify the page in prismic"
+    "form_name" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label" : "Form name (This field will not be rendered, it only helps to identify the page in prismic)",
+        "placeholder" : "This field will not be rendered, it only helps to identify the page in prismic"
       }
     },
-    "submit_button_label": {
-      "type": "Text",
-      "config": {
-        "label": "Submit button label"
+    "submit_button_label" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Submit button label"
       }
     },
-    "footer_text": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph, hyperlink",
-        "label": "footer text"
+    "footer_text" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, hyperlink",
+        "label" : "footer text"
       }
     },
-    "body": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {
-          "text_field": [],
-          "select": [],
-          "checkbox": []
+    "redirect_to" : {
+      "type" : "Link",
+      "config" : {
+        "select" : "document",
+        "customtypes" : [ "page" ],
+        "label" : "redirect_to"
+      }
+    },
+    "body" : {
+      "type" : "Slices",
+      "fieldset" : "Slice zone",
+      "config" : {
+        "labels" : {
+          "text_field" : [ ],
+          "select" : [ ],
+          "checkbox" : [ ]
         },
-        "choices": {
-          "text_field": {
-            "type": "Slice",
-            "fieldset": "Text field",
-            "description": "Text/Email field",
-            "icon": "format_color_text",
-            "display": "list",
-            "non-repeat": {
-              "placeholder": {
-                "type": "Text",
-                "config": {
-                  "label": "placeholder"
+        "choices" : {
+          "text_field" : {
+            "type" : "Slice",
+            "fieldset" : "Text field",
+            "description" : "Text/Email field",
+            "icon" : "format_color_text",
+            "display" : "list",
+            "non-repeat" : {
+              "placeholder" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "placeholder"
                 }
               },
-              "type": {
-                "type": "Select",
-                "config": {
-                  "options": ["text", "email"],
-                  "default_value": "text",
-                  "label": "type"
+              "type" : {
+                "type" : "Select",
+                "config" : {
+                  "options" : [ "text", "email" ],
+                  "default_value" : "text",
+                  "label" : "type"
                 }
               },
-              "name": {
-                "type": "Text",
-                "config": {
-                  "label": "name"
+              "name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "name"
                 }
               },
-              "full_width": {
-                "type": "Boolean",
-                "config": {
-                  "default_value": true,
-                  "label": "Full width"
+              "full_width" : {
+                "type" : "Boolean",
+                "config" : {
+                  "default_value" : true,
+                  "label" : "Full width"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           },
-          "select": {
-            "type": "Slice",
-            "fieldset": "Select",
-            "description": "Drop-down ",
-            "icon": "arrow_drop_down_circle",
-            "display": "list",
-            "non-repeat": {
-              "name": {
-                "type": "Text",
-                "config": {
-                  "label": "name"
+          "select" : {
+            "type" : "Slice",
+            "fieldset" : "Select",
+            "description" : "Drop-down ",
+            "icon" : "arrow_drop_down_circle",
+            "display" : "list",
+            "non-repeat" : {
+              "name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "name"
+                }
+              },
+              "placeholder" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "placeholder"
                 }
               }
             },
-            "repeat": {
-              "label": {
-                "type": "Text",
-                "config": {
-                  "label": "label"
+            "repeat" : {
+              "label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "label"
                 }
               },
-              "value": {
-                "type": "Text",
-                "config": {
-                  "label": "value"
+              "value" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "value"
                 }
               }
             }
           },
-          "checkbox": {
-            "type": "Slice",
-            "fieldset": "Checkbox",
-            "description": "Checkbox field",
-            "icon": "check_box",
-            "display": "list",
-            "non-repeat": {
-              "label": {
-                "type": "Text",
-                "config": {
-                  "label": "label"
+          "checkbox" : {
+            "type" : "Slice",
+            "fieldset" : "Checkbox",
+            "description" : "Checkbox field",
+            "icon" : "check_box",
+            "display" : "list",
+            "non-repeat" : {
+              "label" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "label"
                 }
               },
-              "name": {
-                "type": "Text",
-                "config": {
-                  "label": "name"
+              "name" : {
+                "type" : "Text",
+                "config" : {
+                  "label" : "name"
                 }
               }
             },
-            "repeat": {}
+            "repeat" : { }
           }
         }
       }

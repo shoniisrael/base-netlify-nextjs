@@ -1,0 +1,28 @@
+{
+    "Main" : {
+      "name_and_position" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, heading3, heading4, strong",
+          "label" : "name and position"
+        }
+      },
+      "quote" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, heading1, heading2, heading3, heading4, strong",
+          "label" : "quote"
+        }
+      },
+      "company_logo" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : {
+            "width" : 164
+          },
+          "thumbnails" : [ ],
+          "label" : "company logo"
+        }
+      }
+    }
+  }

@@ -76,7 +76,7 @@ class Hero1 extends Component {
       const textColor = this.getTextColor(bgColor);
       return (
         <div
-          className={`py-4 font-bold text-2xl md:text-4xl text-center pb-3 2xl:text-5xl lg:w-5/6 lg:pb-5 leading-6 ${textColor}`}
+          className={`py-4 font-bold text-2xl md:text-4xl text-center pb-3 2xl:text-5xl lg:leading-snug lg:w-5/6 lg:pb-5 leading-6 ${textColor}`}
         >
           {RichText.render(title, linkResolver)}
         </div>

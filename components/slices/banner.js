@@ -23,7 +23,7 @@ export default class Banner extends Component {
             </div>
             <Button link={button_link} label={button_label} style={button_style} />
           </div>
-          <div className="self-end md:w-1/2 lg:w-auto ml-auto md:justify-self-end">
+          <div className="self-end lg:max-w-sm xl:max-w-lg md:w-1/2 lg:w-auto ml-auto md:justify-self-end">
             <ResponsiveImage
               image={image}
               sizes="(min-width: 1280px) 500px, (min-width: 768px) 50vw, 75vw"

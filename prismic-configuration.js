@@ -5,6 +5,15 @@ export const apiEndpoint = "https://devsucom.cdn.prismic.io/api/v2";
 
 export const accessToken = "";
 
+const DOC_TYPES = {
+  PAGE: "page",
+  JOB_POST: "job_post",
+  BLOG_POST: "blog_post",
+  BLOG_CATEGORY: "blog_category",
+  CASE_STUDIES: "case_studies",
+  EBOOK: "ebook",
+};
+
 // creating a prismic client  object
 export const Client = (req = null) =>
   Prismic.client(apiEndpoint, createClientOptions(req, accessToken));
@@ -22,7 +31,7 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
   const { uid, pages } = doc;
-  if (doc.type === "page") {
+  if (doc.type === DOC_TYPES.PAGE) {
     let result = uid;
     if (doc.uid === "home") {
       return "/";
@@ -33,20 +42,20 @@ export const linkResolver = (doc) => {
     }
     return `/${result.split("_").join("/")}`;
   }
-  if (doc.type === "job_post") {
+  if (doc.type === DOC_TYPES.JOB_POST) {
     return `/careers/${uid.split("_").join("/")}`;
   }
-  if (doc.type === "blog_post") {
+  if (doc.type === DOC_TYPES.BLOG_POST) {
     const result = RoutingUtils.getBlogPath(uid);
     return `/sprint/${result}`;
   }
-  if (doc.type === "blog_category") {
+  if (doc.type === DOC_TYPES.BLOG_CATEGORY) {
     return `/sprint/${uid.split("_").join("/")}`;
   }
-  if (doc.type === "case_studies") {
+  if (doc.type === DOC_TYPES.CASE_STUDIES) {
     return `/case-studies/${uid.split("_").join("/")}`;
   }
-  if (doc.type === "ebook") {
+  if (doc.type === DOC_TYPES.EBOOK) {
     return `/ebooks/${uid.split("_").join("/")}`;
   }
   return "/";

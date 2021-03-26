@@ -14,6 +14,11 @@ const BACKGROUND_STYLE = {
   LIGHT: "light",
   DARK: "dark",
 };
+
+const TITLE_SIZE = {
+  LARGE: "large",
+  EXTRA_LARGE: "extra-large",
+};
 class ImageAndForm extends Component {
   getAlignmentClasses(alignment) {
     if (alignment === FORM_ALIGNMENT.RIGHT) {
@@ -96,16 +101,17 @@ class ImageAndForm extends Component {
       big_image: bigImage,
       header_image: headerImage,
       background_style,
+      big_title_size: bigTitleSize,
     } = primary;
     const textStyle = this.getTextStyle(background_style);
     const hasHeaderImage = headerImage && headerImage.dimensions;
     const smallTitlePaddingTop = hasHeaderImage ? "pt-10" : "pt-6";
-    const bigTitleTextSize = hasHeaderImage
-      ? "text-4xl pb-16"
-      : "pb-16 lg:pb-0 text-5xl md:text-6xl 2xl:text-7xl";
+    const bigTitlePadding = hasHeaderImage ? "pb-16" : "pb-16 lg:pb-0";
     const floatingImageStyle = hasHeaderImage
       ? "max-h-80 "
       : "max-h-full lg:max-h-96 lg:-bottom-28 lg:relative flex items-end";
+    const bigTitleTextSize =
+      bigTitleSize === TITLE_SIZE.EXTRA_LARGE ? "text-5xl md:text-6xl 2xl:text-7xl" : "text-4xl";
     return (
       <div className={`lg:w-1/2 px-2 ${textStyle} custom-check-list`}>
         {headerImage && (
@@ -117,7 +123,9 @@ class ImageAndForm extends Component {
           </div>
         )}
         {TextUtils.hasRichText(bigTitle) && (
-          <div className={`${bigTitleTextSize} font-bold leading-tight ${textStyle}`}>
+          <div
+            className={`${bigTitlePadding} ${bigTitleTextSize} font-bold leading-tight ${textStyle}`}
+          >
             {RichText.render(bigTitle, linkResolver)}
           </div>
         )}

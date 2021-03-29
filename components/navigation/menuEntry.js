@@ -8,7 +8,7 @@ class MenuEntry extends Component {
       menuClasses = "mx-6",
       customLinkClasses;
     if (submenuItems.length > 0) {
-      arrowImg = <img className="ml-2 object-scale-down" src="/img/chevron-down.svg" />;
+      arrowImg = <img className="ml-2 object-scale-down" src="/img/chevron-down.svg" alt="" />;
       submenus = (
         <div
           className="desktop-submenu hidden absolute top-full -mt-5"

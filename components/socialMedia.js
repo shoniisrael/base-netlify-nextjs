@@ -15,7 +15,7 @@ class SocialMedia extends Component {
           return (
             <li className={classNameFacebook}>
               <a className="hover:bg-white" href="https://www.facebook.com/DevsuSoftware">
-                <img className={className} src="/img/facebook_icon.svg" />
+                <img className={className} src="/img/facebook_icon.svg" alt="facebook" />
               </a>
             </li>
           );
@@ -24,7 +24,7 @@ class SocialMedia extends Component {
           return (
             <li className={classNameLinkedin}>
               <a className="hover:text-white" href="https://www.linkedin.com/company/devsu/">
-                <img className={className} src="/img/linkedin_icon.svg" />
+                <img className={className} src="/img/linkedin_icon.svg" alt="linkedin" />
               </a>
             </li>
           );
@@ -33,7 +33,7 @@ class SocialMedia extends Component {
           return (
             <li className={classNameTwitter}>
               <a className="hover:text-white" href="https://twitter.com/devsullc">
-                <img className={className} src="/img/twitter_icon.svg" />
+                <img className={className} src="/img/twitter_icon.svg" alt="twitter" />
               </a>
             </li>
           );

@@ -73,7 +73,7 @@ class Cards extends Component {
         className={`${styleClasses.background} relative flex flex-col items-center text-center px-4 xl:px-4 pb-7 pt-16 lg:pt-24`}
       >
         <div className="absolute -top-10">
-          <img src="/img/lightblue-circle.svg" />
+          <img src="/img/lightblue-circle.svg" alt="" />
         </div>
         <div
           className={`${styleClasses.cardTitleColor} px-10 font-semibold text-xl md:px-1 xl:px-12 py-4`}

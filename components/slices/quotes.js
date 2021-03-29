@@ -27,7 +27,7 @@ class Quotes extends Component {
               <div className="pt-5 font-bold">{RichText.render(name, linkResolver)}</div>
               <div>{RichText.render(position, linkResolver)}</div>
               <div className={`h-14 pt-5 ${!isLastItem ? "mb-12 md:mb-10" : ""}`}>
-                <Image image={logo} classes={`h-full`} />
+                <Image image={logo} alt={logo.alt} classes={`h-full`} />
               </div>
               {!isLastItem && <div className="separator" />}
             </div>

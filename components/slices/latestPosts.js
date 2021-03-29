@@ -36,7 +36,7 @@ class LatestPosts extends Component {
         <div className="object-right text-right self-start text-2xl md:text-4xl text-primary-dark">
           <CustomLink link={buttonLink} classes={`btn ${buttonStyle} contentBtn `}>
             <span className="mr-2 ">{buttonLabel} </span>
-            <img className="w-min" src="/img/chevron-right.svg" />
+            <img className="w-min" src="/img/chevron-right.svg" alt="" />
           </CustomLink>
         </div>
       </div>
@@ -51,7 +51,11 @@ class LatestPosts extends Component {
             <ul className="flex items-center mt-2 text-2xl text-secondary">
               <li>
                 <a className="hover:bg-white" href="https://www.facebook.com/DevsuSoftware">
-                  <img className="w-5 h-6 text-secondary" src="/img/facebook_icon.svg" />
+                  <img
+                    className="w-5 h-6 text-secondary"
+                    src="/img/facebook_icon.svg"
+                    alt="facebook"
+                  />
                 </a>
               </li>
               <li className="mx-4">
@@ -59,6 +63,7 @@ class LatestPosts extends Component {
                   <img
                     className="w-5 h-6 fill-current text-secondary"
                     src="/img/linkedin_icon.svg"
+                    alt="linkedin"
                   />
                 </a>
               </li>
@@ -67,6 +72,7 @@ class LatestPosts extends Component {
                   <img
                     className="w-5 h-6 fill-current text-secondary"
                     src="/img/twitter_icon.svg"
+                    alt="twitter"
                   />
                 </a>
               </li>

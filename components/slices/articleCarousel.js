@@ -63,7 +63,7 @@ class ArticleCarousel extends Component {
           <div className=" text-2xl md:text-4xl text-primary-dark">
             <CustomLink link={generatedLink} classes="btn flat contentBtn w-40">
               <span className="mr-2 ">Read More </span>
-              <img className="w-min" src="/img/chevron-right.svg" />
+              <img className="w-min" src="/img/chevron-right.svg" alt="" />
             </CustomLink>
           </div>
         </div>

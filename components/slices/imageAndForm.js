@@ -19,6 +19,10 @@ const TITLE_SIZE = {
   LARGE: "large",
   EXTRA_LARGE: "extra-large",
 };
+const BIG_IMAGE_STYLE = {
+  FLOATING: "Floating",
+  MARGIN: "Bottom Margin",
+};
 class ImageAndForm extends Component {
   getAlignmentClasses(alignment) {
     if (alignment === FORM_ALIGNMENT.RIGHT) {
@@ -42,6 +46,17 @@ class ImageAndForm extends Component {
         return "bg-primary-lighter blue-top-right-oval-bg";
     }
   }
+  getBigImageStyle(imageStyle) {
+    switch (imageStyle) {
+      case BIG_IMAGE_STYLE.FLOATING:
+        return "max-h-full lg:max-h-96 lg:-bottom-28 lg:relative flex items-end";
+      case BIG_IMAGE_STYLE.MARGIN:
+        return "max-h-80 pt-6 md:pt-10 lg:pt-14";
+      default:
+        return "max-h-80 pt-6 md:pt-10 lg:pt-14";
+    }
+  }
+
   getTextStyle(backgroundStyle) {
     switch (backgroundStyle) {
       case BACKGROUND_STYLE.LIGHT:
@@ -102,14 +117,14 @@ class ImageAndForm extends Component {
       header_image: headerImage,
       background_style,
       big_title_size: bigTitleSize,
+      image_style: imageStyle,
     } = primary;
     const textStyle = this.getTextStyle(background_style);
     const hasHeaderImage = headerImage && headerImage.dimensions;
     const smallTitlePaddingTop = hasHeaderImage ? "pt-10" : "pt-6";
     const bigTitlePadding = hasHeaderImage ? "pb-16" : "pb-16 lg:pb-0";
-    const floatingImageStyle = hasHeaderImage
-      ? "max-h-80 "
-      : "max-h-full lg:max-h-96 lg:-bottom-28 lg:relative flex items-end";
+    const floatingImageStyle = this.getBigImageStyle(imageStyle);
+
     const bigTitleTextSize =
       bigTitleSize === TITLE_SIZE.EXTRA_LARGE ? "text-5xl md:text-6xl 2xl:text-7xl" : "text-4xl";
     return (
@@ -124,7 +139,7 @@ class ImageAndForm extends Component {
         )}
         {TextUtils.hasRichText(bigTitle) && (
           <div
-            className={`${bigTitlePadding} ${bigTitleTextSize} font-bold leading-tight ${textStyle}`}
+            className={`${bigTitlePadding} ${bigTitleTextSize} font-bold leading-tight ${textStyle} break-words`}
           >
             {RichText.render(bigTitle, linkResolver)}
           </div>

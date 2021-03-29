@@ -9,7 +9,7 @@ class CustomLink extends Component {
     const { pages } = useAppContext();
     const { link, children, classes } = this.props;
     if (!link || link.link_type === "Any") {
-      return <a className={classes}>{children}</a>;
+      return <div className={classes}>{children}</div>;
     }
     if (!pages) {
       throw new Error(`CustomLink requires the pages property ${JSON.stringify(link)}`);

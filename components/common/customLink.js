@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { default as NextLink } from "next/link";
 import { Link } from "prismic-reactjs";
-import { linkResolver, hrefResolver } from "../../prismic-configuration";
+import { linkResolver } from "../../prismic-configuration";
 import { useAppContext } from "../../pages/_app";
 
 class CustomLink extends Component {
@@ -18,7 +18,7 @@ class CustomLink extends Component {
     const linkUrl = Link.url({ ...link, pages }, linkResolver);
     if (link.link_type && link.link_type === "Document") {
       return (
-        <NextLink as={linkUrl} href={Link.url({ ...link, pages }, hrefResolver)}>
+        <NextLink href={linkUrl} passHref>
           <a className={classes}>{children}</a>
         </NextLink>
       );

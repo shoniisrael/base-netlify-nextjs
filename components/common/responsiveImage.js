@@ -19,7 +19,7 @@ class ResponsiveImage extends Component {
       <picture>
         <img
           src={imageWrapper.getSrc()}
-          alt={image.alt}
+          alt={image.alt ?? ""}
           srcSet={imageWrapper.getSrcSet()}
           sizes={sizes}
           className={className ?? ""}

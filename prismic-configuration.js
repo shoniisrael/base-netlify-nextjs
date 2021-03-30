@@ -60,6 +60,3 @@ export const linkResolver = (doc) => {
   }
   return "/";
 };
-
-// Additional helper function for Next/Link component
-export const hrefResolver = linkResolver;

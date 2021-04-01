@@ -18,7 +18,7 @@ class CookieDisclaimer extends Component {
           fontSize: "11.5px",
         }}
         buttonStyle={{
-          background: "#A4C22C",
+          background: "#65800E",
           color: "#FFFFFF",
           fontSize: "13px",
           borderRadius: "0.25rem",

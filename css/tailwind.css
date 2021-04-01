@@ -29,7 +29,7 @@ a {
 }
 
 .btn.filled {
-  @apply font-bold text-center text-white border border-solid bg-secondary border-secondary;
+  @apply font-bold text-center text-white border border-solid bg-secondary-dark border-secondary-dark;
 }
 
 .btn.flat {
@@ -478,7 +478,7 @@ li span.custom-dot-list-primary:before {
 
 /*! purgecss start ignore */
 .richtext-content-container h2 {
-  @apply text-4xl font-bold text-primary-dark text-left sm:leading-10 sm:text-3xl mt-7 mb-5 xl:mt-14;
+  @apply font-bold text-primary-dark text-left sm:leading-10 text-2xl sm:text-3xl mt-7 mb-5 xl:mt-14;
 }
 /*! purgecss end ignore */
 

@@ -37,8 +37,8 @@ class BodyBlog extends Component {
 
   getPostImage(image) {
     return (
-      <div className="pb-9 w-full">
-        <ResponsiveImage image={image} sizes="(min-width:1280) 770px, 90vw" />
+      <div className="pb-9">
+        <ResponsiveImage image={image} sizes="(min-width:1280) 770px, 100vw" />
       </div>
     );
   }
@@ -46,7 +46,7 @@ class BodyBlog extends Component {
   render() {
     const { title, image, content } = this.props.bodyData;
     return (
-      <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto w-1/2">
+      <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto sm:w-1/2 w-11/12">
         {this.getTitle(title)}
 
         {this.getSocialMediaBar()}

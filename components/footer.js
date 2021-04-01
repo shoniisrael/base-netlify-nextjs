@@ -33,7 +33,7 @@ class Footer extends Component {
         <p className="pb-3 text-xs font-bold text-secondary">SUBSCRIBE TO OUR NEWSLETTER</p>
         <p className="pb-4 font-bold lg:text-xl">Stay in touch</p>
         <div className="flex flex-col items-center w-full lg:flex-row md:items-start">
-          <SubscribeForm classes="px-5 py-4 mb-8 custom-input w-full lg:w-3/5 bg-primary md:text-sm lg:text-base" />
+          <SubscribeForm classes="px-5 py-4 mb-8 custom-input w-full lg:w-3/5 bg-primary-darkGray md:text-sm lg:text-base" />
         </div>
       </div>
     );

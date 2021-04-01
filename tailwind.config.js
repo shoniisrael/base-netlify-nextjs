@@ -32,9 +32,11 @@ module.exports = {
           lightest: "#E6F3FA",
           aliceBlue: "#F4FAFD",
           paleBlue: "#EFF7FC",
+          darkGray: "#41525B",
         },
         secondary: {
           DEFAULT: "#A4C22C",
+          dark: "#65800E",
         },
         gray: {
           DEFAULT: "#555555",

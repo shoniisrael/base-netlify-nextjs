@@ -21,6 +21,7 @@ import {
   Subscribe,
   ImageAndForm,
   RichTextContent,
+  AllArticlesList,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 import BodyJobPost from "./bodyJobPost";
@@ -208,6 +209,19 @@ class Body extends Component {
           return (
             <section key={index}>
               <RichTextContent slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.ALL_ARTICLES_CONTENT:
+          if (blogCategoryContent) {
+            return (
+              <section key={index}>
+                <AllArticlesList slice={slice} blogCategoryContent={blogCategoryContent} />
+              </section>
+            );
+          }
+          return (
+            <section key={index}>
+              <AllArticlesList slice={slice} />
             </section>
           );
         default:

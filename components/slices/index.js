@@ -18,6 +18,7 @@ import Testimonial from "./testimonial";
 import Subscribe from "./subscribe";
 import ImageAndForm from "./imageAndForm";
 import RichTextContent from "./richTextContent";
+import AllArticlesList from "./allArticlesList";
 
 export {
   Hero1,
@@ -40,4 +41,5 @@ export {
   Subscribe,
   ImageAndForm,
   RichTextContent,
+  AllArticlesList,
 };

@@ -12,9 +12,9 @@ export default class ImageWrapper {
   constructor(img, opts) {
     this.image = img;
     this.opts = Object.assign({}, DEFAULT_OPTS, opts);
-    this._setDimensions();
-    this._setResizeFactors();
-    this._setBaseUrl();
+    this.setDimensions();
+    this.setResizeFactors();
+    this.setBaseUrl();
     if (this.opts.maxWidth && this.opts.maxHeight) {
       this._setDimensionsFromMaxSize();
     }
@@ -34,13 +34,13 @@ export default class ImageWrapper {
       .join(", ");
   }
 
-  _setDimensions() {
+  setDimensions() {
     this.width = Math.round(this.image.dimensions.width * this.opts.defaultResizeFactor);
     this.height = Math.round(this.image.dimensions.height * this.opts.defaultResizeFactor);
     this.aspectRatio = this.width / this.height;
   }
 
-  _setResizeFactors() {
+  setResizeFactors() {
     this.resizeFactors = this._getResizeFactors();
   }
 
@@ -65,7 +65,7 @@ export default class ImageWrapper {
     this.width = Math.round(this.height * this.aspectRatio);
   }
 
-  _setBaseUrl() {
+  setBaseUrl() {
     this.baseUrl = this.image.url;
     if (this.opts.imgix) {
       const params = Object.keys(this.opts.imgix).reduce((accum, item) => {

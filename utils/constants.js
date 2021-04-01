@@ -23,6 +23,7 @@ export const SLICE_TYPES = {
   EBOOK_CONTENT: "ebook_content",
   RICH_TEXT: "rich_text",
   JOB_POST_CONTENT: "job_post_content",
+  ALL_ARTICLES_CONTENT: "all_articles_content",
 };
 
 export const SCREEN_SIZES = {

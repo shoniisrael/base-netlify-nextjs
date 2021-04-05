@@ -478,13 +478,13 @@ li span.custom-dot-list-primary:before {
 
 /*! purgecss start ignore */
 .richtext-content-container h2 {
-  @apply font-bold text-primary-dark text-left sm:leading-10 text-2xl sm:text-3xl mt-7 mb-5 xl:mt-14;
+  @apply font-bold text-primary-dark text-left sm:leading-10 text-2xl sm:text-4xl mt-7 mb-5 xl:mt-14;
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
 .richtext-content-container h3 {
-  @apply text-3xl leading-5 font-bold text-primary-dark text-left sm:text-2xl;
+  @apply leading-5 font-bold text-primary-dark text-left text-xl sm:text-3xl mb-5;
 }
 /*! purgecss end ignore */
 
@@ -596,6 +596,12 @@ li span.custom-dot-list-primary:before {
   @apply lg:text-lg;
 }
 /*! purgecss end ignore */
+
+/*! purgecss start ignore*/
+.p_sm-text-sm p {
+  @apply sm:text-base;
+}
+/*! purgecss end ignore*/
 
 /*! purgecss start ignore */
 .richtext-content-container .footer-text-1 {

@@ -46,7 +46,7 @@ class BodyBlog extends Component {
   render() {
     const { title, image, content } = this.props.bodyData;
     return (
-      <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto sm:w-1/2 w-11/12">
+      <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto sm:w-1/2 w-11/12 px-2 sm:px-0 p_lg-text-lg">
         {this.getTitle(title)}
 
         {this.getSocialMediaBar()}

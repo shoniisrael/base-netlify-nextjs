@@ -49,7 +49,7 @@ class Footer extends Component {
           </p>
           <ul className="text-xs text-center lg:text-left">
             {items.map((subItem, subIndex) => (
-              <li key={subIndex} className="py-1 font-bold">
+              <li key={subIndex} className="py-2 lg:py-1 font-bold">
                 <CustomLink link={subItem.sub_nav_link}>{subItem.sub_nav_link_label}</CustomLink>
               </li>
             ))}

@@ -39,12 +39,12 @@ const SubscribeForm = (props) => {
     }
   };
 
-  const { classes } = props;
+  const { classes, sectionIdentifier = "subscribe" } = props;
   return (
     <div>
       <form
         netlify
-        id="subscribe"
+        id={sectionIdentifier}
         method="post"
         onSubmit={onSubmit}
         className="flex flex-col md:flex-row"

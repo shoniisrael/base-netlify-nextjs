@@ -71,12 +71,13 @@ class Hero1 extends Component {
     return bgColor === BG_COLOR.DARK ? "text-secondary" : "text-primary-dark";
   }
 
-  renderBigTitle(bgColor, title) {
+  renderBigTitle(bgColor, title, hasImages) {
     if (TextUtils.hasRichText(title)) {
       const textColor = this.getTextColor(bgColor);
+      const textWidth = hasImages ? "lg:w-5/6" : "lg:w-full";
       return (
         <div
-          className={`py-4 font-bold text-2xl md:text-4xl text-center pb-3 2xl:text-5xl lg:leading-snug lg:w-5/6 lg:pb-5 leading-6 ${textColor}`}
+          className={`py-4 font-bold text-2xl md:text-4xl text-center pb-3 2xl:text-5xl lg:leading-snug  lg:pb-5 leading-6 ${textColor} ${textWidth}`}
         >
           {RichText.render(title, linkResolver)}
         </div>
@@ -155,7 +156,7 @@ class Hero1 extends Component {
               sizes="(min-width:1280) 48px, 48px"
             />
             {this.renderSmallTitle(bgColor, smallTitle)}
-            {this.renderBigTitle(bgColor, bigTitle)}
+            {this.renderBigTitle(bgColor, bigTitle, hasImages)}
             {separator && <div className="separator" />}
             {this.renderDescription(bgColor, description, hasTitleImage)}
             <div className="pt-4">

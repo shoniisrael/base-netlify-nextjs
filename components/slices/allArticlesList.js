@@ -258,10 +258,13 @@ class AllArticlesList extends Component {
     const { grid_title: gridTitle } = slice.primary;
 
     return (
-      <div className="bg-white container mx-auto pt-20 pb-5 px-6 lg:px-20">
+      <div className="bg-white container mx-auto pt-0 pb-5 px-6 lg:px-20 relative -mt-32">
         <div className="container flex flex-col  md:px-0 mx-auto">
-          <div className="w-full items-start text-2xl font-bold text-left self-start md:text-4xl text-primary-dark ">
+          <div className="w-full items-start text-2xl font-bold text-left self-start md:text-3xl text-primary-dark ">
             {gridTitle}
+            <div className="flex justify-start">
+              <div className="separator no-margin my-4 md:h-auto  mx-0 items-start" />
+            </div>
           </div>
           <div className="w-full flex flex-row flex-wrap">{this.renderSearchbar()}</div>
           <div className="w-full flex flex-row flex-wrap">

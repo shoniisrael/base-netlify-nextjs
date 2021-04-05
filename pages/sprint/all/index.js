@@ -37,7 +37,11 @@ class AllArticles extends Component {
 export default AllArticles;
 
 export async function getStaticProps() {
-  const allArticles = await Client().getByUID("all_articles_settings", "all");
+  const { results } = await Client().query(
+    Prismic.Predicates.at("document.type", "all_articles_settings"),
+  );
+
+  const allArticles = results[0];
   const { results: blogPosts } = await Client().query(
     Prismic.Predicates.at("document.type", "blog_post"),
     { orderings: "[document.first_publication_date desc]" },

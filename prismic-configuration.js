@@ -12,6 +12,7 @@ const DOC_TYPES = {
   BLOG_CATEGORY: "blog_category",
   CASE_STUDIES: "case_studies",
   EBOOK: "ebook",
+  ALL_ARTICLES: "all_articles_settings",
 };
 
 // creating a prismic client  object
@@ -57,6 +58,9 @@ export const linkResolver = (doc) => {
   }
   if (doc.type === DOC_TYPES.EBOOK) {
     return `/ebooks/${uid.split("_").join("/")}`;
+  }
+  if (doc.type === DOC_TYPES.ALL_ARTICLES) {
+    return `/sprint/all/`;
   }
   return "/";
 };

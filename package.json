@@ -57,6 +57,7 @@
     "react": "npm:@preact/compat@0.0.3",
     "react-cookie-consent": "^6.2.3",
     "react-dom": "npm:@preact/compat@0.0.3",
+    "react-lazy-load-image-component": "^1.5.1",
     "react-test-renderer": "^17.0.1",
     "sal.js": "^0.8.2",
     "sitemap": "^6.4.0",

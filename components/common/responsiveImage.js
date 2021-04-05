@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ImageWrapper from "../../utils/imageWrapper";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 class ResponsiveImage extends Component {
   render() {
@@ -17,7 +18,7 @@ class ResponsiveImage extends Component {
 
     return (
       <picture>
-        <img
+        <LazyLoadImage
           src={imageWrapper.getSrc()}
           alt={image.alt ?? ""}
           srcSet={imageWrapper.getSrcSet()}

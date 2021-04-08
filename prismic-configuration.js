@@ -1,10 +1,6 @@
 import Prismic from "prismic-javascript";
 import RoutingUtils from "./utils/routing";
 
-export const apiEndpoint = "https://devsucom.cdn.prismic.io/api/v2";
-
-export const accessToken = "";
-
 const DOC_TYPES = {
   PAGE: "page",
   JOB_POST: "job_post",
@@ -17,7 +13,7 @@ const DOC_TYPES = {
 
 // creating a prismic client  object
 export const Client = (req = null) =>
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken));
+  Prismic.client(process.env.API_ENDPOINT, createClientOptions(req, process.env.ACCESS_TOKEN));
 
 const createClientOptions = (req = null, prismicAccessToken = null) => {
   const reqOption = req ? { req } : {};

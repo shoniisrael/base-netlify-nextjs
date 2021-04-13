@@ -32,3 +32,21 @@
 /sprint/the-evolving-role-of-the-cio-how-to-deliver-business-value              /sprint/it-management/the-evolving-role-of-the-cio-how-to-deliver-business-value
 /sprint/top-5-trending-technologies-it-industry-2021                            /sprint/technology-trends/top-5-trending-technologies-it-industry-2021
 /sprint/what-is-minimal-viable-product-mvp                                      /sprint/software-development/lean/what-is-minimal-viable-product-mvp
+/sprint/the-six-step-process-to-mvp-development                                 /sprint/featured/the-six-step-process-to-mvp-development
+/sprint/a-roadmap-for-remote-teams-implementation/*                               /sprint/it-management/a-roadmap-for-remote-teams-implementation/:splat       301
+/sprint/are-silicon-valley-developers-truly-better-than-the-rest-of-the-world/*   /sprint/it-management/software-outsourcing/are-silicon-valley-developers-truly-better-than-the-rest-of-the-world/:splat      301
+/sprint/5-reasons-to-outsource-your-ux-design/*                                   /sprint/ux-ui-design/5-reasons-to-outsource-your-ux-design/:splat    301
+/sprint/devsu-recognizes-and-appreciates-our-dedicated-team-members/*             /sprint/it-management/culture/devsu-recognizes-and-appreciates-our-dedicated-team-members/:splat     301
+/sprint/lean-vs-agile-what-is-the-difference/*                                    /sprint/software-development/lean/lean-vs-agile-what-is-the-difference/:splat    301
+/sprint/start-with-an-mvp/*                                                       /sprint/software-development/lean/start-with-an-mvp/:splat       301
+/sprint/four-strategies-to-master-business-it-alignment/*                         /sprint/it-management/four-strategies-to-master-business-it-alignment/:splat     301
+/sprint/how-do-frameworks-and-cocoapods-improve-ios-qa-performance/*              /sprint/app-development/ios/how-do-frameworks-and-cocoapods-improve-ios-qa-performance/:splat    301
+/sprint/how-to-measure-digital-transformation-progress/*                          /sprint/it-management/digital-transformation/how-to-measure-digital-transformation-progress/:splat       301
+/sprint/how-can-companies-use-big-data-analytics/*                                /sprint/big-data/how-can-companies-use-big-data-analytics/:splat     301
+/sprint/smart-tech-investments-to-increase-revenue-for-your-business/*            /sprint/it-management/smart-tech-investments-to-increase-revenue-for-your-business/:splat    301
+/sprint/off-the-shelf-software-vs-custom-software-pros-and-cons/*                 /sprint/it-management/off-the-shelf-software-vs-custom-software-pros-and-cons/:splat     301
+/sprint/the-case-for-legacy-software-modernization/*                              /sprint/it-management/the-case-for-legacy-software-modernization/:splat      301
+/sprint/the-evolving-role-of-the-cio-how-to-deliver-business-value/*              /sprint/it-management/the-evolving-role-of-the-cio-how-to-deliver-business-value/:splat      301
+/sprint/top-5-trending-technologies-it-industry-2021/*                            /sprint/technology-trends/top-5-trending-technologies-it-industry-2021/:splat    301
+/sprint/what-is-minimal-viable-product-mvp/*                                      /sprint/software-development/lean/what-is-minimal-viable-product-mvp/:splat      301
+/sprint/the-six-step-process-to-mvp-development/*                                 /sprint/featured/the-six-step-process-to-mvp-development/:splat      301

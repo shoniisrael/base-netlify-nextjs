@@ -1,9 +1,9 @@
+require("dotenv").config({});
 const path = require("path");
 const fs = require("fs");
 const Prismic = require("prismic-javascript");
 const { SitemapStream, streamToPromise } = require("sitemap");
 
-const API_ENDPOINT = "https://devsucom.cdn.prismic.io/api/v2";
 const SITE_URL = "https://devsu.com";
 
 const DOC_TYPES = {
@@ -79,7 +79,9 @@ const linkResolver = (doc, pages) => {
 };
 
 const run = async () => {
-  const api = await Prismic.getApi(API_ENDPOINT);
+  const api = await Prismic.getApi(process.env.API_ENDPOINT, {
+    accessToken: process.env.ACCESS_TOKEN,
+  });
   let { results: docs } = await api.query(
     Prismic.Predicates.any("document.type", [
       DOC_TYPES.JOB_POST,

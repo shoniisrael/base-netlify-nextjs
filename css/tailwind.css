@@ -484,7 +484,7 @@ li span.custom-dot-list-primary:before {
 
 /*! purgecss start ignore */
 .richtext-content-container h3 {
-  @apply leading-5 font-bold text-primary-dark text-left text-xl sm:text-3xl mb-5;
+  @apply leading-5 font-bold text-primary-dark text-left text-xl sm:text-3xl mt-7 mb-5 xl:mt-14;
 }
 /*! purgecss end ignore */
 

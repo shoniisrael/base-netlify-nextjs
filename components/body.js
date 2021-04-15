@@ -44,6 +44,7 @@ class Body extends Component {
       file,
       form,
       downloadName,
+      uid,
     } = this.props;
     return slices.map((slice, index) => {
       switch (slice.slice_type) {
@@ -172,7 +173,7 @@ class Body extends Component {
         case SLICE_TYPES.BLOG_CONTENT:
           return (
             <section key={index}>
-              <BodyBlog bodyData={blogContent} />
+              <BodyBlog bodyData={blogContent} uid={uid} />
             </section>
           );
         case SLICE_TYPES.JOB_POST_CONTENT:

@@ -49,7 +49,7 @@ class BlogCategory extends Component {
     const { data: settingsData = {} } = results[0];
     const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
 
-    const { data = {} } = blogPost;
+    const { data = {}, uid } = blogPost;
     const {
       meta_title: metaTitle,
       meta_description: metaDescription,
@@ -69,7 +69,7 @@ class BlogCategory extends Component {
         canonical_url={canonicalUrl}
         keywords={data.keywords}
       >
-        <Body slices={settingsData.body} blogContent={blogPost.data} />
+        <Body slices={settingsData.body} blogContent={blogPost.data} uid={uid} />
       </Layout>
     );
   }

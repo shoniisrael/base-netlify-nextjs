@@ -4,6 +4,7 @@ import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../prismic-configuration";
 import TextUtils from "../utils/text";
 import SocialMedia from "./socialMedia";
+import Head from "next/head";
 
 class BodyBlog extends Component {
   getTitle(title) {
@@ -44,18 +45,35 @@ class BodyBlog extends Component {
   }
 
   render() {
-    const { title, image, content } = this.props.bodyData;
+    const { bodyData, uid } = this.props;
+    const { title, image, content, meta_description } = bodyData;
+    const titleText = title[0].text;
+    const linkBlogpost = linkResolver({ uid: uid, type: "blog_post" });
+    const homePageLink = "https://devsu.com";
+    const getUrlBlogpost = homePageLink + linkBlogpost;
+
     return (
-      <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto sm:w-1/2 w-11/12 px-2 sm:px-0 p_lg-text-lg">
-        {this.getTitle(title)}
+      <div>
+        <Head>
+          <meta property="og:title" content={titleText} />
+          <meta property="og:type" content="article" />
+          <meta property="og:description" content={meta_description} />
+          <meta property="og:url" content={getUrlBlogpost} />
+          <meta property="og:image" content={image.url} />
 
-        {this.getSocialMediaBar()}
+          <meta name="twitter:card" content="summary" />
+        </Head>
+        <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto sm:w-1/2 w-11/12 px-2 sm:px-0 p_lg-text-lg">
+          {this.getTitle(title)}
 
-        {this.getPostImage(image)}
+          {this.getSocialMediaBar()}
 
-        {TextUtils.hasRichText(content) && <div>{RichText.render(content, linkResolver)}</div>}
+          {this.getPostImage(image)}
 
-        {this.getSocialMediaBar()}
+          {TextUtils.hasRichText(content) && <div>{RichText.render(content, linkResolver)}</div>}
+
+          {this.getSocialMediaBar()}
+        </div>
       </div>
     );
   }

@@ -25,15 +25,12 @@ export default class RoutingUtils {
   }
 
   static getSearchableUid(uidArray, pages) {
-    const lastElement = uidArray.pop();
+    const slugs = uidArray.map((_, i) =>
+      uidArray.slice(uidArray.length - i - 1, uidArray.length)
+    );
 
-    const isLastElement = pages.find((page) => page.uid === lastElement);
-    if (isLastElement) {
-      return lastElement;
-    }
-    const originalLastElement = uidArray.pop();
-    const newLastElement = [originalLastElement, lastElement].join("_");
-    uidArray.push(newLastElement);
-    return this.getSearchableUid(uidArray, pages);
+    return slugs.find(slug => pages.some(page =>
+      page.uid == slug.join('_')
+    )) || uidArray.join('_');
   }
 }

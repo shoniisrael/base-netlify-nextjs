@@ -1,5 +1,4 @@
 const client = require("@sendgrid/mail");
-const CryptoJS = require("crypto-js");
 const fetch = require("fetch-base64");
 const EMAIL_TEMPLATES = {
   CONTACT_US: "d-84174712f23740a7b14366782649a604",
@@ -23,10 +22,8 @@ async function getAttatchments(file, name) {
   if (!file) {
     return [];
   }
-  const decryptedFile = CryptoJS.AES.decrypt(file, NEXT_PUBLIC_SECRET_KEY);
-  const fileUrl = decryptedFile.toString(CryptoJS.enc.Utf8);
   const filename = `${name}.pdf`;
-  const base64File = await fetch.remote(fileUrl);
+  const base64File = await fetch.remote(file);
   return [
     {
       content: base64File[0],

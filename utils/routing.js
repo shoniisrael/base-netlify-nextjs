@@ -31,6 +31,6 @@ export default class RoutingUtils {
 
     return slugs.find(slug => pages.some(page =>
       page.uid == slug.join('_')
-    )) || uidArray.join('_');
+    )).join('_') || uidArray.join('_');
   }
 }

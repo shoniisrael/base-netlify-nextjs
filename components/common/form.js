@@ -1,5 +1,4 @@
 import React from "react";
-import CryptoJS from "crypto-js";
 import { RichText } from "prismic-reactjs";
 import TextUtils from "../../utils/text";
 import { Link } from "prismic-reactjs";
@@ -103,8 +102,7 @@ const Form = (props) => {
     let fileInput = null;
     let downloadNameInput = null;
     if (file) {
-      const cipherFile = CryptoJS.AES.encrypt(file, process.env.NEXT_PUBLIC_SECRET_KEY).toString();
-      fileInput = <input type="hidden" name="file" value={cipherFile} />;
+      fileInput = <input type="hidden" name="file" value={file} />;
     }
     if (downloadName) {
       downloadNameInput = <input type="hidden" name="downloadName" value={downloadName} />;

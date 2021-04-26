@@ -71,7 +71,43 @@ export default class App extends NextApp {
     const { results: forms } = await Client().query(Prismic.Predicates.at("document.type", "form"));
 
     const navigation = await Client(req).getSingle("navigation");
-    return { pageProps, navigation, pages, jobPosts, blogPosts, usedBlogCategories, forms };
+    return {
+      pageProps,
+      navigation,
+      pages: pages.map(page => ({
+        uid: page.uid,
+        data: page.data
+      })),
+      jobPosts: jobPosts.map(jobPost => ({ 
+        data: { is_active: jobPost.data.is_active }
+       })),
+      blogPosts: blogPosts.map(blogPost => ({
+        data: {
+          image: blogPost.data.image,
+          title: blogPost.data.title,
+          content: [blogPost.data.content[0]],
+          main_category: { uid: blogPost.data.main_category.uid }
+        },
+        uid: blogPost.uid,
+        slugs: [blogPost.slugs[0]],       
+      })),
+      usedBlogCategories: usedBlogCategories.map(category => ({ 
+        id: category.id,
+        uid: category.uid,
+        slugs: [category.slugs[0]],
+        data: {
+          name: category.data.name
+        }
+      })),
+      forms: forms.map(form => ({
+        id: form.id,
+        uid: form.uid,
+        slugs: [form.slugs[0]],
+        data: {
+          redirect_to: form.data.redirect_to
+        }
+      })),
+    };
   }
 }
 

@@ -23,6 +23,7 @@ export async function getStaticProps(context) {
   });
   const searchableUid = RoutingUtils.getSearchableUid(uid, pages.results);
   const document = await Client().getByUID("page", searchableUid, {
+    ref: context.preview ? context.previewData.ref : undefined,
     fetchLinks: [
       "career_quotes.photo",
       "career_quotes.name",
@@ -34,7 +35,7 @@ export async function getStaticProps(context) {
       "testimonial.company_logo",
     ],
   });
-
+  
   return {
     props: {
       document,

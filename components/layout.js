@@ -36,6 +36,7 @@ class Layout extends Component {
           />
           <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin />
           <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
+          <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=devsucom"></script>
         </Head>
         <Header headerStyle={headerStyle} nav={navigation.data.nav} />
         {children}

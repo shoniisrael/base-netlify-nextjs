@@ -40,7 +40,6 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "autoprefixer": "^10.0.4",
-    "fetch-base64": "^2.1.2",
     "fs-extra": "^9.1.0",
     "identity-obj-proxy": "^3.0.0",
     "mailgun.js": "^3.3.0",
@@ -58,7 +57,6 @@
     "react-dom": "npm:@preact/compat@0.0.3",
     "react-lazy-load-image-component": "^1.5.1",
     "react-test-renderer": "^17.0.1",
-    "sal.js": "^0.8.2",
     "sitemap": "^6.4.0",
     "styled-jsx": "^3.3.2",
     "tailwindcss": "^2.0.1"

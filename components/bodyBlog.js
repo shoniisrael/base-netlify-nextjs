@@ -3,8 +3,8 @@ import ResponsiveImage from "./common/responsiveImage";
 import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../prismic-configuration";
 import TextUtils from "../utils/text";
-import SocialMedia from "./socialMedia";
 import Head from "next/head";
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from "react-share";
 
 class BodyBlog extends Component {
   getTitle(title) {
@@ -17,20 +17,28 @@ class BodyBlog extends Component {
     }
   }
 
-  getSocialMediaBar() {
-    const socialMedias = ["facebook", "twitter", "linkedin"];
+  getSocialMediaBar(urlBlogpost, titleBlogpost, summaryDescription) {
     return (
       <div className="flex justify-end w-full h-20">
         <div className="flex text-sm items-center font-normal">
           <div>SHARE ON SOCIAL</div>
-          <SocialMedia
-            socialMediaOrder={socialMedias}
-            classNameIcon="w-5 h-5 fill-current text-secondary"
-            classNameDiv="pt-4 pl-2"
-            classNameFacebook="mx-0"
-            classNameLinkedin="mx-0"
-            classNameTwitter="mx-2"
-          />
+
+          <FacebookShareButton url={urlBlogpost} quote={titleBlogpost}>
+            <img className="h-5 pl-2" src="/img/facebook_icon.svg" alt="facebook-icon" />
+          </FacebookShareButton>
+
+          <TwitterShareButton url={urlBlogpost} title={titleBlogpost}>
+            <img className="h-5 px-2" src="/img/twitter_icon.svg" alt="twitter-icon" />
+          </TwitterShareButton>
+
+          <LinkedinShareButton
+            url={urlBlogpost}
+            title={titleBlogpost}
+            summary={summaryDescription}
+            source="Devsu"
+          >
+            <img className="h-5" src="/img/linkedin_icon.svg" alt="twitter-icon" />
+          </LinkedinShareButton>
         </div>
       </div>
     );
@@ -66,7 +74,7 @@ class BodyBlog extends Component {
         <div className="flex flex-col items-center p_text-lg text-lg justify-center richtext-content-container title_mt-14 title_mb-5 p_mb-5 mx-auto sm:w-1/2 w-11/12 px-2 sm:px-0 p_lg-text-lg">
           {this.getTitle(title)}
 
-          {this.getSocialMediaBar()}
+          {this.getSocialMediaBar(getUrlBlogpost, titleText, meta_description)}
 
           {this.getPostImage(image)}
 

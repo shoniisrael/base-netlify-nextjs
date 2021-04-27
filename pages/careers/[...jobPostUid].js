@@ -6,11 +6,9 @@ import Body from "../../components/body";
 class Document extends Component {
   render() {
     const { jobPost: document, jobPostSettings = {}, navigation } = this.props;
-
     const { results = {} } = jobPostSettings;
     const { data: settingsData = {} } = results[0];
     const { header_style: headerStyle, footer_style: footerStyle } = settingsData;
-
     const { data = {} } = document;
     const {
       meta_title: metaTitle,

@@ -138,7 +138,6 @@ class Hero1 extends Component {
     const containerPaddingClasses = this.getContainerPaddingClasses(hasImages);
     const textContainerXClasses = this.getTextContainerXPaddingClasses(hasImages);
     const textContainerYClasses = this.getTextContainerYPaddingClasses(hasTitleImage);
-
     return (
       <div
         className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} ${containerPaddingClasses}`}

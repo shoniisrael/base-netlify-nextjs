@@ -1,5 +1,20 @@
 const client = require("@sendgrid/mail");
-const fetch = require("fetch-base64");
+const http = require("http");
+const url = require("url");
+
+const remote = (fileUrl) => new Promise((resolve, reject) => {
+  http.get(url.parse(fileUrl), function(res) {
+    var data = [];
+
+    res.on('data', function(chunk) {
+        data.push(chunk);
+    }).on('end', function() {
+        var buffer = Buffer.concat(data);
+        resolve(buffer.toString('base64'));
+    });
+  });
+});
+
 const EMAIL_TEMPLATES = {
   CONTACT_US: "d-84174712f23740a7b14366782649a604",
   CASE_STUDY: "d-99d1c273d3c347e3ab9df25e43a310de",
@@ -23,7 +38,7 @@ async function getAttatchments(file, name) {
     return [];
   }
   const filename = `${name}.pdf`;
-  const base64File = await fetch.remote(file);
+  const base64File = await remote(file);
   return [
     {
       content: base64File[0],

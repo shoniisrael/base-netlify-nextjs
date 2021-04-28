@@ -71,7 +71,6 @@ export default class App extends NextApp {
     const { results: forms } = await Client().query(Prismic.Predicates.at("document.type", "form"));
 
     const navigation = await Client(req).getSingle("navigation");
-
     return {
       pageProps,
       navigation,
@@ -80,11 +79,7 @@ export default class App extends NextApp {
         data: page.data
       })),
       jobPosts: jobPosts.map(jobPost => ({ 
-        data: {
-          is_active: jobPost.data.is_active,
-          card_title: jobPost.data.card_title,
-          card_description: jobPost.data.card_description,
-        },
+        data: { is_active: jobPost.data.is_active }
        })),
       blogPosts: blogPosts.map(blogPost => ({
         data: {

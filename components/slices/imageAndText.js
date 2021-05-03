@@ -74,7 +74,7 @@ class ImageAndText extends Component {
     const direction =
       imagePosition === IMAGE_ALIGNMENT.LEFT
         ? "flex-col md:flex-row"
-        : "pt-20 flex-col-reverse md:flex-row-reverse";
+        : "flex-col-reverse md:flex-row-reverse";
     const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
     return `${direction} ${position}`;
   }
@@ -125,10 +125,11 @@ class ImageAndText extends Component {
     const textPadding = this.getTextPadding(imageAlignment);
     const imageWidth = this.getImageWidth(imageSize);
     const textWidth = this.getTextWidth(imageSize);
+    const topPadding = primary.join_top ? '-mt-20' : 'md:pt-20 lg:py-28';
     return (
       <div className={`${bgClasses} w-full`}>
         <div
-          className={`overflow-hidden flex container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles} md:pt-20 lg:py-28`}
+          className={`overflow-hidden flex container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles} ${topPadding}`}
         >
           <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto`}>
             <ResponsiveImage

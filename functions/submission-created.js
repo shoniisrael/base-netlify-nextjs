@@ -2,18 +2,21 @@ const client = require("@sendgrid/mail");
 const http = require("http");
 const url = require("url");
 
-const remote = (fileUrl) => new Promise((resolve, reject) => {
-  http.get(url.parse(fileUrl), function(res) {
-    var data = [];
+const remote = (fileUrl) =>
+  new Promise((resolve) => {
+    http.get(url.parse(fileUrl), function (res) {
+      var data = [];
 
-    res.on('data', function(chunk) {
-        data.push(chunk);
-    }).on('end', function() {
-        var buffer = Buffer.concat(data);
-        resolve(buffer.toString('base64'));
+      res
+        .on("data", function (chunk) {
+          data.push(chunk);
+        })
+        .on("end", function () {
+          var buffer = Buffer.concat(data);
+          resolve(buffer.toString("base64"));
+        });
     });
   });
-});
 
 const EMAIL_TEMPLATES = {
   CONTACT_US: "d-84174712f23740a7b14366782649a604",
@@ -27,12 +30,7 @@ const FORM_TYPES = {
   SUBSCRIBE: "subscribe",
   EBOOK: "ebook",
 };
-const {
-  SENDGRID_API_KEY,
-  SENDGRID_SENDER_EMAIL,
-  SENDGRID_SENDER_NAME,
-  NEXT_PUBLIC_SECRET_KEY,
-} = process.env;
+const { SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL, SENDGRID_SENDER_NAME } = process.env;
 async function getAttatchments(file, name) {
   if (!file) {
     return [];

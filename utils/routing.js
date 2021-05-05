@@ -25,12 +25,11 @@ export default class RoutingUtils {
   }
 
   static getSearchableUid(uidArray, pages) {
-    const slugs = uidArray.map((_, i) =>
-      uidArray.slice(uidArray.length - i - 1, uidArray.length)
-    );
+    const slugs = uidArray.map((_, i) => uidArray.slice(uidArray.length - i - 1, uidArray.length));
 
-    return slugs.find(slug => pages.some(page =>
-      page.uid == slug.join('_')
-    )).join('_') || uidArray.join('_');
+    return (
+      slugs.find((slug) => pages.some((page) => page.uid == slug.join("_"))).join("_") ||
+      uidArray.join("_")
+    );
   }
 }

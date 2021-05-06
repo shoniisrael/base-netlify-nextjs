@@ -5,10 +5,10 @@ export default async (req, res) => {
 
   const redirectUrl = await Client(req)
     .getPreviewResolver(ref, documentId)
-    .resolve(linkResolver, '/');
-  
+    .resolve(linkResolver, "/");
+
   if (!redirectUrl) {
-    return res.status(401).json({ message: 'Invalid token' });
+    return res.status(401).json({ message: "Invalid token" });
   }
 
   res.setPreviewData({ ref });
@@ -16,8 +16,8 @@ export default async (req, res) => {
   res.write(
     `<!DOCTYPE html><html><head><meta http-equiv="Refresh" content="0; url=${redirectUrl}" />
     <script>window.location.href = '${redirectUrl}'</script>
-    </head>`
+    </head>`,
   );
-  
+
   res.end(redirectUrl);
 };

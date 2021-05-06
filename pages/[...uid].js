@@ -35,7 +35,7 @@ export async function getStaticProps(context) {
       "testimonial.company_logo",
     ],
   });
-  
+
   return {
     props: {
       document,

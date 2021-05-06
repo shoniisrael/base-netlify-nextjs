@@ -125,7 +125,7 @@ class ImageAndText extends Component {
     const textPadding = this.getTextPadding(imageAlignment);
     const imageWidth = this.getImageWidth(imageSize);
     const textWidth = this.getTextWidth(imageSize);
-    const topPadding = primary.join_top ? '-mt-20' : 'md:pt-20 lg:py-28';
+    const topPadding = primary.join_top ? "-mt-20" : "md:pt-20 lg:py-28";
     return (
       <div className={`${bgClasses} w-full`}>
         <div

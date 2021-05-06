@@ -4,6 +4,17 @@ import MenuEntry from "./navigation/menuEntry";
 import MobileMenuEntry from "./navigation/mobileMenuEntry";
 import Button from "./common/button";
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hamburgerMenuOpen: false,
+    };
+  }
+
+  handleChangeHamburgerMenu() {
+    this.setState({ hamburgerMenuOpen: !this.state.hamburgerMenuOpen });
+  }
+
   render() {
     const { headerStyle } = this.props;
     if (HEADER_AND_FOOTER_STYLE.SIMPLE === headerStyle) {
@@ -68,9 +79,14 @@ class Header extends Component {
                 </a>
               </div>
             </div>
-            <input className="hidden" type="checkbox" id="menu-toggle" />
+            <input
+              className="hidden"
+              type="checkbox"
+              id="menu-toggle"
+              onChange={() => this.handleChangeHamburgerMenu()}
+            />
             <div className="hidden w-full px-4 md:px-20" id="menu">
-              <ul className="items-center justify-between text-base ">{this.renderMobileMenu()}</ul>
+              <ul className="items-center justify-between text-base">{this.renderMobileMenu()}</ul>
             </div>
           </div>
         </nav>
@@ -112,7 +128,14 @@ class Header extends Component {
     const { nav } = this.props;
 
     return nav.map((menuEntry, index) => {
-      return <MobileMenuEntry key={index} index={index + 1} menuEntry={menuEntry} />;
+      return (
+        <MobileMenuEntry
+          key={index}
+          index={index + 1}
+          menuEntry={menuEntry}
+          hamburguerMenuOpen={this.state.hamburgerMenuOpen}
+        />
+      );
     });
   }
 }

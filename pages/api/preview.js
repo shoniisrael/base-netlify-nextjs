@@ -5,6 +5,7 @@ export default async (req, res) => {
 
   const redirectUrl = await Client(req)
     .getPreviewResolver(ref, documentId)
+
     .resolve(linkResolver, "/");
 
   if (!redirectUrl) {

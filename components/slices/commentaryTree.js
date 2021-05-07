@@ -3,15 +3,6 @@ import React, { Component } from "react";
 import { linkResolver } from "../../prismic-configuration";
 
 class CommentaryTree extends Component {
-  renderGrid() {
-    return (
-      <div
-        className="py-12 lg:pt-0 px-6 container mx-auto grid grid-cols-1 place-items-stretch gap-y-6 md:grid-cols-3 md:gap-x-6 md:gap-y-8 lg:gap-x-10 lg:gap-y-6 text-sm"
-        style={{ backgroundColor: "blue" }}
-      ></div>
-    );
-  }
-
   renderPrimary() {
     const { primary } = this.props.slice;
     const { title, description } = primary;
@@ -26,6 +17,45 @@ class CommentaryTree extends Component {
           <span className="text-center font-light">
             {RichText.render(description, linkResolver)}
           </span>
+        </div>
+      </div>
+    );
+  }
+
+  renderGrid() {
+    const { items } = this.props.slice;
+    return (
+      <div className="container mx-auto w-full h-full">
+        <div className="relative wrap overflow-hidden p-10 h-full">
+          <div
+            className="border-2 absolute border-secondary bg-secondary h-full"
+            style="left: 49.9%"
+          ></div>
+          {items.map((item, index) => this.renderLightCard(item, index))}
+        </div>
+      </div>
+    );
+  }
+
+  renderLightCard(card, index) {
+    const { card_title: cardTitle, card_description: cardDescription } = card;
+    const styleClasses = {
+      background: "bg-primary-lightest",
+      titleColor: "text-primary-blue",
+    };
+
+    const aligmentCard = index % 2 === 0 ? "" : "flex-row-reverse";
+    return (
+      <div key={index} className={`mb-8 flex justify-between ${aligmentCard} items-center w-full`}>
+        <div className="lg:w-5/12 md:w-5/12 sm:w-5/12 w-60"></div>
+        <div className="mx-auto w-20 h-20">
+          <img src="/img/lightblue-circle.svg" alt="" />
+        </div>
+        <div className={`${styleClasses.background} rounded-lg shadow-xl w-5/12 px-6 py-4`}>
+          <div className={`mb-3 font-bold uppercase ${styleClasses.titleColor}`}>
+            {RichText.render(cardTitle, linkResolver)}
+          </div>
+          <div className="">{RichText.render(cardDescription, linkResolver)}</div>
         </div>
       </div>
     );

@@ -22,40 +22,29 @@ class CommentaryTree extends Component {
     );
   }
 
-  renderGrid() {
+  renderGridItems() {
     const { items } = this.props.slice;
-    return (
-      <div className="container mx-auto w-full h-full">
-        <div className="relative wrap overflow-hidden p-10 h-full">
-          <div
-            className="border-2 absolute border-secondary bg-secondary h-full"
-            style="left: 49.9%"
-          ></div>
-          {items.map((item, index) => this.renderLightCard(item, index))}
-        </div>
-      </div>
-    );
+    return <>{items.map((item, index) => this.renderLightCard(item, index))}</>;
   }
 
   renderLightCard(card, index) {
     const { card_title: cardTitle, card_description: cardDescription } = card;
-    const styleClasses = {
-      background: "bg-primary-lightest",
-      titleColor: "text-primary-blue",
-    };
-
-    const aligmentCard = index % 2 === 0 ? "" : "flex-row-reverse";
+    let aligmentCard = index % 2 === 0 ? "flex-row-reverse" : "";
     return (
-      <div key={index} className={`mb-8 flex justify-between ${aligmentCard} items-center w-full`}>
-        <div className="lg:w-5/12 md:w-5/12 sm:w-5/12 w-60"></div>
-        <div className="mx-auto w-20 h-20">
-          <img src="/img/lightblue-circle.svg" alt="" />
-        </div>
-        <div className={`${styleClasses.background} rounded-lg shadow-xl w-5/12 px-6 py-4`}>
-          <div className={`mb-3 font-bold uppercase ${styleClasses.titleColor}`}>
-            {RichText.render(cardTitle, linkResolver)}
+      <div className="relative container mx-auto px-6 flex space-y-8">
+        <div className="absolute z-0 w-1.5 h-full top-8 bg-secondary shadow-md inset-0 left-10 md:mx-auto md:right-10 md: left-0"></div>
+        <img
+          className="absolute -left-2.5 h-13 w-13 z-10  md:mx-auto md:left-0 md:right-0 md:top-16 lg:top-8"
+          src="/img/lightblue-circle.svg"
+          alt=""
+        />
+        <div className={`flex ${aligmentCard}`}>
+          <div className="w-full pt-2   bg-primary-lightest px-14 py-4 rounded-md shadow-xl md:w-1/2 lg:right-80">
+            <div className="font-bold text-primary-blue uppercase mb-4 mt-4">
+              {RichText.render(cardTitle, linkResolver)}
+            </div>
+            <div>{RichText.render(cardDescription, linkResolver)}</div>
           </div>
-          <div className="">{RichText.render(cardDescription, linkResolver)}</div>
         </div>
       </div>
     );
@@ -63,9 +52,9 @@ class CommentaryTree extends Component {
 
   render() {
     return (
-      <div>
+      <div className="pb-8">
         {this.renderPrimary()}
-        {this.renderGrid()}
+        {this.renderGridItems()}
       </div>
     );
   }

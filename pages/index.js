@@ -12,8 +12,10 @@ class Home extends Component {
 
 export default Home;
 
-export async function getStaticProps() {
-  const home = await Client().getByUID("page", "home");
+export async function getStaticProps(context) {
+  const home = await Client().getByUID("page", "home", {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   return {
     props: {
       home,

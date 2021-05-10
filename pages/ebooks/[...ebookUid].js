@@ -50,9 +50,14 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { ebookUid } = params;
   const searchableUid = ebookUid.join("_");
-  const ebook = await Client().getByUID("ebook", searchableUid);
+  const ebook = await Client().getByUID("ebook", searchableUid, {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const ebookSettings = await Client().query(
     Prismic.Predicates.at("document.type", "ebook_settings"),
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
   );
   return {
     props: {

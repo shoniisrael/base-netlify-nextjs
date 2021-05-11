@@ -23,33 +23,35 @@ class CardLinks extends Component {
 
     const hasTitle = TextUtils.hasRichText(title);
     const hasSubtitle = TextUtils.hasRichText(subtitle);
-    const paddingBottomPrimary = hasTitle || hasSubtitle ? "lg:pb-28" : "";
     const backgroundStyleClass = StyleUtils.getBackgroundStyle(backgroundStyle);
     const titleColorClass = StyleUtils.getTitleColor(backgroundStyle);
+    const hasPrimary = hasTitle || hasSubtitle || hasSeparationLine;
     return (
       <div className={`mx-auto px-6 lg:px-28 text-center ${backgroundStyleClass}`}>
-        <div
-          className={`flex flex-col justify-between items-center py-12 px-6 container mx-auto lg:pt-20 ${paddingBottomPrimary}`}
-        >
-          {TextUtils.hasRichText(hiddenTitle) && (
-            <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
-          )}
-          {hasTitle && (
-            <div className="pb-5">
-              <span className={`font-bold text-xl lg:text-3xl ${titleColorClass} `}>
-                {RichText.render(title, linkResolver)}
-              </span>
-            </div>
-          )}
-          {hasSubtitle && (
-            <div className="w-5/6 md:w-3/6 lg:w-3/6 ">
-              <span className="text-center font-light">
-                {RichText.render(subtitle, linkResolver)}
-              </span>
-            </div>
-          )}
-          {hasSeparationLine && <div className="border-b-2 border-secondary w-28 pb-5"></div>}
-        </div>
+        {hasPrimary && (
+          <div
+            className={`flex flex-col justify-between items-center py-10 px-6 container mx-auto lg:pt-20 lg:pb-28`}
+          >
+            {TextUtils.hasRichText(hiddenTitle) && (
+              <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
+            )}
+            {hasTitle && (
+              <div className="pb-5">
+                <span className={`font-bold text-xl lg:text-3xl ${titleColorClass} `}>
+                  {RichText.render(title, linkResolver)}
+                </span>
+              </div>
+            )}
+            {hasSubtitle && (
+              <div className="w-5/6 md:w-3/6 lg:w-3/6 ">
+                <span className="text-center font-light">
+                  {RichText.render(subtitle, linkResolver)}
+                </span>
+              </div>
+            )}
+            {hasSeparationLine && <div className="border-b-2 border-secondary w-28 pb-5"></div>}
+          </div>
+        )}
         {this.renderCards()}
         {buttonLabel && (
           <div className="w-4/6 md:w-2/6 xl:w-1/5 mx-auto z-10 pb-10 md:pb-15 xl:pb-15">
@@ -63,7 +65,7 @@ class CardLinks extends Component {
   renderCards() {
     const { items: cards } = this.props.slice;
     return (
-      <div className="flex flex-col h-auto relative -top-4 lg:-top-16 z-10  md:flex-row md:space-x-7 md:items-center text-primary-dark text-center">
+      <div className="flex flex-col h-auto relative -top-4 lg:-top-20 z-10  md:flex-row md:space-x-7 md:items-center text-primary-dark text-center">
         {cards.map((card, index) => {
           const { card_image, card_title, card_description, card_style, card_link } = card;
           const cardClass =

@@ -1,10 +1,10 @@
 const client = require("@sendgrid/mail");
-const http = require("http");
+const https = require("https");
 const url = require("url");
 
 const remote = (fileUrl) =>
   new Promise((resolve) => {
-    http.get(url.parse(fileUrl), function (res) {
+    https.get(url.parse(fileUrl), function (res) {
       var data = [];
 
       res

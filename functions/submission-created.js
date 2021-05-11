@@ -31,6 +31,7 @@ const FORM_TYPES = {
   EBOOK: "ebook",
 };
 const { SENDGRID_API_KEY, SENDGRID_SENDER_EMAIL, SENDGRID_SENDER_NAME } = process.env;
+
 async function getAttatchments(file, name) {
   if (!file) {
     return [];
@@ -39,7 +40,7 @@ async function getAttatchments(file, name) {
   const base64File = await remote(file);
   return [
     {
-      content: base64File[0],
+      content: base64File,
       filename,
       type: "application/pdf",
       disposition: "attachment",

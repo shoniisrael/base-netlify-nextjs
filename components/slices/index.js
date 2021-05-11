@@ -19,6 +19,7 @@ import Subscribe from "./subscribe";
 import ImageAndForm from "./imageAndForm";
 import RichTextContent from "./richTextContent";
 import AllArticlesList from "./allArticlesList";
+import CommentaryTree from "./commentaryTree";
 
 export {
   Hero1,
@@ -42,4 +43,5 @@ export {
   ImageAndForm,
   RichTextContent,
   AllArticlesList,
+  CommentaryTree,
 };

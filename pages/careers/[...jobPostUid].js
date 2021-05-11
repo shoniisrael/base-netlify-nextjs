@@ -42,10 +42,13 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { jobPostUid } = params;
   const searchableUid = jobPostUid.join("_");
-  const jobPost = await Client().getByUID("job_post", searchableUid);
+  const jobPost = await Client().getByUID("job_post", searchableUid, {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const jobPostSettings = await Client().query(
     Prismic.Predicates.at("document.type", "job_post_settings"),
     {
+      ref: context.preview ? context.previewData.ref : undefined,
       fetchLinks: [
         "career_quotes.photo",
         "career_quotes.name",

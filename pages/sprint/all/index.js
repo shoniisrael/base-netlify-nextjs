@@ -36,15 +36,21 @@ class AllArticles extends Component {
 
 export default AllArticles;
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
   const { results } = await Client().query(
     Prismic.Predicates.at("document.type", "all_articles_settings"),
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
   );
 
   const allArticles = results[0];
   const { results: blogPosts } = await Client().query(
     Prismic.Predicates.at("document.type", "blog_post"),
-    { orderings: "[document.first_publication_date desc]" },
+    {
+      orderings: "[document.first_publication_date desc]",
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
   );
   return {
     props: {

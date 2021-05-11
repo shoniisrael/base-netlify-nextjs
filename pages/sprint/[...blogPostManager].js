@@ -213,18 +213,23 @@ export async function getStaticProps(context) {
   }
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(context) {
   const blogCategories = await Client().query(
     Prismic.Predicates.at("document.type", "blog_category"),
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
   );
   const blogCategoriesPaths = await getBlogCategoriesStaticPaths(blogCategories);
 
-  const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"));
+  const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const blogPostsPaths = await getBlogPostsStaticPaths(blogPosts);
 
   const paths = blogCategoriesPaths.concat(blogPostsPaths);
   return {
-    fallback: false,
+    fallback: "blocking",
     paths,
   };
 }

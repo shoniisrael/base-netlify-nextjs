@@ -27,7 +27,8 @@ export default class App extends NextApp {
     );
   }
 
-  static async getInitialProps({ Component, ctx, req }) {
+  static async getInitialProps(context) {
+    const { Component, ctx, req } = context;
     let pageProps = {};
 
     if (Component.getInitialProps) {
@@ -37,6 +38,7 @@ export default class App extends NextApp {
     const { results: pages } = await Client().query(
       Prismic.Predicates.at("document.type", "page"),
       {
+        ref: context.preview ? context.previewData.ref : undefined,
         pageSize: 100,
         fetch: ["page.uid", "page.parent"],
       },
@@ -44,16 +46,25 @@ export default class App extends NextApp {
 
     const { results: jobPosts } = await Client().query(
       Prismic.Predicates.at("document.type", "job_post"),
+      {
+        ref: context.preview ? context.previewData.ref : undefined,
+      },
     );
 
     const { results: blogPosts } = await Client().query(
       Prismic.Predicates.at("document.type", "blog_post"),
-      { orderings: "[document.first_publication_date desc]" },
+      {
+        ref: context.preview ? context.previewData.ref : undefined,
+        orderings: "[document.first_publication_date desc]",
+      },
     );
 
     const { results: blogCategories } = await Client().query(
       Prismic.Predicates.at("document.type", "blog_category"),
-      { orderings: "[document.last_publication_date desc]" },
+      {
+        ref: context.preview ? context.previewData.ref : undefined,
+        orderings: "[document.last_publication_date desc]",
+      },
     );
     let usedBlogCategories = [];
     blogPosts.forEach((element) => {
@@ -68,7 +79,12 @@ export default class App extends NextApp {
       }
     });
 
-    const { results: forms } = await Client().query(Prismic.Predicates.at("document.type", "form"));
+    const { results: forms } = await Client().query(
+      Prismic.Predicates.at("document.type", "form"),
+      {
+        ref: context.preview ? context.previewData.ref : undefined,
+      },
+    );
 
     const navigation = await Client(req).getSingle("navigation");
     return { pageProps, navigation, pages, jobPosts, blogPosts, usedBlogCategories, forms };

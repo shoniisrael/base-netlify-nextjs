@@ -49,10 +49,14 @@ export async function getStaticProps(context) {
   const { caseStudyUid } = params;
   const searchableUid = caseStudyUid.join("_");
   const caseStudy = await Client().getByUID("case_studies", searchableUid, {
+    ref: context.preview ? context.previewData.ref : undefined,
     fetchLinks: ["testimonial.quote", "testimonial.name_and_position", "testimonial.company_logo"],
   });
   const caseStudySettings = await Client().query(
     Prismic.Predicates.at("document.type", "case_study_settings"),
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
   );
   return {
     props: {

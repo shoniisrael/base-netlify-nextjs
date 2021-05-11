@@ -80,7 +80,7 @@ class BodyBlog extends Component {
 
           {TextUtils.hasRichText(content) && <div>{RichText.render(content, linkResolver)}</div>}
 
-          {this.getSocialMediaBar()}
+          {this.getSocialMediaBar(getUrlBlogpost, titleText, meta_description)}
         </div>
       </div>
     );

@@ -378,6 +378,13 @@ select:focus {
   background-size: 30vw auto, 30vw auto;
 }
 
+.blue-oval-left-and-dots-right-bg {
+  background-image: url(../public/img/oval-left.svg), url(../public/img/dots1-left-up.svg);
+  background-position: left, 50%;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 20vw auto, 100vh auto;
+}
+
 .blue-top-right-oval-bg {
   background-image: url(../public/img/oval-top-right-2.svg);
   background-position: top left;

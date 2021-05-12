@@ -9,6 +9,7 @@ class MobileMenuEntry extends Component {
       submenus = null;
 
     const hasSubmenuItems = submenuItems.length > 0;
+
     if (hasSubmenuItems) {
       arrowImg = (
         <Fragment>
@@ -16,12 +17,14 @@ class MobileMenuEntry extends Component {
           <img id="open" src="/img/chevron-down.svg" alt="" />
         </Fragment>
       );
+
       submenus = (
         <div className="hidden submenu-block">
           <ul> {this.renderSubmenuEntries(buttonProps)}</ul>
         </div>
       );
     }
+
     return (
       <li>
         {this.wrapMenuEntry(arrowImg, hasSubmenuItems, buttonProps)}
@@ -32,6 +35,7 @@ class MobileMenuEntry extends Component {
 
   renderSubmenuEntries(buttonProps) {
     const { items: submenuItems } = this.props.menuEntry;
+
     return submenuItems.map((submenuEntry, index) => {
       return (
         <li key={index} {...buttonProps}>

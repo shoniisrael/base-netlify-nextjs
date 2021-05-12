@@ -75,7 +75,7 @@ export async function getStaticPaths(context) {
   });
 
   return {
-    fallback: "blocking",
+    fallback: context.preview ? "blocking" : false,
     paths,
   };
 }

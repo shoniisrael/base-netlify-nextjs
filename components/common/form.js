@@ -98,6 +98,19 @@ const Form = (props) => {
       }
     });
   };
+  const getTemplateId = () => {
+    const { body: slices = [] } = form.data;
+    let valueIdTemplate = "d-84174712f23740a7b14366782649a604";
+    let idTemplateInput = null;
+    slices.map((slice) => {
+      if (slice.slice_type === "template_sendgrid") {
+        const { id_template } = slice.primary;
+        valueIdTemplate = id_template;
+        idTemplateInput = <input type="" name="idTemplate" value={valueIdTemplate} />;
+      }
+    });
+    return <>{idTemplateInput}</>;
+  };
   const renderFileFields = () => {
     let fileInput = null;
     let downloadNameInput = null;
@@ -123,6 +136,7 @@ const Form = (props) => {
       {renderFileFields()}
       {renderSubmitButton()}
       {renderFooterText()}
+      {getTemplateId()}
     </form>
   );
 };

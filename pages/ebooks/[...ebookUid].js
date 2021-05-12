@@ -75,7 +75,7 @@ export async function getStaticPaths(context) {
     return { params: { ebookUid: ebook.uid.split("_") } };
   });
   return {
-    fallback: false,
+    fallback: "blocking",
     paths,
   };
 }

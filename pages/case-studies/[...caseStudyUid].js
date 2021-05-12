@@ -74,7 +74,7 @@ export async function getStaticPaths(context) {
     return { params: { caseStudyUid: caseStudy.uid.split("_") } };
   });
   return {
-    fallback: false,
+    fallback: "blocking",
     paths,
   };
 }

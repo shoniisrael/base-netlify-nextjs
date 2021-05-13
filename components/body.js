@@ -4,6 +4,7 @@ import {
   Hero1,
   Hero2,
   CardLinks,
+  CardLinksBig,
   ImagesRow,
   ImageAndText,
   CardsGrid,
@@ -65,6 +66,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <CardLinks slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.CARD_LINKS_BIG:
+          return (
+            <section key={index}>
+              <CardLinksBig slice={slice} />
             </section>
           );
         case SLICE_TYPES.IMAGES_ROW:

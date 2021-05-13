@@ -20,6 +20,7 @@ import ImageAndForm from "./imageAndForm";
 import RichTextContent from "./richTextContent";
 import AllArticlesList from "./allArticlesList";
 import CommentaryTree from "./commentaryTree";
+import DoubleImageText from "./doubleImageText";
 
 export {
   Hero1,
@@ -44,4 +45,5 @@ export {
   RichTextContent,
   AllArticlesList,
   CommentaryTree,
+  DoubleImageText,
 };

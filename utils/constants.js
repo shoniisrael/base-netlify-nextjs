@@ -25,6 +25,7 @@ export const SLICE_TYPES = {
   JOB_POST_CONTENT: "job_post_content",
   ALL_ARTICLES_CONTENT: "all_articles_content",
   COMMENTARY_TREE: "commentary_tree",
+  TEXT_COLUMN_IMAGE: "text_column_image",
 };
 
 export const SCREEN_SIZES = {

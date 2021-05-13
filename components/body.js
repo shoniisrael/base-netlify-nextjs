@@ -23,6 +23,7 @@ import {
   RichTextContent,
   AllArticlesList,
   CommentaryTree,
+  TextColumnImage,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 import BodyJobPost from "./bodyJobPost";
@@ -217,6 +218,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <CommentaryTree slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.TEXT_COLUMN_IMAGE:
+          return (
+            <section key={index}>
+              <TextColumnImage slice={slice} />
             </section>
           );
         case SLICE_TYPES.ALL_ARTICLES_CONTENT:

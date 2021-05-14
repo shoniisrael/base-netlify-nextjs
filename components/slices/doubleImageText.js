@@ -22,13 +22,13 @@ class DoubleImageText extends Component {
               {RichText.render(secondText, linkResolver)}
             </div>
             <div className="">
-              <ResponsiveImage image={leftImage} sizes="25vw" />
+              <ResponsiveImage image={leftImage} sizes="(min-width:768) 100vw, 25vw" />
             </div>
           </div>
 
           <div className="text-white flex flex-col items-center justify-between">
             <div className="">
-              <ResponsiveImage image={rightImage} sizes="30vw " />
+              <ResponsiveImage image={rightImage} sizes="(min-width:768) 100vw, 25vw" />
             </div>
             <div className="pr-0 md:pr-20">{RichText.render(thirdText, linkResolver)}</div>
           </div>

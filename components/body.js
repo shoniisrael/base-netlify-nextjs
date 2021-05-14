@@ -64,7 +64,7 @@ class Body extends Component {
         case SLICE_TYPES.CARD_LINKS:
           return (
             <section key={index}>
-              <CardLinks slice={slice} />
+              <CardLinks index={index} slice={slice} />
             </section>
           );
         case SLICE_TYPES.IMAGES_ROW:

@@ -1,22 +1,27 @@
 import React, { Component } from "react";
-import Image from "../common/Image";
-import CustomLink from "../common/customLink";
-import Button from "./../common/button";
-import { CARD_STYLE } from "../../utils/constants";
 import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
+import CustomLink from "../common/customLink";
+import Image from "../common/Image";
+import Button from "./../common/button";
+import ResponsiveBgImage from "./../common/responsiveBgImage";
+import { CARD_STYLE } from "../../utils/constants";
 import TextUtils from "../../utils/text";
-import StyleUtils, { BACKGROUND_STYLE } from "../../utils/styleUtils";
+import StyleUtils, { BACKGROUND_STYLE, TEXT_ALIGN } from "../../utils/styleUtils";
 
 class CardLinks extends Component {
   render() {
-    const { primary } = this.props.slice;
+    const { slice, index } = this.props;
+    const { primary } = slice;
     const {
       hidden_title: hiddenTitle,
       title,
+      title_color: titleColor,
       subtitle,
+      subtitle_color: subtitleColor,
       header_text_align: headerTextAlign,
       has_separation_line: hasSeparationLine,
+      background_image: backgroundImage,
       background_header_style: backgroundHeaderStyle,
       background_header_color: backgroundHeaderColor,
       background_body_style: backgroundBodyStyle,
@@ -29,11 +34,12 @@ class CardLinks extends Component {
     const hasSubtitle = TextUtils.hasRichText(subtitle);
     let backgroundHeaderStyles = `${StyleUtils.getBackgroundColor(
       backgroundHeaderColor,
-    )} ${StyleUtils.getBackgroundStyle(backgroundHeaderStyle)}`;
+    )} ${StyleUtils.getBackgroundStyle(backgroundHeaderStyle)} 
+    ${StyleUtils.getTextColor(subtitleColor, backgroundHeaderColor)}`;
     const backgroundBodyStyles = `${StyleUtils.getBackgroundColor(
       backgroundBodyColor,
     )} ${StyleUtils.getBackgroundStyle(backgroundBodyStyle)}`;
-    const titleColorStyle = StyleUtils.getTitleColor(backgroundHeaderColor);
+    const titleColorStyle = StyleUtils.getTitleColor(titleColor, backgroundHeaderColor);
     const hasPrimary =
       hasTitle ||
       hasSubtitle ||
@@ -42,36 +48,36 @@ class CardLinks extends Component {
     let paddingBodyStyles = buttonLabel ? "" : "md:pb-20";
     const bodyStyles =
       backgroundBodyStyle === BACKGROUND_STYLE.NONE ? "-top-4 lg:-top-20" : "md:pb-10";
-    backgroundHeaderStyles =
-      backgroundBodyStyle === BACKGROUND_STYLE.NONE
-        ? `lg:pb-28 ${backgroundHeaderStyles}`
-        : `lg:pb-12 ${backgroundHeaderStyles} `;
+    backgroundHeaderStyles = `${backgroundHeaderStyles} ${
+      backgroundBodyStyle === BACKGROUND_STYLE.NONE ? "lg:pb-28" : "lg:pb-12"
+    }`;
+    backgroundHeaderStyles = `${backgroundHeaderStyles} ${
+      headerTextAlign === TEXT_ALIGN.CENTER ? "items-center text-center" : "items-start text-left"
+    }`;
     const alignItemsStyle = backgroundBodyStyle === BACKGROUND_STYLE.NONE ? "center" : "stretch";
-    paddingBodyStyles =
-      backgroundBodyStyle === BACKGROUND_STYLE.NONE
-        ? paddingBodyStyles
-        : `${paddingBodyStyles} pb-10`;
+    paddingBodyStyles = `${paddingBodyStyles} ${
+      backgroundBodyStyle === BACKGROUND_STYLE.NONE ? "" : "pb-10"
+    }`;
+    const titleWidthStyle = headerTextAlign === TEXT_ALIGN.LEFT ? "md:w-3/6" : "";
     return (
-      <div className={`mx-auto text-center ${backgroundBodyStyles}`}>
+      <ResponsiveBgImage index={index} bgImage={backgroundImage} classes={backgroundBodyStyles}>
         {hasPrimary && (
           <div
-            className={`flex flex-col justify-between items-center text-${headerTextAlign} py-10 px-12 lg:px-28 mx-auto lg:pt-10  ${backgroundHeaderStyles}`}
+            className={`flex flex-col justify-between py-10 px-12 lg:px-28 mx-auto lg:pt-10  ${backgroundHeaderStyles}`}
           >
             {TextUtils.hasRichText(hiddenTitle) && (
               <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
             )}
             {hasTitle && (
-              <div className="pb-5">
+              <div className={`pb-5 ${titleWidthStyle}`}>
                 <span className={`font-bold text-xl lg:text-3xl ${titleColorStyle} `}>
                   {RichText.render(title, linkResolver)}
                 </span>
               </div>
             )}
             {hasSubtitle && (
-              <div className="w-5/6 md:w-4/6 ">
-                <span className={`text-${headerTextAlign} font-light`}>
-                  {RichText.render(subtitle, linkResolver)}
-                </span>
+              <div className="md:w-4/6 ">
+                <span className="font-light">{RichText.render(subtitle, linkResolver)}</span>
               </div>
             )}
             {hasSeparationLine && <div className="border-b-2 border-secondary w-28 pb-5"></div>}
@@ -83,7 +89,7 @@ class CardLinks extends Component {
             <Button link={buttonLink} label={buttonLabel} style="filled" />
           </div>
         )}
-      </div>
+      </ResponsiveBgImage>
     );
   }
 
@@ -106,8 +112,7 @@ class CardLinks extends Component {
               card_link,
               card_link_label,
             } = card;
-            const cardClass =
-              card_style === CARD_STYLE.HIGHLIGHTED ? "md:py-16 lg:py-20" : "md:py-11";
+            const cardClass = card_style === CARD_STYLE.HIGHLIGHTED ? "md:py-16" : "md:py-11";
             return (
               <CustomLink key={index} link={card_link}>
                 <div

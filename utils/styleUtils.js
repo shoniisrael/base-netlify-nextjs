@@ -4,6 +4,18 @@ const BACKGROUND_COLOR = {
   WHITE: "white",
 };
 
+const TEXT_COLOR = {
+  PRIMARY_DARK: "primary_dark",
+  SECONDARY: "secondary",
+  WHITE: "white",
+};
+
+export const TEXT_ALIGN = {
+  CENTER: "center",
+  LEFT: "left",
+  RIGHT: "right",
+};
+
 export const BACKGROUND_STYLE = {
   NONE: "none",
   DOTS_1: "dots1",
@@ -23,14 +35,21 @@ export default class StyleUtils {
       case BACKGROUND_COLOR.DARK:
         return "bg-primary-dark";
       case BACKGROUND_COLOR.WHITE:
-        return "bg-primary-white";
+        return "bg-white";
       default:
         return "";
     }
   }
 
-  static getTitleColor(backgroundColor) {
-    return backgroundColor === BACKGROUND_COLOR.DARK ? "text-secondary" : "text-primary-dark";
+  static getTitleColor(titleColor, backgroundColor) {
+    switch (titleColor) {
+      case TEXT_COLOR.PRIMARY_DARK:
+        return "text-primary-dark";
+      case TEXT_COLOR.SECONDARY:
+        return "text-secondary";
+      default:
+        return backgroundColor === BACKGROUND_COLOR.DARK ? "text-secondary" : "text-primary-dark";
+    }
   }
 
   static getBackgroundStyle(style) {
@@ -54,16 +73,16 @@ export default class StyleUtils {
     }
   }
 
-  getTextColor(backgroundColor) {
-    switch (backgroundColor) {
-      case BACKGROUND_COLOR.LIGHT:
+  static getTextColor(textColor, backgroundColor) {
+    switch (textColor) {
+      case TEXT_COLOR.PRIMARY_DARK:
         return "text-primary-dark";
-      case BACKGROUND_COLOR.DARK:
-        return "text-white";
+      case TEXT_COLOR.SECONDARY:
+        return "secondary";
       case BACKGROUND_COLOR.WHITE:
-        return "text-primary font-medium";
+        return "text-white";
       default:
-        return "text-primary font-medium";
+        return backgroundColor === BACKGROUND_COLOR.DARK ? "text-white" : "text-primary";
     }
   }
 }

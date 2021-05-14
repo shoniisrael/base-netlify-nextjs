@@ -9,6 +9,10 @@ const FORM_FIELD_TYPE = {
   SELECT: "select",
   CHECKBOX: "checkbox",
 };
+const TEMPLATE_SENDGRID = {
+  TYPE: "template_sendgrid",
+  DEFAULT: "d-84174712f23740a7b14366782649a604",
+};
 const Form = (props) => {
   const { form = { data: {} }, index: formIndex, file = "", downloadName = "" } = props;
   const { redirect_to: redirectToUrl } = form.data;
@@ -100,13 +104,13 @@ const Form = (props) => {
   };
   const getTemplateId = () => {
     const { body: slices = [] } = form.data;
-    let valueIdTemplate = "d-84174712f23740a7b14366782649a604";
+    let valueIdTemplate = TEMPLATE_SENDGRID.DEFAULT;
     let idTemplateInput = null;
     slices.map((slice) => {
-      if (slice.slice_type === "template_sendgrid") {
+      if (slice.slice_type === TEMPLATE_SENDGRID.TYPE) {
         const { id_template } = slice.primary;
         valueIdTemplate = id_template;
-        idTemplateInput = <input type="" name="idTemplate" value={valueIdTemplate} />;
+        idTemplateInput = <input type="hidden" name="idTemplate" value={valueIdTemplate} />;
       }
     });
     return <>{idTemplateInput}</>;

@@ -67,13 +67,15 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
-  const ebooks = await Client().query(Prismic.Predicates.at("document.type", "ebook"));
+export async function getStaticPaths(context) {
+  const ebooks = await Client().query(Prismic.Predicates.at("document.type", "ebook"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const paths = ebooks.results.map((ebook) => {
     return { params: { ebookUid: ebook.uid.split("_") } };
   });
   return {
-    fallback: false,
+    fallback: "blocking",
     paths,
   };
 }

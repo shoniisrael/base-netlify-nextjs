@@ -66,14 +66,16 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
-  const jobPosts = await Client().query(Prismic.Predicates.at("document.type", "job_post"));
+export async function getStaticPaths(context) {
+  const jobPosts = await Client().query(Prismic.Predicates.at("document.type", "job_post"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const paths = jobPosts.results.map((jobPost) => {
     return { params: { jobPostUid: jobPost.uid.split("_") } };
   });
 
   return {
-    fallback: false,
+    fallback: "blocking",
     paths,
   };
 }

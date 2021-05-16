@@ -66,13 +66,15 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
-  const caseStudies = await Client().query(Prismic.Predicates.at("document.type", "case_studies"));
+export async function getStaticPaths(context) {
+  const caseStudies = await Client().query(Prismic.Predicates.at("document.type", "case_studies"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const paths = caseStudies.results.map((caseStudy) => {
     return { params: { caseStudyUid: caseStudy.uid.split("_") } };
   });
   return {
-    fallback: false,
+    fallback: "blocking",
     paths,
   };
 }

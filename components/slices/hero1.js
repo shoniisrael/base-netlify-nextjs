@@ -45,7 +45,7 @@ class Hero1 extends Component {
       case BG_STYLE.BLUE_OVAL:
         return "blue-oval-bg";
       case BG_STYLE.BLUE_OVAL_DOTS_1:
-        return " dots6 ";
+        return "blue-oval-dots1-bg";
       default:
         return "";
     }

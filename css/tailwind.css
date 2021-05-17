@@ -210,15 +210,15 @@ a {
 
 .blue-oval-dots1-bg {
   background-image: url(../public/img/dots1-left-up.svg), url(../public/img/dots1-right-down.svg),
-    url(../public/img/oval-bottom-left.svg), url(../public/img/oval-top-right.svg);
+    url(../public/img/oval-bottom-left-narrow.svg), url(../public/img/oval-top-right.svg);
   background-position: top left, bottom right, bottom left, top right;
   background-repeat: no-repeat;
-  background-size: 90vw auto, 90vw auto, 40vw auto, 40vw auto;
+  background-size: 90vw auto, 90vw auto, 30vw auto, 40vw auto;
 }
 
 @media only screen and (min-width: 640px) {
   .blue-oval-dots1-bg {
-    background-size: 50vw auto, 50vw auto, 40vw auto, 40vw auto;
+    background-size: 50vw auto, 50vw auto, 20vw auto, 40vw auto;
   }
 }
 
@@ -234,6 +234,9 @@ a {
   .dots5 {
     background-size: 40vw auto, 40vw auto;
   }
+  .blue-oval-dots1-bg {
+    background-size: 50vw auto, 50vw auto, 15vw auto, 40vw auto;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .dots3 {
@@ -243,7 +246,7 @@ a {
     background-size: 30vw auto, 30vw auto;
   }
   .blue-oval-dots1-bg {
-    background-size: 30vw auto, 30vw auto, 20vw auto, 30vw auto;
+    background-size: 30vw auto, 30vw auto, 13vw auto, 30vw auto;
   }
 }
 
@@ -260,6 +263,12 @@ a {
   }
   .dots6 {
     background-size: 30vw auto, 30vw auto;
+  }
+}
+
+@media only screen and (min-width: 1536px) {
+  .blue-oval-dots1-bg {
+    background-size: 30vw auto, 30vw auto, 9vw auto, 30vw auto;
   }
 }
 

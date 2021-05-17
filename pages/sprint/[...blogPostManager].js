@@ -229,7 +229,7 @@ export async function getStaticPaths(context) {
 
   const paths = blogCategoriesPaths.concat(blogPostsPaths);
   return {
-    fallback: "blocking",
+    fallback: context.preview ? "blocking" : false,
     paths,
   };
 }

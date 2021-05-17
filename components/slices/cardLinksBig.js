@@ -1,30 +1,40 @@
 import React, { Component } from "react";
-import Image from "../common/Image";
-import CustomLink from "../common/customLink";
 import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
+import ResponsiveImage from "../common/responsiveImage";
+import Button from "../common/button";
 import TextUtils from "../../utils/text";
 import StyleUtils from "../../utils/styleUtils";
 
 class CardLinksBig extends Component {
   render() {
     const { primary } = this.props.slice;
+    const { background_color: backgroundHeaderColor } = primary;
+    const backgroundHeaderStyles = StyleUtils.getBackgroundColor(backgroundHeaderColor);
+    return (
+      <div className={`md:mb-20 ${backgroundHeaderStyles}`}>
+        {this.renderHeader()}
+        {this.renderCards()}
+      </div>
+    );
+  }
+
+  renderHeader() {
+    const { primary } = this.props.slice;
     const {
       hidden_title: hiddenTitle,
       title,
       subtitle,
-      background_color: backgroundColor,
+      background_color: backgroundHeaderColor,
     } = primary;
 
     const hasTitle = TextUtils.hasRichText(title);
     const hasSubtitle = TextUtils.hasRichText(subtitle);
-    const backgroundStyles = StyleUtils.getBackgroundColor(backgroundColor);
-    const titleColorStyle = StyleUtils.getTitleColor(backgroundColor);
+    const titleColorStyle = StyleUtils.getTitleColor("", backgroundHeaderColor);
+    const hasPrimary = hasTitle || hasSubtitle;
     return (
-      <div className={`mx-auto text-center ${backgroundStyles}`}>
-        <div
-          className={`flex flex-col justify-between items-center py-10 px-12 lg:px-28 mx-auto lg:pt-10`}
-        >
+      hasPrimary && (
+        <div className="flex flex-col justify-between py-10 md:pb-0 md:pt-16 px-12 lg:px-28 mx-auto  items-center text-center">
           {TextUtils.hasRichText(hiddenTitle) && (
             <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
           )}
@@ -36,58 +46,61 @@ class CardLinksBig extends Component {
             </div>
           )}
           {hasSubtitle && (
-            <div className="w-5/6 md:w-3/6 lg:w-3/6 ">
-              <span className="text-center font-light">
-                {RichText.render(subtitle, linkResolver)}
-              </span>
+            <div className="md:w-4/6 ">
+              <span className="font-light">{RichText.render(subtitle, linkResolver)}</span>
             </div>
           )}
         </div>
-        {this.renderCards()}
-      </div>
+      )
     );
   }
 
   renderCards() {
     const { items: cards } = this.props.slice;
     return (
-      <div className={`px-6 lg:px-28 z-10 md:pb-20`}>
-        <div
-          className={`flex flex-col h-auto relative -top-4 lg:-top-20 md:flex-row md:space-x-7 md:items-center text-primary-dark text-center`}
-        >
-          {cards.map((card, index) => {
-            const {
-              card_header_image,
-              card_big_image,
-              card_small_title,
-              card_big_title,
-              card_link,
-              card_link_label,
-            } = card;
-            return (
-              <CustomLink key={index} link={card_link}>
-                <div
-                  className={`card hover_translate-y-2 h-full w-full flex flex-col items-center mb-10 md:mb-0 py-10 px-8 xl:max-w-1/5`}
-                >
-                  <Image image={card_header_image} />
-                  <div className="text-xl font-bold py-6 lg:text-2xl lg:pt-6 lg:pb-12">
-                    {RichText.render(card_big_title, linkResolver)}
-                  </div>
-                  <div className="text-xl font-bold py-6 lg:text-2xl lg:pt-6 lg:pb-12">
-                    {RichText.render(card_small_title, linkResolver)}
-                  </div>
-                  {card_link_label && (
-                    <div className="font-bold pt-6 underline">{card_link_label}</div>
-                  )}
-                  <Image image={card_big_image} />
+      <div className="grid grid-cols-1 md:grid-cols-2 h-auto relative px-6 md:px-14 md:-bottom-16 md:gap-x-4 md:items-stretch text-primary-dark text-center">
+        {cards.map((card, index) => {
+          const {
+            card_header_image: cardHeaderImage,
+            card_big_image: cardBigImage,
+            card_small_title: cardSmallTitle,
+            card_big_title: cardBigTitle,
+            card_link: cardLink,
+            card_link_label: cardLinkLabel,
+          } = card;
+          return (
+            <div
+              key={index}
+              className="flex flex-col rounded-xl bg-primary-light items-center md:items-start md:text-left md:flex-row mb-10 md:mb-0 pt-10 xl:max-w-1/5"
+            >
+              <div className="flex flex-col flex-1 pb-10 px-6 md:px-14 md:pr-0 items-center md:items-start">
+                {cardHeaderImage && (
+                  <ResponsiveImage
+                    image={cardHeaderImage}
+                    className="flex-grow-0 pb-4"
+                    sizes="76px"
+                  />
+                )}
+                <div className="pb-4 text-xs uppercase">
+                  {RichText.render(cardSmallTitle, linkResolver)}
                 </div>
-              </CustomLink>
-            );
-          })}
-        </div>
+                <div className="text-xl font-bold pb-6 lg:text-2xl">
+                  {RichText.render(cardBigTitle, linkResolver)}
+                </div>
+                <Button link={cardLink} label={cardLinkLabel} style="flat" />
+              </div>
+              <div className="self-end lg:max-w-sm xl:max-w-lg md:w-1/2 lg:w-auto ml-auto md:justify-self-end">
+                <ResponsiveImage
+                  image={cardBigImage}
+                  sizes="(min-width: 1280px) 280px, (min-width: 768px) 50vw, 75vw"
+                  className="rounded-br-xl"
+                />
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
-
 export default CardLinksBig;

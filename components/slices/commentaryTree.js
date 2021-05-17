@@ -24,27 +24,33 @@ class CommentaryTree extends Component {
 
   renderGridItems() {
     const { items } = this.props.slice;
-    return <>{items.map((item, index) => this.renderLightCard(item, index))}</>;
+    return (
+      <div className="relative px-6">
+        <div className="absolute z-0 w-2 bg-secondary shadow-md inset-0 left-10 top-5 md:bottom-20 md:top-24 md:mx-auto md:right-0 md:left-0 lg:bottom-24"></div>
+        {items.map((item, index) => this.renderLightCard(item, index))}
+      </div>
+    );
   }
 
   renderLightCard(card, index) {
     const { card_title: cardTitle, card_description: cardDescription } = card;
-    let aligmentCard = index % 2 === 0 ? "flex-row-reverse" : "";
+    let aligmentCard =
+      index % 2 === 0
+        ? "ml-auto md:mr-9 lg:mr-24 xl:mr-56 2xl:mr-85"
+        : "md:ml-9 lg:ml-24 xl:ml-56 2xl:ml-85";
     return (
-      <div className="relative container mx-auto px-6 flex space-y-8">
-        <div className="absolute z-0 w-1.5 h-full top-8 bg-secondary shadow-md inset-0 left-10 md:mx-auto md:right-10 md: left-0"></div>
+      <div className="relative z-10 mb-4">
         <img
-          className="absolute -left-2.5 h-13 w-13 z-10  md:mx-auto md:left-0 md:right-0 md:top-16 lg:top-8"
+          className="h-10 w-10 -mb-6 md:mb-0 md:absolute md:top-20 md:mx-auto md:right-0 md:left-0"
           src="/img/lightblue-circle.svg"
-          alt=""
         />
-        <div className={`flex ${aligmentCard}`}>
-          <div className="w-full pt-2   bg-primary-lightest px-14 py-4 rounded-md shadow-xl md:w-1/2 lg:right-80">
-            <div className="font-bold text-primary-blue uppercase mb-4 mt-4">
-              {RichText.render(cardTitle, linkResolver)}
-            </div>
-            <div>{RichText.render(cardDescription, linkResolver)}</div>
+        <div
+          className={`bg-primary-lightest p-6 rounded-md shadow-md w-full md:w-80 lg:w-96 ${aligmentCard}`}
+        >
+          <div className="font-bold text-primary-blue uppercase mb-4 mt-4">
+            {RichText.render(cardTitle, linkResolver)}
           </div>
+          <div>{RichText.render(cardDescription, linkResolver)}</div>
         </div>
       </div>
     );
@@ -52,7 +58,7 @@ class CommentaryTree extends Component {
 
   render() {
     return (
-      <div className="pb-8">
+      <div className="pb-8 container mx-auto">
         {this.renderPrimary()}
         {this.renderGridItems()}
       </div>

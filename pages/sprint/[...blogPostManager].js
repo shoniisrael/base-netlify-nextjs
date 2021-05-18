@@ -130,23 +130,37 @@ async function getBlogPostsStaticPaths(blogPosts) {
   return blogPostsPaths;
 }
 
-async function queryBlogPostSettings() {
-  return await Client().query(Prismic.Predicates.at("document.type", "blog_post_settings"));
+async function queryBlogPostSettings(context) {
+  return await Client().query(Prismic.Predicates.at("document.type", "blog_post_settings"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
 }
-async function queryBlogCategorySettings() {
-  return await Client().query(Prismic.Predicates.at("document.type", "blog_category_settings"));
+async function queryBlogCategorySettings(context) {
+  return await Client().query(Prismic.Predicates.at("document.type", "blog_category_settings"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
 }
-async function queryBlogsByMainCategory(blogCategory) {
-  return await Client().query([
-    Prismic.Predicates.at("document.type", "blog_post"),
-    Prismic.Predicates.at("my.blog_post.main_category", blogCategory.id),
-  ]);
+async function queryBlogsByMainCategory(blogCategory, context) {
+  return await Client().query(
+    [
+      Prismic.Predicates.at("document.type", "blog_post"),
+      Prismic.Predicates.at("my.blog_post.main_category", blogCategory.id),
+    ],
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
+  );
 }
-async function queryBlogsBySecondaryCategory(blogCategory) {
-  return await Client().query([
-    Prismic.Predicates.at("document.type", "blog_post"),
-    Prismic.Predicates.at("my.blog_post.categories.category", blogCategory.id),
-  ]);
+async function queryBlogsBySecondaryCategory(blogCategory, context) {
+  return await Client().query(
+    [
+      Prismic.Predicates.at("document.type", "blog_post"),
+      Prismic.Predicates.at("my.blog_post.categories.category", blogCategory.id),
+    ],
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
+  );
 }
 
 async function getBlogsByCategory(blogsByMainCategory, blogsBySecondaryCategory) {
@@ -163,11 +177,13 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { blogPostManager } = params;
   const searchableLastPosition = blogPostManager[blogPostManager.length - 1];
-  const posibleBlogPost = await Client().getByUID("blog_post", searchableLastPosition);
+  const posibleBlogPost = await Client().getByUID("blog_post", searchableLastPosition, {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const isBlog = blogPostManager.length > 1 && posibleBlogPost;
 
   if (isBlog) {
-    const blogPostsSettings = await queryBlogPostSettings();
+    const blogPostsSettings = await queryBlogPostSettings(context);
     return {
       props: {
         blogPost: posibleBlogPost,
@@ -176,12 +192,17 @@ export async function getStaticProps(context) {
     };
   } else {
     const searchableUid = blogPostManager.join("_");
-    const blogCategory = await Client().getByUID("blog_category", searchableUid);
-    const { results: blogsByMainCategory } = await queryBlogsByMainCategory(blogCategory);
-    const { results: blogsBySecondaryCategory } = await queryBlogsBySecondaryCategory(blogCategory);
+    const blogCategory = await Client().getByUID("blog_category", searchableUid, {
+      ref: context.preview ? context.previewData.ref : undefined,
+    });
+    const { results: blogsByMainCategory } = await queryBlogsByMainCategory(blogCategory, context);
+    const { results: blogsBySecondaryCategory } = await queryBlogsBySecondaryCategory(
+      blogCategory,
+      context,
+    );
 
     const blogsByCategory = await getBlogsByCategory(blogsByMainCategory, blogsBySecondaryCategory);
-    const blogCategorySettings = await queryBlogCategorySettings();
+    const blogCategorySettings = await queryBlogCategorySettings(context);
     return {
       props: {
         blogCategory,
@@ -192,18 +213,23 @@ export async function getStaticProps(context) {
   }
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(context) {
   const blogCategories = await Client().query(
     Prismic.Predicates.at("document.type", "blog_category"),
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
   );
   const blogCategoriesPaths = await getBlogCategoriesStaticPaths(blogCategories);
 
-  const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"));
+  const blogPosts = await Client().query(Prismic.Predicates.at("document.type", "blog_post"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const blogPostsPaths = await getBlogPostsStaticPaths(blogPosts);
 
   const paths = blogCategoriesPaths.concat(blogPostsPaths);
   return {
-    fallback: false,
+    fallback: context.preview ? "blocking" : false,
     paths,
   };
 }

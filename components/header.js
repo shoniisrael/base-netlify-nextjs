@@ -4,6 +4,16 @@ import MenuEntry from "./navigation/menuEntry";
 import MobileMenuEntry from "./navigation/mobileMenuEntry";
 import Button from "./common/button";
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+    };
+  }
+  handleMobilePlegableMenu() {
+    this.setState({ isOpen: !this.state.isOpen });
+  }
+
   render() {
     const { headerStyle } = this.props;
     if (HEADER_AND_FOOTER_STYLE.SIMPLE === headerStyle) {
@@ -51,7 +61,11 @@ class Header extends Component {
           </div>
           <div className="lg:hidden">
             <div className="h-24 top-0 bg-white z-20 px-4 md:px-20 grid content-center justify-items-stretch grid-cols-3 py-3 lg:hidden">
-              <label htmlFor="menu-toggle" className="pointer-cursor block justify-self-start">
+              <button
+                htmlFor="menu-toggle"
+                className="pointer-cursor block justify-self-start"
+                onClick={() => this.handleMobilePlegableMenu()}
+              >
                 <svg
                   className="fill-current text-gray"
                   xmlns="http://www.w3.org/2000/svg"
@@ -61,15 +75,17 @@ class Header extends Component {
                 >
                   <path d="m0 3h20v3h-20v-3zm0 6h20v3h-20v-3zm0 6h20v3h-20v-2z"></path>
                 </svg>
-              </label>
+              </button>
               <div className="h-9 w-24 justify-self-center">
                 <a href="/" className="flex items-center">
                   <img src="/img/logo-devsu.svg" alt="logo devsu" width="101" height="39" />
                 </a>
               </div>
             </div>
-            <input className="hidden" type="checkbox" id="menu-toggle" />
-            <div className="hidden w-full px-4 md:px-20" id="menu">
+            <div
+              className={`transform ${this.state.isOpen ? "" : "hidden"} w-full px-4 md:px-20`}
+              id="menu"
+            >
               <ul className="items-center justify-between text-base ">{this.renderMobileMenu()}</ul>
             </div>
           </div>
@@ -112,7 +128,15 @@ class Header extends Component {
     const { nav } = this.props;
 
     return nav.map((menuEntry, index) => {
-      return <MobileMenuEntry key={index} index={index + 1} menuEntry={menuEntry} />;
+      return (
+        <MobileMenuEntry
+          key={index}
+          index={index + 1}
+          menuEntry={menuEntry}
+          onClick={() => this.handleMobilePlegableMenu()}
+          hamburguerSubMenuOpen={this.state.isOpen}
+        />
+      );
     });
   }
 }

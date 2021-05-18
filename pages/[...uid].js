@@ -18,6 +18,7 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { uid } = params;
   const pages = await Client().query(Prismic.Predicates.at("document.type", "page"), {
+    ref: context.preview ? context.previewData.ref : undefined,
     pageSize: 100,
     fetch: ["page.uid", "page.parent"],
   });
@@ -43,8 +44,9 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(context) {
   const pages = await Client().query(Prismic.Predicates.at("document.type", "page"), {
+    ref: context.preview ? context.previewData.ref : undefined,
     pageSize: 100,
     fetch: ["page.uid", "page.parent"],
   });
@@ -53,7 +55,7 @@ export async function getStaticPaths() {
   });
 
   return {
-    fallback: false,
+    fallback: context.preview ? "blocking" : false,
     paths,
   };
 }

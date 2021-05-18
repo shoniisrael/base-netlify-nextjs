@@ -22,6 +22,9 @@ import {
   ImageAndForm,
   RichTextContent,
   AllArticlesList,
+  CommentaryTree,
+  TextColumnImage,
+  DoubleImageText,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 import BodyJobPost from "./bodyJobPost";
@@ -63,7 +66,7 @@ class Body extends Component {
         case SLICE_TYPES.CARD_LINKS:
           return (
             <section key={index}>
-              <CardLinks slice={slice} />
+              <CardLinks index={index} slice={slice} />
             </section>
           );
         case SLICE_TYPES.IMAGES_ROW:
@@ -210,6 +213,24 @@ class Body extends Component {
           return (
             <section key={index}>
               <RichTextContent slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.COMMENTARY_TREE:
+          return (
+            <section key={index}>
+              <CommentaryTree slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.TEXT_COLUMN_IMAGE:
+          return (
+            <section key={index}>
+              <TextColumnImage slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.DOUBLE_IMAGE_TEXT:
+          return (
+            <section key={index}>
+              <DoubleImageText slice={slice} />
             </section>
           );
         case SLICE_TYPES.ALL_ARTICLES_CONTENT:

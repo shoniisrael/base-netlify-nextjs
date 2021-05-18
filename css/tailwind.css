@@ -208,6 +208,15 @@ a {
   animation: dotsFadeIn 2s;
 }
 
+.dots7 {
+  background-image: url(../public/img/dots2-left-up.svg), url(../public/img/dots3-right-up.svg);
+  background-position: top left, top right;
+  background-repeat: no-repeat;
+  background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
 .dots-down-left-and-right {
   background-image: url(../public/img/dots5-left-down.svg),
     url(../public/img/dots2-dark-right-down.svg);
@@ -242,7 +251,8 @@ a {
 
 @media only screen and (min-width: 1280px) {
   .dots1,
-  .dots2 {
+  .dots2,
+  .dots7 {
     background-size: 20vw auto, 20vw auto;
   }
   .dots3 {

@@ -117,7 +117,7 @@ class TextColumnImage extends Component {
     const { background_style: backgroundStyle } = this.props.slice.primary;
     const bgStyle = this.getBackgroundClasses(backgroundStyle);
     return (
-      <div className={`container mx-auto w-full bg-primary-dark my-5${bgStyle}`}>
+      <div className={`container mx-auto w-full bg-primary-dark my-5 ${bgStyle}`}>
         {this.renderGrid()}
         {this.renderCards()}
       </div>

@@ -17,6 +17,7 @@ const BG_STYLE = {
   DOTS_2: "dots2",
   DOTS_3: "dots3",
   BLUE_OVAL: "blue-oval",
+  BLUE_OVAL_DOTS_1: "dots1-blue-oval",
 };
 
 class Hero1 extends Component {
@@ -43,6 +44,8 @@ class Hero1 extends Component {
         return "dots3";
       case BG_STYLE.BLUE_OVAL:
         return "blue-oval-bg";
+      case BG_STYLE.BLUE_OVAL_DOTS_1:
+        return "blue-oval-dots1-bg";
       default:
         return "";
     }

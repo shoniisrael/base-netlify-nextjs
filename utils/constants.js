@@ -2,6 +2,7 @@ export const SLICE_TYPES = {
   HERO_1: "hero_1",
   HERO_2: "hero_2",
   CARD_LINKS: "card_links",
+  CARD_LINKS_BIG: "card_links_big",
   CARDS_GRID: "cards_grid",
   CARDS: "cards",
   JOB_POST_CARDS: "job_post_cards",

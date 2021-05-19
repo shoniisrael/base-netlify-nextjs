@@ -3,6 +3,13 @@ import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
 import Image from "../common/Image";
+import StyleUtils from "../../utils/styleUtils";
+
+const TYPES_GRID = {
+  NORMAL: "normal",
+  TREE_BY_TWO: "3up-2bottom",
+  SPECIAL: "mid-higher",
+};
 
 class CardsGrid extends Component {
   renderCard(card, index) {
@@ -21,18 +28,19 @@ class CardsGrid extends Component {
   }
 
   renderGrid() {
-    const { items } = this.props.slice;
-    const numberRowsPair = items.length % 2 == 0 ? true : false;
+    const { items, primary } = this.props.slice;
+    const { type_grid } = primary;
     const divClassName =
       "py-12 lg:pt-0 px-6 container mx-auto grid grid-cols-1 place-items-stretch gap-y-6 md:gap-x-6 md:gap-y-8 lg:gap-x-10 lg:gap-y-6 text-sm";
-    return (
-      <>
-        {numberRowsPair && (
+    switch (type_grid) {
+      case TYPES_GRID.NORMAL:
+        return (
           <div className={`md:grid-cols-3 ${divClassName}`}>
             {items.map((item, index) => this.renderCard(item, index))}
           </div>
-        )}
-        {!numberRowsPair && (
+        );
+      case TYPES_GRID.TREE_BY_TWO:
+        return (
           <div>
             <div className={`md:grid-cols-3 ${divClassName}`}>
               {items.map((item, index) => {
@@ -45,9 +53,24 @@ class CardsGrid extends Component {
               })}
             </div>
           </div>
-        )}
-      </>
-    );
+        );
+      case TYPES_GRID.SPECIAL:
+        return (
+          <div className={`md:grid-cols-3 ${divClassName}`}>
+            {items.map((item, index) => {
+              if (index == 1)
+                return (
+                  <div key={index} className="row-span-2">
+                    {this.renderCard(item, index)}
+                  </div>
+                );
+              return <div key={index}>{this.renderCard(item, index)}</div>;
+            })}
+          </div>
+        );
+      default:
+        return "";
+    }
   }
 
   renderPrimary() {
@@ -76,8 +99,13 @@ class CardsGrid extends Component {
   }
 
   render() {
+    const { primary } = this.props.slice;
+    const { background_color, background_style } = primary;
+    const backgroundColor = StyleUtils.getBackgroundColor(background_color);
+    const backgroundStyle = StyleUtils.getBackgroundStyle(background_style);
+
     return (
-      <div className="cards-grid">
+      <div className={`${backgroundStyle} ${backgroundColor}`}>
         {this.renderPrimary()}
         {this.renderGrid()}
       </div>

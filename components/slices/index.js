@@ -23,6 +23,7 @@ import AllArticlesList from "./allArticlesList";
 import CommentaryTree from "./commentaryTree";
 import TextColumnImage from "./textColumnImage";
 import DoubleImageText from "./doubleImageText";
+import SquareText from "./squareText";
 
 export {
   Hero1,
@@ -50,4 +51,5 @@ export {
   CommentaryTree,
   TextColumnImage,
   DoubleImageText,
+  SquareText,
 };

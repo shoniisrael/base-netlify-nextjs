@@ -3,7 +3,6 @@ import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
 import Image from "../common/Image";
-import StyleUtils from "../../utils/styleUtils";
 
 const TYPES_GRID = {
   NORMAL: "normal",
@@ -11,7 +10,36 @@ const TYPES_GRID = {
   SPECIAL: "mid-higher",
 };
 
+const BACKGROUND_COLOR = {
+  LIGHTER: "lighter",
+};
+
+const BACKGROUND_STYLE = {
+  DOTS_DOWN_LEFT_AND_RIHT: "dots-down-left-and-right",
+  CARDS_GRID: "cards-grid",
+};
+
 class CardsGrid extends Component {
+  getBackgroundColor(color) {
+    switch (color) {
+      case BACKGROUND_COLOR.LIGHTER:
+        return "bg-primary-light";
+      default:
+        return "";
+    }
+  }
+
+  getBackgroundStyle(style) {
+    switch (style) {
+      case BACKGROUND_STYLE.DOTS_DOWN_LEFT_AND_RIHT:
+        return "dots-down-left-and-right";
+      case BACKGROUND_STYLE.CARDS_GRID:
+        return "cards-grid";
+      default:
+        return "";
+    }
+  }
+
   renderCard(card, index) {
     const { image, title, description, link } = card;
     return (
@@ -101,8 +129,8 @@ class CardsGrid extends Component {
   render() {
     const { primary } = this.props.slice;
     const { background_color, background_style } = primary;
-    const backgroundColor = StyleUtils.getBackgroundColor(background_color);
-    const backgroundStyle = StyleUtils.getBackgroundStyle(background_style);
+    const backgroundColor = this.getBackgroundColor(background_color);
+    const backgroundStyle = this.getBackgroundStyle(background_style);
 
     return (
       <div className={`${backgroundStyle} ${backgroundColor}`}>

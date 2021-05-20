@@ -459,6 +459,14 @@ select:focus {
   @apply font-bold;
 }
 
+.custom-check-square-list {
+  padding-left: 32px;
+  background-image: url(../public/img/check-square.svg);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: 0px 5px;
+}
+
 li span.custom-dot-list:before {
   content: "";
   height: 0;

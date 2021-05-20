@@ -3,13 +3,8 @@ import { RichText } from "prismic-reactjs";
 import Button from "./../common/button";
 import ResponsiveImage from "../common/responsiveImage";
 import TextUtils from "../../utils/text";
+import StyleUtils, { BACKGROUND_COLOR, BACKGROUND_STYLE } from "../../utils/styleUtils";
 import { linkResolver } from "../../prismic-configuration";
-
-const STYLE = {
-  LIGHT: "light",
-  DARK: "dark",
-  WHITE: "white",
-};
 
 const IMAGE_ALIGNMENT = {
   LEFT: "left",
@@ -30,35 +25,6 @@ const BULLET_POINT = {
 };
 
 class ImageAndText extends Component {
-  getBackgroundColorClasses(style) {
-    switch (style) {
-      case STYLE.LIGHT:
-        return "bg-primary-lighter top-left-shadow";
-      case STYLE.DARK:
-        return "bg-primary-dark";
-      case STYLE.WHITE:
-        return "bg-primary-white";
-      default:
-        return "bg-white";
-    }
-  }
-
-  getTitleColor(style) {
-    return style === STYLE.DARK ? "text-secondary" : "text-primary-dark";
-  }
-
-  getTextColor(style) {
-    switch (style) {
-      case STYLE.LIGHT:
-        return "text-primary-dark";
-      case STYLE.DARK:
-        return "text-white";
-      case STYLE.WHITE:
-        return "text-primary font-medium";
-      default:
-        return "text-primary font-medium";
-    }
-  }
   getBulletPointStyle(style, columns) {
     switch (style) {
       case BULLET_POINT.GREEN_POINT:
@@ -112,6 +78,8 @@ class ImageAndText extends Component {
     const {
       style,
       image,
+      header_title: headerTitle,
+      header_description: headerDescription,
       small_title: smallTitle,
       button_link: buttonLink,
       button_label: buttonLabel,
@@ -119,34 +87,60 @@ class ImageAndText extends Component {
       image_alignment: imageAlignment,
       image_size: imageSize,
     } = primary;
-    const bgClasses = this.getBackgroundColorClasses(style);
-    const titleColor = this.getTitleColor(style);
+
+    const bgClasses = `${StyleUtils.getBackgroundColor(style)} 
+    ${StyleUtils.getBackgroundStyle(
+      BACKGROUND_COLOR.LIGHT === style ? BACKGROUND_STYLE.BLUE_OVAL_UP_LEFT : "",
+    )}`;
+    const titleColor = StyleUtils.getTitleColor("", style);
     const flexStyles = this.getFlexStyles(imageAlignment, imageSize);
     const textPadding = this.getTextPadding(imageAlignment);
     const imageWidth = this.getImageWidth(imageSize);
     const textWidth = this.getTextWidth(imageSize);
     const topPadding = primary.join_top ? "-mt-20" : "md:pt-20 lg:py-28";
+    const hasHeaderTitle = TextUtils.hasRichText(headerTitle);
+    const hasHeaderDescription = TextUtils.hasRichText(headerTitle);
     return (
       <div className={`${bgClasses} w-full`}>
-        <div
-          className={`overflow-hidden flex container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles} ${topPadding}`}
-        >
-          <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto`}>
-            <ResponsiveImage
-              image={image}
-              sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw"
-            />
-          </div>
-          <div className={`pb-8 md:${textWidth} px-4 ${textPadding}`}>
-            <div className={`${titleColor} text-xs uppercase mb-8`}>
-              {RichText.render(smallTitle, linkResolver)}
+        <div className={topPadding}>
+          {hasHeaderTitle && hasHeaderDescription && (
+            <div className="flex flex-col justify-between items-center text-center pt-10 md:pt-0 md:w-3/5 px-12 lg:px-28 mx-auto">
+              {hasHeaderTitle && (
+                <div className="pb-5">
+                  <span className={`font-bold text-3xl md:text-4xl ${titleColor} `}>
+                    {RichText.render(headerTitle, linkResolver)}
+                  </span>
+                </div>
+              )}
+              {hasHeaderDescription && (
+                <div className="pb-5 md:px-5">
+                  <span className="font-light">
+                    {RichText.render(headerDescription, linkResolver)}
+                  </span>
+                </div>
+              )}
             </div>
-            {this.renderRichTextSections()}
-            {buttonLabel && (
-              <div className="mt-16">
-                <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+          )}
+          <div
+            className={`overflow-hidden flex container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles}`}
+          >
+            <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto`}>
+              <ResponsiveImage
+                image={image}
+                sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw"
+              />
+            </div>
+            <div className={`pb-8 md:${textWidth} px-4 ${textPadding}`}>
+              <div className={`${titleColor} text-xs uppercase mb-8`}>
+                {RichText.render(smallTitle, linkResolver)}
               </div>
-            )}
+              {this.renderRichTextSections()}
+              {buttonLabel && (
+                <div className="mt-16">
+                  <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -155,15 +149,25 @@ class ImageAndText extends Component {
 
   renderRichTextSections() {
     const { items, primary } = this.props.slice;
-    const titleColor = this.getTitleColor(primary.style);
-    const textColor = this.getTextColor(primary.style);
+    const titleColor = StyleUtils.getTitleColor("", primary.style);
+    const textColor = StyleUtils.getTextColor("", primary.style);
     const bulletPointStyle = this.getBulletPointStyle(primary.bullet_point, primary.list_columns);
     return items.map((section, index) => {
-      const { font_size: fontSize, big_title: bigTitle, rich_text: richText } = section;
+      const {
+        font_size: fontSize,
+        big_title: bigTitle,
+        rich_text: richText,
+        group_bullet: groupBallet,
+        small_image: smallImage,
+        button_link: buttonLink,
+        button_label: buttonLabel,
+      } = section;
       const textStyle = this.getTextStyle(fontSize);
       const titleStyle = this.getTitleStyle(fontSize);
+      const bulletStyle = StyleUtils.getVignette(groupBallet);
       return (
-        <div key={index}>
+        <div key={index} className={bulletStyle}>
+          <ResponsiveImage image={smallImage} className="flex-grow-0 pb-4" sizes="76px" />
           {TextUtils.hasRichText(bigTitle) && (
             <div className={`${titleColor} ${titleStyle} font-bold`}>
               {RichText.render(bigTitle, linkResolver)}
@@ -172,6 +176,11 @@ class ImageAndText extends Component {
           {TextUtils.hasRichText(richText) && (
             <div className={`${textColor} ${bulletPointStyle} ${textStyle}`}>
               {RichText.render(richText, linkResolver)}
+            </div>
+          )}
+          {buttonLabel && (
+            <div className="pt-5 pb-10">
+              <Button link={buttonLink} label={buttonLabel} style="filled" />
             </div>
           )}
         </div>

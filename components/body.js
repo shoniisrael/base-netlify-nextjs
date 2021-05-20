@@ -26,6 +26,7 @@ import {
   CommentaryTree,
   TextColumnImage,
   DoubleImageText,
+  SquareText,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 import BodyJobPost from "./bodyJobPost";
@@ -238,6 +239,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <DoubleImageText slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.SQUARE_TEXT:
+          return (
+            <section key={index}>
+              <SquareText slice={slice} />
             </section>
           );
         case SLICE_TYPES.ALL_ARTICLES_CONTENT:

@@ -472,9 +472,25 @@ select:focus {
 .custom-check-square-list {
   padding-left: 32px;
   background-image: url(../public/img/check-square.svg);
-  background-size: 20px 20px;
+  background-size: 18px 18px;
   background-repeat: no-repeat;
-  background-position: 0px 5px;
+  background-position: 0px 3px;
+}
+
+.custom-minus-list {
+  padding-left: 32px;
+  background-image: url(../public/img/minus.svg);
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+
+.custom-plus-list {
+  padding-left: 32px;
+  background-image: url(../public/img/plus.svg);
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 0px 3px;
 }
 
 li span.custom-dot-list:before {

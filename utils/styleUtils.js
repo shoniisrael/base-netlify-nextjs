@@ -18,9 +18,11 @@ export const TEXT_ALIGN = {
   RIGHT: "right",
 };
 
-const VIGNETTE = {
+const BULLET_TYPE = {
   NONE: "none",
   CHECK_SQUARE: "check-square",
+  PLUS: "plus",
+  MINUS: "minus",
 };
 
 export const BACKGROUND_STYLE = {
@@ -112,10 +114,14 @@ export default class StyleUtils {
     }
   }
 
-  static getVignette(vignetteType) {
+  static getBullet(vignetteType) {
     switch (vignetteType) {
-      case VIGNETTE.CHECK_SQUARE:
+      case BULLET_TYPE.CHECK_SQUARE:
         return "custom-check-square-list";
+      case BULLET_TYPE.PLUS:
+        return "custom-plus-list";
+      case BULLET_TYPE.MINUS:
+        return "custom-minus-list";
       default:
         return "";
     }

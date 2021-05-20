@@ -52,11 +52,13 @@ class TextColumnImage extends Component {
           <div className="text-secondary font-bold self-end text-xl md:text-4xl lg:text5x1">
             {RichText.render(title, linkResolver)}
           </div>
-          <div className="mt-4 pl-0 md:pl-40 md:mt-14">
+          <div className="mt-4 pl-0 md:pl-20 md:mt-14">
             {RichText.render(description, linkResolver)}
           </div>
         </div>
-        <ResponsiveImage image={image} sizes="(min-width:768) 100vw, 30vw" />
+        <div className="md:mt-10">
+          <ResponsiveImage image={image} sizes="(min-width:768) 100vw, 30vw" />
+        </div>
       </>
     );
   }
@@ -94,7 +96,7 @@ class TextColumnImage extends Component {
     const { card_style: cardStyleBg } = primary;
     const cardStyle = this.getCardStyleClasses(cardStyleBg);
     return (
-      <div className="flex flex-wrap justify-center mx-5 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {items.map((item, index) => this.renderStyleCard(item, index, cardStyle))}
       </div>
     );
@@ -104,7 +106,7 @@ class TextColumnImage extends Component {
     const { background, titleColor, descriptionColor } = cardStyle;
     const { card_title: cardTitle, card_description: cardDescription } = card;
     return (
-      <div key={index} className={`w-72 mx-5 my-5 py-6 px-6 ${background}`}>
+      <div key={index} className={`mx-5 my-5 py-6 px-6 ${background}`}>
         <div className={`mb-8 text-lg ${titleColor}`}>
           {RichText.render(cardTitle, linkResolver)}
         </div>

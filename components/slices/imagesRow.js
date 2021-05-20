@@ -154,7 +154,7 @@ export default class ImagesRow extends Component {
             const hasImage = !!Object.values(icon.image).length;
             if (index > columnsDesktop) {
               return (
-                <div className={itemGridClassName} key={index}>
+                <div className={`${itemGridClassName} mt-10`} key={index}>
                   {hasImage && this.renderImage(icon)}
                   {(display_animation_on_hover || !hasImage) &&
                     this.displayAnimationHover(hasImage, icon)}

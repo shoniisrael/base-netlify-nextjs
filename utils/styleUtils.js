@@ -3,6 +3,7 @@ export const BACKGROUND_COLOR = {
   ALTERNATIVE: "alternative",
   DARK: "dark",
   WHITE: "white",
+  LIGHTER: "lighter",
 };
 
 const TEXT_COLOR = {
@@ -32,6 +33,7 @@ export const BACKGROUND_STYLE = {
   BLUE_OVAL_LEFT_AND_DOTS_RIGHT: "blue-oval-left-and-dots-right",
   BLUE_OVAL_UP_LEFT_AND_RIHT: "blue-oval-up-left-and-right",
   BLUE_OVAL_UP_LEFT: "blue-oval-up-left",
+  CARDS_GRID: "cards-grid",
 };
 
 export default class StyleUtils {
@@ -45,6 +47,8 @@ export default class StyleUtils {
         return "bg-primary-dark";
       case BACKGROUND_COLOR.WHITE:
         return "bg-white";
+      case BACKGROUND_COLOR.LIGHTER:
+        return "bg-primary-light";
       default:
         return "";
     }
@@ -79,6 +83,8 @@ export default class StyleUtils {
         return "blue-oval-up-left-and-right-bg";
       case BACKGROUND_STYLE.BLUE_OVAL_UP_LEFT:
         return "top-left-shadow";
+      case BACKGROUND_STYLE.CARDS_GRID:
+        return "cards-grid";
       default:
         return "";
     }

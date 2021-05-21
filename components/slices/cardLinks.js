@@ -101,8 +101,8 @@ class CardLinks extends Component {
   renderCards() {
     const { items: cards, primary } = this.props.slice;
     const { background_body_style: backgroundBodyStyle, button_label: buttonLabel } = primary;
-    let alignItemsStyle =
-      !backgroundBodyStyle || backgroundBodyStyle === BACKGROUND_STYLE.NONE ? "center" : "stretch";
+    const hasHighlighted = cards.some((x) => x.card_style === CARD_STYLE.HIGHLIGHTED);
+    const alignItemsStyle = hasHighlighted ? "md:items-center" : "";
     let paddingBodyStyles = buttonLabel ? "" : "md:pb-20";
     paddingBodyStyles = `${paddingBodyStyles} ${
       !backgroundBodyStyle || backgroundBodyStyle === BACKGROUND_STYLE.NONE ? "" : "pb-10"
@@ -113,13 +113,14 @@ class CardLinks extends Component {
         : "md:pb-10";
 
     const cols = cards.length === 4 ? 2 : cards.length;
-    paddingBodyStyles = `${paddingBodyStyles} ${cols === 2 ? "lg:px-40" : "lg:px-20"}`;
-    alignItemsStyle = cols !== 2 ? alignItemsStyle : "stretch";
+    paddingBodyStyles = `${paddingBodyStyles} ${
+      cols === 2 ? "md:px-40 lg:px-44 xl:px-60" : "lg:px-20"
+    }`;
 
     return (
       <div className={`px-6 lg:px-28 z-10 ${paddingBodyStyles}`}>
         <div
-          className={`grid grid-cols-1 md:grid-cols-${cols} gap-y-10 h-auto relative ${bodyStyles} md:gap-x-8 md:items-${alignItemsStyle} text-primary-dark text-center`}
+          className={`grid grid-cols-1 md:grid-cols-${cols} gap-y-10 h-auto relative ${bodyStyles} md:gap-x-8 items-stretch ${alignItemsStyle} text-primary-dark text-center`}
         >
           {cards.map((card, index) => {
             const {

@@ -7,6 +7,7 @@ module.exports = {
       "./pages/**/*.js",
       "./pages/*.js",
       "./node_modules/@brainhubeu/react-carousel/**/*.js",
+      "./utils/*.js",
     ],
     options: {
       safelist: {

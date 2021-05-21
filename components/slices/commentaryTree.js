@@ -3,6 +3,14 @@ import React, { Component } from "react";
 import { linkResolver } from "../../prismic-configuration";
 
 class CommentaryTree extends Component {
+  render() {
+    return (
+      <div className="pb-8 container mx-auto">
+        {this.renderPrimary()}
+        {this.renderGridItems()}
+      </div>
+    );
+  }
   renderPrimary() {
     const { primary } = this.props.slice;
     const { title, description } = primary;
@@ -26,7 +34,7 @@ class CommentaryTree extends Component {
     const { items } = this.props.slice;
     return (
       <div className="relative px-6">
-        <div className="absolute z-0 w-2 bg-secondary shadow-md inset-0 left-10 top-5 md:bottom-20 md:top-24 md:mx-auto md:right-0 md:left-0 lg:bottom-24"></div>
+        <div className="absolute z-0 w-1 bg-secondary shadow-md inset-0 left-10.5 top-5 md:bottom-20 md:top-24 md:mx-auto md:right-0 md:left-0 lg:bottom-26"></div>
         {items.map((item, index) => this.renderLightCard(item, index))}
       </div>
     );
@@ -41,26 +49,17 @@ class CommentaryTree extends Component {
     return (
       <div className="relative z-10 mb-4">
         <img
-          className="h-10 w-10 -mb-6 md:mb-0 md:absolute md:top-20 md:mx-auto md:right-0 md:left-0"
+          className="w-10 h-10 -mb-6  md:w-20 md:h-20 md:mb-0 md:absolute md:top-14 md:mx-auto md:right-0 md:left-0"
           src="/img/lightblue-circle.svg"
         />
         <div
-          className={`bg-primary-lightest p-6 rounded-md shadow-md w-full md:w-80 lg:w-96 ${aligmentCard}`}
+          className={`bg-primary-lightest p-6 shadow-md w-full md:px-8 md:w-80 lg:w-96 ${aligmentCard}`}
         >
           <div className="font-bold text-primary-blue uppercase mb-4 mt-4">
             {RichText.render(cardTitle, linkResolver)}
           </div>
           <div>{RichText.render(cardDescription, linkResolver)}</div>
         </div>
-      </div>
-    );
-  }
-
-  render() {
-    return (
-      <div className="pb-8 container mx-auto">
-        {this.renderPrimary()}
-        {this.renderGridItems()}
       </div>
     );
   }

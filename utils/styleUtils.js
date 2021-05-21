@@ -1,5 +1,6 @@
-const BACKGROUND_COLOR = {
+export const BACKGROUND_COLOR = {
   LIGHT: "light",
+  ALTERNATIVE: "alternative",
   DARK: "dark",
   WHITE: "white",
   LIGHTER: "lighter",
@@ -17,6 +18,13 @@ export const TEXT_ALIGN = {
   RIGHT: "right",
 };
 
+const BULLET_TYPE = {
+  NONE: "none",
+  CHECK_SQUARE: "check-square",
+  PLUS: "plus",
+  MINUS: "minus",
+};
+
 export const BACKGROUND_STYLE = {
   NONE: "none",
   DOTS_1: "dots1",
@@ -26,6 +34,7 @@ export const BACKGROUND_STYLE = {
   BLUE_OVAL: "blue-oval",
   BLUE_OVAL_LEFT_AND_DOTS_RIGHT: "blue-oval-left-and-dots-right",
   BLUE_OVAL_UP_LEFT_AND_RIHT: "blue-oval-up-left-and-right",
+  BLUE_OVAL_UP_LEFT: "blue-oval-up-left",
   CARDS_GRID: "cards-grid",
 };
 
@@ -34,6 +43,8 @@ export default class StyleUtils {
     switch (color) {
       case BACKGROUND_COLOR.LIGHT:
         return "bg-primary-lighter";
+      case BACKGROUND_COLOR.ALTERNATIVE:
+        return "bg-primary-light";
       case BACKGROUND_COLOR.DARK:
         return "bg-primary-dark";
       case BACKGROUND_COLOR.WHITE:
@@ -72,6 +83,8 @@ export default class StyleUtils {
         return "blue-oval-left-and-dots-right-bg";
       case BACKGROUND_STYLE.BLUE_OVAL_UP_LEFT_AND_RIHT:
         return "blue-oval-up-left-and-right-bg";
+      case BACKGROUND_STYLE.BLUE_OVAL_UP_LEFT:
+        return "top-left-shadow";
       case BACKGROUND_STYLE.CARDS_GRID:
         return "cards-grid";
       default:
@@ -85,10 +98,32 @@ export default class StyleUtils {
         return "text-primary-dark";
       case TEXT_COLOR.SECONDARY:
         return "secondary";
-      case BACKGROUND_COLOR.WHITE:
+      case TEXT_COLOR.WHITE:
         return "text-white";
       default:
-        return backgroundColor === BACKGROUND_COLOR.DARK ? "text-white" : "text-primary";
+        switch (backgroundColor) {
+          case BACKGROUND_COLOR.LIGHT:
+            return "text-primary-dark";
+          case BACKGROUND_COLOR.DARK:
+            return "text-white";
+          case BACKGROUND_COLOR.WHITE:
+            return "text-primary";
+          default:
+            return "text-primary";
+        }
+    }
+  }
+
+  static getBullet(vignetteType) {
+    switch (vignetteType) {
+      case BULLET_TYPE.CHECK_SQUARE:
+        return "custom-check-square-list";
+      case BULLET_TYPE.PLUS:
+        return "custom-plus-list";
+      case BULLET_TYPE.MINUS:
+        return "custom-minus-list";
+      default:
+        return "";
     }
   }
 }

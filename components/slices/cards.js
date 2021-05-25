@@ -58,7 +58,7 @@ class Cards extends Component {
     );
   }
 
-  renderAlternativeCard(card, index) {
+  renderAlternativeCard(card, index, topImageCircle) {
     const { title, subtitle, description } = card;
     const styleClasses = {
       background: "bg-primary-lightest",
@@ -66,15 +66,18 @@ class Cards extends Component {
       cardTitleColor: "text-primary-blue",
       cardSubtitleColor: "text-primary",
     };
+    let paddingWithImage = topImageCircle ? "pt-16 lg:pt-24" : "pt-5 rounded-lg";
 
     return (
       <div
         key={index}
-        className={`${styleClasses.background} relative flex flex-col items-center text-center px-4 xl:px-4 pb-7 pt-16 lg:pt-24`}
+        className={`${styleClasses.background} relative flex flex-col items-center text-center px-4 xl:px-4 pb-7 ${paddingWithImage}`}
       >
-        <div className="absolute -top-10">
-          <img src="/img/lightblue-circle.svg" alt="" />
-        </div>
+        {topImageCircle && (
+          <div className="absolute -top-10">
+            <img src="/img/lightblue-circle.svg" alt="" />
+          </div>
+        )}
         <div
           className={`${styleClasses.cardTitleColor} px-10 font-semibold text-xl md:px-1 xl:px-12 py-4`}
         >
@@ -91,11 +94,12 @@ class Cards extends Component {
   }
 
   renderStyledCards(style, items) {
+    const { top_image_circle_card: topImageCircle } = this.props.slice.primary;
     switch (style) {
       case STYLE.DARK:
         return items.map((item, index) => this.renderDarkCard(item, index));
       case STYLE.ALTERNATIVE:
-        return items.map((item, index) => this.renderAlternativeCard(item, index));
+        return items.map((item, index) => this.renderAlternativeCard(item, index, topImageCircle));
       default:
         return items.map((item, index) => this.renderLightCard(item, index));
     }

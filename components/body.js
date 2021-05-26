@@ -7,6 +7,7 @@ import {
   CardLinksBig,
   ImagesRow,
   ImageAndText,
+  ImageTopAndText,
   CardsGrid,
   Cards,
   Banner,
@@ -87,6 +88,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <ImageAndText slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.IMAGE_TOP_AND_TEXT:
+          return (
+            <section key={index}>
+              <ImageTopAndText slice={slice} />
             </section>
           );
         case SLICE_TYPES.CARDS_GRID:

@@ -6,6 +6,7 @@ import CardsGrid from "./cardsGrid";
 import Cards from "./cards";
 import ImageAndText from "./imageAndText";
 import ImagesRow from "./imagesRow";
+import ImageTopAndText from "./imageTopAndText";
 import Banner from "./banner";
 import Quotes from "./quotes";
 import FullWidthImageAndText from "./fullWidthImageAndText";
@@ -34,6 +35,7 @@ export {
   Cards,
   ImageAndText,
   ImagesRow,
+  ImageTopAndText,
   Banner,
   Quotes,
   FullWidthImageAndText,

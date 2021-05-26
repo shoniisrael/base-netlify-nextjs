@@ -8,6 +8,7 @@ export const SLICE_TYPES = {
   JOB_POST_CARDS: "job_post_cards",
   IMAGE_AND_TEXT: "image_and_text",
   IMAGES_ROW: "images_row",
+  IMAGE_TOP_AND_TEXT: "image_top_and_text",
   BANNER: "card",
   QUOTES: "quotes",
   FULL_WIDTH_IMAGE_AND_TEXT: "full_width_image_and_text",

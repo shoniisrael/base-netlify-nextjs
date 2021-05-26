@@ -28,6 +28,7 @@ import {
   TextColumnImage,
   DoubleImageText,
   SquareText,
+  HorizontalLineCards,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 import BodyJobPost from "./bodyJobPost";
@@ -234,6 +235,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <CommentaryTree slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.HORIZONTAL_LINE_CARDS:
+          return (
+            <section key={index}>
+              <HorizontalLineCards slice={slice} />
             </section>
           );
         case SLICE_TYPES.TEXT_COLUMN_IMAGE:

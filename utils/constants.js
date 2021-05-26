@@ -30,6 +30,7 @@ export const SLICE_TYPES = {
   TEXT_COLUMN_IMAGE: "text_column_image",
   DOUBLE_IMAGE_TEXT: "double_image_and_text",
   SQUARE_TEXT: "square_text",
+  HORIZONTAL_LINE_CARDS: "line_cards",
 };
 
 export const SCREEN_SIZES = {

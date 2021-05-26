@@ -30,6 +30,8 @@ export const BACKGROUND_STYLE = {
   DOTS_1: "dots1",
   DOTS_2: "dots2",
   DOTS_3: "dots3",
+  DOTS_4: "dots4",
+  DOTS_5: "dots5",
   DOTS_DOWN_LEFT_AND_RIHT: "dots-down-left-and-right",
   BLUE_OVAL: "blue-oval",
   BLUE_OVAL_LEFT_AND_DOTS_RIGHT: "blue-oval-left-and-dots-right",
@@ -75,6 +77,10 @@ export default class StyleUtils {
         return "dots2";
       case BACKGROUND_STYLE.DOTS_3:
         return "dots3";
+      case BACKGROUND_STYLE.DOTS_4:
+        return "dots4";
+      case BACKGROUND_STYLE.DOTS_5:
+        return "dots5";
       case BACKGROUND_STYLE.DOTS_DOWN_LEFT_AND_RIHT:
         return "dots-down-left-and-right";
       case BACKGROUND_STYLE.BLUE_OVAL:

@@ -12,8 +12,10 @@ const BG_CARD_LIGHT_WHITE = "white";
 class Cards extends Component {
   renderLightCard(card, index) {
     const { title, subtitle, description } = card;
+    const { background_style: bgStyleLight } = this.props.slice.primary;
+    const bgCardLight = bgStyleLight === BG_CARD_LIGHT_WHITE ? "bg-primary-light" : "bg-white";
     const styleClasses = {
-      background: "bg-white shadow-card rounded-xl",
+      background: `${bgCardLight} shadow-card rounded-xl`,
       cardTitleColor: "text-primary",
       cardSubtitleColor: "text-primary",
     };

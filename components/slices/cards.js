@@ -7,6 +7,8 @@ const STYLE = {
   ALTERNATIVE: "alternative",
   DARK: "dark",
 };
+const BG_CARD_LIGHT_WHITE = "white";
+
 class Cards extends Component {
   renderLightCard(card, index) {
     const { title, subtitle, description } = card;
@@ -66,7 +68,7 @@ class Cards extends Component {
       cardTitleColor: "text-primary-blue",
       cardSubtitleColor: "text-primary",
     };
-    let paddingWithImage = topImageCircle ? "pt-16 lg:pt-24" : "pt-5 rounded-lg";
+    let paddingWithImage = topImageCircle ? "pt-16 lg:pt-24" : "pt-5 rounded-lg mx-5";
 
     return (
       <div
@@ -107,7 +109,7 @@ class Cards extends Component {
 
   getStyleClasses(style, hasTitle, raiseCards) {
     const commonPadding = "p-10 md:px-14 lg:px-28";
-
+    const { background_style: bgStyleLight } = this.props.slice.primary;
     switch (style) {
       case STYLE.DARK:
         return {
@@ -127,7 +129,7 @@ class Cards extends Component {
         };
       default:
         return {
-          bgColor: "bg-primary-light",
+          bgColor: bgStyleLight === BG_CARD_LIGHT_WHITE ? "bg-white" : "bg-primary-light",
           titleColor: "text-primary-dark",
           padding: raiseCards && !hasTitle ? `${commonPadding} lg:pt-0` : commonPadding,
           gridGap: "md:gap-x-6 gap-y-6 md:gap-y-16 lg:gap-y-20 xl:gap-x-20",

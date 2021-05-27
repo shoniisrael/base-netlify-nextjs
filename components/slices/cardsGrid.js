@@ -4,6 +4,7 @@ import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
 import Image from "../common/Image";
 import StyleUtils from "../../utils/styleUtils";
+import Button from "../common/button";
 
 const TYPES_GRID = {
   NORMAL: "normal",
@@ -98,6 +99,18 @@ class CardsGrid extends Component {
     );
   }
 
+  renderButton() {
+    const { primary } = this.props.slice;
+    const { button_label: buttonLabel, button_link: buttonLink } = primary;
+    return (
+      buttonLabel && (
+        <div className="mt-5 w-4/6 md:w-2/6 xl:w-1/5 mx-auto pb-10 md:pb-15">
+          <Button link={buttonLink} label={buttonLabel} style="filled" />
+        </div>
+      )
+    );
+  }
+
   render() {
     const { primary } = this.props.slice;
     const { background_color, background_style } = primary;
@@ -108,6 +121,7 @@ class CardsGrid extends Component {
       <div className={`${backgroundStyle} ${backgroundColor}`}>
         {this.renderPrimary()}
         {this.renderGrid()}
+        {this.renderButton()}
       </div>
     );
   }

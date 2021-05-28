@@ -1,43 +1,43 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
 import { linkResolver } from "../../prismic-configuration";
+import StyleUtils from "../../utils/styleUtils";
 import ResponsiveImage from "../common/responsiveImage";
 
-class DoubleImageText extends Component {
-  renderGrid() {
-    const { primary } = this.props.slice;
-    const {
-      left_image: leftImage,
-      rigth_image: rightImage,
-      text_1: firstText,
-      text_2: secondText,
-      text_3: thirdText,
-    } = primary;
-    return (
-      <div className="container mx-auto bg-primary-dark ">
-        <div className="md:grid md:grid-cols-2 p-5">
-          <div className="text-white justify-between flex flex-col items-center">
-            <div className="mt-0  pl-0 md:pl-20 md:mt-20">
-              <div className="pb-6 ">{RichText.render(firstText, linkResolver)}</div>
-              {RichText.render(secondText, linkResolver)}
-            </div>
-            <div className="">
-              <ResponsiveImage image={leftImage} sizes="(min-width:768) 100vw, 25vw" />
-            </div>
-          </div>
+const ALIGMENT_GRID = {
+  LEFT: "left",
+  RIGHT: "right",
+};
 
-          <div className="text-white flex flex-col items-center justify-between">
-            <div className="">
-              <ResponsiveImage image={rightImage} sizes="(min-width:768) 100vw, 25vw" />
-            </div>
-            <div className="pr-0 md:pr-20">{RichText.render(thirdText, linkResolver)}</div>
+class DoubleImageText extends Component {
+  render() {
+    const { primary, items } = this.props.slice;
+    const { background_color: backgroundColor, aligment_image: aligmentImage, image } = primary;
+    const bgColor = StyleUtils.getBackgroundColor(backgroundColor);
+    const aligment = aligmentImage === ALIGMENT_GRID.LEFT ? "flex-row" : "flex-row-reverse";
+    return (
+      <div className={`container mx-auto ${bgColor}`}>
+        <div
+          className={`grid grid-cols-1 items-center py-5 md:flex md:${aligment} md:justify-center`}
+        >
+          <div className="mx-auto md:mx-0 w-auto">
+            {<ResponsiveImage image={image} sizes="(min-width:1280) 400px, 25vw" />}
+          </div>
+          <div className="p-10 md:w-1/2">
+            {items.map((item, index) => this.renderText(item, index))}
           </div>
         </div>
       </div>
     );
   }
-  render() {
-    return <>{this.renderGrid()}</>;
+
+  renderText(item, index) {
+    const { text } = item;
+    return (
+      <div key={index} className="my-7">
+        {RichText.render(text, linkResolver)}
+      </div>
+    );
   }
 }
 

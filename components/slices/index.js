@@ -1,5 +1,6 @@
 import Hero1 from "./hero1";
 import Hero2 from "./hero2";
+import Hero3 from "./hero3";
 import CardLinks from "./cardLinks";
 import CardLinksBig from "./cardLinksBig";
 import CardsGrid from "./cardsGrid";
@@ -31,6 +32,7 @@ import EmbedCode from "./embedCode";
 export {
   Hero1,
   Hero2,
+  Hero3,
   CardLinks,
   CardLinksBig,
   CardsGrid,

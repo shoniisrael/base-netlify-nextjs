@@ -60,6 +60,12 @@ module.exports = {
       boxShadow: {
         card: "0 0 34px 0 rgba(0,0,0,.08)",
       },
+      width: {
+        "7/15": "46.66667%",
+      },
+      inset: {
+        "-1.5": "-0.375rem",
+      },
     },
   },
   variants: {

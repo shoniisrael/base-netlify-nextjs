@@ -11,7 +11,7 @@ class SquareText extends Component {
     const descriptionColor = StyleUtils.getTextColor(description_color);
     const titleColor = StyleUtils.getTextColor(title_color);
     return (
-      <div key={index} className={`mx-5 my-5 py-6 px-6`}>
+      <div key={index} className="p-6">
         <div className={`mb-8 text-lg font-bold ${titleColor}`}>
           {RichText.render(title, linkResolver)}
         </div>
@@ -24,7 +24,7 @@ class SquareText extends Component {
     const { columns_number: colNumber } = primary;
     return (
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNumber} justify-items-center`}
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNumber} justify-items-center mx-24 px-5 gap-4`}
       >
         {items.map((item, index) => this.renderSquare(item, index))}
       </div>
@@ -33,7 +33,7 @@ class SquareText extends Component {
   render() {
     const { background_color } = this.props.slice.primary;
     const backgroundColor = StyleUtils.getBackgroundColor(background_color);
-    return <div className={`container mx-auto ${backgroundColor}`}>{this.renderGrid()}</div>;
+    return <div className={`container mx-auto pb-10 ${backgroundColor}`}>{this.renderGrid()}</div>;
   }
 }
 

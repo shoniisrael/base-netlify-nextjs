@@ -96,7 +96,7 @@ class TextColumnImage extends Component {
     const { card_style: cardStyleBg } = primary;
     const cardStyle = this.getCardStyleClasses(cardStyleBg);
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-20">
         {items.map((item, index) => this.renderStyleCard(item, index, cardStyle))}
       </div>
     );
@@ -119,7 +119,7 @@ class TextColumnImage extends Component {
     const { background_style: backgroundStyle } = this.props.slice.primary;
     const bgStyle = this.getBackgroundClasses(backgroundStyle);
     return (
-      <div className={`container mx-auto w-full bg-primary-dark my-5 ${bgStyle}`}>
+      <div className={`container mx-auto w-full bg-primary-dark pb-16 ${bgStyle}`}>
         {this.renderGrid()}
         {this.renderCards()}
       </div>

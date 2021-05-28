@@ -3,6 +3,7 @@ import { SLICE_TYPES } from "../utils/constants";
 import {
   Hero1,
   Hero2,
+  Hero3,
   CardLinks,
   CardLinksBig,
   ImagesRow,
@@ -65,6 +66,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <Hero2 index={index} slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.HERO_3:
+          return (
+            <section key={index}>
+              <Hero3 index={index} slice={slice} />
             </section>
           );
         case SLICE_TYPES.CARD_LINKS:

@@ -26,6 +26,7 @@ import TextColumnImage from "./textColumnImage";
 import DoubleImageText from "./doubleImageText";
 import SquareText from "./squareText";
 import HorizontalLineCards from "./horizontalLineCards";
+import EmbedCode from "./embedCode";
 
 export {
   Hero1,
@@ -56,4 +57,5 @@ export {
   DoubleImageText,
   SquareText,
   HorizontalLineCards,
+  EmbedCode,
 };

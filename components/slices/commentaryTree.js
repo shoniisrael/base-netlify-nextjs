@@ -1,6 +1,7 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
 import { linkResolver } from "../../prismic-configuration";
+import TextUtils from "../../utils/text";
 
 class CommentaryTree extends Component {
   render() {
@@ -17,7 +18,7 @@ class CommentaryTree extends Component {
     return (
       <div className="flex flex-col justify-between items-center py-8 px-6 container mx-auto lg:py-15">
         <div className="pb-3">
-          <span className=" font-bold text-xl lg:text-5xl text-primary-dark">
+          <span className="font-bold text-xl lg:text-5xl text-primary-dark">
             {RichText.render(title, linkResolver)}
           </span>
         </div>
@@ -33,8 +34,8 @@ class CommentaryTree extends Component {
   renderGridItems() {
     const { items } = this.props.slice;
     return (
-      <div className="relative px-6">
-        <div className="absolute z-0 w-1 bg-secondary shadow-md inset-0 left-10.5 top-5 md:bottom-20 md:top-24 md:mx-auto md:right-0 md:left-0 lg:bottom-26"></div>
+      <div className="relative px-5 md:mx-24 md:px-10">
+        <div className="absolute w-1 my-10 bg-secondary shadow-md inset-0 left-10 md:mx-auto md:right-0 md:left-0 md:my-48 lg:my-32"></div>
         {items.map((item, index) => this.renderLightCard(item, index))}
       </div>
     );
@@ -42,26 +43,46 @@ class CommentaryTree extends Component {
 
   renderLightCard(card, index) {
     const { card_title: cardTitle, card_description: cardDescription } = card;
-    let aligmentCard =
-      index % 2 === 0
-        ? "ml-auto md:mr-9 lg:mr-24 xl:mr-56 2xl:mr-85"
-        : "md:ml-9 lg:ml-24 xl:ml-56 2xl:ml-85";
+    const lineHeight = this.getLineHeight(index);
+    const title = TextUtils.hasRichText(cardTitle);
+    const description = TextUtils.hasRichText(cardDescription);
+    const aligmentCard = index % 2 === 0 ? "md:ml-auto" : "";
     return (
-      <div className="relative z-10 mb-4">
+      <div className="relative my-5">
+        <div
+          className={`hidden md:block absolute w-1 ${lineHeight} bg-secondary shadow-md inset-0 left-10 md:mx-auto md:right-0 md:left-0`}
+        ></div>
         <img
-          className="w-10 h-10 -mb-6  md:w-20 md:h-20 md:mb-0 md:absolute md:top-14 md:mx-auto md:right-0 md:left-0"
+          className="w-10 h-10 -mb-6 ml-0.5 md:w-20 md:h-20 md:absolute md:mx-auto md:my-auto md:top-0 md:bottom-0 md:right-0 md:left-0"
           src="/img/lightblue-circle.svg"
         />
         <div
-          className={`bg-primary-lightest p-6 shadow-md w-full md:px-8 md:w-80 lg:w-96 ${aligmentCard}`}
+          className={`bg-primary-lightest px-6 py-8 shadow-md w-full  md:w-1/2 md:px-14 ${aligmentCard}`}
         >
-          <div className="font-bold text-primary-blue uppercase mb-4 mt-4">
-            {RichText.render(cardTitle, linkResolver)}
-          </div>
-          <div>{RichText.render(cardDescription, linkResolver)}</div>
+          {title && (
+            <div className="font-bold text-primary-blue text-xl uppercase">
+              {RichText.render(cardTitle, linkResolver)}
+            </div>
+          )}
+          {description && (
+            <div className="mt-5">{RichText.render(cardDescription, linkResolver)}</div>
+          )}
         </div>
       </div>
     );
+  }
+
+  getLineHeight(index) {
+    const { items } = this.props.slice;
+    const cardsLength = items.length;
+    switch (index) {
+      case 0:
+        return "h-1/2 top-1/2";
+      case cardsLength - 1:
+        return "h-1/2 bottom-1/2";
+      default:
+        return "h-full";
+    }
   }
 }
 

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
-import Image from "../common/Image";
 import StyleUtils from "../../utils/styleUtils";
 import Button from "../common/button";
+import ResponsiveImage from "../common/responsiveImage";
 
 const TYPES_GRID = {
   NORMAL: "normal",
@@ -17,12 +17,12 @@ class CardsGrid extends Component {
     const { image, title, description, link } = card;
     return (
       <CustomLink link={link} key={index}>
-        <div className="h-full flex flex-col justify-center items-center px-7 py-16 card-borderless">
-          <Image image={image} />
-          <span className=" text-lg font-bold text-center py-7 lg:w-3/4 text-primary-dark">
+        <div className="h-full flex flex-col items-center px-7 py-16 card-borderless">
+          <ResponsiveImage image={image} sizes="76px" className="h-20" />
+          <div className=" text-lg font-bold text-center py-7 text-primary-dark">
             {RichText.render(title, linkResolver)}
-          </span>
-          <span className="text-center">{RichText.render(description, linkResolver)}</span>
+          </div>
+          <div className="text-center">{RichText.render(description, linkResolver)}</div>
         </div>
       </CustomLink>
     );
@@ -30,13 +30,14 @@ class CardsGrid extends Component {
 
   renderGrid() {
     const { items, primary } = this.props.slice;
-    const { type_grid } = primary;
+    const { type_grid, number_columns: numberCols } = primary;
     const divClassName =
-      "py-12 lg:pt-0 px-6 container mx-auto grid grid-cols-1 place-items-stretch gap-y-6 md:gap-x-6 md:gap-y-8 lg:gap-x-10 lg:gap-y-6 text-sm";
+      "py-12 lg:pt-0 px-6 container mx-auto grid grid-cols-1  gap-y-6 md:gap-x-6 md:gap-y-8 lg:gap-x-10 lg:gap-y-6 text-sm md:px-40";
+    const colsWidth = numberCols === 2 ? "md:w-2/3" : "w-full";
     switch (type_grid) {
       case TYPES_GRID.NORMAL:
         return (
-          <div className={`md:grid-cols-3 ${divClassName}`}>
+          <div className={`w-full md:grid-cols-${numberCols} ${colsWidth} ${divClassName}`}>
             {items.map((item, index) => this.renderCard(item, index))}
           </div>
         );

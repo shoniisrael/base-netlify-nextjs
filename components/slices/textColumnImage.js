@@ -48,16 +48,17 @@ class TextColumnImage extends Component {
     const { title, description, image } = this.props.slice.primary;
     return (
       <>
-        <div className="p-7 flex flex-col justify-center">
-          <div className="text-secondary font-bold self-end text-xl md:text-4xl lg:text5x1">
+        <div className="px-12 flex flex-col md:ml-5 lg:ml-20 justify-center">
+          <div className="text-secondary font-bold text-3xl md:text-4xl">
             {RichText.render(title, linkResolver)}
           </div>
-          <div className="mt-4 pl-0 md:pl-20 md:mt-14">
-            {RichText.render(description, linkResolver)}
-          </div>
+          <div className="mt-4 md:mt-14">{RichText.render(description, linkResolver)}</div>
         </div>
-        <div className="md:mt-10">
-          <ResponsiveImage image={image} sizes="(min-width:768) 100vw, 30vw" />
+        <div className="mt-10 md:w-1/2">
+          <ResponsiveImage
+            image={image}
+            sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw"
+          />
         </div>
       </>
     );
@@ -96,7 +97,7 @@ class TextColumnImage extends Component {
     const { card_style: cardStyleBg } = primary;
     const cardStyle = this.getCardStyleClasses(cardStyleBg);
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:mx-20">
         {items.map((item, index) => this.renderStyleCard(item, index, cardStyle))}
       </div>
     );
@@ -119,7 +120,7 @@ class TextColumnImage extends Component {
     const { background_style: backgroundStyle } = this.props.slice.primary;
     const bgStyle = this.getBackgroundClasses(backgroundStyle);
     return (
-      <div className={`container mx-auto w-full bg-primary-dark pb-16 ${bgStyle}`}>
+      <div className={`w-full bg-primary-dark py-8 ${bgStyle}`}>
         {this.renderGrid()}
         {this.renderCards()}
       </div>

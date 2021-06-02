@@ -4,7 +4,7 @@ import Button from "../common/button";
 import ResponsiveImage from "../common/responsiveImage";
 import AccordionPanel from "../common/accordionPanel";
 import TextUtils from "../../utils/text";
-import StyleUtils, { BACKGROUND_COLOR, BACKGROUND_STYLE } from "../../utils/styleUtils";
+import StyleUtils, { BACKGROUND_COLOR } from "../../utils/styleUtils";
 import { linkResolver } from "../../prismic-configuration";
 
 const IMAGE_ALIGNMENT = {
@@ -45,37 +45,44 @@ class ImageAndText extends Component {
   render() {
     const { primary } = this.props.slice;
     const {
-      style,
+      style: backgroundColor,
+      background_style: backgroundStyle,
       small_title: smallTitle,
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
       image_alignment: imageAlignment,
       image_size: imageSize,
+      join_top: joinTop,
+      join_bottom: joinBottom,
+      align_content: alignContent,
     } = primary;
 
-    const bgClasses = `${StyleUtils.getBackgroundColor(style)} 
-    ${StyleUtils.getBackgroundStyle(
-      BACKGROUND_COLOR.LIGHT === style ? BACKGROUND_STYLE.BLUE_OVAL_UP_LEFT : "",
-    )}`;
-    const titleColor = StyleUtils.getTitleColor("", style);
+    const bgClasses = `${StyleUtils.getBackgroundColor(backgroundColor)} 
+    ${StyleUtils.getBackgroundStyle(backgroundStyle)}`;
+    const titleColor = StyleUtils.getTitleColor("", backgroundColor);
     const flexStyles = this.getFlexStyles(imageAlignment, imageSize);
     const textPadding = this.getTextPadding(imageAlignment);
     const textWidth = this.getTextWidth(imageSize);
-    const topPadding = primary.join_top ? "-mt-20" : "md:pt-20 lg:py-28";
+    const topPadding = joinTop ? "-mt-20" : "pt-12 md:pt-20 lg:pt-28";
+    const bottomPadding = joinBottom ? "" : "md:pb-20 lg:pb-28";
 
     return (
       <div className={`${bgClasses} w-full`}>
-        <div className={topPadding}>
+        <div className={`pb-12 ${topPadding} ${bottomPadding}`}>
           {this.renderHeader()}
           <div
-            className={`overflow-hidden flex container mx-auto w-full px-6 md:px-14 lg:px-28 pb-12 ${flexStyles}`}
+            className={`overflow-hidden flex container mx-auto w-full px-6 md:px-14 lg:px-28 ${flexStyles} items-stretch`}
           >
             {this.renderImage()}
-            <div className={`pb-8 md:${textWidth} px-4 ${textPadding}`}>
-              <div className={`${titleColor} text-xs uppercase mb-8`}>
-                {RichText.render(smallTitle, linkResolver)}
-              </div>
+            <div
+              className={`pb-8 md:${textWidth} px-4 ${textPadding} flex flex-wrap content-${alignContent}`}
+            >
+              {TextUtils.hasRichText(smallTitle) && (
+                <div className={`${titleColor} text-xs uppercase mb-8`}>
+                  {RichText.render(smallTitle, linkResolver)}
+                </div>
+              )}
               {this.renderRichTextSections()}
               {buttonLabel && (
                 <div className="mt-16">
@@ -118,10 +125,12 @@ class ImageAndText extends Component {
 
   renderImage() {
     const { primary } = this.props.slice;
-    const { image, image_size: imageSize } = primary;
+    const { image, image_size: imageSize, align_content: alignContent } = primary;
     const imageWidth = this.getImageWidth(imageSize);
     return (
-      <div className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto`}>
+      <div
+        className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap content-${alignContent}`}
+      >
         <ResponsiveImage image={image} sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw" />
       </div>
     );

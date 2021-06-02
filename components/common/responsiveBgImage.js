@@ -8,7 +8,7 @@ class ResponsiveBgImage extends Component {
     if (!bgImage.url || !bgImage.mobile || !bgImage.mobile.url) {
       return (
         <div className="bg-center bg-no-repeat bg-cover">
-          <div className={`2xl:container mx-auto w-full ${classes}`}>{children}</div>
+          <div className={`mx-auto w-full ${classes}`}>{children}</div>
         </div>
       );
     }

@@ -442,6 +442,15 @@ select:focus {
   animation: dotsFadeIn 2s;
 }
 
+.blue-oval-up-left-and-dots-down-right-bg {
+  background-image: url(../public/img/oval-top-left.svg), url(../public/img/dots1-right-down.svg);
+  background-position: top left, bottom right;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
 .blue-top-right-oval-bg {
   background-image: url(../public/img/oval-top-right-2.svg);
   background-position: top left;

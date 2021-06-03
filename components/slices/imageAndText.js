@@ -103,9 +103,8 @@ class ImageAndText extends Component {
     const hasHeaderTitle = TextUtils.hasRichText(headerTitle);
     const hasHeaderDescription = TextUtils.hasRichText(headerDescription);
     return (
-      hasHeaderTitle &&
-      hasHeaderDescription && (
-        <div className="flex flex-col justify-between items-center text-center pt-10 md:pt-0 md:w-3/5 px-12 lg:px-28 mx-auto">
+      (hasHeaderTitle || hasHeaderDescription) && (
+        <div className="flex flex-col justify-between items-center text-center pt-10 md:pt-0 md:pb-10 md:w-3/5 px-12 lg:px-28 mx-auto">
           {hasHeaderTitle && (
             <div className="pb-5">
               <span className={`font-bold text-3xl md:text-4xl ${titleColor} `}>

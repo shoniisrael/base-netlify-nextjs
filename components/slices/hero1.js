@@ -119,6 +119,22 @@ class Hero1 extends Component {
   getTextContainerYPaddingClasses(hasImages) {
     return hasImages ? "pt-20 pb-11 md:py-36 lg:py-40" : "py-16 md:py-24 ";
   }
+
+  getWidth(width) {
+    switch (width) {
+      case "60%":
+        return "xl:w-3/5";
+      case "80%":
+        return "";
+      case "90%":
+        return "md:w-11/12";
+      case "100%":
+        return "md:w-full";
+      default:
+        return "xl:w-3/5";
+    }
+  }
+
   render() {
     const { primary } = this.props.slice;
     const {
@@ -134,6 +150,7 @@ class Hero1 extends Component {
       button_style: buttonStyle,
       left_background_image: leftBgImage,
       right_background_image: rightBgImage,
+      width,
     } = primary;
     const backgroundClasses = this.getBackgroundClasses(bgStyle, bgColor);
     const hasImages = this.checkIfSliceHasImages(leftBgImage, rightBgImage);
@@ -141,6 +158,7 @@ class Hero1 extends Component {
     const containerPaddingClasses = this.getContainerPaddingClasses(hasImages);
     const textContainerXClasses = this.getTextContainerXPaddingClasses(hasImages);
     const textContainerYClasses = this.getTextContainerYPaddingClasses(hasTitleImage);
+    const widthStyle = this.getWidth(width);
     return (
       <div
         className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} ${containerPaddingClasses}`}
@@ -148,7 +166,7 @@ class Hero1 extends Component {
         <div className="absolute bottom-0 left-0 w-1/4 lg:w-80 h-auto flex justify-start">
           <ResponsiveImage image={leftBgImage} sizes="(min-width:1280) 400px, 25vw" />
         </div>
-        <div className="w-4/5 md:w-4/5 xl:w-3/5 mx-auto z-10">
+        <div className={`w-4/5 ${widthStyle} mx-auto z-10`}>
           <div
             className={`p_py-2 flex flex-col justify-center items-center text-center ${textContainerXClasses} ${textContainerYClasses}`}
           >

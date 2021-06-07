@@ -27,11 +27,11 @@ class Hero3 extends Component {
     const hasDescription = TextUtils.hasRichText(description);
     const textColor = backgroundColor === BG_WHITE ? "text-primary-dark" : "";
     return (
-      <div className={`container mx-auto ${backgroundColor} ${backgroundStyle}`}>
+      <div className={`${backgroundColor} ${backgroundStyle}`}>
         <div className="p-10 md:p-14 lg:p-16 lg:mx-20">
           {hasImage && this.renderHeaderImage(headerImage)}
           {hasTitle && this.renderTitle(title, textColor)}
-          {hasDescription && this.renderDescription(description)}
+          {hasDescription && this.renderDescription(description, textColor)}
           {buttonLabel && this.renderButton(buttonLink, buttonLabel)}
         </div>
       </div>
@@ -52,9 +52,11 @@ class Hero3 extends Component {
     );
   }
 
-  renderDescription(description) {
+  renderDescription(description, textColor) {
     return (
-      <div className="w-full sm:w-3/4 xl:w-2/3">{RichText.render(description, linkResolver)}</div>
+      <div className={`w-full sm:w-3/4 xl:w-3/5 ${textColor}`}>
+        {RichText.render(description, linkResolver)}
+      </div>
     );
   }
 

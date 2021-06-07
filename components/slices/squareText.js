@@ -33,7 +33,7 @@ class SquareText extends Component {
   render() {
     const { background_color } = this.props.slice.primary;
     const backgroundColor = StyleUtils.getBackgroundColor(background_color);
-    return <div className={`container mx-auto pb-10 ${backgroundColor}`}>{this.renderGrid()}</div>;
+    return <div className={`pb-10 ${backgroundColor}`}>{this.renderGrid()}</div>;
   }
 }
 

@@ -54,7 +54,7 @@ class Hero3 extends Component {
 
   renderDescription(description, textColor) {
     return (
-      <div className={`w-full sm:w-3/4 xl:w-3/5 ${textColor}`}>
+      <div className={`w-full xl:w-5/6 2xl:w-3/5 ${textColor}`}>
         {RichText.render(description, linkResolver)}
       </div>
     );

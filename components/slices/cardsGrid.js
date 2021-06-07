@@ -5,6 +5,7 @@ import CustomLink from "../common/customLink";
 import StyleUtils from "../../utils/styleUtils";
 import Button from "../common/button";
 import ResponsiveImage from "../common/responsiveImage";
+import TextUtils from "../../utils/text";
 
 const TYPES_GRID = {
   NORMAL: "normal",
@@ -79,22 +80,28 @@ class CardsGrid extends Component {
     const { primary } = this.props.slice;
     const { small_title, big_title, description, horizontal_ruler } = primary;
     return (
-      <div className="flex flex-col justify-between items-center py-12 px-6 container mx-auto lg:py-28">
-        <div className="pb-3">
-          <span className="text-xs lg:text-sm font-light capitalize">
-            {RichText.render(small_title, linkResolver)}
-          </span>
-        </div>
-        <div className="pb-10">
-          <span className=" font-bold text-xl lg:text-5xl text-primary-dark">
-            {RichText.render(big_title, linkResolver)}
-          </span>
-        </div>
-        <div className="lg:w-4/5">
-          <span className="text-center font-light">
-            {RichText.render(description, linkResolver)}
-          </span>
-        </div>
+      <div className="flex flex-col justify-between items-center py-12 px-6 container mx-auto lg:pt-20">
+        {TextUtils.hasRichText(small_title) && (
+          <div className="pb-3">
+            <span className="text-xs lg:text-sm font-light capitalize">
+              {RichText.render(small_title, linkResolver)}
+            </span>
+          </div>
+        )}
+        {TextUtils.hasRichText(big_title) && (
+          <div className="pb-10 text-center">
+            <span className=" font-bold text-xl lg:text-5xl text-primary-dark">
+              {RichText.render(big_title, linkResolver)}
+            </span>
+          </div>
+        )}
+        {TextUtils.hasRichText(description) && (
+          <div className="lg:w-4/5">
+            <span className="text-center font-light">
+              {RichText.render(description, linkResolver)}
+            </span>
+          </div>
+        )}
         {horizontal_ruler && <div className="border-b-2 border-secondary w-28 pb-10"></div>}
       </div>
     );

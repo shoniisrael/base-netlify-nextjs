@@ -217,7 +217,7 @@ class ImageAndText extends Component {
           </div>
         )}
         {buttonLabel && (
-          <div className="pt-5 pb-10">
+          <div className="pt-5 pb-10 mb-5">
             <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         )}

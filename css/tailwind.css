@@ -48,11 +48,23 @@ a {
   @apply font-bold text-center border-4 border-solid text-secondary border-secondary;
 }
 
-.btn.flat-underline-textBlue {
-  @apply pb-1 font-bold text-center uppercase border-t-0 border-l-0 border-r-0 border-b-4 border-solid text-primary-dark border-secondary hover:text-secondary;
+.btn.flat-underline {
+  @apply pb-1 font-bold text-center uppercase border-t-0 border-l-0 border-r-0 border-b-4 border-solid border-secondary;
 }
 
-.btn.flat-underline-textBlue::after {
+.btn.flat-underline.textBlue {
+  @apply text-primary-dark hover:text-secondary;
+}
+
+.btn.flat-underline.textWhite {
+  @apply text-white hover:text-secondary;
+}
+
+.btn.flat-underline.textGreen {
+  @apply text-secondary;
+}
+
+.btn.flat-underline::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right.svg);
 }

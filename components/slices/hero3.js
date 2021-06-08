@@ -67,7 +67,7 @@ class Hero3 extends Component {
       button_style: buttonStyle,
     } = primary;
     return (
-      <div className="mt-10 w-4/6 md:w-2/6 xl:w-1/5">
+      <div className="mt-10">
         <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
       </div>
     );

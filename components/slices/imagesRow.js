@@ -4,6 +4,7 @@ import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 
 import { SCREEN_SIZES, DEFAULT_SPACE_SIZE } from "../../utils/constants.js";
+import StyleUtils from "../../utils/styleUtils";
 
 export default class ImagesRow extends Component {
   getSizeForScreen(maxScreenSize, cols) {
@@ -175,14 +176,19 @@ export default class ImagesRow extends Component {
       columns_mobile: columnsMobile,
       text_alignment,
       top_row: topRowHigher,
+      background_style,
+      ruler_top: rulerTop,
+      ruler_bottom: rulerBottom,
     } = primary;
 
     const backgroundClasses = this.getBackgroundClasses(background_color);
     const alignmentClasses = this.getAligmentClasses(text_alignment);
+    const backgroundStyle = StyleUtils.getBackgroundStyle(background_style);
 
     return (
-      <div className={`w-full py-12 ${backgroundClasses.background} md:py-20 lg:py-28`}>
-        <div className="container flex flex-col items-center w-full px-6 md:px-14 lg:px-28 mx-auto">
+      <div className={`w-full ${backgroundClasses.background} ${backgroundStyle} `}>
+        {rulerTop && <div className="pt-5 border-b-4 border-secondary w-1/6 mx-auto"></div>}
+        <div className="py-12 container flex flex-col items-center w-full px-6 md:px-14 lg:px-28 mx-auto">
           {primary.small_title && (
             <div
               className={`pb-5 text-xs md:text-sm ${alignmentClasses.item} ${alignmentClasses.text} text-primary-dark`}
@@ -210,6 +216,9 @@ export default class ImagesRow extends Component {
             </div>
           )}
         </div>
+        {rulerBottom && (
+          <div className="mt-10 pb-5 border-t-4 border-secondary w-1/6 mx-auto"></div>
+        )}
       </div>
     );
   }

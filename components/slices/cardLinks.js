@@ -155,11 +155,15 @@ class CardLinks extends Component {
 
   renderFooter() {
     const { primary } = this.props.slice;
-    const { button_label: buttonLabel, button_link: buttonLink } = primary;
+    const {
+      button_label: buttonLabel,
+      button_link: buttonLink,
+      button_style: buttonStyle,
+    } = primary;
     return (
       buttonLabel && (
         <div className="w-4/6 md:w-2/6 xl:w-1/5 mx-auto z-10 pb-10 md:pb-15 xl:pb-15">
-          <Button link={buttonLink} label={buttonLabel} style="filled" />
+          <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
         </div>
       )
     );

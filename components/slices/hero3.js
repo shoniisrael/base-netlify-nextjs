@@ -17,7 +17,6 @@ class Hero3 extends Component {
       header_image: headerImage,
       title,
       description,
-      button_link: buttonLink,
       button_label: buttonLabel,
     } = primary;
     const backgroundColor = StyleUtils.getBackgroundColor(bgColor);
@@ -32,7 +31,7 @@ class Hero3 extends Component {
           {hasImage && this.renderHeaderImage(headerImage)}
           {hasTitle && this.renderTitle(title, textColor)}
           {hasDescription && this.renderDescription(description, textColor)}
-          {buttonLabel && this.renderButton(buttonLink, buttonLabel)}
+          {buttonLabel && this.renderButton()}
         </div>
       </div>
     );
@@ -60,10 +59,16 @@ class Hero3 extends Component {
     );
   }
 
-  renderButton(buttonLink, buttonLabel) {
+  renderButton() {
+    const { primary } = this.props.slice;
+    const {
+      button_link: buttonLink,
+      button_label: buttonLabel,
+      button_style: buttonStyle,
+    } = primary;
     return (
       <div className="mt-10 w-4/6 md:w-2/6 xl:w-1/5">
-        <Button link={buttonLink} label={buttonLabel} style="filled" />
+        <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
       </div>
     );
   }

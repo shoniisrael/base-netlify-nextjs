@@ -110,7 +110,7 @@ class Hero2 extends Component {
             </div>
           </div>
           <div className="pb-8">
-            <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle}`} />
+            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         </div>
       </ResponsiveBgImage>

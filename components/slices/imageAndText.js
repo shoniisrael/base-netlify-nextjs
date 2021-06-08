@@ -201,6 +201,7 @@ class ImageAndText extends Component {
       rich_text: richText,
       button_link: buttonLink,
       button_label: buttonLabel,
+      button_style: buttonStyle,
       expand_collapse_effect: hasExpandCollapse,
     } = item;
     const textStyle = this.getTextStyle(fontSize);
@@ -217,7 +218,7 @@ class ImageAndText extends Component {
         )}
         {buttonLabel && (
           <div className="pt-5 pb-10">
-            <Button link={buttonLink} label={buttonLabel} style="filled" />
+            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         )}
       </div>

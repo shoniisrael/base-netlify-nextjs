@@ -57,6 +57,7 @@ class ImageTopAndText extends Component {
       description,
       button_link: buttonLink,
       button_label: buttonLabel,
+      button_style: buttonStyle,
     } = primary;
 
     return (
@@ -74,7 +75,7 @@ class ImageTopAndText extends Component {
         )}
         {buttonLabel && (
           <div className="pt-5 pb-10">
-            <Button link={buttonLink} label={buttonLabel} style="filled" />
+            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         )}
       </div>

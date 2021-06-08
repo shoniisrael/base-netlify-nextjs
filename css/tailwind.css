@@ -21,7 +21,7 @@ a {
 
 /*custom classes*/
 .btn {
-  @apply p-4 transition duration-500 lg:hover:opacity-80 cursor-pointer;
+  @apply p-4 cursor-pointer transition duration-500 lg:hover:opacity-80;
 }
 
 .btnCategory {
@@ -29,11 +29,48 @@ a {
 }
 
 .btn.filled {
-  @apply font-bold text-center text-white border border-solid bg-secondary-dark border-secondary-dark;
+  @apply font-bold text-center text-white border border-solid bg-secondary border-secondary;
 }
 
 .btn.flat {
   @apply font-bold text-center border border-solid text-secondary border-secondary hover:bg-secondary hover:text-white;
+}
+
+.btn.filled-bgGreen-textBlue {
+  @apply font-bold text-center border border-solid text-primary-dark border-secondary bg-secondary;
+}
+
+.btn.flat-borderGreen-textBlue {
+  @apply font-bold text-center border-4 border-solid text-primary-dark border-secondary;
+}
+
+.btn.flat-borderGreen-textGreen {
+  @apply font-bold text-center border-4 border-solid text-secondary border-secondary;
+}
+
+.btn.flat-underline-textBlue {
+  @apply pb-1 font-bold text-center uppercase border-t-0 border-l-0 border-r-0 border-b-4 border-solid text-primary-dark border-secondary hover:text-secondary;
+}
+
+.btn.flat-underline-textBlue::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right.svg);
+}
+
+.btn.flat-borderGreen-textGreen:hover::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right.svg);
+}
+
+.btn.filled-bgGreen-textBlue:hover::after,
+.btn.flat-borderGreen-textBlue:hover::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right-blue.svg);
+}
+
+.btn.filled-bgGreen-textGreen:hover::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right.svg);
 }
 
 .btn.contentBtn {

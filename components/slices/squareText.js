@@ -24,7 +24,7 @@ class SquareText extends Component {
     const { columns_number: colNumber } = primary;
     return (
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNumber} justify-items-center mx-24 px-5 gap-4`}
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNumber} justify-items-center md:mx-2 lg:mx-24 px-5 gap-4`}
       >
         {items.map((item, index) => this.renderSquare(item, index))}
       </div>

@@ -90,14 +90,15 @@ class Hero2 extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
+      button_width: buttonWidth,
       width_description: wDescription,
     } = primary;
-
+    const btnWidth = buttonWidth || "";
     const alignmentClasses = this.getAlignmentClasses(alignment);
     const containerWidth = this.getContainerWidth(alignment);
     const imageAlignment = this.getImageAlignment(alignment);
     const widthDescription = this.getWidthDescription(btFontSize, wDescription);
-
+    const aligmentButton = alignment === ALIGNMENT.CENTER ? "justify-center" : "";
     const classes = `px-4 lg:px-8 xl:px-20 pb-16 pt-24 md:pb-32 md:pt-32 text-white flex ${alignmentClasses}`;
     return (
       <ResponsiveBgImage index={index} bgImage={bgImage} classes={classes}>
@@ -109,8 +110,8 @@ class Hero2 extends Component {
               {RichText.render(description, linkResolver)}
             </div>
           </div>
-          <div className="pb-8">
-            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+          <div className={`pb-8 flex ${aligmentButton}`}>
+            <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
           </div>
         </div>
       </ResponsiveBgImage>

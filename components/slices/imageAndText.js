@@ -51,13 +51,14 @@ class ImageAndText extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
+      button_width: buttonWidth,
       image_alignment: imageAlignment,
       image_size: imageSize,
       join_top: joinTop,
       join_bottom: joinBottom,
       align_content: alignContent,
     } = primary;
-
+    const btnWidth = buttonWidth || "";
     const bgClasses = `${StyleUtils.getBackgroundColor(backgroundColor)} 
     ${StyleUtils.getBackgroundStyle(backgroundStyle)}`;
     const titleColor = StyleUtils.getTitleColor("", backgroundColor);
@@ -66,7 +67,6 @@ class ImageAndText extends Component {
     const textWidth = this.getTextWidth(imageSize);
     const topPadding = joinTop ? "-mt-20" : "pt-12 md:pt-20 lg:pt-28";
     const bottomPadding = joinBottom ? "" : "md:pb-20 lg:pb-28";
-
     return (
       <div className={`${bgClasses} w-full`}>
         <div className={`pb-12 ${topPadding} ${bottomPadding}`}>
@@ -85,8 +85,12 @@ class ImageAndText extends Component {
               )}
               {this.renderRichTextSections()}
               {buttonLabel && (
-                <div className="mt-16">
-                  <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+                <div className="mt-16 flex">
+                  <Button
+                    link={buttonLink}
+                    label={buttonLabel}
+                    style={`${buttonStyle} ${btnWidth}`}
+                  />
                 </div>
               )}
             </div>
@@ -202,8 +206,10 @@ class ImageAndText extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
+      button_width: buttonWidth,
       expand_collapse_effect: hasExpandCollapse,
     } = item;
+    const btnWidth = buttonWidth || "";
     const textStyle = this.getTextStyle(fontSize);
     const bulletPointStyle = hasExpandCollapse
       ? ""
@@ -217,8 +223,8 @@ class ImageAndText extends Component {
           </div>
         )}
         {buttonLabel && (
-          <div className="pt-5 pb-10 mb-5">
-            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
+          <div className="pb-5 mb-10 flex">
+            <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
           </div>
         )}
       </div>

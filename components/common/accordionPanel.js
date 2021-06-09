@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 class AccordionPanel extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { label, labelStyles, children, activeTab, index, activateTab } = this.props;
     if (!label) {

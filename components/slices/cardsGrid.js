@@ -72,7 +72,7 @@ class CardsGrid extends Component {
           </div>
         );
       default:
-        return "";
+        return null;
     }
   }
 

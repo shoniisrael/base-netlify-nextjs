@@ -3,7 +3,7 @@ import React from "react";
 const Iframe = (props) => {
   const writeHTML = (frame) => {
     if (!frame) {
-      return;
+      return null;
     }
     let doc = frame.contentDocument;
     doc.open();

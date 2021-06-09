@@ -38,7 +38,11 @@ class Hero3 extends Component {
   }
 
   renderHeaderImage(headerImage) {
-    return <div className="mt-5">{<Image image={headerImage} />}</div>;
+    return (
+      <div className="mt-5">
+        <Image image={headerImage} />
+      </div>
+    );
   }
 
   renderTitle(title, textColor) {

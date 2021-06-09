@@ -104,16 +104,18 @@ const Form = (props) => {
   };
   const getTemplateId = () => {
     const { body: slices = [] } = form.data;
-    let valueIdTemplate = TEMPLATE_SENDGRID.DEFAULT;
-    let idTemplateInput = null;
-    slices.map((slice) => {
-      if (slice.slice_type === TEMPLATE_SENDGRID.TYPE) {
-        const { id_template } = slice.primary;
-        valueIdTemplate = id_template;
-        idTemplateInput = <input type="hidden" name="idTemplate" value={valueIdTemplate} />;
+    const defaultValue = (
+      <input type="hidden" name="idTemplate" value={TEMPLATE_SENDGRID.DEFAULT} />
+    );
+    let idTemplate = null;
+    slices.forEach((element) => {
+      if (element.slice_type === TEMPLATE_SENDGRID.TYPE) {
+        const { id_template } = element.primary;
+        idTemplate = <input type="hidden" name="idTemplate" value={id_template} />;
       }
     });
-    return <>{idTemplateInput}</>;
+    const idTemplateInput = idTemplate || defaultValue;
+    return idTemplateInput;
   };
   const renderFileFields = () => {
     let fileInput = null;

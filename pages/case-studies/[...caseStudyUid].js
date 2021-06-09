@@ -49,10 +49,14 @@ export async function getStaticProps(context) {
   const { caseStudyUid } = params;
   const searchableUid = caseStudyUid.join("_");
   const caseStudy = await Client().getByUID("case_studies", searchableUid, {
+    ref: context.preview ? context.previewData.ref : undefined,
     fetchLinks: ["testimonial.quote", "testimonial.name_and_position", "testimonial.company_logo"],
   });
   const caseStudySettings = await Client().query(
     Prismic.Predicates.at("document.type", "case_study_settings"),
+    {
+      ref: context.preview ? context.previewData.ref : undefined,
+    },
   );
   return {
     props: {
@@ -62,13 +66,15 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
-  const caseStudies = await Client().query(Prismic.Predicates.at("document.type", "case_studies"));
+export async function getStaticPaths(context) {
+  const caseStudies = await Client().query(Prismic.Predicates.at("document.type", "case_studies"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const paths = caseStudies.results.map((caseStudy) => {
     return { params: { caseStudyUid: caseStudy.uid.split("_") } };
   });
   return {
-    fallback: false,
+    fallback: process.env.ENABLE_PREVIEW_MODE === "true" ? "blocking" : false,
     paths,
   };
 }

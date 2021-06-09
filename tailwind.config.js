@@ -7,10 +7,11 @@ module.exports = {
       "./pages/**/*.js",
       "./pages/*.js",
       "./node_modules/@brainhubeu/react-carousel/**/*.js",
+      "./utils/*.js",
     ],
     options: {
       safelist: {
-        standard: [/grid-cols-/, "custom-dot-list", "underline"],
+        standard: [/grid-cols-/, "custom-dot-list", "underline", /w-/],
         deep: [/^flat$/],
       },
     },
@@ -45,7 +46,9 @@ module.exports = {
         },
       },
       spacing: {
+        26: "6.5rem",
         29: "7.75rem",
+        50: "12.5rem",
         105: "26.25rem",
         106: "27.25rem",
         107: "29.125rem",
@@ -54,6 +57,12 @@ module.exports = {
       },
       boxShadow: {
         card: "0 0 34px 0 rgba(0,0,0,.08)",
+      },
+      width: {
+        "7/15": "46.66667%",
+      },
+      inset: {
+        "-1.5": "-0.375rem",
       },
     },
   },

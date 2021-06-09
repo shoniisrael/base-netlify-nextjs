@@ -4,95 +4,191 @@ import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 
 import { SCREEN_SIZES, DEFAULT_SPACE_SIZE } from "../../utils/constants.js";
-
-function getSizes(maxWidth, colsMobile, colsTablet) {
-  const largeSize = parseInt(SCREEN_SIZES.MD);
-  const smallSize = parseInt(SCREEN_SIZES.SM);
-  const tablet = getSizeForScreen(largeSize, colsTablet);
-  const mobile = getSizeForScreen(smallSize, colsMobile);
-  return `(min-width:${SCREEN_SIZES.LG}) ${maxWidth}px, (min-width:${SCREEN_SIZES.SM}) ${tablet}vw, ${mobile}vw`;
-}
-
-function getSizeForScreen(maxScreenSize, cols) {
-  const availableSpace = maxScreenSize - DEFAULT_SPACE_SIZE * (cols + 1);
-  const columnSize = Math.round(availableSpace / cols);
-  return Math.round((columnSize / maxScreenSize) * 100);
-}
-
-function getAnimationClasses(displayAnimationOnHover) {
-  if (displayAnimationOnHover) {
-    return {
-      image: "transition duration-500 transform group-hover:scale-110",
-      text: "text-center text-opacity-0 group-hover:text-opacity-100",
-    };
-  }
-  return {
-    image: "",
-    text: "",
-  };
-}
-
-function getBackgroundClasses(bgColor) {
-  switch (bgColor) {
-    case "dark":
-      return {
-        background: "bg-primary-dark",
-        titleColor: "text-secondary",
-        descriptionColor: "text-white",
-      };
-    default:
-      return {
-        background: "bg-white",
-        titleColor: "text-primary-dark",
-        descriptionColor: "text-primary-dark",
-      };
-  }
-}
-function getAligmentClasses(textAlignment) {
-  switch (textAlignment) {
-    case "center":
-      return {
-        text: "text-center",
-        item: "",
-      };
-    default:
-      return {
-        text: "text-left",
-        item: "self-start",
-      };
-  }
-}
-
-function getGridColsForScreens(columnsMobile, columnsTablet, columnsDesktop) {
-  return `grid-cols-${columnsMobile} md:grid-cols-${columnsTablet} lg:grid-cols-${columnsDesktop}`;
-}
+import StyleUtils from "../../utils/styleUtils";
 
 export default class ImagesRow extends Component {
-  render() {
-    const { primary, items } = this.props.slice;
+  getSizeForScreen(maxScreenSize, cols) {
+    const availableSpace = maxScreenSize - DEFAULT_SPACE_SIZE * (cols + 1);
+    const columnSize = Math.round(availableSpace / cols);
+    return Math.round((columnSize / maxScreenSize) * 100);
+  }
+
+  getSizes(maxWidth, colsMobile, colsTablet) {
+    const largeSize = parseInt(SCREEN_SIZES.MD);
+    const smallSize = parseInt(SCREEN_SIZES.SM);
+    const tablet = this.getSizeForScreen(largeSize, colsTablet);
+    const mobile = this.getSizeForScreen(smallSize, colsMobile);
+    return `(min-width:${SCREEN_SIZES.LG}) ${maxWidth}px, (min-width:${SCREEN_SIZES.SM}) ${tablet}vw, ${mobile}vw`;
+  }
+
+  getAnimationClasses(displayAnimationOnHover) {
+    if (displayAnimationOnHover) {
+      return {
+        image: "transition duration-500 transform group-hover:scale-110",
+        text: "text-center text-opacity-0 group-hover:text-opacity-100",
+      };
+    }
+    return {
+      image: "",
+      text: "",
+    };
+  }
+
+  getBackgroundClasses(bgColor) {
+    switch (bgColor) {
+      case "dark":
+        return {
+          background: "bg-primary-dark",
+          titleColor: "text-secondary",
+          descriptionColor: "text-white",
+        };
+      default:
+        return {
+          background: "bg-white",
+          titleColor: "text-primary-dark",
+          descriptionColor: "text-primary-dark",
+        };
+    }
+  }
+  getAligmentClasses(textAlignment) {
+    switch (textAlignment) {
+      case "center":
+        return {
+          text: "text-center",
+          item: "",
+        };
+      default:
+        return {
+          text: "text-left",
+          item: "self-start",
+        };
+    }
+  }
+
+  getGridColsForScreens(columnsMobile, columnsTablet, columnsDesktop) {
+    return `grid-cols-${columnsMobile} md:grid-cols-${columnsTablet} lg:grid-cols-${columnsDesktop}`;
+  }
+
+  renderImage(icon) {
+    const { primary } = this.props.slice;
     const {
-      background_color,
-      columns_desktop,
-      columns_tablet,
-      columns_mobile,
-      text_alignment,
       display_animation_on_hover,
       max_width: maxWidth,
       max_height: maxHeight,
+      columns_tablet: columnsTablet,
+      columns_mobile: columnsMobile,
     } = primary;
-    const animationClasses = getAnimationClasses(display_animation_on_hover);
-    const backgroundClasses = getBackgroundClasses(background_color);
-    const alignmentClasses = getAligmentClasses(text_alignment);
-    const gridColsForScreens = getGridColsForScreens(
-      columns_mobile,
-      columns_tablet,
-      columns_desktop,
+    const animationClasses = this.getAnimationClasses(display_animation_on_hover);
+    const sizes = this.getSizes(maxWidth, columnsMobile, columnsTablet);
+    return (
+      <div
+        className="flex flex-col items-center justify-center"
+        style={{ height: `${maxHeight}px` }}
+      >
+        <ResponsiveImage
+          style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}
+          image={icon.image}
+          sizes={sizes}
+          className={`${animationClasses.image} mx-auto object-contain`}
+          options={{ maxWidth, maxHeight }}
+        />
+      </div>
     );
-    const sizes = getSizes(maxWidth, columns_mobile, columns_tablet);
+  }
+
+  displayAnimationHover(hasImage, icon) {
+    const { primary } = this.props.slice;
+    const { display_animation_on_hover, background_color } = primary;
+    const backgroundClasses = this.getBackgroundClasses(background_color);
+    const animationClasses = this.getAnimationClasses(display_animation_on_hover);
+    return (
+      <div
+        className={`${backgroundClasses.descriptionColor} ${
+          display_animation_on_hover ? animationClasses.text : ""
+        } ${hasImage ? "" : "text-base 2xl:text-lg"} max-h-5`}
+      >
+        {RichText.render(icon.text, linkResolver)}
+      </div>
+    );
+  }
+
+  renderGrid(columnsMobile, columnsTablet, columnsDesktop, numRow = 0) {
+    const { primary, items } = this.props.slice;
+    const { display_animation_on_hover } = primary;
+    const gridColsForScreens = this.getGridColsForScreens(
+      columnsMobile,
+      columnsTablet,
+      columnsDesktop,
+    );
+    const itemGridClassName =
+      "flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent";
+    return (
+      <div
+        className={`grid justify-items-center items-center w-full text-sm gap-8 ${gridColsForScreens}`}
+      >
+        {numRow === 0 &&
+          items.map((icon, index) => {
+            const hasImage = !!Object.values(icon.image).length;
+            return (
+              <div className={itemGridClassName} key={index}>
+                {hasImage && this.renderImage(icon)}
+                {(display_animation_on_hover || !hasImage) &&
+                  this.displayAnimationHover(hasImage, icon)}
+              </div>
+            );
+          })}
+        {numRow === 1 &&
+          items.map((icon, index) => {
+            const hasImage = !!Object.values(icon.image).length;
+            if (index < columnsDesktop) {
+              return (
+                <div className={itemGridClassName} key={index}>
+                  {hasImage && this.renderImage(icon)}
+                  {(display_animation_on_hover || !hasImage) &&
+                    this.displayAnimationHover(hasImage, icon)}
+                </div>
+              );
+            }
+          })}
+        {numRow === 2 &&
+          items.map((icon, index) => {
+            const hasImage = !!Object.values(icon.image).length;
+            if (index > columnsDesktop) {
+              return (
+                <div className={`${itemGridClassName} mt-10`} key={index}>
+                  {hasImage && this.renderImage(icon)}
+                  {(display_animation_on_hover || !hasImage) &&
+                    this.displayAnimationHover(hasImage, icon)}
+                </div>
+              );
+            }
+          })}
+      </div>
+    );
+  }
+
+  render() {
+    const { primary } = this.props.slice;
+    const {
+      background_color,
+      columns_desktop: columnsDesktop,
+      columns_tablet: columnsTablet,
+      columns_mobile: columnsMobile,
+      text_alignment,
+      top_row: topRowHigher,
+      background_style,
+      ruler_top: rulerTop,
+      ruler_bottom: rulerBottom,
+    } = primary;
+
+    const backgroundClasses = this.getBackgroundClasses(background_color);
+    const alignmentClasses = this.getAligmentClasses(text_alignment);
+    const backgroundStyle = StyleUtils.getBackgroundStyle(background_style);
 
     return (
-      <div className={`w-full py-12 ${backgroundClasses.background} md:py-20 lg:py-28`}>
-        <div className="container flex flex-col items-center w-full px-6 md:px-14 lg:px-28 mx-auto">
+      <div className={`w-full ${backgroundClasses.background} ${backgroundStyle} `}>
+        {rulerTop && <div className="pt-5 border-b-4 border-secondary w-1/6 mx-auto"></div>}
+        <div className="py-12 container flex flex-col items-center w-full px-6 md:px-14 lg:px-28 mx-auto">
           {primary.small_title && (
             <div
               className={`pb-5 text-xs md:text-sm ${alignmentClasses.item} ${alignmentClasses.text} text-primary-dark`}
@@ -112,46 +208,17 @@ export default class ImagesRow extends Component {
               {RichText.render(primary.description, linkResolver)}
             </div>
           )}
-          <div
-            className={`grid justify-items-center items-center w-full text-sm gap-8 ${gridColsForScreens}`}
-          >
-            {items.map((icon, index) => {
-              const hasImage = !!Object.values(icon.image).length;
-              return (
-                <div
-                  className="flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent"
-                  key={index}
-                >
-                  {hasImage && (
-                    <div
-                      className="flex flex-col items-center justify-center"
-                      style={{ height: `${maxHeight}px` }}
-                    >
-                      <ResponsiveImage
-                        style={{ maxWidth: `${maxWidth}px`, maxHeight: `${maxHeight}px` }}
-                        image={icon.image}
-                        sizes={sizes}
-                        className={`${animationClasses.image} mx-auto object-contain`}
-                        options={{ maxWidth, maxHeight }}
-                      />
-                    </div>
-                  )}
-
-                  {(display_animation_on_hover || !hasImage) && (
-                    <div
-                      className={`${backgroundClasses.descriptionColor} 
-                      ${display_animation_on_hover ? animationClasses.text : ""} 
-                      ${hasImage ? "" : "text-base 2xl:text-lg"} 
-                      max-h-5`}
-                    >
-                      {RichText.render(icon.text, linkResolver)}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          {!topRowHigher && this.renderGrid(columnsMobile, columnsTablet, columnsDesktop)}
+          {topRowHigher && (
+            <div className="w-full">
+              {this.renderGrid(columnsMobile, columnsTablet, columnsDesktop, 1)}
+              {this.renderGrid(columnsMobile - 1, columnsTablet - 1, columnsDesktop - 1, 2)}
+            </div>
+          )}
         </div>
+        {rulerBottom && (
+          <div className="mt-10 pb-5 border-t-4 border-secondary w-1/6 mx-auto"></div>
+        )}
       </div>
     );
   }

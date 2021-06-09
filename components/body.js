@@ -3,9 +3,12 @@ import { SLICE_TYPES } from "../utils/constants";
 import {
   Hero1,
   Hero2,
+  Hero3,
   CardLinks,
+  CardLinksBig,
   ImagesRow,
   ImageAndText,
+  ImageTopAndText,
   CardsGrid,
   Cards,
   Banner,
@@ -22,6 +25,12 @@ import {
   ImageAndForm,
   RichTextContent,
   AllArticlesList,
+  CommentaryTree,
+  TextColumnImage,
+  DoubleImageText,
+  SquareText,
+  HorizontalLineCards,
+  EmbedCode,
 } from "./slices/";
 import BodyBlog from "./bodyBlog";
 import BodyJobPost from "./bodyJobPost";
@@ -60,10 +69,22 @@ class Body extends Component {
               <Hero2 index={index} slice={slice} />
             </section>
           );
+        case SLICE_TYPES.HERO_3:
+          return (
+            <section key={index}>
+              <Hero3 index={index} slice={slice} />
+            </section>
+          );
         case SLICE_TYPES.CARD_LINKS:
           return (
             <section key={index}>
-              <CardLinks slice={slice} />
+              <CardLinks index={index} slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.CARD_LINKS_BIG:
+          return (
+            <section key={index}>
+              <CardLinksBig slice={slice} />
             </section>
           );
         case SLICE_TYPES.IMAGES_ROW:
@@ -76,6 +97,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <ImageAndText slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.IMAGE_TOP_AND_TEXT:
+          return (
+            <section key={index}>
+              <ImageTopAndText slice={slice} />
             </section>
           );
         case SLICE_TYPES.CARDS_GRID:
@@ -212,6 +239,36 @@ class Body extends Component {
               <RichTextContent slice={slice} />
             </section>
           );
+        case SLICE_TYPES.COMMENTARY_TREE:
+          return (
+            <section key={index}>
+              <CommentaryTree slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.HORIZONTAL_LINE_CARDS:
+          return (
+            <section key={index}>
+              <HorizontalLineCards slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.TEXT_COLUMN_IMAGE:
+          return (
+            <section key={index}>
+              <TextColumnImage slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.DOUBLE_IMAGE_TEXT:
+          return (
+            <section key={index}>
+              <DoubleImageText slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.SQUARE_TEXT:
+          return (
+            <section key={index}>
+              <SquareText slice={slice} />
+            </section>
+          );
         case SLICE_TYPES.ALL_ARTICLES_CONTENT:
           if (blogCategoryContent) {
             return (
@@ -223,6 +280,12 @@ class Body extends Component {
           return (
             <section key={index}>
               <AllArticlesList slice={slice} />
+            </section>
+          );
+        case SLICE_TYPES.EMBED_CODE:
+          return (
+            <section key={index}>
+              <EmbedCode slice={slice} />
             </section>
           );
         default:

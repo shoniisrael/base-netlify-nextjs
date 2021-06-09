@@ -21,7 +21,7 @@ a {
 
 /*custom classes*/
 .btn {
-  @apply p-4 transition duration-500 lg:hover:opacity-80 cursor-pointer;
+  @apply p-4 cursor-pointer transition duration-500 lg:hover:opacity-80;
 }
 
 .btnCategory {
@@ -29,12 +29,83 @@ a {
 }
 
 .btn.filled {
-  @apply font-bold text-center text-white border border-solid bg-secondary-dark border-secondary-dark;
+  @apply font-bold text-center text-white border border-solid bg-secondary border-secondary;
 }
 
 .btn.flat {
   @apply font-bold text-center border border-solid text-secondary border-secondary hover:bg-secondary hover:text-white;
 }
+
+/*! purgecss start ignore */
+.filled-bgGreen-textBlue {
+  @apply font-bold text-center border border-solid text-primary-dark border-secondary bg-secondary;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-borderGreen-textBlue {
+  @apply font-bold text-center border-4 border-solid text-primary-dark border-secondary;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-borderGreen-textGreen {
+  @apply font-bold text-center border-4 border-solid text-secondary border-secondary;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-underline {
+  @apply pb-1 font-bold text-center uppercase border-t-0 border-l-0 border-r-0 border-b-4 border-solid border-secondary;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-underline.textBlue {
+  @apply text-primary-dark hover:text-secondary;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-underline.textWhite {
+  @apply text-white hover:text-secondary;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-underline.textGreen {
+  @apply text-secondary;
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-underline::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right.svg);
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.flat-borderGreen-textGreen:hover::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right.svg);
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.filled-bgGreen-textBlue:hover::after,
+.flat-borderGreen-textBlue:hover::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right-blue.svg);
+}
+/*! purgecss end ignore */
+
+/*! purgecss start ignore */
+.filled-bgGreen-textGreen:hover::after {
+  margin-left: 1rem;
+  content: url(../public/img/chevron-right.svg);
+}
+/*! purgecss end ignore */
 
 .btn.contentBtn {
   @apply font-bold h-12 px-5 rounded-none items-center content-center mb-11 md:mb-auto flex mr-auto text-base;
@@ -208,6 +279,39 @@ a {
   animation: dotsFadeIn 2s;
 }
 
+.dots7 {
+  background-image: url(../public/img/dots2-left-up.svg), url(../public/img/dots3-right-up.svg);
+  background-position: top left, top right;
+  background-repeat: no-repeat;
+  background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
+.dots-down-left-and-right {
+  background-image: url(../public/img/dots5-left-down.svg),
+    url(../public/img/dots2-dark-right-down.svg);
+  background-position: bottom left, bottom right;
+  background-repeat: no-repeat;
+  background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
+.blue-oval-dots1-bg {
+  background-image: url(../public/img/dots1-left-up.svg), url(../public/img/dots1-right-down.svg),
+    url(../public/img/oval-bottom-left-narrow.svg), url(../public/img/oval-top-right.svg);
+  background-position: top left, bottom right, bottom left, top right;
+  background-repeat: no-repeat;
+  background-size: 90vw auto, 90vw auto, 30vw auto, 40vw auto;
+}
+
+@media only screen and (min-width: 640px) {
+  .blue-oval-dots1-bg {
+    background-size: 50vw auto, 50vw auto, 20vw auto, 40vw auto;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .dots3 {
     background-image: url(../public/img/dots3-left-up.svg), url(../public/img/dots3-right-up.svg);
@@ -220,6 +324,9 @@ a {
   .dots5 {
     background-size: 40vw auto, 40vw auto;
   }
+  .blue-oval-dots1-bg {
+    background-size: 50vw auto, 50vw auto, 15vw auto, 40vw auto;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .dots3 {
@@ -228,11 +335,15 @@ a {
   .dots5 {
     background-size: 30vw auto, 30vw auto;
   }
+  .blue-oval-dots1-bg {
+    background-size: 30vw auto, 30vw auto, 13vw auto, 30vw auto;
+  }
 }
 
 @media only screen and (min-width: 1280px) {
   .dots1,
-  .dots2 {
+  .dots2,
+  .dots7 {
     background-size: 20vw auto, 20vw auto;
   }
   .dots3 {
@@ -243,6 +354,12 @@ a {
   }
   .dots6 {
     background-size: 30vw auto, 30vw auto;
+  }
+}
+
+@media only screen and (min-width: 1536px) {
+  .blue-oval-dots1-bg {
+    background-size: 30vw auto, 30vw auto, 9vw auto, 30vw auto;
   }
 }
 
@@ -378,6 +495,33 @@ select:focus {
   background-size: 30vw auto, 30vw auto;
 }
 
+.blue-oval-left-and-dots-right-bg {
+  background-image: url(../public/img/oval-left.svg), url(../public/img/dots3-right-up.svg);
+  background-position: left, right;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 20vw auto, 25vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
+.blue-oval-up-left-and-right-bg {
+  background-image: url(../public/img/oval-top-left.svg), url(../public/img/oval-top-right.svg);
+  background-position: top left, top right;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 15vw 20vw, 15vw 20vw;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
+.blue-oval-up-left-and-dots-down-right-bg {
+  background-image: url(../public/img/oval-top-left.svg), url(../public/img/dots1-right-down.svg);
+  background-position: top left, bottom right;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 40vw auto, 40vw auto;
+  -webkit-animation: dotsFadeIn 2s;
+  animation: dotsFadeIn 2s;
+}
+
 .blue-top-right-oval-bg {
   background-image: url(../public/img/oval-top-right-2.svg);
   background-position: top left;
@@ -403,6 +547,30 @@ select:focus {
 
 .a_font-bold a {
   @apply font-bold;
+}
+
+.custom-check-square-list {
+  padding-left: 32px;
+  background-image: url(../public/img/check-square.svg);
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 0px 3px;
+}
+
+.custom-minus-list {
+  padding-left: 32px;
+  background-image: url(../public/img/minus.svg);
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+
+.custom-plus-list {
+  padding-left: 32px;
+  background-image: url(../public/img/plus.svg);
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  background-position: 0px 3px;
 }
 
 li span.custom-dot-list:before {
@@ -614,3 +782,17 @@ li span.custom-dot-list-primary:before {
   @apply border-primary border-t-2 pt-5 w-7;
 }
 /*! purgecss end ignore */
+
+.accordion-panel-label {
+  cursor: pointer;
+}
+
+.accordion-panel-label:focus {
+  outline: none;
+}
+
+.accordion-panel-inner {
+  overflow: hidden;
+  will-change: height;
+  transition: height 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+}

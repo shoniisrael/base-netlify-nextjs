@@ -9,6 +9,10 @@ const FORM_FIELD_TYPE = {
   SELECT: "select",
   CHECKBOX: "checkbox",
 };
+const TEMPLATE_SENDGRID = {
+  TYPE: "template_sendgrid",
+  DEFAULT: "d-84174712f23740a7b14366782649a604",
+};
 const Form = (props) => {
   const { form = { data: {} }, index: formIndex, file = "", downloadName = "" } = props;
   const { redirect_to: redirectToUrl } = form.data;
@@ -98,6 +102,21 @@ const Form = (props) => {
       }
     });
   };
+  const getTemplateId = () => {
+    const { body: slices = [] } = form.data;
+    const defaultValue = (
+      <input type="hidden" name="idTemplate" value={TEMPLATE_SENDGRID.DEFAULT} />
+    );
+    let idTemplate = null;
+    slices.forEach((element) => {
+      if (element.slice_type === TEMPLATE_SENDGRID.TYPE) {
+        const { id_template } = element.primary;
+        idTemplate = <input type="hidden" name="idTemplate" value={id_template} />;
+      }
+    });
+    const idTemplateInput = idTemplate || defaultValue;
+    return idTemplateInput;
+  };
   const renderFileFields = () => {
     let fileInput = null;
     let downloadNameInput = null;
@@ -123,6 +142,7 @@ const Form = (props) => {
       {renderFileFields()}
       {renderSubmitButton()}
       {renderFooterText()}
+      {getTemplateId()}
     </form>
   );
 };

@@ -1,12 +1,15 @@
 export const SLICE_TYPES = {
   HERO_1: "hero_1",
   HERO_2: "hero_2",
+  HERO_3: "hero_3",
   CARD_LINKS: "card_links",
+  CARD_LINKS_BIG: "card_links_big",
   CARDS_GRID: "cards_grid",
   CARDS: "cards",
   JOB_POST_CARDS: "job_post_cards",
   IMAGE_AND_TEXT: "image_and_text",
   IMAGES_ROW: "images_row",
+  IMAGE_TOP_AND_TEXT: "image_top_and_text",
   BANNER: "card",
   QUOTES: "quotes",
   FULL_WIDTH_IMAGE_AND_TEXT: "full_width_image_and_text",
@@ -24,6 +27,12 @@ export const SLICE_TYPES = {
   RICH_TEXT: "rich_text",
   JOB_POST_CONTENT: "job_post_content",
   ALL_ARTICLES_CONTENT: "all_articles_content",
+  COMMENTARY_TREE: "commentary_tree",
+  TEXT_COLUMN_IMAGE: "text_column_image",
+  DOUBLE_IMAGE_TEXT: "double_image_and_text",
+  SQUARE_TEXT: "square_text",
+  HORIZONTAL_LINE_CARDS: "line_cards",
+  EMBED_CODE: "embed_code",
 };
 
 export const SCREEN_SIZES = {

@@ -5,13 +5,14 @@ import ImageWrapper from "../../utils/imageWrapper";
 class ResponsiveBgImage extends Component {
   render() {
     const { bgImage = {}, index, children, classes } = this.props;
-    if (!bgImage.url) {
-      throw new Error("ResponsiveBgImage requires the bgImage");
+    if (!bgImage.url || !bgImage.mobile || !bgImage.mobile.url) {
+      return (
+        <div className="bg-center bg-no-repeat bg-cover">
+          <div className={`mx-auto w-full ${classes}`}>{children}</div>
+        </div>
+      );
     }
 
-    if (!bgImage.mobile || !bgImage.mobile.url) {
-      throw new Error("ResponsiveBgImage requires the bgImage.mobile");
-    }
     const style = this.getStyle(bgImage, index);
 
     return (

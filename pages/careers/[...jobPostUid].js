@@ -42,10 +42,13 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { jobPostUid } = params;
   const searchableUid = jobPostUid.join("_");
-  const jobPost = await Client().getByUID("job_post", searchableUid);
+  const jobPost = await Client().getByUID("job_post", searchableUid, {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const jobPostSettings = await Client().query(
     Prismic.Predicates.at("document.type", "job_post_settings"),
     {
+      ref: context.preview ? context.previewData.ref : undefined,
       fetchLinks: [
         "career_quotes.photo",
         "career_quotes.name",
@@ -63,14 +66,16 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
-  const jobPosts = await Client().query(Prismic.Predicates.at("document.type", "job_post"));
+export async function getStaticPaths(context) {
+  const jobPosts = await Client().query(Prismic.Predicates.at("document.type", "job_post"), {
+    ref: context.preview ? context.previewData.ref : undefined,
+  });
   const paths = jobPosts.results.map((jobPost) => {
     return { params: { jobPostUid: jobPost.uid.split("_") } };
   });
 
   return {
-    fallback: false,
+    fallback: process.env.ENABLE_PREVIEW_MODE === "true" ? "blocking" : false,
     paths,
   };
 }

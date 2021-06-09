@@ -11,7 +11,7 @@ module.exports = {
     ],
     options: {
       safelist: {
-        standard: [/grid-cols-/, "custom-dot-list", "underline"],
+        standard: [/grid-cols-/, "custom-dot-list", "underline", /w-/],
         deep: [/^flat$/],
       },
     },

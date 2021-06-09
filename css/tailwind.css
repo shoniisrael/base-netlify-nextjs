@@ -36,54 +36,76 @@ a {
   @apply font-bold text-center border border-solid text-secondary border-secondary hover:bg-secondary hover:text-white;
 }
 
-.btn.filled-bgGreen-textBlue {
+/*! purgecss start ignore */
+.filled-bgGreen-textBlue {
   @apply font-bold text-center border border-solid text-primary-dark border-secondary bg-secondary;
 }
+/*! purgecss end ignore */
 
-.btn.flat-borderGreen-textBlue {
+/*! purgecss start ignore */
+.flat-borderGreen-textBlue {
   @apply font-bold text-center border-4 border-solid text-primary-dark border-secondary;
 }
+/*! purgecss end ignore */
 
-.btn.flat-borderGreen-textGreen {
+/*! purgecss start ignore */
+.flat-borderGreen-textGreen {
   @apply font-bold text-center border-4 border-solid text-secondary border-secondary;
 }
+/*! purgecss end ignore */
 
-.btn.flat-underline {
+/*! purgecss start ignore */
+.flat-underline {
   @apply pb-1 font-bold text-center uppercase border-t-0 border-l-0 border-r-0 border-b-4 border-solid border-secondary;
 }
+/*! purgecss end ignore */
 
-.btn.flat-underline.textBlue {
+/*! purgecss start ignore */
+.flat-underline.textBlue {
   @apply text-primary-dark hover:text-secondary;
 }
+/*! purgecss end ignore */
 
-.btn.flat-underline.textWhite {
+/*! purgecss start ignore */
+.flat-underline.textWhite {
   @apply text-white hover:text-secondary;
 }
+/*! purgecss end ignore */
 
-.btn.flat-underline.textGreen {
+/*! purgecss start ignore */
+.flat-underline.textGreen {
   @apply text-secondary;
 }
+/*! purgecss end ignore */
 
-.btn.flat-underline::after {
+/*! purgecss start ignore */
+.flat-underline::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right.svg);
 }
+/*! purgecss end ignore */
 
-.btn.flat-borderGreen-textGreen:hover::after {
+/*! purgecss start ignore */
+.flat-borderGreen-textGreen:hover::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right.svg);
 }
+/*! purgecss end ignore */
 
-.btn.filled-bgGreen-textBlue:hover::after,
-.btn.flat-borderGreen-textBlue:hover::after {
+/*! purgecss start ignore */
+.filled-bgGreen-textBlue:hover::after,
+.flat-borderGreen-textBlue:hover::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right-blue.svg);
 }
+/*! purgecss end ignore */
 
-.btn.filled-bgGreen-textGreen:hover::after {
+/*! purgecss start ignore */
+.filled-bgGreen-textGreen:hover::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right.svg);
 }
+/*! purgecss end ignore */
 
 .btn.contentBtn {
   @apply font-bold h-12 px-5 rounded-none items-center content-center mb-11 md:mb-auto flex mr-auto text-base;

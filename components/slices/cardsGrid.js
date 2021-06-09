@@ -116,7 +116,7 @@ class CardsGrid extends Component {
     } = primary;
     return (
       buttonLabel && (
-        <div className="mt-5 w-4/6 md:w-2/6 xl:w-1/5 mx-auto pb-10 md:pb-15">
+        <div className="pb-10 flex justify-center">
           <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
         </div>
       )

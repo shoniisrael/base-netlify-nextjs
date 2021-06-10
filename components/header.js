@@ -55,38 +55,47 @@ class Header extends Component {
                 </ul>
               </div>
               <div className="flex items-center">
-                <Button link={buttonLink} label="Let's Talk" style="filled" />
+                <Button link={buttonLink} label="Let's Talk" style="filled-bgGreen-textBlue w-32" />
               </div>
             </div>
           </div>
           <div className="lg:hidden">
-            <div className="h-24 top-0 bg-white z-20 px-4 md:px-20 grid content-center justify-items-stretch grid-cols-3 py-3 lg:hidden">
-              <button
-                htmlFor="menu-toggle"
-                className="pointer-cursor block justify-self-start"
-                onClick={() => this.handleMobilePlegableMenu()}
-              >
-                <svg
-                  className="fill-current text-gray"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="30"
-                  viewBox="0 0 20 20"
+            <div className="h-24 top-0 bg-white z-20 px-4 md:px-20 flex flex-row justify-between py-3 lg:hidden">
+              <div className="flex flex-row">
+                <button
+                  htmlFor="menu-toggle"
+                  className="pointer-cursor self-center"
+                  onClick={() => this.handleMobilePlegableMenu()}
                 >
-                  <path d="m0 3h20v3h-20v-3zm0 6h20v3h-20v-3zm0 6h20v3h-20v-2z"></path>
-                </svg>
-              </button>
-              <div className="h-9 w-24 justify-self-center">
-                <a href="/" className="flex items-center">
-                  <img src="/img/logo-devsu.svg" alt="logo devsu" width="101" height="39" />
-                </a>
+                  <svg
+                    className="fill-current text-gray"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="30"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="m0 3h20v3h-20v-3zm0 6h20v3h-20v-3zm0 6h20v3h-20v-2z"></path>
+                  </svg>
+                </button>
+                <div className="h-9 w-24 self-center ml-5">
+                  <a href="/" className="flex items-center">
+                    <img src="/img/logo-devsu.svg" alt="logo devsu" width="101" height="39" />
+                  </a>
+                </div>
+              </div>
+              <div className="flex self-center">
+                <Button
+                  link={buttonLink}
+                  label="Let's Talk"
+                  style="filled-bgGreen-textBlue btn-mobile w-28"
+                />
               </div>
             </div>
             <div
               className={`transform ${this.state.isOpen ? "" : "hidden"} w-full px-4 md:px-20`}
               id="menu"
             >
-              <ul className="items-center justify-between text-base ">{this.renderMobileMenu()}</ul>
+              <ul className="items-center justify-between text-base">{this.renderMobileMenu()}</ul>
             </div>
           </div>
         </nav>

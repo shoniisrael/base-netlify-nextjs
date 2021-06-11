@@ -13,8 +13,10 @@ class CardLinksBig extends Component {
     const backgroundHeaderStyles = StyleUtils.getBackgroundColor(backgroundHeaderColor);
     return (
       <div className={`md:mb-20 ${backgroundHeaderStyles}`}>
-        {this.renderHeader()}
-        {this.renderCards()}
+        <div className="container mx-auto">
+          {this.renderHeader()}
+          {this.renderCards()}
+        </div>
       </div>
     );
   }

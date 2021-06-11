@@ -170,8 +170,8 @@ class Cards extends Component {
       raiseCards,
     );
     return (
-      <div className={`w-full ${bgColor} ${padding}`}>
-        <div className="container m-auto">
+      <div className={`w-full ${bgColor}`}>
+        <div className={`container mx-auto ${padding}`}>
           {hasVisibleTitle && (
             <div className={`${titleColor} ${titlesBottomPadding}`}>
               {hasSmallTitle && (

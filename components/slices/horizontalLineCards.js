@@ -21,7 +21,7 @@ class HorizontalLineCards extends Component {
     const { title, description } = card;
     return (
       <div className="relative sm:p-3" key={index}>
-        <img className="md:mb-7 md:-mt-2 mx-auto" src="/img/lightblue-circle.svg" />
+        <img className="md:mb-7 md:-mt-2 mx-auto w-auto h-auto" src="/img/lightblue-circle.svg" />
         <div className="p-6 w-full">
           <div className="font-bold text-primary-blue text-center mb-5 text-xl">
             {RichText.render(title, linkResolver)}

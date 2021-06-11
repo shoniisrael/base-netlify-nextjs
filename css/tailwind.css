@@ -37,7 +37,7 @@ button:focus {
 }
 
 .btn.flat {
-  @apply font-bold text-center border border-solid text-secondary border-secondary hover:bg-secondary hover:text-white;
+  @apply font-bold text-center border border-solid text-secondary border-secondary;
 }
 
 /*! purgecss start ignore */
@@ -106,13 +106,6 @@ button:focus {
 .flat-borderGreen-textBlue:hover::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right-blue.svg);
-}
-/*! purgecss end ignore */
-
-/*! purgecss start ignore */
-.btn.flat:hover::after {
-  margin-left: 1rem;
-  content: url(../public/img/chevron-right-white.svg);
 }
 /*! purgecss end ignore */
 
@@ -703,7 +696,9 @@ li span.custom-dot-list-primary:before {
   @apply font-bold text-secondary;
   content: "— ";
 }
+/*! purgecss end ignore */
 
+/*! purgecss start ignore */
 .richtext-content-container li span.custom-dot-list:before {
   content: "";
   height: 0;

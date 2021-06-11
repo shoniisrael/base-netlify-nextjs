@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
 import CustomLink from "../common/customLink";
-import Image from "../common/Image";
 import Button from "../common/button";
 import ResponsiveBgImage from "../common/responsiveBgImage";
 import { CARD_STYLE } from "../../utils/constants";
 import TextUtils from "../../utils/text";
 import StyleUtils, { BACKGROUND_STYLE, TEXT_ALIGN } from "../../utils/styleUtils";
+import ResponsiveImage from "../common/responsiveImage";
 
 class CardLinks extends Component {
   render() {
@@ -26,8 +26,10 @@ class CardLinks extends Component {
     return (
       <ResponsiveBgImage index={index} bgImage={backgroundImage} classes={backgroundBodyStyles}>
         {this.renderHeader()}
-        {this.renderCards()}
-        {this.renderFooter()}
+        <div className="container mx-auto">
+          {this.renderCards()}
+          {this.renderFooter()}
+        </div>
       </ResponsiveBgImage>
     );
   }
@@ -138,7 +140,7 @@ class CardLinks extends Component {
                 <div
                   className={`card hover_translate-y-2 h-full w-full flex flex-col items-center mb-10 md:mb-0 py-10 px-8 xl:max-w-1/5 ${cardClass}`}
                 >
-                  <Image image={cardImage} />
+                  <ResponsiveImage image={cardImage} sizes="76px" className="h-20" />
                   <div className="text-xl font-bold py-6 lg:text-2xl lg:pt-6 lg:pb-12">
                     {RichText.render(cardTitle, linkResolver)}
                   </div>

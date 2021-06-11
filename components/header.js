@@ -77,7 +77,7 @@ class Header extends Component {
                     <path d="m0 3h20v3h-20v-3zm0 6h20v3h-20v-3zm0 6h20v3h-20v-2z"></path>
                   </svg>
                 </button>
-                <div className="h-9 w-24 self-center ml-5">
+                <div className="h-9 w-24 self-center ml-10 sm:ml-56">
                   <a href="/" className="flex items-center">
                     <img src="/img/logo-devsu.svg" alt="logo devsu" width="101" height="39" />
                   </a>

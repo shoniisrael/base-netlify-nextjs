@@ -34,16 +34,20 @@ class ImageTopAndText extends Component {
     const textPadding = this.getTextPadding(topImageLocation);
 
     return (
-      <div className={`bg-primary-light flex w-full pb-12 ${flexStyles}`}>
-        <div className="md:w-7/12">
-          <ResponsiveImage
-            image={topImage}
-            sizes="(min-width:1536) 648px, (min-width:768) 40vw, 100vw"
-          />
-          <div className="pt-10 px-10 md:px-14 lg:px-36">{this.renderAccordion()}</div>
-        </div>
-        <div className={`pb-8 px-10 md:w-5/12 pt-10 md:pt-24 ${textPadding}`}>
-          {this.renderTextSection()}
+      <div className="bg-primary-light">
+        <div className="container mx-auto">
+          <div className={` flex w-full pb-12 ${flexStyles}`}>
+            <div className="md:w-7/12">
+              <ResponsiveImage
+                image={topImage}
+                sizes="(min-width:1536) 648px, (min-width:768) 40vw, 100vw"
+              />
+              <div className="pt-10 px-10 md:px-14 lg:px-36">{this.renderAccordion()}</div>
+            </div>
+            <div className={`pb-8 px-10 md:w-5/12 pt-10 md:pt-24 ${textPadding}`}>
+              {this.renderTextSection()}
+            </div>
+          </div>
         </div>
       </div>
     );

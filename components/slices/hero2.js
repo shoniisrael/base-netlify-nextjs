@@ -1,6 +1,7 @@
 import { RichText } from "prismic-reactjs";
 import React, { Component } from "react";
 import { linkResolver } from "../../prismic-configuration";
+import TextUtils from "../../utils/text";
 import Image from "../common/Image";
 import ResponsiveBgImage from "../common/responsiveBgImage";
 import Button from "./../common/button";
@@ -92,16 +93,21 @@ class Hero2 extends Component {
       button_style: buttonStyle,
       button_width: buttonWidth,
       width_description: wDescription,
+      hidden_title: hiddenTitle,
     } = primary;
     const btnWidth = buttonWidth || "";
     const alignmentClasses = this.getAlignmentClasses(alignment);
     const containerWidth = this.getContainerWidth(alignment);
     const imageAlignment = this.getImageAlignment(alignment);
     const widthDescription = this.getWidthDescription(btFontSize, wDescription);
+    const hasHiddenTitle = TextUtils.hasRichText(hiddenTitle);
     const aligmentButton = alignment === ALIGNMENT.CENTER ? "justify-center" : "";
     const classes = `px-4 lg:px-8 xl:px-20 pb-16 pt-24 md:pb-32 md:pt-32 text-white flex ${alignmentClasses}`;
     return (
       <ResponsiveBgImage index={index} bgImage={bgImage} classes={classes}>
+        {hasHiddenTitle && (
+          <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
+        )}
         <div className={`w-full ${containerWidth}`}>
           <Image image={headerImage} classes={`${imageAlignment} pt-10`} />
           <div className="mb-10 py-2">

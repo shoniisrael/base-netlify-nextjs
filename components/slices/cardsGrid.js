@@ -33,7 +33,7 @@ class CardsGrid extends Component {
     const { items, primary } = this.props.slice;
     const { type_grid, number_columns: numberCols } = primary;
     const divClassName =
-      "py-12 lg:pt-0 px-6 container mx-auto grid grid-cols-1  gap-y-6 md:gap-x-6 md:gap-y-8 lg:gap-x-10 lg:gap-y-6 text-sm md:px-40";
+      "py-12 lg:pt-0 px-6 container mx-auto grid grid-cols-1  gap-y-6 md:gap-x-6 md:gap-y-8 lg:gap-x-10 lg:gap-y-6 text-sm lg:px-40";
     const colsWidth = numberCols === 2 ? "md:w-2/3" : "w-full";
     switch (type_grid) {
       case TYPES_GRID.NORMAL:

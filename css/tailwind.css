@@ -19,6 +19,10 @@ a {
   @apply hover:opacity-90;
 }
 
+button:focus {
+  outline: none;
+}
+
 /*custom classes*/
 .btn {
   @apply p-4 cursor-pointer transition duration-500 lg:hover:opacity-80;
@@ -33,7 +37,7 @@ a {
 }
 
 .btn.flat {
-  @apply font-bold text-center border border-solid text-secondary border-secondary hover:bg-secondary hover:text-white;
+  @apply font-bold text-center border border-solid text-secondary border-secondary;
 }
 
 /*! purgecss start ignore */
@@ -41,6 +45,10 @@ a {
   @apply font-bold text-center border border-solid text-primary-dark border-secondary bg-secondary;
 }
 /*! purgecss end ignore */
+
+.btn-mobile {
+  @apply text-sm h-10 p-2;
+}
 
 /*! purgecss start ignore */
 .flat-borderGreen-textBlue {
@@ -79,7 +87,8 @@ a {
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.flat-underline::after {
+.flat-underline::after,
+.btn.flat::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right.svg);
 }
@@ -687,7 +696,9 @@ li span.custom-dot-list-primary:before {
   @apply font-bold text-secondary;
   content: "— ";
 }
+/*! purgecss end ignore */
 
+/*! purgecss start ignore */
 .richtext-content-container li span.custom-dot-list:before {
   content: "";
   height: 0;

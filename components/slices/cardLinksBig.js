@@ -13,8 +13,10 @@ class CardLinksBig extends Component {
     const backgroundHeaderStyles = StyleUtils.getBackgroundColor(backgroundHeaderColor);
     return (
       <div className={`md:mb-20 ${backgroundHeaderStyles}`}>
-        {this.renderHeader()}
-        {this.renderCards()}
+        <div className="container mx-auto">
+          {this.renderHeader()}
+          {this.renderCards()}
+        </div>
       </div>
     );
   }
@@ -67,6 +69,7 @@ class CardLinksBig extends Component {
             card_big_title: cardBigTitle,
             card_link: cardLink,
             card_link_label: cardLinkLabel,
+            card_link_style: cardLinkStyle,
           } = card;
           return (
             <div
@@ -87,7 +90,9 @@ class CardLinksBig extends Component {
                 <div className="text-xl font-bold pb-6 lg:text-2xl">
                   {RichText.render(cardBigTitle, linkResolver)}
                 </div>
-                <Button link={cardLink} label={cardLinkLabel} style="flat" />
+                <div className="flex">
+                  <Button link={cardLink} label={cardLinkLabel} style={`${cardLinkStyle} w-52`} />
+                </div>
               </div>
               <div className="self-end lg:max-w-sm xl:max-w-lg md:w-1/2 lg:w-auto ml-auto md:justify-self-end">
                 <ResponsiveImage

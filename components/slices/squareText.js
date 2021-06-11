@@ -24,7 +24,7 @@ class SquareText extends Component {
     const { columns_number: colNumber } = primary;
     return (
       <div
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNumber} justify-items-center md:mx-2 lg:mx-24 px-5 gap-4`}
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-${colNumber} justify-items-center px-5 gap-4`}
       >
         {items.map((item, index) => this.renderSquare(item, index))}
       </div>
@@ -33,7 +33,11 @@ class SquareText extends Component {
   render() {
     const { background_color } = this.props.slice.primary;
     const backgroundColor = StyleUtils.getBackgroundColor(background_color);
-    return <div className={`pb-10 ${backgroundColor}`}>{this.renderGrid()}</div>;
+    return (
+      <div className={`py-10 ${backgroundColor}`}>
+        <div className="container mx-auto lg:px-20">{this.renderGrid()}</div>
+      </div>
+    );
   }
 }
 

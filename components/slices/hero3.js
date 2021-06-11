@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import StyleUtils from "../../utils/styleUtils";
-import Image from "../common/Image";
 import TextUtils from "../../utils/text";
 import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
 import Button from "../common/button";
+import ResponsiveImage from "../common/responsiveImage";
 
 const BG_WHITE = "bg-white";
 
@@ -27,7 +27,7 @@ class Hero3 extends Component {
     const textColor = backgroundColor === BG_WHITE ? "text-primary-dark" : "";
     return (
       <div className={`${backgroundColor} ${backgroundStyle}`}>
-        <div className="p-10 md:p-14 lg:p-16 lg:mx-20">
+        <div className="px-10 container mx-auto pt-10 lg:px-32">
           {hasImage && this.renderHeaderImage(headerImage)}
           {hasTitle && this.renderTitle(title, textColor)}
           {hasDescription && this.renderDescription(description, textColor)}
@@ -40,7 +40,7 @@ class Hero3 extends Component {
   renderHeaderImage(headerImage) {
     return (
       <div className="mt-5">
-        <Image image={headerImage} />
+        <ResponsiveImage image={headerImage} sizes="76px" className="h-16" />
       </div>
     );
   }
@@ -73,7 +73,7 @@ class Hero3 extends Component {
     } = primary;
     const btnWidth = buttonWidth || "";
     return (
-      <div className="mt-10 flex">
+      <div className="mt-10 -mb-1 flex">
         <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
       </div>
     );

@@ -66,7 +66,7 @@ class ImageTopAndText extends Component {
 
     return (
       <div>
-        <ResponsiveImage image={smallImage} className="flex-grow-0 pb-4" sizes="76px" />
+        <ResponsiveImage image={smallImage} className="flex-grow-0 pb-4 h-20" sizes="76px" />
         {TextUtils.hasRichText(title) && (
           <div className="text-primary-dark font-bold text-3xl pb-4 md:text-4xl">
             {RichText.render(title, linkResolver)}

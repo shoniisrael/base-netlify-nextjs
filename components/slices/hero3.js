@@ -40,7 +40,7 @@ class Hero3 extends Component {
   renderHeaderImage(headerImage) {
     return (
       <div className="mt-5">
-        <ResponsiveImage image={headerImage} sizes="76px" className="h-14 w-14" />
+        <ResponsiveImage image={headerImage} sizes="76px" className="h-16" />
       </div>
     );
   }

@@ -151,7 +151,7 @@ class ImageAndText extends Component {
 
       return (
         <div key={index} className={bulletStyle}>
-          <ResponsiveImage image={smallImage} className="flex-grow-0 pb-4" sizes="76px" />
+          <ResponsiveImage image={smallImage} className="flex-grow-0 pb-4 h-20" sizes="76px" />
           {hasExpandCollapse ? this.renderAccordionItem(item, index) : this.renderNormalItem(item)}
         </div>
       );

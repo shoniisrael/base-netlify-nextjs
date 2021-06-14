@@ -24,7 +24,7 @@ class CardLinksBig extends Component {
   renderHeader() {
     const { primary } = this.props.slice;
     const {
-      hidden_title: hiddenTitle,
+      small_title: smallTitle,
       title,
       subtitle,
       background_color: backgroundHeaderColor,
@@ -37,8 +37,10 @@ class CardLinksBig extends Component {
     return (
       hasPrimary && (
         <div className="flex flex-col justify-between py-10 md:pb-0 md:pt-16 px-12 lg:px-28 mx-auto  items-center text-center">
-          {TextUtils.hasRichText(hiddenTitle) && (
-            <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
+          {TextUtils.hasRichText(smallTitle) && (
+            <div className="pb-5 text-xs lg:text-sm">
+              {RichText.render(smallTitle, linkResolver)}
+            </div>
           )}
           {hasTitle && (
             <div className="pb-5">

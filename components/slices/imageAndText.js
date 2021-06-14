@@ -57,7 +57,6 @@ class ImageAndText extends Component {
       join_top: joinTop,
       join_bottom: joinBottom,
       align_content: alignContent,
-      hidden_title: hiddenTitle,
     } = primary;
     const btnWidth = buttonWidth || "";
     const bgClasses = `${StyleUtils.getBackgroundColor(backgroundColor)} 
@@ -66,14 +65,10 @@ class ImageAndText extends Component {
     const flexStyles = this.getFlexStyles(imageAlignment, imageSize);
     const textPadding = this.getTextPadding(imageAlignment);
     const textWidth = this.getTextWidth(imageSize);
-    const hasHiddenTitle = TextUtils.hasRichText(hiddenTitle);
     const topPadding = joinTop ? "-mt-20" : "pt-12 md:pt-20 lg:pt-28";
     const bottomPadding = joinBottom ? "" : "md:pb-20 lg:pb-28";
     return (
       <div className={`${bgClasses} w-full`}>
-        {hasHiddenTitle && (
-          <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
-        )}
         <div className={`pb-12 ${topPadding} ${bottomPadding}`}>
           {this.renderHeader()}
           <div

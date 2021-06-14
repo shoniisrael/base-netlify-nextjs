@@ -38,20 +38,17 @@ class Hero2 extends Component {
     return alignment === ALIGNMENT.CENTER ? "m-auto" : "";
   }
 
-  getWidthDescription(btFontSize, widthDescription) {
-    if (btFontSize === TITLE_SIZE.BIG) {
-      switch (widthDescription) {
-        case WIDTH_DESCRIPTION.FULL:
-          return "w-full";
-        case WIDTH_DESCRIPTION.QUARTER:
-          return "w-3/4";
-        case WIDTH_DESCRIPTION.MID:
-          return "w-2/4";
-        default:
-          return "";
-      }
+  getWidthDescription(widthDescription) {
+    switch (widthDescription) {
+      case WIDTH_DESCRIPTION.FULL:
+        return "w-full";
+      case WIDTH_DESCRIPTION.QUARTER:
+        return "w-3/4";
+      case WIDTH_DESCRIPTION.MID:
+        return "w-2/4";
+      default:
+        return "";
     }
-    return "";
   }
 
   renderRichText(renderText) {
@@ -77,6 +74,15 @@ class Hero2 extends Component {
     );
   }
 
+  renderSmallTitle(btFontSize, smallTitle) {
+    const textColor = btFontSize === TITLE_SIZE.BIG ? "text-secondary" : "";
+    return (
+      <div className={`py-5 text-xs lg:text-sm ${textColor}`}>
+        {this.renderRichText(smallTitle)}
+      </div>
+    );
+  }
+
   render() {
     const { slice, index } = this.props;
     const { primary } = slice;
@@ -93,26 +99,27 @@ class Hero2 extends Component {
       button_style: buttonStyle,
       button_width: buttonWidth,
       width_description: wDescription,
-      hidden_title: hiddenTitle,
+      small_title: smallTitle,
     } = primary;
     const btnWidth = buttonWidth || "";
     const alignmentClasses = this.getAlignmentClasses(alignment);
     const containerWidth = this.getContainerWidth(alignment);
     const imageAlignment = this.getImageAlignment(alignment);
-    const widthDescription = this.getWidthDescription(btFontSize, wDescription);
-    const hasHiddenTitle = TextUtils.hasRichText(hiddenTitle);
+    const widthDescription = this.getWidthDescription(wDescription);
+
     const aligmentButton = alignment === ALIGNMENT.CENTER ? "justify-center" : "";
+    const aligmentDescription = alignment === ALIGNMENT.CENTER ? "mx-auto" : "";
+    const hasSmallTitle = TextUtils.hasRichText(smallTitle);
+
     const classes = `px-4 lg:px-8 xl:px-20 pb-16 pt-24 md:pb-32 md:pt-32 text-white flex ${alignmentClasses}`;
     return (
       <ResponsiveBgImage index={index} bgImage={bgImage} classes={classes}>
-        {hasHiddenTitle && (
-          <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
-        )}
         <div className={`w-full ${containerWidth}`}>
           <Image image={headerImage} classes={`${imageAlignment} pt-10`} />
           <div className="mb-10 py-2">
+            {hasSmallTitle && this.renderSmallTitle(btFontSize, smallTitle)}
             {this.renderTitle(btFontSize, bigTitle, bigSubtitle)}
-            <div className={`text-lg ${widthDescription} mt-10`}>
+            <div className={`text-lg ${widthDescription} mt-10 ${aligmentDescription}`}>
               {RichText.render(description, linkResolver)}
             </div>
           </div>

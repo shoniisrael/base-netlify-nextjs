@@ -36,16 +36,16 @@ class ImageTopAndText extends Component {
     return (
       <div className="bg-primary-light">
         <div className="container mx-auto">
-          <div className={` flex w-full pb-12 ${flexStyles}`}>
+          <div className={`flex w-full pb-12 ${flexStyles}`}>
+            <div className={`pb-8 px-10 md:w-5/12 pt-10 md:pt-24 ${textPadding}`}>
+              {this.renderTextSection()}
+            </div>
             <div className="md:w-7/12">
               <ResponsiveImage
                 image={topImage}
                 sizes="(min-width:1536) 648px, (min-width:768) 40vw, 100vw"
               />
               <div className="pt-10 px-10 md:px-14 lg:px-36">{this.renderAccordion()}</div>
-            </div>
-            <div className={`pb-8 px-10 md:w-5/12 pt-10 md:pt-24 ${textPadding}`}>
-              {this.renderTextSection()}
             </div>
           </div>
         </div>
@@ -112,8 +112,8 @@ class ImageTopAndText extends Component {
 
   getFlexStyle(imageLocation) {
     return imageLocation === IMAGE_ALIGNMENT.LEFT
-      ? "flex-col md:flex-row"
-      : "flex-col-reverse md:flex-row-reverse";
+      ? "flex-col-reverse md:flex-row-reverse"
+      : "flex-col md:flex-row";
   }
 
   getTextPadding(imageLocation) {

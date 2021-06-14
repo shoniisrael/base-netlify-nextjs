@@ -37,7 +37,7 @@ class CardLinks extends Component {
   renderHeader() {
     const { primary } = this.props.slice;
     const {
-      hidden_title: hiddenTitle,
+      small_title: smallTitle,
       title,
       title_color: titleColor,
       subtitle,
@@ -79,8 +79,10 @@ class CardLinks extends Component {
         <div
           className={`flex flex-col justify-between py-10 px-12 lg:px-28 mx-auto lg:pt-10  ${backgroundHeaderStyles}`}
         >
-          {TextUtils.hasRichText(hiddenTitle) && (
-            <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
+          {TextUtils.hasRichText(smallTitle) && (
+            <div className="pb-5 text-xs lg:text-sm">
+              {RichText.render(smallTitle, linkResolver)}
+            </div>
           )}
           {hasTitle && (
             <div className={`pb-5 ${titleWidthStyle}`}>

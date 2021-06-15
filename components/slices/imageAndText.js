@@ -76,7 +76,7 @@ class ImageAndText extends Component {
           >
             {this.renderImage()}
             <div
-              className={`pb-8 md:${textWidth} px-4 ${textPadding} flex flex-wrap content-${alignContent}`}
+              className={`md:${textWidth} px-4 ${textPadding} flex flex-wrap content-${alignContent}`}
             >
               {TextUtils.hasRichText(smallTitle) && (
                 <div className={`${titleColor} text-xs uppercase mb-8`}>
@@ -85,7 +85,7 @@ class ImageAndText extends Component {
               )}
               {this.renderRichTextSections()}
               {buttonLabel && (
-                <div className="mt-16 flex">
+                <div className="mt-5 mb-6 flex">
                   <Button
                     link={buttonLink}
                     label={buttonLabel}
@@ -132,7 +132,7 @@ class ImageAndText extends Component {
     const imageWidth = this.getImageWidth(imageSize);
     return (
       <div
-        className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap content-${alignContent}`}
+        className={`py-8 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap content-${alignContent}`}
       >
         <ResponsiveImage image={image} sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw" />
       </div>
@@ -167,7 +167,7 @@ class ImageAndText extends Component {
     return (
       <div>
         {TextUtils.hasRichText(bigTitle) && (
-          <div className={`${titleColor} ${titleStyle} font-bold`}>
+          <div className={`${titleColor} ${titleStyle} font-bold mb-8 md:mb-0`}>
             {RichText.render(bigTitle, linkResolver)}
           </div>
         )}

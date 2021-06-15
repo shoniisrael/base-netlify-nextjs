@@ -112,9 +112,15 @@ export default class ImagesRow extends Component {
     );
   }
 
-  renderGrid(columnsMobile, columnsTablet, columnsDesktop, numRow = 0) {
+  renderGrid() {
     const { primary, items } = this.props.slice;
-    const { display_animation_on_hover } = primary;
+    const {
+      display_animation_on_hover,
+      columns_desktop: columnsDesktop,
+      columns_tablet: columnsTablet,
+      columns_mobile: columnsMobile,
+      center_last_item: centerLastItem,
+    } = primary;
     const gridColsForScreens = this.getGridColsForScreens(
       columnsMobile,
       columnsTablet,
@@ -122,47 +128,24 @@ export default class ImagesRow extends Component {
     );
     const itemGridClassName =
       "flex flex-col items-center justify-center space-y-6 text-center group hover:border-transparent";
+    const itemsLength = items.length - 1;
+    let lastChildren = "";
     return (
       <div
         className={`grid justify-items-center items-center w-full text-sm gap-8 ${gridColsForScreens}`}
       >
-        {numRow === 0 &&
-          items.map((icon, index) => {
-            const hasImage = !!Object.values(icon.image).length;
-            return (
-              <div className={itemGridClassName} key={index}>
-                {hasImage && this.renderImage(icon)}
-                {(display_animation_on_hover || !hasImage) &&
-                  this.displayAnimationHover(hasImage, icon)}
-              </div>
-            );
-          })}
-        {numRow === 1 &&
-          items.map((icon, index) => {
-            const hasImage = !!Object.values(icon.image).length;
-            if (index < columnsDesktop) {
-              return (
-                <div className={itemGridClassName} key={index}>
-                  {hasImage && this.renderImage(icon)}
-                  {(display_animation_on_hover || !hasImage) &&
-                    this.displayAnimationHover(hasImage, icon)}
-                </div>
-              );
-            }
-          })}
-        {numRow === 2 &&
-          items.map((icon, index) => {
-            const hasImage = !!Object.values(icon.image).length;
-            if (index > columnsDesktop) {
-              return (
-                <div className={`${itemGridClassName} mt-10`} key={index}>
-                  {hasImage && this.renderImage(icon)}
-                  {(display_animation_on_hover || !hasImage) &&
-                    this.displayAnimationHover(hasImage, icon)}
-                </div>
-              );
-            }
-          })}
+        {items.map((icon, index) => {
+          if (itemsLength === index && centerLastItem) lastChildren = "col-span-2 md:col-auto";
+          const hasImage = !!Object.values(icon.image).length;
+
+          return (
+            <div className={`${itemGridClassName} ${lastChildren}`} key={index}>
+              {hasImage && this.renderImage(icon)}
+              {(display_animation_on_hover || !hasImage) &&
+                this.displayAnimationHover(hasImage, icon)}
+            </div>
+          );
+        })}
       </div>
     );
   }
@@ -171,11 +154,7 @@ export default class ImagesRow extends Component {
     const { primary } = this.props.slice;
     const {
       background_color,
-      columns_desktop: columnsDesktop,
-      columns_tablet: columnsTablet,
-      columns_mobile: columnsMobile,
       text_alignment,
-      top_row: topRowHigher,
       background_style,
       ruler_top: rulerTop,
       ruler_bottom: rulerBottom,
@@ -208,13 +187,7 @@ export default class ImagesRow extends Component {
               {RichText.render(primary.description, linkResolver)}
             </div>
           )}
-          {!topRowHigher && this.renderGrid(columnsMobile, columnsTablet, columnsDesktop)}
-          {topRowHigher && (
-            <div className="w-full">
-              {this.renderGrid(columnsMobile, columnsTablet, columnsDesktop, 1)}
-              {this.renderGrid(columnsMobile - 1, columnsTablet - 1, columnsDesktop - 1, 2)}
-            </div>
-          )}
+          {this.renderGrid()}
         </div>
         {rulerBottom && (
           <div className="mt-10 pb-5 border-t-4 border-secondary w-1/6 mx-auto"></div>

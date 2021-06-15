@@ -58,7 +58,7 @@ button:focus {
 
 /*! purgecss start ignore */
 .flat-borderGreen-textGreen {
-  @apply font-bold text-center border-4 border-solid text-secondary border-secondary;
+  @apply font-bold text-center text-xs md:text-base border-4 border-solid text-secondary border-secondary;
 }
 /*! purgecss end ignore */
 
@@ -88,14 +88,8 @@ button:focus {
 
 /*! purgecss start ignore */
 .flat-underline::after,
-.btn.flat::after {
-  margin-left: 1rem;
-  content: url(../public/img/chevron-right.svg);
-}
-/*! purgecss end ignore */
-
-/*! purgecss start ignore */
-.flat-borderGreen-textGreen:hover::after {
+.btn.flat::after,
+.flat-borderGreen-textGreen::after {
   margin-left: 1rem;
   content: url(../public/img/chevron-right.svg);
 }

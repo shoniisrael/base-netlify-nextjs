@@ -6,11 +6,6 @@ import AccordionPanel from "../common/accordionPanel";
 import TextUtils from "../../utils/text";
 import { linkResolver } from "../../prismic-configuration";
 
-const IMAGE_ALIGNMENT = {
-  LEFT: "left",
-  RIGHT: "right",
-};
-
 class ImageTopAndText extends Component {
   constructor(props) {
     super(props);
@@ -28,29 +23,20 @@ class ImageTopAndText extends Component {
 
   render() {
     const { primary } = this.props.slice;
-    const { top_image: topImage, top_image_location: topImageLocation } = primary;
-
-    const flexStyles = this.getFlexStyle(topImageLocation);
-    const textPadding = this.getTextPadding(topImageLocation);
-
+    const { top_image: topImage } = primary;
     return (
       <div className="bg-primary-light">
-        <div className="container mx-auto">
-          <div className={`flex w-full pb-12 ${flexStyles}`}>
-            <div className={`pb-8 px-10 md:w-5/12 pt-10 md:pt-24 ${textPadding}`}>
-              {this.renderTextSection()}
-              <div className="pt-10 md:hidden">{this.renderAccordion()}</div>
-            </div>
-            <div className="md:w-7/12">
-              <ResponsiveImage
-                image={topImage}
-                sizes="(min-width:1536) 648px, (min-width:768) 40vw, 100vw"
-              />
-              <div className="hidden pt-10 md:block md:px-14 lg:px-36">
-                {this.renderAccordion()}
-              </div>
-            </div>
+        <div className="container mx-auto pb-12 grid grid-cols-1 md:grid-cols-2">
+          <div className={`pb-8 px-10 pt-10 md:pt-24 lg:px-28 md:row-span-2`}>
+            {this.renderTextSection()}
           </div>
+          <div className="order-first">
+            <ResponsiveImage
+              image={topImage}
+              sizes="(min-width:1536) 648px, (min-width:768) 40vw, 100vw"
+            />
+          </div>
+          <div className="pl-10 pr-3 lg:px-36">{this.renderAccordion()}</div>
         </div>
       </div>
     );
@@ -66,7 +52,6 @@ class ImageTopAndText extends Component {
       button_label: buttonLabel,
       button_style: buttonStyle,
     } = primary;
-
     return (
       <div>
         <ResponsiveImage image={smallImage} className="flex-grow-0 pb-4 h-20" sizes="76px" />
@@ -81,7 +66,7 @@ class ImageTopAndText extends Component {
           </div>
         )}
         {buttonLabel && (
-          <div className="pt-5 pb-10">
+          <div className="py-5">
             <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         )}
@@ -111,23 +96,6 @@ class ImageTopAndText extends Component {
         </AccordionPanel>
       );
     });
-  }
-
-  getFlexStyle(imageLocation) {
-    return imageLocation === IMAGE_ALIGNMENT.LEFT
-      ? "flex-col-reverse md:flex-row-reverse"
-      : "flex-col-reverse md:flex-row";
-  }
-
-  getTextPadding(imageLocation) {
-    switch (imageLocation) {
-      case IMAGE_ALIGNMENT.LEFT:
-        return "md:pl-0 md:pr-14 lg:pr-36";
-      case IMAGE_ALIGNMENT.RIGHT:
-        return "md:pl-14 lg:pl-36 md:pr-0";
-      default:
-        return "md:px-0";
-    }
   }
 }
 export default ImageTopAndText;

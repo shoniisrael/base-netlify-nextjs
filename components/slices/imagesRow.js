@@ -170,7 +170,7 @@ export default class ImagesRow extends Component {
         <div className="py-12 container flex flex-col items-center w-full px-6 md:px-14 lg:px-28 mx-auto">
           {primary.small_title && (
             <div
-              className={`pb-5 text-xs md:text-sm ${alignmentClasses.item} ${alignmentClasses.text} text-primary-dark`}
+              className={`pb-5 text-xs lg:text-sm uppercase  ${alignmentClasses.item} ${alignmentClasses.text} text-primary-dark`}
             >
               {RichText.render(primary.small_title, linkResolver)}
             </div>

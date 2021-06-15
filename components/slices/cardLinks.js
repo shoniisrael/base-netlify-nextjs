@@ -80,7 +80,7 @@ class CardLinks extends Component {
           className={`flex flex-col justify-between py-10 px-12 lg:px-28 mx-auto lg:pt-10  ${backgroundHeaderStyles}`}
         >
           {TextUtils.hasRichText(smallTitle) && (
-            <div className="pb-5 text-xs lg:text-sm">
+            <div className="pb-5 text-xs lg:text-sm uppercase">
               {RichText.render(smallTitle, linkResolver)}
             </div>
           )}

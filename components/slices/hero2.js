@@ -77,7 +77,7 @@ class Hero2 extends Component {
   renderSmallTitle(btFontSize, smallTitle) {
     const textColor = btFontSize === TITLE_SIZE.BIG ? "text-secondary" : "";
     return (
-      <div className={`py-5 text-xs lg:text-sm ${textColor}`}>
+      <div className={`py-5 text-sm lg:text-base ${textColor} uppercase`}>
         {this.renderRichText(smallTitle)}
       </div>
     );

@@ -38,7 +38,7 @@ class CardLinksBig extends Component {
       hasPrimary && (
         <div className="flex flex-col justify-between py-10 md:pb-0 md:pt-16 px-12 lg:px-28 mx-auto  items-center text-center">
           {TextUtils.hasRichText(smallTitle) && (
-            <div className="pb-5 text-xs lg:text-sm">
+            <div className="pb-5 text-xs lg:text-sm uppercase">
               {RichText.render(smallTitle, linkResolver)}
             </div>
           )}

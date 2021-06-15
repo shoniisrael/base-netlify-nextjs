@@ -30,7 +30,7 @@ class HorizontalLineCards extends Component {
           className={`absolute left-6 w-0.5 bg-secondary shadow-md inset-0 ${lineHeight} md:hidden`}
         />
         <div className="p-6 pl-20 -mt-16 md:pl-0 md:mt-0">
-          <div className="font-bold text-primary-blue text-center mb-5 text-xl">
+          <div className="font-bold text-primary-blue md:text-center mb-5 text-xl">
             {RichText.render(title, linkResolver)}
           </div>
           <div className="text-sm md:text-base lg:px-10">

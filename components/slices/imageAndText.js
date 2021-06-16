@@ -26,6 +26,11 @@ const BULLET_POINT = {
   GREEN_POINT: "green point",
   GREEN_LINE: "green line",
 };
+const ALIGN_CONTENT = {
+  START: "start",
+  CENTER: "center",
+  CENTER_FLEX: "center flex-col",
+};
 
 class ImageAndText extends Component {
   constructor(props) {
@@ -65,6 +70,7 @@ class ImageAndText extends Component {
     const flexStyles = this.getFlexStyles(imageAlignment, imageSize);
     const textPadding = this.getTextPadding(imageAlignment);
     const textWidth = this.getTextWidth(imageSize);
+    const classAlignContent = this.getAlignContent(alignContent);
     const topPadding = joinTop ? "-mt-20" : "pt-12 md:pt-20 lg:pt-28";
     const bottomPadding = joinBottom ? "" : "md:pb-20 lg:pb-28";
     return (
@@ -76,7 +82,7 @@ class ImageAndText extends Component {
           >
             {this.renderImage()}
             <div
-              className={`md:${textWidth} px-4 ${textPadding} flex flex-wrap content-${alignContent}`}
+              className={`md:${textWidth} px-4 ${textPadding} flex flex-wrap ${classAlignContent}`}
             >
               {TextUtils.hasRichText(smallTitle) && (
                 <div className={`${titleColor} text-xs uppercase mb-8`}>
@@ -130,9 +136,10 @@ class ImageAndText extends Component {
     const { primary } = this.props.slice;
     const { image, image_size: imageSize, align_content: alignContent } = primary;
     const imageWidth = this.getImageWidth(imageSize);
+    const classAlignContent = this.getAlignContent(alignContent);
     return (
       <div
-        className={`py-8 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap content-${alignContent}`}
+        className={`py-8 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap ${classAlignContent}`}
       >
         <ResponsiveImage image={image} sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw" />
       </div>
@@ -290,6 +297,19 @@ class ImageAndText extends Component {
         return "text-base";
       case TEXT_SIZE.LARGE:
         return "text-3xl pb-4 md:text-4xl lg:pb-8";
+      default:
+        return "";
+    }
+  }
+
+  getAlignContent(alignContent) {
+    switch (alignContent) {
+      case ALIGN_CONTENT.START:
+        return "content-start";
+      case ALIGN_CONTENT.CENTER:
+        return "content-center";
+      case ALIGN_CONTENT.CENTER_FLEX:
+        return "content-center flex-col";
       default:
         return "";
     }

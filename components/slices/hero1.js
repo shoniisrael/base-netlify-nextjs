@@ -151,7 +151,6 @@ class Hero1 extends Component {
       left_background_image: leftBgImage,
       right_background_image: rightBgImage,
       width,
-      button_width: buttonWidth,
     } = primary;
     const backgroundClasses = this.getBackgroundClasses(bgStyle, bgColor);
     const hasImages = this.checkIfSliceHasImages(leftBgImage, rightBgImage);
@@ -160,7 +159,6 @@ class Hero1 extends Component {
     const textContainerXClasses = this.getTextContainerXPaddingClasses(hasImages);
     const textContainerYClasses = this.getTextContainerYPaddingClasses(hasTitleImage);
     const widthStyle = this.getWidth(width);
-    const btnWidth = buttonWidth || "";
     return (
       <div
         className={`flex items-center mx-auto relative xl:h-3/4 ${backgroundClasses} ${containerPaddingClasses}`}
@@ -183,11 +181,7 @@ class Hero1 extends Component {
               {separator && <div className="separator" />}
               {this.renderDescription(bgColor, description, hasTitleImage)}
               <div className="pt-4 flex justify-center">
-                <Button
-                  link={buttonLink}
-                  label={buttonLabel}
-                  style={`${buttonStyle} ${btnWidth}`}
-                />
+                <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
               </div>
             </div>
           </div>

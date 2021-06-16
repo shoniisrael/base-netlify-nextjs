@@ -163,13 +163,11 @@ class CardLinks extends Component {
       button_label: buttonLabel,
       button_link: buttonLink,
       button_style: buttonStyle,
-      button_width: buttonWidth,
     } = primary;
-    const btnWidth = buttonWidth || "";
     return (
       buttonLabel && (
         <div className="flex justify-center mb-20">
-          <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
+          <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
         </div>
       )
     );

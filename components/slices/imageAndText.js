@@ -56,14 +56,12 @@ class ImageAndText extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
-      button_width: buttonWidth,
       image_alignment: imageAlignment,
       image_size: imageSize,
       join_top: joinTop,
       join_bottom: joinBottom,
       align_content: alignContent,
     } = primary;
-    const btnWidth = buttonWidth || "";
     const bgClasses = `${StyleUtils.getBackgroundColor(backgroundColor)} 
     ${StyleUtils.getBackgroundStyle(backgroundStyle)}`;
     const titleColor = StyleUtils.getTitleColor("", backgroundColor);
@@ -71,7 +69,7 @@ class ImageAndText extends Component {
     const textPadding = this.getTextPadding(imageAlignment);
     const textWidth = this.getTextWidth(imageSize);
     const classAlignContent = this.getAlignContent(alignContent);
-    const topPadding = joinTop ? "-mt-20" : "pt-12 md:pt-20 lg:pt-28";
+    const topPadding = joinTop ? "-mt-20" : "pt-5 md:pt-14";
     const bottomPadding = joinBottom ? "" : "md:pb-20 lg:pb-28";
     return (
       <div className={`${bgClasses} w-full`}>
@@ -92,11 +90,7 @@ class ImageAndText extends Component {
               {this.renderRichTextSections()}
               {buttonLabel && (
                 <div className="mt-5 mb-6 flex">
-                  <Button
-                    link={buttonLink}
-                    label={buttonLabel}
-                    style={`${buttonStyle} ${btnWidth}`}
-                  />
+                  <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
                 </div>
               )}
             </div>
@@ -213,10 +207,8 @@ class ImageAndText extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
-      button_width: buttonWidth,
       expand_collapse_effect: hasExpandCollapse,
     } = item;
-    const btnWidth = buttonWidth || "";
     const textStyle = this.getTextStyle(fontSize);
     const bulletPointStyle = hasExpandCollapse
       ? ""
@@ -231,7 +223,7 @@ class ImageAndText extends Component {
         )}
         {buttonLabel && (
           <div className="pb-5 mb-10 flex">
-            <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
+            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         )}
       </div>
@@ -253,7 +245,7 @@ class ImageAndText extends Component {
     const direction =
       imagePosition === IMAGE_ALIGNMENT.LEFT
         ? "flex-col md:flex-row"
-        : "flex-col-reverse md:flex-row-reverse";
+        : "flex-col md:flex-row-reverse";
     const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
     return `${direction} ${position}`;
   }

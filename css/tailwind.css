@@ -40,15 +40,15 @@ button:focus {
   @apply font-bold text-center border border-solid text-secondary border-secondary;
 }
 
+.btn-mobile {
+  @apply text-sm p-2;
+}
+
 /*! purgecss start ignore */
 .filled-bgGreen-textBlue {
   @apply font-bold text-center border border-solid text-primary-dark border-secondary bg-secondary;
 }
 /*! purgecss end ignore */
-
-.btn-mobile {
-  @apply text-sm h-10 p-2;
-}
 
 /*! purgecss start ignore */
 .flat-borderGreen-textBlue {
@@ -87,25 +87,22 @@ button:focus {
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.flat-underline::after,
-.btn.flat::after,
-.flat-borderGreen-textGreen::after {
-  margin-left: 1rem;
-  content: url(../public/img/chevron-right.svg);
-}
-/*! purgecss end ignore */
-
-/*! purgecss start ignore */
-.filled-bgGreen-textBlue:hover::after,
-.flat-borderGreen-textBlue:hover::after {
-  margin-left: 1rem;
+.filled-bgGreen-textBlue::after,
+.flat-borderGreen-textBlue::after {
+  margin-left: 0.7rem;
+  opacity: 1;
+  transition: opacity 1s ease;
   content: url(../public/img/chevron-right-blue.svg);
 }
 /*! purgecss end ignore */
 
 /*! purgecss start ignore */
-.filled-bgGreen-textGreen:hover::after {
-  margin-left: 1rem;
+.flat-borderGreen-textGreen::after,
+.flat-underline::after,
+.btn.flat::after {
+  margin-left: 0.7rem;
+  opacity: 1;
+  transition: opacity 1s ease;
   content: url(../public/img/chevron-right.svg);
 }
 /*! purgecss end ignore */

@@ -97,11 +97,9 @@ class Hero2 extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
-      button_width: buttonWidth,
       width_description: wDescription,
       small_title: smallTitle,
     } = primary;
-    const btnWidth = buttonWidth || "";
     const alignmentClasses = this.getAlignmentClasses(alignment);
     const containerWidth = this.getContainerWidth(alignment);
     const imageAlignment = this.getImageAlignment(alignment);
@@ -124,7 +122,7 @@ class Hero2 extends Component {
             </div>
           </div>
           <div className={`pb-8 flex ${aligmentButton}`}>
-            <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
+            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         </div>
       </ResponsiveBgImage>

@@ -113,13 +113,11 @@ class CardsGrid extends Component {
       button_label: buttonLabel,
       button_link: buttonLink,
       button_style: buttonStyle,
-      button_width: buttonWidth,
     } = primary;
-    const btnWidth = buttonWidth || "";
     return (
       buttonLabel && (
         <div className="pb-10 flex justify-center">
-          <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
+          <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
         </div>
       )
     );

@@ -70,7 +70,7 @@ class ImageAndText extends Component {
     const textWidth = this.getTextWidth(imageSize);
     const classAlignContent = this.getAlignContent(alignContent);
     const topPadding = joinTop ? "-mt-20" : "pt-5 md:pt-14";
-    const bottomPadding = joinBottom ? "" : "md:pb-20 lg:pb-28";
+    const bottomPadding = joinBottom ? "-mb-28 md:mb-0" : "md:pb-20 lg:pb-28";
     return (
       <div className={`${bgClasses} w-full`}>
         <div className={`pb-12 ${topPadding} ${bottomPadding}`}>
@@ -111,13 +111,13 @@ class ImageAndText extends Component {
         <div className="flex flex-col justify-between items-center text-center pt-10 md:pt-0 md:pb-10 md:w-3/5 px-12 lg:px-28 mx-auto">
           {hasHeaderTitle && (
             <div className="pb-5">
-              <span className={`font-bold text-3xl md:text-4xl ${titleColor} `}>
+              <span className={`font-bold text-3xl md:text-4xl ${titleColor}`}>
                 {RichText.render(headerTitle, linkResolver)}
               </span>
             </div>
           )}
           {hasHeaderDescription && (
-            <div className="pb-5 md:px-5">
+            <div className="pb-5">
               <span className="font-light">{RichText.render(headerDescription, linkResolver)}</span>
             </div>
           )}
@@ -133,7 +133,7 @@ class ImageAndText extends Component {
     const classAlignContent = this.getAlignContent(alignContent);
     return (
       <div
-        className={`py-8 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap ${classAlignContent}`}
+        className={`mb-20 md:mb-0 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap ${classAlignContent}`}
       >
         <ResponsiveImage image={image} sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw" />
       </div>
@@ -244,8 +244,8 @@ class ImageAndText extends Component {
   getFlexStyles(imagePosition, size) {
     const direction =
       imagePosition === IMAGE_ALIGNMENT.LEFT
-        ? "flex-col md:flex-row"
-        : "flex-col md:flex-row-reverse";
+        ? "flex-col-reverse md:flex-row"
+        : "flex-col-reverse md:flex-row-reverse";
     const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
     return `${direction} ${position}`;
   }

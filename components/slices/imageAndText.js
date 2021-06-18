@@ -26,6 +26,11 @@ const BULLET_POINT = {
   GREEN_POINT: "green point",
   GREEN_LINE: "green line",
 };
+const ALIGN_CONTENT = {
+  START: "start",
+  CENTER: "center",
+  CENTER_FLEX: "center flex-col",
+};
 
 class ImageAndText extends Component {
   constructor(props) {
@@ -51,22 +56,21 @@ class ImageAndText extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
-      button_width: buttonWidth,
       image_alignment: imageAlignment,
       image_size: imageSize,
       join_top: joinTop,
       join_bottom: joinBottom,
       align_content: alignContent,
     } = primary;
-    const btnWidth = buttonWidth || "";
     const bgClasses = `${StyleUtils.getBackgroundColor(backgroundColor)} 
     ${StyleUtils.getBackgroundStyle(backgroundStyle)}`;
     const titleColor = StyleUtils.getTitleColor("", backgroundColor);
     const flexStyles = this.getFlexStyles(imageAlignment, imageSize);
     const textPadding = this.getTextPadding(imageAlignment);
     const textWidth = this.getTextWidth(imageSize);
-    const topPadding = joinTop ? "-mt-20" : "pt-12 md:pt-20 lg:pt-28";
-    const bottomPadding = joinBottom ? "" : "md:pb-20 lg:pb-28";
+    const classAlignContent = this.getAlignContent(alignContent);
+    const topPadding = joinTop ? "-mt-20" : "pt-5 md:pt-14";
+    const bottomPadding = joinBottom ? "-mb-28 md:mb-0" : "md:pb-20 lg:pb-28";
     return (
       <div className={`${bgClasses} w-full`}>
         <div className={`pb-12 ${topPadding} ${bottomPadding}`}>
@@ -76,7 +80,7 @@ class ImageAndText extends Component {
           >
             {this.renderImage()}
             <div
-              className={`pb-8 md:${textWidth} px-4 ${textPadding} flex flex-wrap content-${alignContent}`}
+              className={`md:${textWidth} px-4 ${textPadding} flex flex-wrap ${classAlignContent}`}
             >
               {TextUtils.hasRichText(smallTitle) && (
                 <div className={`${titleColor} text-xs uppercase mb-8`}>
@@ -85,12 +89,8 @@ class ImageAndText extends Component {
               )}
               {this.renderRichTextSections()}
               {buttonLabel && (
-                <div className="mt-16 flex">
-                  <Button
-                    link={buttonLink}
-                    label={buttonLabel}
-                    style={`${buttonStyle} ${btnWidth}`}
-                  />
+                <div className="mt-5 mb-6 flex">
+                  <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
                 </div>
               )}
             </div>
@@ -111,13 +111,13 @@ class ImageAndText extends Component {
         <div className="flex flex-col justify-between items-center text-center pt-10 md:pt-0 md:pb-10 md:w-3/5 px-12 lg:px-28 mx-auto">
           {hasHeaderTitle && (
             <div className="pb-5">
-              <span className={`font-bold text-3xl md:text-4xl ${titleColor} `}>
+              <span className={`font-bold text-3xl md:text-4xl ${titleColor}`}>
                 {RichText.render(headerTitle, linkResolver)}
               </span>
             </div>
           )}
           {hasHeaderDescription && (
-            <div className="pb-5 md:px-5">
+            <div className="pb-5">
               <span className="font-light">{RichText.render(headerDescription, linkResolver)}</span>
             </div>
           )}
@@ -130,9 +130,10 @@ class ImageAndText extends Component {
     const { primary } = this.props.slice;
     const { image, image_size: imageSize, align_content: alignContent } = primary;
     const imageWidth = this.getImageWidth(imageSize);
+    const classAlignContent = this.getAlignContent(alignContent);
     return (
       <div
-        className={`py-10 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap content-${alignContent}`}
+        className={`mb-20 md:mb-0 md:py-0 md:${imageWidth} px-4 h-auto flex flex-wrap ${classAlignContent}`}
       >
         <ResponsiveImage image={image} sizes="(min-width:1536) 648px, (min-width:768) 40vw, 75vw" />
       </div>
@@ -167,7 +168,7 @@ class ImageAndText extends Component {
     return (
       <div>
         {TextUtils.hasRichText(bigTitle) && (
-          <div className={`${titleColor} ${titleStyle} font-bold`}>
+          <div className={`${titleColor} ${titleStyle} font-bold mb-8 md:mb-0`}>
             {RichText.render(bigTitle, linkResolver)}
           </div>
         )}
@@ -206,10 +207,8 @@ class ImageAndText extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
-      button_width: buttonWidth,
       expand_collapse_effect: hasExpandCollapse,
     } = item;
-    const btnWidth = buttonWidth || "";
     const textStyle = this.getTextStyle(fontSize);
     const bulletPointStyle = hasExpandCollapse
       ? ""
@@ -224,7 +223,7 @@ class ImageAndText extends Component {
         )}
         {buttonLabel && (
           <div className="pb-5 mb-10 flex">
-            <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
+            <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
           </div>
         )}
       </div>
@@ -245,7 +244,7 @@ class ImageAndText extends Component {
   getFlexStyles(imagePosition, size) {
     const direction =
       imagePosition === IMAGE_ALIGNMENT.LEFT
-        ? "flex-col md:flex-row"
+        ? "flex-col-reverse md:flex-row"
         : "flex-col-reverse md:flex-row-reverse";
     const position = size === IMAGE_SIZE.MEDIUM ? "items-center" : "items-start";
     return `${direction} ${position}`;
@@ -290,6 +289,19 @@ class ImageAndText extends Component {
         return "text-base";
       case TEXT_SIZE.LARGE:
         return "text-3xl pb-4 md:text-4xl lg:pb-8";
+      default:
+        return "";
+    }
+  }
+
+  getAlignContent(alignContent) {
+    switch (alignContent) {
+      case ALIGN_CONTENT.START:
+        return "content-start";
+      case ALIGN_CONTENT.CENTER:
+        return "content-center";
+      case ALIGN_CONTENT.CENTER_FLEX:
+        return "content-center flex-col";
       default:
         return "";
     }

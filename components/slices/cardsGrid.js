@@ -83,7 +83,7 @@ class CardsGrid extends Component {
       <div className="flex flex-col justify-between items-center py-12 px-6 container mx-auto lg:pt-20">
         {TextUtils.hasRichText(small_title) && (
           <div className="pb-3">
-            <span className="text-xs lg:text-sm font-light capitalize">
+            <span className="text-xs lg:text-sm font-light uppercase">
               {RichText.render(small_title, linkResolver)}
             </span>
           </div>
@@ -113,13 +113,11 @@ class CardsGrid extends Component {
       button_label: buttonLabel,
       button_link: buttonLink,
       button_style: buttonStyle,
-      button_width: buttonWidth,
     } = primary;
-    const btnWidth = buttonWidth || "";
     return (
       buttonLabel && (
         <div className="pb-10 flex justify-center">
-          <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
+          <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
         </div>
       )
     );

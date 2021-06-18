@@ -3,13 +3,25 @@ import { RichText } from "prismic-reactjs";
 import { linkResolver } from "../../prismic-configuration";
 import ResponsiveImage from "../common/responsiveImage";
 import Button from "../common/button";
+import TextUtils from "../../utils/text";
 
 export default class Banner extends Component {
   render() {
     const { primary } = this.props.slice;
-    const { header_image, image, button_label, button_link, button_style } = primary;
+    const {
+      header_image,
+      image,
+      button_label,
+      button_link,
+      button_style,
+      hidden_title: hiddenTitle,
+    } = primary;
+    const hasHiddenTitle = TextUtils.hasRichText(hiddenTitle);
     return (
       <div className="container w-full pt-12 px-6 md:px-14 lg:px-28 mx-auto">
+        {hasHiddenTitle && (
+          <div className="hidden">{RichText.render(hiddenTitle, linkResolver)}</div>
+        )}
         <div className="flex flex-col items-center justify-center pt-12 pl-4 md:pl-12 my-8 rounded-xl bg-primary-light md:flex-row md:items-start">
           <div className="flex-1 px-6 pb-10">
             {header_image && (

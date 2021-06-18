@@ -69,12 +69,10 @@ class Hero3 extends Component {
       button_link: buttonLink,
       button_label: buttonLabel,
       button_style: buttonStyle,
-      button_width: buttonWidth,
     } = primary;
-    const btnWidth = buttonWidth || "";
     return (
       <div className="mt-10 -mb-1 flex">
-        <Button link={buttonLink} label={buttonLabel} style={`${buttonStyle} ${btnWidth}`} />
+        <Button link={buttonLink} label={buttonLabel} style={buttonStyle} />
       </div>
     );
   }
